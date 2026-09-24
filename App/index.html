@@ -1,0 +1,1441 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#1a1a2e">
+<title>Coleta · Customer Discovery 8AdmVG</title>
+<style>
+:root{
+  --dark:#1a1a2e; --dark2:#16213e; --accent:#e94560; --accent-dark:#c73550;
+  --ink:#2d3748; --muted:#718096; --line:#e2e8f0; --bg:#f7fafc; --card:#ffffff;
+  --green:#38a169; --amber:#dd6b20;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{height:100%}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;
+  background:var(--bg); color:var(--ink); line-height:1.45;
+  font-size:16px; overflow-x:hidden;
+}
+.app{max-width:640px;margin:0 auto;min-height:100%;display:flex;flex-direction:column;background:var(--bg)}
+header.top{
+  background:linear-gradient(135deg,var(--dark) 0%,var(--dark2) 100%);
+  color:#fff;padding:14px 16px 12px;position:sticky;top:0;z-index:20;
+  box-shadow:0 2px 10px rgba(0,0,0,.18);
+}
+header.top .brand{display:flex;align-items:center;justify-content:space-between;gap:10px}
+header.top h1{font-size:15px;font-weight:700;letter-spacing:.02em}
+header.top .sub{font-size:11px;opacity:.75;margin-top:2px}
+.pill{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);
+  color:#fff;font-size:11px;padding:4px 9px;border-radius:20px;white-space:nowrap}
+.bar{height:4px;background:rgba(255,255,255,.15);border-radius:4px;margin-top:10px;overflow:hidden}
+.bar>i{display:block;height:100%;width:0;background:var(--accent);transition:width .25s ease}
+main{flex:1;padding:16px;display:flex;flex-direction:column;gap:14px}
+.screen{display:none;flex-direction:column;gap:14px;animation:fade .18s ease}
+.screen.active{display:flex}
+@keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;
+  box-shadow:0 1px 3px rgba(16,24,40,.04)}
+.card h2{font-size:17px;margin-bottom:6px}
+.card p{font-size:14px;color:var(--muted)}
+.muted{color:var(--muted)}
+.small{font-size:12.5px}
+.center{text-align:center}
+
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;
+  border:none;border-radius:12px;padding:14px 16px;font-size:16px;font-weight:600;
+  background:var(--accent);color:#fff;cursor:pointer;width:100%;transition:transform .05s,background .15s}
+.btn:active{transform:scale(.985)}
+.btn.ghost{background:#fff;color:var(--ink);border:1px solid var(--line)}
+.btn.dark{background:var(--dark)}
+.btn.green{background:var(--green)}
+.btn.danger{background:#fff;color:var(--accent-dark);border:1px solid #f0c3cc}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.btn.sm{padding:10px 12px;font-size:14px;border-radius:10px}
+.btn.block{width:100%}
+.row{display:flex;gap:10px}
+.row>*{flex:1}
+
+.grupo-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.grupo-btn{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px 12px;
+  text-align:left;cursor:pointer;display:flex;flex-direction:column;gap:4px}
+.grupo-btn.active{border-color:var(--accent);box-shadow:0 0 0 2px rgba(233,69,96,.18)}
+.grupo-btn .g{font-size:11px;font-weight:700;color:var(--accent);letter-spacing:.06em}
+.grupo-btn .n{font-size:14.5px;font-weight:600;color:var(--ink)}
+.grupo-btn .p{font-size:11.5px;color:var(--muted)}
+.grupo-btn[disabled]{opacity:.5;cursor:not-allowed}
+
+.pergunta-q{font-size:19px;font-weight:600;line-height:1.35;margin:6px 0 4px}
+.pergunta-hint{font-size:12.5px;color:var(--muted);margin-bottom:14px}
+.escala{display:flex;flex-direction:column;gap:8px}
+.escala .opt{display:flex;align-items:center;gap:12px;border:1.5px solid var(--line);
+  background:#fff;border-radius:12px;padding:13px 14px;cursor:pointer;font-size:15px}
+.escala .opt .num{width:30px;height:30px;flex:0 0 30px;border-radius:50%;background:var(--bg);
+  border:1.5px solid var(--line);display:flex;align-items:center;justify-content:center;
+  font-weight:700;font-size:14px;color:var(--muted)}
+.escala .opt.sel{border-color:var(--accent);background:#fdf2f4}
+.escala .opt.sel .num{background:var(--accent);border-color:var(--accent);color:#fff}
+.polos{display:flex;justify-content:space-between;gap:12px;font-size:12px;color:var(--muted);margin-bottom:12px}
+.polos b{color:var(--ink);font-weight:600}
+
+.campo{margin-bottom:12px}
+.campo label{display:block;font-size:13px;font-weight:600;margin-bottom:6px}
+.campo select{width:100%;padding:12px;border:1.5px solid var(--line);border-radius:11px;
+  font-size:15px;background:#fff;color:var(--ink);appearance:none}
+.campo .obs{font-size:11.5px;color:var(--muted);margin-top:4px}
+
+.callout{background:#fffbeb;border-left:4px solid var(--amber);border-radius:0 10px 10px 0;
+  padding:11px 13px;font-size:13px}
+.callout.info{background:#eff6ff;border-left-color:#3182ce}
+.callout.warn{background:#fdf2f4;border-left-color:var(--accent)}
+
+.codigo-box{background:var(--dark);color:#fff;border-radius:14px;padding:20px;text-align:center}
+.codigo-box .lbl{font-size:12px;letter-spacing:.14em;text-transform:uppercase;opacity:.65}
+.codigo-box .cod{font-size:42px;font-weight:800;letter-spacing:.04em;margin:6px 0 2px;color:#fff;
+  font-family:'Consolas','SF Mono',monospace}
+.audio-modelo{background:#f0fdf4;border:1px dashed var(--green);border-radius:12px;
+  padding:13px;font-size:13.5px;line-height:1.5}
+
+.lista{display:flex;flex-direction:column;gap:8px}
+.item{display:flex;align-items:center;gap:12px;background:#fff;border:1px solid var(--line);
+  border-radius:12px;padding:11px 13px}
+.item .cod{font-family:'Consolas',monospace;font-weight:700;font-size:14px;color:var(--accent);min-width:74px}
+.item .meta{flex:1;font-size:12px;color:var(--muted)}
+.item .x{border:none;background:#fff;color:var(--muted);font-size:18px;cursor:pointer;padding:4px 6px}
+.stat{display:flex;gap:10px;flex-wrap:wrap}
+.stat .s{flex:1;min-width:90px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:11px;text-align:center}
+.stat .s b{display:block;font-size:22px;color:var(--dark)}
+.stat .s span{font-size:11px;color:var(--muted)}
+.vazio{text-align:center;color:var(--muted);font-size:13.5px;padding:24px 8px}
+
+footer{padding:14px 16px 22px;text-align:center;color:var(--muted);font-size:11.5px}
+.hidden{display:none !important}
+.tag-live{display:inline-block;background:#fdf2f4;color:var(--accent-dark);border-radius:8px;
+  padding:2px 8px;font-size:11px;font-weight:700}
+.toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%) translateY(80px);
+  background:var(--dark);color:#fff;padding:11px 18px;border-radius:22px;font-size:13.5px;
+  opacity:0;transition:.25s;z-index:60;pointer-events:none;max-width:90vw}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="top">
+    <div class="brand">
+      <div>
+        <h1>Coleta · Customer Discovery</h1>
+        <div class="sub">Administração · 8º Semestre · 8AdmVG / Unifacc</div>
+      </div>
+      <span class="pill" id="pillGrupo">—</span>
+    </div>
+    <div class="bar"><i id="barra"></i></div>
+  </header>
+
+  <main>
+    <!-- HOME -->
+    <section class="screen active" id="scr-home">
+      <div class="card">
+        <h2>Grupo do entrevistador</h2>
+        <p class="small">Escolha o grupo desta dupla. Fica salvo no aparelho.</p>
+        <div class="grupo-grid" id="grupo-grid" style="margin-top:12px"></div>
+      </div>
+      <div class="callout warn">
+        <b>Bloco 0 (perfil) é por observação.</b> Nunca pergunte raça nem renda. Na dúvida, marque
+        <b>“Não sei estimar”</b>.
+      </div>
+      <button class="btn" id="btn-nova" disabled>Iniciar nova coleta</button>
+      <div class="row">
+        <button class="btn ghost" id="btn-respostas">Ver respostas</button>
+        <button class="btn ghost" id="btn-dados">Exportar dados</button>
+      </div>
+      <div class="stat" style="margin-top:2px">
+        <div class="s"><b id="st-total">0</b><span>respostas salvas</span></div>
+        <div class="s"><b id="st-grupo">0</b><span>do grupo atual</span></div>
+        <div class="s"><b id="st-meta">—</b><span>meta 15–20</span></div>
+      </div>
+      <div id="aviso-storage" class="callout warn hidden">
+        Atenção: este navegador não está guardando dados localmente. Exporte as respostas com frequência.
+      </div>
+    </section>
+
+    <!-- PERFIL -->
+    <section class="screen" id="scr-perfil">
+      <div>
+        <span class="tag-live">BLOCO 0 · PERFIL (observação)</span>
+        <h2 style="font-size:20px;margin-top:8px" id="perfil-titulo">Perfil</h2>
+        <p class="small muted" id="perfil-desc"></p>
+      </div>
+      <div class="card" id="perfil-campos"></div>
+      <div class="row">
+        <button class="btn ghost" data-nav="home">Voltar</button>
+        <button class="btn" id="btn-perfil-ok">Começar as 20 perguntas</button>
+      </div>
+    </section>
+
+    <!-- PERGUNTA -->
+    <section class="screen" id="scr-pergunta">
+      <div>
+        <div class="row" style="align-items:center;flex:none">
+          <button class="btn ghost sm" id="btn-perg-voltar" style="flex:0 0 auto;width:auto">←</button>
+          <span class="pill" style="background:var(--bg);color:var(--ink);border-color:var(--line)" id="perg-cont">Pergunta</span>
+        </div>
+        <div class="small muted" id="perg-bloco" style="margin-top:10px"></div>
+        <div class="pergunta-q" id="perg-q"></div>
+        <div class="pergunta-hint">Pergunte <b>aberto</b> e marque onde a fala caiu.</div>
+      </div>
+      <div class="card">
+        <div class="polos"><span><b>1</b> · <span id="polo-a"></span></span><span><span id="polo-b"></span> · <b>5</b></span></div>
+        <div class="escala" id="escala"></div>
+      </div>
+    </section>
+
+    <!-- E-MAIL (opcional, ao final do formulário) -->
+    <section class="screen" id="scr-email">
+      <div class="row" style="flex:none;align-items:center">
+        <button class="btn ghost sm" id="btn-email-voltar" style="flex:0 0 auto;width:auto">←</button>
+        <span class="pill" style="background:var(--bg);color:var(--ink);border-color:var(--line)">Última etapa</span>
+      </div>
+      <div class="card">
+        <h2 style="font-size:18px">Quase lá!</h2>
+        <p class="small" style="margin-top:6px">
+          Pergunte: <b>"Você gostaria de deixar seu e-mail para receber o Termo de Consentimento
+          Livre e Esclarecido (TCLE) e ficar sabendo do resultado desta pesquisa?"</b>
+        </p>
+        <p class="small" style="opacity:.7;margin-top:6px">É opcional e não entra nas notas 1–5 — fica guardado
+        à parte, só para contato.</p>
+        <input type="email" id="input-email-contato" class="small" placeholder="nome@email.com (opcional)"
+          style="width:100%;padding:12px;border-radius:8px;border:1px solid #ccc;margin-top:12px;box-sizing:border-box">
+      </div>
+      <button class="btn green" id="btn-email-salvar">Salvar e finalizar</button>
+      <button class="btn ghost" id="btn-email-pular">Pular (não quis deixar e-mail)</button>
+    </section>
+
+    <!-- RESULTADO -->
+    <section class="screen" id="scr-fim">
+      <div class="card center">
+        <h2>Resposta salva</h2>
+        <p class="small">Leia este código no início do áudio do WhatsApp.</p>
+        <div class="codigo-box" style="margin-top:14px">
+          <div class="lbl">Código</div>
+          <div class="cod" id="fim-cod">G0-000</div>
+          <div class="small" id="fim-resumo" style="opacity:.7"></div>
+        </div>
+        <button class="btn dark" id="btn-copiar" style="margin-top:12px">Copiar código</button>
+      </div>
+      <div class="audio-modelo" id="fim-audio"></div>
+      <button class="btn green" id="btn-proxima">Nova coleta (mesmo grupo)</button>
+      <button class="btn ghost" id="btn-fim-home" data-nav="home">Voltar ao início</button>
+    </section>
+
+    <!-- RESPOSTAS -->
+    <section class="screen" id="scr-respostas">
+      <div class="row" style="flex:none;align-items:center">
+        <button class="btn ghost sm" data-nav="home" style="width:auto;flex:0 0 auto">←</button>
+        <h2 style="font-size:19px">Respostas salvas</h2>
+      </div>
+      <div class="stat" id="resp-stat"></div>
+      <div class="lista" id="resp-lista"></div>
+      <div id="resp-vazio" class="vazio hidden">Nenhuma resposta salva ainda.</div>
+    </section>
+
+    <!-- DADOS -->
+    <section class="screen" id="scr-dados">
+      <div class="row" style="flex:none;align-items:center">
+        <button class="btn ghost sm" data-nav="home" style="width:auto;flex:0 0 auto">←</button>
+        <h2 style="font-size:19px">Exportar dados</h2>
+      </div>
+      <div class="card">
+        <p class="small">Envie o arquivo para o professor / responsável pela tabulação. O CSV abre no Excel
+        (separador <b>;</b>). O JSON preserva tudo (para o app / correlação com os áudios).</p>
+      </div>
+      <button class="btn" id="btn-csv">Baixar CSV (Excel)</button>
+      <button class="btn ghost" id="btn-json">Baixar JSON (backup)</button>
+      <button class="btn ghost" id="btn-compartilhar">Enviar por WhatsApp / Drive</button>
+      <button class="btn ghost" id="btn-copiar-dados">Copiar JSON (backup rápido)</button>
+      <div class="callout info">
+        O código liga <b>quanti × quali</b>: a planilha guarda as notas 1–5 e o áudio guarda as falas.
+      </div>
+      <div class="card" style="margin-top:16px">
+        <p class="small"><b>Consolidar dados de várias duplas:</b> no celular que vai juntar tudo, importe o JSON
+        exportado por cada dupla. O app soma pelo código — nada se duplica ou se perde.</p>
+      </div>
+      <button class="btn ghost" id="btn-importar">Importar / mesclar JSON de outra dupla</button>
+      <input type="file" id="input-importar" accept="application/json" style="display:none">
+
+      <div class="card" style="margin-top:16px">
+        <p class="small"><b>Sincronização automática (opcional):</b> cole aqui a URL do Google Apps Script
+        (veja <code>App/README.md</code> → "Backup automático") para que cada resposta salva tente ir sozinha
+        para uma planilha Google, sem depender de exportar/enviar manualmente. Precisa de internet no momento
+        do salvamento — sem internet, fica marcada como pendente e sincroniza depois.</p>
+        <input type="text" id="input-sheet-url" class="small" placeholder="https://script.google.com/macros/s/.../exec"
+          style="width:100%;padding:10px;border-radius:8px;border:1px solid #ccc;margin-top:8px;box-sizing:border-box">
+      </div>
+      <button class="btn ghost" id="btn-salvar-url">Salvar URL de sincronização</button>
+      <button class="btn ghost" id="btn-sync-agora">Sincronizar pendentes agora</button>
+      <div class="small" id="sync-status" style="opacity:.75;text-align:center;margin-top:4px"></div>
+
+      <button class="btn danger" id="btn-limpar">Apagar TODAS as respostas</button>
+    </section>
+  </main>
+
+  <footer>
+    Customer Discovery na Prática · Prof. Renato Rosa · Cerrado Tech / Unifacc<br>
+    App offline · v1 (Sprints 0–2)
+  </footer>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+"use strict";
+
+/* ============================================================
+   PERFIL (Bloco 0) — marcado por OBSERVAÇÃO, nunca perguntado
+   ============================================================ */
+const PERFIL = [
+  { id:"faixaEtaria", label:"Faixa etária",  opcoes:["18–24","25–34","35–44","45–59","60+"] },
+  { id:"sexo",        label:"Sexo",          opcoes:["Feminino","Masculino","Não identificado"] },
+  { id:"classe",      label:"Classe social (estimada)", opcoes:["A/B","C","D/E","Não sei estimar"] },
+  { id:"raca",        label:"Raça/cor (estimada)", opcoes:["Branca","Preta","Parda","Amarela","Indígena","Não sei estimar"] },
+];
+
+/* ============================================================
+   GRUPOS E PERGUNTAS (20 por grupo · escala 1–5 com polos)
+   ============================================================ */
+/* GRUPOS:INICIO — gerado por _gerador/gen.py (não edite à mão) */
+const GRUPOS = {
+ "1": {
+  "nome": "HoraCerta",
+  "prof": "Prof. Renato",
+  "nota": "Se a pessoa <strong>não fez faculdade</strong>, marque a triagem e agradeça — as 20 perguntas são para quem estuda ou estudou.",
+  "triagem": {
+   "id": "situacao",
+   "label": "Situação acadêmica",
+   "opcoes": [
+    "Estudante de graduação",
+    "Já formado(a)",
+    "Não fez faculdade",
+    "Não sei informar"
+   ]
+  },
+  "blocos": [
+   {
+    "titulo": "Conhecimento e situação das horas",
+    "perguntas": [
+     {
+      "q": "O quanto você conhece as regras de horas complementares do seu curso (total exigido, o que vale)",
+      "a": "Não conhece nada",
+      "b": "Conhece muito bem"
+     },
+     {
+      "q": "Como está a sua situação de horas em relação ao que falta para se formar",
+      "a": "Muito atrasada",
+      "b": "Em dia ou completa"
+     },
+     {
+      "q": "Com que frequência você perdeu uma atividade que valeria horas por não saber dela a tempo",
+      "a": "Nunca",
+      "b": "Sempre"
+     },
+     {
+      "q": "Clareza sobre quantas horas você já tem validadas hoje",
+      "a": "Nenhuma clareza",
+      "b": "Clareza total"
+     },
+     {
+      "q": "Preocupação de não fechar as horas a tempo da formatura",
+      "a": "Nenhuma",
+      "b": "Muita"
+     }
+    ]
+   },
+   {
+    "titulo": "Comprovantes e processo de validação",
+    "perguntas": [
+     {
+      "q": "Com que frequência você já perdeu um certificado ou comprovante",
+      "a": "Nunca",
+      "b": "Sempre"
+     },
+     {
+      "q": "Facilidade do processo de entregar e validar horas na sua instituição",
+      "a": "Muito difícil",
+      "b": "Muito fácil"
+     },
+     {
+      "q": "Tempo de espera para saber se as horas foram aceitas",
+      "a": "Muito rápido",
+      "b": "Muito demorado"
+     },
+     {
+      "q": "Com que frequência teve horas recusadas ou lançadas na categoria errada",
+      "a": "Nunca",
+      "b": "Sempre"
+     },
+     {
+      "q": "O quanto o processo depende de papel ou de ir presencialmente à secretaria",
+      "a": "Nada",
+      "b": "Totalmente"
+     }
+    ]
+   },
+   {
+    "titulo": "Oportunidades, tempo e motivação",
+    "perguntas": [
+     {
+      "q": "Facilidade de encontrar atividades que valem horas (palestras, cursos, voluntariado)",
+      "a": "Muito difícil",
+      "b": "Muito fácil"
+     },
+     {
+      "q": "O que mais pesa na escolha de uma atividade",
+      "a": "Só as horas",
+      "b": "O interesse real"
+     },
+     {
+      "q": "O quanto a falta de tempo (trabalho, família) atrapalha cumprir as horas",
+      "a": "Nada",
+      "b": "Muito"
+     },
+     {
+      "q": "Valor que você vê nas atividades complementares para a sua carreira",
+      "a": "Nenhum valor",
+      "b": "Muito valor"
+     },
+     {
+      "q": "Com que frequência você deixa as horas para a reta final do curso",
+      "a": "Nunca",
+      "b": "Sempre"
+     }
+    ]
+   },
+   {
+    "titulo": "App e acompanhamento em tempo real",
+    "perguntas": [
+     {
+      "q": "Utilidade de ver em tempo real o saldo de horas por categoria",
+      "a": "Nada útil",
+      "b": "Muito útil"
+     },
+     {
+      "q": "Utilidade de guardar os comprovantes no celular (foto/PDF)",
+      "a": "Nada útil",
+      "b": "Muito útil"
+     },
+     {
+      "q": "Utilidade de receber avisos de eventos que valem horas",
+      "a": "Nada útil",
+      "b": "Muito útil"
+     },
+     {
+      "q": "Confiança em enviar comprovantes por app para a coordenação validar",
+      "a": "Nenhuma",
+      "b": "Total"
+     },
+     {
+      "q": "Interesse em usar um app único para as horas complementares",
+      "a": "Nenhum",
+      "b": "Muito"
+     }
+    ]
+   }
+  ]
+ },
+ "2": {
+  "nome": "RotaViva",
+  "prof": "Prof. Renato",
+  "nota": "Serve para <strong>moradores e visitantes</strong> — a triagem permite comparar os dois públicos na análise.",
+  "triagem": {
+   "id": "relacao",
+   "label": "Relação com a região",
+   "opcoes": [
+    "Morador(a) de VG/Cuiabá",
+    "Visitante de outra cidade de MT",
+    "Visitante de outro estado/país",
+    "Não sei informar"
+   ]
+  },
+  "blocos": [
+   {
+    "titulo": "Hábitos de passeio e viagem",
+    "perguntas": [
+     {
+      "q": "Com que frequência você faz passeios ou viagens de lazer",
+      "a": "Nunca",
+      "b": "Sempre"
+     },
+     {
+      "q": "O quanto você conhece os atrativos turísticos da região (Chapada, Pantanal, centro histórico)",
+      "a": "Nada",
+      "b": "Muito"
+     },
+     {
+      "q": "Como você costuma montar o roteiro de um passeio",
+      "a": "Improvisa na hora",
+      "b": "Planeja tudo antes"
+     },
+     {
+      "q": "Com que frequência já descobriu depois que havia um lugar interessante perto e não visitou",
+      "a": "Nunca",
+      "b": "Sempre"
+     },
+     {
+      "q": "Quanto tempo você perde procurando o que fazer quando chega a um lugar",
+      "a": "Pouco",
+      "b": "Muito"
+     }
+    ]
+   },
+   {
+    "titulo": "Informação e orientação no destino",
+    "perguntas": [
+     {
+      "q": "Facilidade de encontrar informação confiável sobre atrativos (horário, preço, acesso)",
+      "a": "Muito difícil",
+      "b": "Muito fácil"
+     },
+     {
+      "q": "Com que frequência usa o celular (mapas, redes sociais) para se orientar num passeio",
+      "a": "Nunca",
+      "b": "Sempre"
+     },
+     {
+      "q": "Com que frequência contrata guia ou agência de turismo",
+      "a": "Nunca",
+      "b": "Sempre"
+     },
+     {
+      "q": "Interesse em conhecer a história e a cultura do lugar visitado",
+      "a": "Nenhum",
+      "b": "Muito"
+     },
+     {
+      "q": "Sensação de segurança ao explorar sozinho(a) um lugar desconhecido",
+      "a": "Muito inseguro(a)",
+      "b": "Muito seguro(a)"
+     }
+    ]
+   },
+   {
+    "titulo": "Rotas e experiência",
+    "perguntas": [
+     {
+      "q": "Importância de uma rota montada de acordo com o tempo que você tem",
+      "a": "Nada importante",
+      "b": "Muito importante"
+     },
+     {
+      "q": "Preferência entre lugares famosos e lugares pouco conhecidos",
+      "a": "Só famosos",
+      "b": "Só pouco conhecidos"
+     },
+     {
+      "q": "Importância de apoiar o comércio local (restaurantes, artesanato, guias locais)",
+      "a": "Nada importante",
+      "b": "Muito importante"
+     },
+     {
+      "q": "O quanto a falta de sinal de internet atrapalha seus passeios",
+      "a": "Nada",
+      "b": "Muito"
+     },
+     {
+      "q": "Com que frequência você compartilha passeios nas redes sociais",
+      "a": "Nunca",
+      "b": "Sempre"
+     }
+    ]
+   },
+   {
+    "titulo": "O guia de bolso (app)",
+    "perguntas": [
+     {
+      "q": "Utilidade de um app que mostra atrativos próximos pela sua localização",
+      "a": "Nada útil",
+      "b": "Muito útil"
+     },
+     {
+      "q": "Utilidade de um áudio/narração contando a história do lugar",
+      "a": "Nada útil",
+      "b": "Muito útil"
+     },
+     {
+      "q": "Utilidade de uma rota automática (manhã, tarde ou dia inteiro)",
+      "a": "Nada útil",
+      "b": "Muito útil"
+     },
+     {
+      "q": "Conforto em compartilhar sua localização com um app de turismo",
+      "a": "Nenhum",
+      "b": "Total"
+     },
+     {
+      "q": "Interesse em usar um guia turístico de bolso no celular",
+      "a": "Nenhum",
+      "b": "Muito"
+     }
+    ]
+   }
+  ]
+ },
+ "3": {
+  "nome": "VozGuia",
+  "prof": "Profa. Sandra",
+  "nota": "<strong>Tema sensível e de acessibilidade.</strong> Se o(a) entrevistado(a) tiver deficiência visual: apresente-se pelo nome, <strong>leia as opções em voz alta</strong> e confirme a marcação com a pessoa. Nunca toque ou conduza a pessoa sem perguntar antes. Pergunte a triagem com delicadeza (&quot;você convive com alguém que tem deficiência visual?&quot;).",
+  "triagem": {
+   "id": "relacao_dv",
+   "label": "Relação com deficiência visual",
+   "opcoes": [
+    "Tem deficiência visual",
+    "Convive com alguém com DV",
+    "Não convive",
+    "Prefere não informar"
+   ]
+  },
+  "blocos": [
+   {
+    "titulo": "Percepção da acessibilidade na cidade",
+    "perguntas": [
+     {
+      "q": "Como você avalia as calçadas da cidade para quem não enxerga",
+      "a": "Muito ruins",
+      "b": "Muito boas"
+     },
+     {
+      "q": "Com que frequência você vê obstáculos nas calçadas (buracos, postes, carros, entulho)",
+      "a": "Nunca",
+      "b": "Sempre"
+     },
+     {
+      "q": "Presença de piso tátil e semáforo sonoro nos lugares que você frequenta",
+      "a": "Nenhuma",
+      "b": "Em todo lugar"
+     },
+     {
+      "q": "O quanto você acha que uma pessoa cega consegue andar sozinha com segurança no centro da cidade",
+      "a": "Nada",
+      "b": "Totalmente"
+     },
+     {
+      "q": "Acessibilidade do transporte público para cegos (achar o ponto, identificar o ônibus)",
+      "a": "Muito ruim",
+      "b": "Muito boa"
+     }
+    ]
+   },
+   {
+    "titulo": "Autonomia e tecnologia",
+    "perguntas": [
+     {
+      "q": "O quanto a pessoa com deficiência visual depende de outra pessoa para se deslocar (sua percepção)",
+      "a": "Nada",
+      "b": "Totalmente"
+     },
+     {
+      "q": "Conhecimento dos recursos de acessibilidade do celular (leitor de tela, TalkBack, VoiceOver)",
+      "a": "Nenhum",
+      "b": "Muito"
+     },
+     {
+      "q": "Confiança em um app que orienta o deslocamento por voz",
+      "a": "Nenhuma",
+      "b": "Total"
+     },
+     {
+      "q": "Importância de o app funcionar mesmo sem internet",
+      "a": "Nada importante",
+      "b": "Muito importante"
+     },
+     {
+      "q": "Preferência de aviso no celular",
+      "a": "Só vibração",
+      "b": "Só voz"
+     }
+    ]
+   },
+   {
+    "titulo": "Alertas ao poder público",
+    "perguntas": [
+     {
+      "q": "Com que frequência você já reclamou de um problema urbano na prefeitura",
+      "a": "Nunca",
+      "b": "Sempre"
+     },
+     {
+      "q": "Facilidade de registrar uma reclamação na prefeitura hoje",
+      "a": "Muito difícil",
+      "b": "Muito fácil"
+     },
+     {
+      "q": "Confiança de que a prefeitura resolve os problemas relatados",
+      "a": "Nenhuma",
+      "b": "Total"
+     },
+     {
+      "q": "Importância de acompanhar o andamento do alerta (protocolo, prazo, resposta)",
+      "a": "Nada importante",
+      "b": "Muito importante"
+     },
+     {
+      "q": "Disposição para registrar um alerta de obstáculo quando encontrar um",
+      "a": "Nenhuma",
+      "b": "Total"
+     }
+    ]
+   },
+   {
+    "titulo": "O assistente sonoro (app)",
+    "perguntas": [
+     {
+      "q": "Utilidade de um app que avisa por voz o que está à frente (obstáculo, faixa, ponto de ônibus)",
+      "a": "Nada útil",
+      "b": "Muito útil"
+     },
+     {
+      "q": "Utilidade de um mapa colaborativo de pontos perigosos para pedestres",
+      "a": "Nada útil",
+      "b": "Muito útil"
+     },
+     {
+      "q": "Utilidade de um botão que envia alerta com foto e local ao órgão público",
+      "a": "Nada útil",
+      "b": "Muito útil"
+     },
+     {
+      "q": "Importância de o app ser gratuito e apoiado pelo poder público",
+      "a": "Nada importante",
+      "b": "Muito importante"
+     },
+     {
+      "q": "Interesse em usar ou indicar o app (para você ou alguém que conhece)",
+      "a": "Nenhum",
+      "b": "Muito"
+     }
+    ]
+   }
+  ]
+ },
+ "4": {
+  "nome": "CasaPiloto",
+  "prof": "Profa. Polyana",
+  "nota": "<strong>Nunca pergunte renda, salário ou valor de patrimônio.</strong> Meça só percepções (&quot;a parcela te dá medo?&quot;).",
+  "triagem": {
+   "id": "moradia",
+   "label": "Moradia atual",
+   "opcoes": [
+    "Aluguel",
+    "Própria financiada",
+    "Própria quitada",
+    "Cedida / com família"
+   ]
+  },
+  "blocos": [
+   {
+    "titulo": "Desejo e momento da compra",
+    "perguntas": [
+     {
+      "q": "Força do desejo de comprar casa ou apartamento nos próximos anos",
+      "a": "Nenhum",
+      "b": "Muito forte"
+     },
+     {
+      "q": "Clareza sobre o tipo de casa que você quer (tamanho, quartos, padrão)",
+      "a": "Nenhuma",
+      "b": "Total"
+     },
+     {
+      "q": "Com que frequência você visita decorados, casas modelo ou plantões de venda",
+      "a": "Nunca",
+      "b": "Sempre"
+     },
+     {
+      "q": "Confiança no que as construtoras mostram no plantão e no decorado",
+      "a": "Nenhuma",
+      "b": "Total"
+     },
+     {
+      "q": "O quanto você já pesquisou preços de imóveis na planta ou prontos",
+      "a": "Nada",
+      "b": "Muito"
+     }
+    ]
+   },
+   {
+    "titulo": "Guardar, investir e financiar",
+    "perguntas": [
+     {
+      "q": "Clareza sobre quanto precisa guardar para a entrada",
+      "a": "Nenhuma",
+      "b": "Total"
+     },
+     {
+      "q": "Com que frequência você consegue guardar dinheiro todo mês",
+      "a": "Nunca",
+      "b": "Sempre"
+     },
+     {
+      "q": "Conhecimento sobre onde investir o dinheiro da entrada (poupança, CDB, Tesouro)",
+      "a": "Nenhum",
+      "b": "Muito"
+     },
+     {
+      "q": "Entendimento de financiamento (juros, prazo, SAC/Price, uso do FGTS)",
+      "a": "Nenhum",
+      "b": "Muito"
+     },
+     {
+      "q": "Medo de a parcela não caber no orçamento",
+      "a": "Nenhum",
+      "b": "Muito"
+     }
+    ]
+   },
+   {
+    "titulo": "Relação com a construtora",
+    "perguntas": [
+     {
+      "q": "Importância de simular valores sozinho(a) antes de falar com o corretor",
+      "a": "Nada importante",
+      "b": "Muito importante"
+     },
+     {
+      "q": "O quanto você se sente pressionado(a) a fechar negócio no plantão de vendas",
+      "a": "Nada",
+      "b": "Muito"
+     },
+     {
+      "q": "Facilidade de comparar o valor final de casas de tipos e padrões diferentes",
+      "a": "Muito difícil",
+      "b": "Muito fácil"
+     },
+     {
+      "q": "Importância de a construtora acompanhar seu plano de poupança até a compra",
+      "a": "Nada importante",
+      "b": "Muito importante"
+     },
+     {
+      "q": "Confiança em informar sua faixa de renda à construtora para simular",
+      "a": "Nenhuma",
+      "b": "Total"
+     }
+    ]
+   },
+   {
+    "titulo": "O simulador CasaPiloto",
+    "perguntas": [
+     {
+      "q": "Utilidade de escolher o tipo de casa e ver quanto guardar por mês",
+      "a": "Nada útil",
+      "b": "Muito útil"
+     },
+     {
+      "q": "Utilidade de comparar lado a lado guardar × investir × financiar",
+      "a": "Nada útil",
+      "b": "Muito útil"
+     },
+     {
+      "q": "Utilidade de conhecer a casa piloto virtualmente (fotos 360°, planta)",
+      "a": "Nada útil",
+      "b": "Muito útil"
+     },
+     {
+      "q": "Utilidade de metas de poupança com lembretes no celular",
+      "a": "Nada útil",
+      "b": "Muito útil"
+     },
+     {
+      "q": "Interesse em usar um simulador da construtora antes de comprar",
+      "a": "Nenhum",
+      "b": "Muito"
+     }
+    ]
+   }
+  ]
+ },
+ "5": {
+  "nome": "CasaHumanizada",
+  "prof": "Prof. Heitor",
+  "nota": "Tema <strong>sensível</strong> (renda e moradia): <strong>nunca pergunte renda nem se a pessoa recebe benefício</strong>. Se a pessoa se emocionar ou contar uma situação difícil, acolha e não insista.",
+  "triagem": {
+   "id": "moradia",
+   "label": "Situação de moradia",
+   "opcoes": [
+    "Aluguel",
+    "Própria",
+    "Cedida / com família",
+    "Não sei informar"
+   ]
+  },
+  "blocos": [
+   {
+    "titulo": "Moradia e necessidade",
+    "perguntas": [
+     {
+      "q": "O quanto o aluguel ou o custo de moradia pesa no orçamento da família",
+      "a": "Pesa pouco",
+      "b": "Pesa muito"
+     },
+     {
+      "q": "Como você avalia a condição da sua moradia atual (espaço, estrutura)",
+      "a": "Muito ruim",
+      "b": "Muito boa"
+     },
+     {
+      "q": "Força da necessidade de conseguir a moradia própria",
+      "a": "Nenhuma",
+      "b": "Muito forte"
+     },
+     {
+      "q": "Com que frequência já pensou em se inscrever em um programa habitacional",
+      "a": "Nunca",
+      "b": "Sempre"
+     },
+     {
+      "q": "Há quanto tempo procura uma solução de moradia",
+      "a": "Não procura",
+      "b": "Há muitos anos"
+     }
+    ]
+   },
+   {
+    "titulo": "Informação sobre os programas",
+    "perguntas": [
+     {
+      "q": "Conhecimento dos programas habitacionais existentes (Minha Casa, Minha Vida e outros)",
+      "a": "Nenhum",
+      "b": "Muito"
+     },
+     {
+      "q": "Clareza sobre se a sua família tem direito (faixa de renda, requisitos)",
+      "a": "Nenhuma",
+      "b": "Total"
+     },
+     {
+      "q": "Facilidade de encontrar informação oficial e confiável sobre moradia",
+      "a": "Muito difícil",
+      "b": "Muito fácil"
+     },
+     {
+      "q": "Com que frequência recebeu informação errada ou soube de golpe envolvendo programa habitacional",
+      "a": "Nunca",
+      "b": "Sempre"
+     },
+     {
+      "q": "Conhecimento sobre o CadÚnico e a importância de mantê-lo atualizado",
+      "a": "Nenhum",
+      "b": "Muito"
+     }
+    ]
+   },
+   {
+    "titulo": "Cadastro, atendimento e acompanhamento",
+    "perguntas": [
+     {
+      "q": "Facilidade do processo de cadastro ou inscrição (se já tentou ou imagina)",
+      "a": "Muito difícil",
+      "b": "Muito fácil"
+     },
+     {
+      "q": "Clareza sobre quais documentos são exigidos",
+      "a": "Nenhuma",
+      "b": "Total"
+     },
+     {
+      "q": "Com que frequência precisou voltar várias vezes a um órgão público para resolver algo",
+      "a": "Nunca",
+      "b": "Sempre"
+     },
+     {
+      "q": "Como você se sentiu tratado(a) no atendimento público de moradia/assistência",
+      "a": "Muito mal",
+      "b": "Muito bem"
+     },
+     {
+      "q": "Clareza sobre o andamento de um processo depois de se inscrever",
+      "a": "Nenhuma",
+      "b": "Total"
+     }
+    ]
+   },
+   {
+    "titulo": "O app CasaHumanizada",
+    "perguntas": [
+     {
+      "q": "Utilidade de um app que reúne todos os programas de moradia num lugar só",
+      "a": "Nada útil",
+      "b": "Muito útil"
+     },
+     {
+      "q": "Utilidade de um teste rápido \"tenho direito?\"",
+      "a": "Nada útil",
+      "b": "Muito útil"
+     },
+     {
+      "q": "Utilidade de acompanhar o processo pelo celular, com avisos",
+      "a": "Nada útil",
+      "b": "Muito útil"
+     },
+     {
+      "q": "Confiança em enviar documentos por um app",
+      "a": "Nenhuma",
+      "b": "Total"
+     },
+     {
+      "q": "Interesse em usar o CasaHumanizada (ou indicar a alguém)",
+      "a": "Nenhum",
+      "b": "Muito"
+     }
+    ]
+   }
+  ]
+ }
+};
+/* GRUPOS:FIM */
+const CODIGO_PREFIXO = { 1:"G1", 2:"G2", 3:"G3", 4:"G4", 5:"G5" };
+
+/* ============================================================
+   ARMAZENAMENTO LOCAL
+   ============================================================ */
+const LS = {
+  respostas:"cd8admvg_respostas",
+  seq:"cd8admvg_seq",
+  grupo:"cd8admvg_grupo",
+  sheetUrl:"cd8admvg_sheet_url",
+};
+let storageOK = true;
+function lsGet(k, def){
+  try{ const v = localStorage.getItem(k); return v ? JSON.parse(v) : def; }
+  catch(e){ storageOK=false; return def; }
+}
+function lsSet(k, v){
+  try{ localStorage.setItem(k, JSON.stringify(v)); return true; }
+  catch(e){ storageOK=false; return false; }
+}
+let respostas = lsGet(LS.respostas, []);
+let seq = lsGet(LS.seq, {});
+let grupoAtual = lsGet(LS.grupo, null);
+
+/* ============================================================
+   ESTADO DA COLETA EM ANDAMENTO
+   ============================================================ */
+let coleta = null;      // {grupo, perfil:{}, respostas:{}}
+let fila = [];          // perguntas achatadas do grupo
+let idx = 0;            // índice na fila
+
+/* ============================================================
+   UTILITÁRIOS
+   ============================================================ */
+const $ = (s) => document.querySelector(s);
+function toast(msg){
+  const t = $("#toast"); t.textContent = msg; t.classList.add("show");
+  clearTimeout(t._h); t._h = setTimeout(()=>t.classList.remove("show"), 2200);
+}
+function mostrar(id){
+  document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));
+  $(id).classList.add("active");
+  window.scrollTo({top:0,behavior:"instant"});
+  atualizarBarra();
+}
+function totalPerguntas(){ return fila.length; }
+function atualizarBarra(){
+  const home = $("#scr-home").classList.contains("active");
+  const fim = $("#scr-fim").classList.contains("active");
+  let pct = 0;
+  if(!home && !fim && coleta){ pct = (idx / Math.max(1,totalPerguntas())) * 100; }
+  if(fim) pct = 100;
+  $("#barra").style.width = pct + "%";
+}
+function atualizarPill(){
+  if(grupoAtual && GRUPOS[grupoAtual]){
+    $("#pillGrupo").textContent = CODIGO_PREFIXO[grupoAtual] + " · " + GRUPOS[grupoAtual].nome;
+  } else { $("#pillGrupo").textContent = "—"; }
+}
+function flattenGrupo(g){
+  fila = [];
+  (GRUPOS[g].blocos||[]).forEach((b, bi)=>{
+    b.perguntas.forEach((p, qi)=>{
+      fila.push({ ...p, bloco:b.titulo, blocoIdx:bi });
+    });
+  });
+  return fila;
+}
+function contarDoGrupo(g){ return respostas.filter(r=>r.grupo===g).length; }
+function proxCodigo(g){
+  const atual = seq[g] || 0;
+  const n = String(atual + 1).padStart(3,"0");
+  return CODIGO_PREFIXO[g] + "-" + n;
+}
+
+/* ============================================================
+   HOME
+   ============================================================ */
+function renderHome(){
+  atualizarPill();
+  const grid = $("#grupo-grid");
+  grid.innerHTML = "";
+  [1,2,3,4,5,6].forEach(g=>{
+    const gr = GRUPOS[g];
+    const b = document.createElement("button");
+    b.className = "grupo-btn" + (grupoAtual===g ? " active" : "");
+    b.disabled = !!gr.pendente;
+    b.innerHTML = `<span class="g">GRUPO ${g}</span>
+      <span class="n">${gr.nome}</span>
+      <span class="p">${gr.prof}${gr.pendente ? " · pendente" : " · " + contarDoGrupo(g) + " resp."}</span>`;
+    b.onclick = ()=> selecionarGrupo(g);
+    grid.appendChild(b);
+  });
+  $("#btn-nova").disabled = !(grupoAtual && !GRUPOS[grupoAtual].pendente);
+  $("#st-total").textContent = respostas.length;
+  $("#st-grupo").textContent = grupoAtual ? contarDoGrupo(grupoAtual) : 0;
+  $("#st-meta").textContent = grupoAtual ? (contarDoGrupo(grupoAtual) + "/15–20") : "—";
+  $("#aviso-storage").classList.toggle("hidden", storageOK);
+}
+function selecionarGrupo(g){
+  if(GRUPOS[g].pendente){ toast("Grupo pendente."); return; }
+  grupoAtual = g; lsSet(LS.grupo, g);
+  renderHome();
+}
+$("#btn-nova").onclick = ()=>{ if(grupoAtual) iniciarColeta(grupoAtual); };
+$("#btn-respostas").onclick = ()=> renderRespostas();
+$("#btn-dados").onclick = ()=>{
+  $("#input-sheet-url").value = getSheetUrl();
+  atualizarSyncStatus();
+  mostrar("#scr-dados");
+};
+
+/* ============================================================
+   COLETA — PERFIL
+   ============================================================ */
+function iniciarColeta(g){
+  coleta = { grupo:g, criadoEm:new Date().toISOString(), perfil:{}, respostas:{} };
+  flattenGrupo(g);
+  idx = 0;
+  renderPerfil();
+  mostrar("#scr-perfil");
+}
+function renderPerfil(){
+  const g = coleta.grupo, gr = GRUPOS[g];
+  $("#perfil-titulo").textContent = "Perfil · Grupo " + g + " — " + gr.nome;
+  $("#perfil-desc").textContent = "Marque por OBSERVAÇÃO. Não pergunte — em dúvida, “Não sei estimar”.";
+  const box = $("#perfil-campos"); box.innerHTML = "";
+  const campos = gr.triagem ? [...PERFIL, { ...gr.triagem, triagem:true }] : PERFIL;
+  campos.forEach(c=>{
+    const div = document.createElement("div"); div.className = "campo";
+    const opts = ['<option value="">— marcar —</option>']
+      .concat(c.opcoes.map(o=>`<option value="${o}">${o}</option>`)).join("");
+    div.innerHTML = `<label>${c.label}${c.triagem ? ' <span class="small muted">(triagem)</span>' : ""}</label>
+      <select data-perfil="${c.id}">${opts}</select>`;
+    box.appendChild(div);
+  });
+  if(gr.nota){
+    const av = document.createElement("div");
+    av.className = "callout warn"; av.style.marginTop = "4px";
+    av.innerHTML = "<b>Nota de campo.</b> " + gr.nota;
+    box.appendChild(av);
+  }
+}
+$("#btn-perfil-ok").onclick = ()=>{
+  const faltou = [];
+  document.querySelectorAll("#perfil-campos select").forEach(s=>{
+    coleta.perfil[s.dataset.perfil] = s.value || "";
+    if(!s.value) faltou.push(s.dataset.perfil);
+  });
+  if(faltou.length){ toast("Complete o Bloco 0 (perfil) por observação."); return; }
+  idx = 0; renderPergunta(); mostrar("#scr-pergunta");
+};
+
+/* ============================================================
+   COLETA — PERGUNTAS
+   ============================================================ */
+function renderPergunta(){
+  const p = fila[idx];
+  $("#perg-cont").textContent = `Pergunta ${idx+1} de ${totalPerguntas()}`;
+  $("#perg-bloco").textContent = "Bloco: " + p.bloco;
+  $("#perg-q").textContent = p.q;
+  $("#polo-a").textContent = p.a;
+  $("#polo-b").textContent = p.b;
+  const esc = $("#escala"); esc.innerHTML = "";
+  for(let n=1;n<=5;n++){
+    const o = document.createElement("div");
+    o.className = "opt" + (coleta.respostas[idx]===n ? " sel" : "");
+    o.innerHTML = `<span class="num">${n}</span><span>${n===1?p.a:(n===5?p.b:"")}</span>`;
+    o.onclick = ()=> responder(idx, n);
+    esc.appendChild(o);
+  }
+  atualizarBarra();
+}
+function responder(i, n){
+  coleta.respostas[i] = n;
+  const opts = document.querySelectorAll("#escala .opt");
+  opts.forEach((o,k)=> o.classList.toggle("sel", (k+1)===n));
+  setTimeout(()=>{
+    if(i < totalPerguntas()-1){ idx = i+1; renderPergunta(); }
+    else { $("#input-email-contato").value = ""; mostrar("#scr-email"); }
+  }, 180);
+}
+$("#btn-email-salvar").onclick = ()=>{
+  const email = $("#input-email-contato").value.trim();
+  finalizarColeta(email || null);
+};
+$("#btn-email-pular").onclick = ()=> finalizarColeta(null);
+$("#btn-email-voltar").onclick = ()=>{
+  idx = totalPerguntas()-1; renderPergunta(); mostrar("#scr-pergunta");
+};
+$("#btn-perg-voltar").onclick = ()=>{
+  if(idx===0){ mostrar("#scr-perfil"); }
+  else { idx--; renderPergunta(); }
+};
+
+/* ============================================================
+   COLETA — FINALIZAR / CÓDIGO
+   ============================================================ */
+function finalizarColeta(emailContato){
+  const g = coleta.grupo;
+  const codigo = proxCodigo(g);
+  const reg = {
+    id: "r" + Date.now() + "-" + Math.random().toString(36).slice(2,7),
+    grupo: g, codigo, criadoEm: new Date().toISOString(),
+    perfil: coleta.perfil, respostas: coleta.respostas,
+    email: emailContato || null,
+  };
+  respostas.push(reg);
+  seq[g] = (seq[g]||0) + 1;
+  lsSet(LS.respostas, respostas); lsSet(LS.seq, seq);
+  tentarSincronizar(reg);
+
+  const preenchidas = Object.keys(reg.respostas).length;
+  $("#fim-cod").textContent = codigo;
+  $("#fim-resumo").textContent = `${GRUPOS[g].nome} · ${preenchidas}/${totalPerguntas()} respondidas · ${new Date().toLocaleString("pt-BR")}`;
+  const modelo = `Código ${codigo}. Principais pontos: [2–3 ideias]. Frase marcante: “[...]”.`;
+  const audio = document.createElement("div");
+  audio.innerHTML = `<b>Modelo de áudio (WhatsApp):</b><br>${modelo}`;
+  $("#fim-audio").innerHTML = "";
+  $("#fim-audio").appendChild(audio);
+  $("#fim-audio").classList.remove("hidden");
+  coleta = null;
+  mostrar("#scr-fim");
+  renderHome();
+}
+$("#btn-copiar").onclick = async ()=>{
+  const cod = $("#fim-cod").textContent;
+  try{ await navigator.clipboard.writeText(cod); toast("Código copiado: " + cod); }
+  catch(e){ toast(cod); }
+};
+$("#btn-proxima").onclick = ()=>{ if(grupoAtual) iniciarColeta(grupoAtual); };
+$("#btn-fim-home").onclick = ()=>{ renderHome(); };
+
+/* ============================================================
+   RESPOSTAS
+   ============================================================ */
+function renderRespostas(){
+  const lista = $("#resp-lista"); lista.innerHTML = "";
+  const st = $("#resp-stat");
+  st.innerHTML = `<div class="s"><b>${respostas.length}</b><span>total</span></div>
+    <div class="s"><b>${grupoAtual?contarDoGrupo(grupoAtual):0}</b><span>grupo atual</span></div>
+    <div class="s"><b>${new Set(respostas.map(r=>r.grupo)).size}</b><span>grupos</span></div>`;
+  const minhas = [...respostas].sort((a,b)=> b.criadoEm.localeCompare(a.criadoEm));
+  $("#resp-vazio").classList.toggle("hidden", minhas.length>0);
+  minhas.forEach(r=>{
+    const el = document.createElement("div"); el.className = "item";
+    const d = new Date(r.criadoEm).toLocaleString("pt-BR",{day:"2-digit",month:"2-digit",hour:"2-digit",minute:"2-digit"});
+    el.innerHTML = `<span class="cod">${r.codigo}</span>
+      <span class="meta">${GRUPOS[r.grupo].nome}<br>${d} · ${Object.keys(r.respostas).length} respostas</span>
+      <button class="x" title="Apagar">✕</button>`;
+    el.querySelector(".x").onclick = ()=>{
+      if(confirm("Apagar a resposta " + r.codigo + "?")){
+        respostas = respostas.filter(x=>x.id!==r.id);
+        lsSet(LS.respostas, respostas); renderRespostas(); renderHome();
+      }
+    };
+    lista.appendChild(el);
+  });
+  mostrar("#scr-respostas");
+}
+$("#btn-limpar").onclick = ()=>{
+  if(!respostas.length){ toast("Nada para apagar."); return; }
+  if(confirm("Apagar TODAS as " + respostas.length + " respostas? Isto não pode ser desfeito.")){
+    if(confirm("Tem certeza? Exporte antes se precisar.")){
+      respostas = []; seq = {};
+      lsSet(LS.respostas, respostas); lsSet(LS.seq, seq);
+      renderHome(); toast("Respostas apagadas.");
+    }
+  }
+};
+
+/* ============================================================
+   EXPORTAÇÃO
+   ============================================================ */
+function baixar(nome, conteudo, mime){
+  const blob = new Blob([conteudo], {type:mime});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url; a.download = nome; document.body.appendChild(a); a.click();
+  setTimeout(()=>{ URL.revokeObjectURL(url); a.remove(); }, 500);
+}
+function csvEscape(v){ const s = String(v==null?"":v); return '"' + s.replace(/"/g,'""') + '"'; }
+function gerarCSV(){
+  const grupos = [...new Set(respostas.map(r=>r.grupo))].sort();
+  const maxPerg = 20;
+  const cab = ["codigo","grupo","grupo_nome","data",
+    ...PERFIL.map(p=>p.id),
+    ...Array.from({length:maxPerg},(_,i)=>"Q"+(i+1)),
+    "email_contato"];
+  const linhas = [cab.map(csvEscape).join(";")];
+  [...respostas].sort((a,b)=>a.codigo.localeCompare(b.codigo)).forEach(r=>{
+    const cols = [r.codigo, r.grupo, GRUPOS[r.grupo].nome, new Date(r.criadoEm).toLocaleString("pt-BR")];
+    PERFIL.forEach(p=> cols.push(r.perfil[p.id]||""));
+    for(let i=0;i<maxPerg;i++) cols.push(r.respostas[i]!=null ? r.respostas[i] : "");
+    cols.push(r.email||"");
+    linhas.push(cols.map(csvEscape).join(";"));
+  });
+  return "\uFEFF" + linhas.join("\r\n");
+}
+$("#btn-csv").onclick = ()=>{
+  if(!respostas.length){ toast("Nenhuma resposta para exportar."); return; }
+  baixar("coleta-8admvg.csv", gerarCSV(), "text/csv;charset=utf-8");
+  toast("CSV gerado.");
+};
+$("#btn-json").onclick = ()=>{
+  if(!respostas.length){ toast("Nenhuma resposta para exportar."); return; }
+  baixar("coleta-8admvg.json", JSON.stringify({app:"8AdmVG coleta v1", exportadoEm:new Date().toISOString(), respostas}, null, 2), "application/json");
+  toast("JSON gerado.");
+};
+$("#btn-copiar-dados").onclick = async ()=>{
+  const txt = JSON.stringify({respostas}, null, 2);
+  try{ await navigator.clipboard.writeText(txt); toast("JSON copiado (" + respostas.length + " respostas)."); }
+  catch(e){ toast("Não deu para copiar. Use Baixar JSON."); }
+};
+
+/* ============================================================
+   SINCRONIZAÇÃO AUTOMÁTICA (opcional) — Google Apps Script
+   Cada resposta tenta ir sozinha para uma planilha Google.
+   Sem URL configurada, isso é um no-op silencioso.
+   ============================================================ */
+function getSheetUrl(){ return (lsGet(LS.sheetUrl, "") || "").trim(); }
+function atualizarSyncStatus(){
+  const pendentes = respostas.filter(r=>!r.sincronizado).length;
+  const el = $("#sync-status");
+  if(!el) return;
+  const url = getSheetUrl();
+  el.textContent = !url
+    ? "Sem URL configurada — sincronização automática desligada."
+    : (pendentes ? pendentes + " resposta(s) pendente(s) de sincronizar." : "Tudo sincronizado. ✅");
+}
+async function tentarSincronizar(reg){
+  const url = getSheetUrl();
+  if(!url) return;
+  try{
+    const res = await fetch(url, {
+      method:"POST",
+      headers:{"Content-Type":"text/plain;charset=utf-8"}, // evita preflight CORS no Apps Script
+      body: JSON.stringify({
+        codigo:reg.codigo, grupo:reg.grupo, grupoNome:(GRUPOS[reg.grupo]||{}).nome||"",
+        criadoEm:reg.criadoEm, perfil:reg.perfil, respostas:reg.respostas,
+        email:reg.email||"",
+      }),
+    });
+    if(res.ok){
+      reg.sincronizado = true;
+      lsSet(LS.respostas, respostas);
+    }
+  }catch(e){ /* offline ou URL errada — fica pendente, tenta de novo depois */ }
+  atualizarSyncStatus();
+}
+async function sincronizarPendentes(){
+  const url = getSheetUrl();
+  if(!url){ toast("Configure a URL de sincronização primeiro."); return; }
+  const pendentes = respostas.filter(r=>!r.sincronizado);
+  if(!pendentes.length){ toast("Nada pendente."); return; }
+  toast("Sincronizando " + pendentes.length + "...");
+  for(const r of pendentes) await tentarSincronizar(r);
+  atualizarSyncStatus();
+  toast("Sincronização concluída.");
+}
+$("#btn-salvar-url").onclick = ()=>{
+  const url = $("#input-sheet-url").value.trim();
+  lsSet(LS.sheetUrl, url);
+  toast(url ? "URL salva." : "URL removida — sincronização desligada.");
+  atualizarSyncStatus();
+};
+$("#btn-sync-agora").onclick = sincronizarPendentes;
+window.addEventListener("online", sincronizarPendentes);
+
+/* ============================================================
+   COMPARTILHAR (Web Share API — manda o arquivo direto pro
+   WhatsApp/Drive/E-mail, sem precisar transferir o celular)
+   ============================================================ */
+$("#btn-compartilhar").onclick = async ()=>{
+  if(!respostas.length){ toast("Nenhuma resposta para enviar."); return; }
+  const nomeArq = "coleta-8admvg-" + (grupoAtual ? "G"+grupoAtual+"-" : "") + Date.now() + ".json";
+  const conteudo = JSON.stringify({app:"8AdmVG coleta v1", exportadoEm:new Date().toISOString(), respostas}, null, 2);
+  const arquivo = new File([conteudo], nomeArq, {type:"application/json"});
+  if(navigator.canShare && navigator.canShare({files:[arquivo]})){
+    try{
+      await navigator.share({
+        files:[arquivo],
+        title:"Coleta 8AdmVG",
+        text:"Respostas de campo (" + respostas.length + ") — código no início de cada áudio."
+      });
+      toast("Enviado!");
+      return;
+    }catch(e){ /* usuário cancelou ou não suportado — cai no fallback */ }
+  }
+  baixar(nomeArq, conteudo, "application/json");
+  toast("Sem compartilhamento direto neste navegador — arquivo baixado, envie manualmente.");
+};
+
+/* ============================================================
+   IMPORTAR / MESCLAR — junta o JSON de outra dupla no aparelho
+   que vai consolidar tudo. Mescla por código (nunca duplica).
+   ============================================================ */
+$("#btn-importar").onclick = ()=> $("#input-importar").click();
+$("#input-importar").onchange = (ev)=>{
+  const arquivo = ev.target.files[0];
+  if(!arquivo) return;
+  const leitor = new FileReader();
+  leitor.onload = (e)=>{
+    try{
+      const dados = JSON.parse(e.target.result);
+      const novas = Array.isArray(dados) ? dados : dados.respostas;
+      if(!Array.isArray(novas)) throw new Error("formato inválido");
+      const existentes = new Set(respostas.map(r=>r.codigo));
+      let adicionadas = 0, duplicadas = 0;
+      novas.forEach(r=>{
+        if(!r || !r.codigo) return;
+        if(existentes.has(r.codigo)){ duplicadas++; return; }
+        respostas.push(r); existentes.add(r.codigo); adicionadas++;
+        // mantém o contador (seq) de cada grupo em dia após a mesclagem
+        const m = /^G(\d+)-(\d+)$/.exec(r.codigo);
+        if(m){ const g = +m[1], n = +m[2]; seq[g] = Math.max(seq[g]||0, n); }
+      });
+      lsSet(LS.respostas, respostas); lsSet(LS.seq, seq);
+      renderHome();
+      toast(adicionadas + " nova(s) mesclada(s)" + (duplicadas ? " · " + duplicadas + " já existiam" : "") + ".");
+    }catch(err){
+      toast("Arquivo inválido. Use um JSON exportado pelo próprio app.");
+    }
+    ev.target.value = "";
+  };
+  leitor.readAsText(arquivo);
+};
+
+/* ============================================================
+   NAVEGAÇÃO GENÉRICA (data-nav)
+   ============================================================ */
+document.querySelectorAll("[data-nav]").forEach(b=>{
+  b.onclick = ()=>{
+    const t = b.dataset.nav;
+    if(t==="home"){ renderHome(); mostrar("#scr-home"); }
+  };
+});
+
+/* ============================================================
+   BOOT
+   ============================================================ */
+if(!storageOK){ setTimeout(()=>toast("Aviso: armazenamento local indisponível."), 800); }
+renderHome();
+mostrar("#scr-home");
+</script>
+</body>
+</html>

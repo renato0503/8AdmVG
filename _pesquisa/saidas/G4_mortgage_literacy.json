@@ -1,0 +1,448 @@
+[
+  {
+    "titulo": "Reverse mortgages and financial literacy",
+    "ano": 2023,
+    "autores": "Ismael Choinière-Crèvecoeur; Pierre‐Carl Michaud",
+    "periodico": "Journal of Financial Literacy and Wellbeing",
+    "tipo": "article",
+    "doi": "10.1017/flw.2023.4",
+    "citacoes": 11,
+    "acesso_aberto": true,
+    "url": "https://www.cambridge.org/core/services/aop-cambridge-core/content/view/EE49F52F4189390037860448B263860A/S2753321223000047a.pdf/div-class-title-reverse-mortgages-and-financial-literacy-div.pdf",
+    "areas": [
+      "Financial Literacy, Pension, Retirement Analysis",
+      "Housing Market and Economics",
+      "Retirement, Disability, and Employment"
+    ],
+    "abstract": "Abstract Few retirees use reverse mortgages. In this paper, we investigate how financial literacy and prior knowledge of the product influence take-up by conducting a stated-preference experiment. We exogenously manipulate characteristics of reverse mortgages to tease out how consumers value them and investigate differences by financial literacy and prior knowledge of reverse mortgages. We find that those with higher financial knowledge are more likely to know about reverse mortgages, not more likely to purchase them at any cost but are more sensitive to the interest rate and the insurance value of these products in terms of the non-negative equity guarantee.",
+    "openalex_id": "https://openalex.org/W4377988381"
+  },
+  {
+    "titulo": "Feeling comfortable with a mortgage: The impact of framing, financial literacy and advice",
+    "ano": 2023,
+    "autores": "Susan Thorp; Liu Junhao; Julie Richardson Agnew; Hazel Bateman et al.",
+    "periodico": "Journal of Financial Literacy and Wellbeing",
+    "tipo": "article",
+    "doi": "10.1017/flw.2023.3",
+    "citacoes": 15,
+    "acesso_aberto": true,
+    "url": "https://www.cambridge.org/core/services/aop-cambridge-core/content/view/CEF71B9B9C201102D100475E5700533F/S2753321223000035a.pdf/div-class-title-feeling-comfortable-with-a-mortgage-the-impact-of-framing-financial-literacy-and-advice-div.pdf",
+    "areas": [
+      "Financial Literacy, Pension, Retirement Analysis",
+      "Housing Market and Economics",
+      "Housing, Finance, and Neoliberalism"
+    ],
+    "abstract": "Abstract The family home is the most important asset on household balance sheets, aside from human capital. Choosing a suitable mortgage is therefore critical to financial well-being but households often make costly mistakes. We collect data in an online survey to test borrowers’ comfort with, and understanding of, mortgage debt. We analyze the impact of financial literacy, mortgage broker advice and whether the loan is framed as a lump sum debt or an equivalent stream of repayments. We conjecture that participants’ comfort with loans and their ability to match lump sum debt to equivalent repayment streams will help them to choose a suitable mortgage. Results show that participants with high...",
+    "openalex_id": "https://openalex.org/W4367315577"
+  },
+  {
+    "titulo": "Mortgage delinquency during COVID-19: do financial literacy and personality traits matter?",
+    "ano": 2022,
+    "autores": "Malvika Nandlal Chhatwani",
+    "periodico": "International Journal of Bank Marketing",
+    "tipo": "article",
+    "doi": "10.1108/ijbm-05-2021-0215",
+    "citacoes": 18,
+    "acesso_aberto": false,
+    "url": "https://doi.org/10.1108/ijbm-05-2021-0215",
+    "areas": [
+      "Housing Market and Economics",
+      "Financial Literacy, Pension, Retirement Analysis",
+      "Consumer Retail Behavior Studies"
+    ],
+    "abstract": "Purpose Mortgage delinquency has become a major crisis following the COVID-19 pandemic. This study explored mortgage delinquency antecedents, focusing on two individual-level factors: financial literacy and personality traits. Design/methodology/approach Using a large sample of 2,511 consumers, we examined the direct effect of financial literacy and its interaction with personality traits to predict mortgage delinquency based on logistic regression analysis. We further provide several robustness tests to validate our findings. Findings We find that financially literate consumers are 6% less likely to delay their mortgage repayment during the COVID-19 pandemic. Moreover, personality traits su...",
+    "openalex_id": "https://openalex.org/W4205596510"
+  },
+  {
+    "titulo": "Financial literacy and mortgage stress",
+    "ano": 2024,
+    "autores": "Mingzhi Hu; Mingzhi Hu; Liu Yingchun; Liu Yingchun et al.",
+    "periodico": "Journal of Banking & Finance",
+    "tipo": "article",
+    "doi": "10.1016/j.jbankfin.2024.107170",
+    "citacoes": 7,
+    "acesso_aberto": false,
+    "url": "https://doi.org/10.1016/j.jbankfin.2024.107170",
+    "areas": [
+      "Housing Market and Economics",
+      "Financial Literacy, Pension, Retirement Analysis",
+      "Housing, Finance, and Neoliberalism"
+    ],
+    "abstract": "",
+    "openalex_id": "https://openalex.org/W4393970508"
+  },
+  {
+    "titulo": "The cost of steering in financial markets: Evidence from the mortgage market",
+    "ano": 2021,
+    "autores": "Luigi Guiso; Andrea Pozzi; Anton Tsoy; Leonardo Gambacorta et al.",
+    "periodico": "Journal of Financial Economics",
+    "tipo": "article",
+    "doi": "10.1016/j.jfineco.2021.05.013",
+    "citacoes": 129,
+    "acesso_aberto": false,
+    "url": "https://doi.org/10.1016/j.jfineco.2021.05.013",
+    "areas": [
+      "Housing Market and Economics",
+      "Financial Literacy, Pension, Retirement Analysis",
+      "Banking stability, regulation, efficiency"
+    ],
+    "abstract": "",
+    "openalex_id": "https://openalex.org/W3163517499"
+  },
+  {
+    "titulo": "Misguided mortgage choices: Financial literacy, inflation expectations, and borrowing decisions",
+    "ano": 2025,
+    "autores": "Mordechai Ilan; Yevgeny Mugerman",
+    "periodico": "Journal of Behavioral and Experimental Finance",
+    "tipo": "article",
+    "doi": "10.1016/j.jbef.2025.101077",
+    "citacoes": 10,
+    "acesso_aberto": true,
+    "url": "https://doi.org/10.1016/j.jbef.2025.101077",
+    "areas": [
+      "Housing Market and Economics",
+      "Financial Literacy, Pension, Retirement Analysis",
+      "Financial Markets and Investment Strategies"
+    ],
+    "abstract": "This study examines how financial literacy influences mortgage selection, particularly the decision to link mortgages to the consumer price index (CPI). Using household-level data, we investigate the role of expected inflation, which should guide optimal mortgage choices. However, we find that low socioeconomic status (SES) borrowers disproportionately rely on current (easily available) inflation rather than inflation expectations. In contrast, financially literate borrowers—from higher SES groups—are better equipped to overcome cognitive biases and base their decisions on expected inflation. This divergence leads low-SES borrowers to systematically anchor their choices to current inflation,...",
+    "openalex_id": "https://openalex.org/W4411125577"
+  },
+  {
+    "titulo": "Financial literacy, farmland mortgage financing, and household entrepreneurship: Empirical evidence from rural China",
+    "ano": 2024,
+    "autores": "Lanlan Su; Yanling Peng; Rong Kong",
+    "periodico": "Journal of Asian Economics",
+    "tipo": "article",
+    "doi": "10.1016/j.asieco.2024.101767",
+    "citacoes": 13,
+    "acesso_aberto": false,
+    "url": "https://doi.org/10.1016/j.asieco.2024.101767",
+    "areas": [
+      "Financial Literacy, Pension, Retirement Analysis",
+      "Microfinance and Financial Inclusion",
+      "Intergenerational Family Dynamics and Caregiving"
+    ],
+    "abstract": "",
+    "openalex_id": "https://openalex.org/W4399320299"
+  },
+  {
+    "titulo": "Household’s Overindebtedness during the COVID-19 Crisis: The Role of Debt and Financial Literacy",
+    "ano": 2021,
+    "autores": "Łukasz Kurowski",
+    "periodico": "Risks",
+    "tipo": "article",
+    "doi": "10.3390/risks9040062",
+    "citacoes": 75,
+    "acesso_aberto": true,
+    "url": "https://www.mdpi.com/2227-9091/9/4/62/pdf?version=1617938361",
+    "areas": [
+      "Financial Literacy, Pension, Retirement Analysis",
+      "Housing Market and Economics",
+      "COVID-19 Pandemic Impacts"
+    ],
+    "abstract": "The COVID-19 pandemic has shown how important it is to prepare one’s own financial budget for the unexpected loss of income. In this dimension, the financial education of the society plays an invaluable role. It allows us to account for events that may adversely affect personal finances in our budget management decisions. Therefore, the aim of the article is to check whether households with a higher level of financial and debt literacy have better management skills from the perspective of a household’s budget, which in the face of a crisis reduces the risk of individuals not paying their liabilities. Thus, at the turn of June and July 2020, we conducted surveys among 1300 Polish citizens. Us...",
+    "openalex_id": "https://openalex.org/W3150467129"
+  },
+  {
+    "titulo": "Household Finance",
+    "ano": 2021,
+    "autores": "Francisco Gomes; Michael Haliassos; Tarun Ramadorai",
+    "periodico": "Journal of Economic Literature",
+    "tipo": "article",
+    "doi": "10.1257/jel.20201461",
+    "citacoes": 399,
+    "acesso_aberto": false,
+    "url": "https://doi.org/10.1257/jel.20201461",
+    "areas": [
+      "Financial Literacy, Pension, Retirement Analysis",
+      "Housing Market and Economics",
+      "Housing, Finance, and Neoliberalism"
+    ],
+    "abstract": "Household financial decisions are complex, interdependent, and heterogeneous, and central to the functioning of the financial system. We present an overview of the rapidly expanding literature on household finance (with some important exceptions) and suggest directions for future research. We begin with the theory and empirics of asset market participation and asset allocation over the life cycle. We then discuss household choices in insurance markets, trading behavior, decisions on retirement saving, and financial choices by retirees. We survey research on liabilities, including mortgage choice, refinancing, and default, and household behavior in unsecured credit markets, including credit c...",
+    "openalex_id": "https://openalex.org/W4207083472"
+  },
+  {
+    "titulo": "Fixed rate versus adjustable rate mortgages: Evidence from euro area banks",
+    "ano": 2023,
+    "autores": "Ugo Albertazzi; Fulvia Fringuellotti; Steven R. G. Ongena",
+    "periodico": "European Economic Review",
+    "tipo": "article",
+    "doi": "10.1016/j.euroecorev.2023.104643",
+    "citacoes": 20,
+    "acesso_aberto": true,
+    "url": "https://doi.org/10.1016/j.euroecorev.2023.104643",
+    "areas": [
+      "Banking stability, regulation, efficiency",
+      "Housing Market and Economics",
+      "Financial Literacy, Pension, Retirement Analysis"
+    ],
+    "abstract": "Why do residential mortgages carry a fixed or an adjustable interest rate? To answer this question we study unique data from 103 banks belonging to 73 different banking groups across twelve countries in the euro area. To explain the large cross-country and time variations observed, we distinguish between household conditions that determine the local demand for credit and the characteristics of banks that supply credit. As bank funding mostly occurs at the group level, we disentangle these two sets of factors by comparing the outcome observed for the same banking group across the different countries. Local household conditions dominate. In particular we find that the share of new loans with a...",
+    "openalex_id": "https://openalex.org/W4388948270"
+  },
+  {
+    "titulo": "Survey-based Evaluation of Resident and Attending Financial Literacy",
+    "ano": 2021,
+    "autores": "Ryan Huebinger; Rahat Hussain; Keegan Tupchong; Shabana Walia et al.",
+    "periodico": "Western Journal of Emergency Medicine",
+    "tipo": "article",
+    "doi": "10.5811/westjem.2021.8.53016",
+    "citacoes": 15,
+    "acesso_aberto": true,
+    "url": "https://escholarship.org/content/qt74r8h11q/qt74r8h11q.pdf?t=r315x5",
+    "areas": [
+      "Financial Literacy, Pension, Retirement Analysis",
+      "Healthcare professionals’ stress and burnout",
+      "Food Security and Health in Diverse Populations"
+    ],
+    "abstract": "INTRODUCTION: Physician finances are linked to wellness and burnout. However, few physicians receive financial management education. We sought to determine the financial literacy and educational need of attending and resident physician at an academic emergency medicine (EM) residency. METHODS: We performed a cross-sectional, survey study at an academic EM residency. We devised a 49-question survey with four major domains: demographics (16 questions); Likert-scale questions evaluating value placed on personal finances (3 questions); Likert-scale questions evaluating perceived financial literacy (11 questions); and a financial literacy test based on previously developed and widely used financi...",
+    "openalex_id": "https://openalex.org/W3214516808"
+  },
+  {
+    "titulo": "Improving Financial Literacy Using the Medical Mini-MBA at a Canadian Medical School",
+    "ano": 2022,
+    "autores": "Eric Poon; Paul Bissonnette; Sina Sedighi; Wyatt MacNevin et al.",
+    "periodico": "Cureus",
+    "tipo": "article",
+    "doi": "10.7759/cureus.25595",
+    "citacoes": 13,
+    "acesso_aberto": true,
+    "url": "https://www.cureus.com/articles/98597-improving-financial-literacy-using-the-medical-mini-mba-at-a-canadian-medical-school.pdf",
+    "areas": [
+      "Financial Literacy, Pension, Retirement Analysis",
+      "Healthcare Policy and Management",
+      "Global Health Care Issues"
+    ],
+    "abstract": "Introduction Financial literacy correlates with less debt and better retirement planning. Medical students, residents, and physicians often have poor financial literacy and large amounts of debt. We measured baseline financial literacy and whether it improved with the administration of a financial literacy course. Methods We created the Medical Mini-MBA,a six-week financial literacy course that targeted gaps in financial literacy among medical students and residents. Weekly topics included personal finance, investing, real estate and mortgage, physician billing and payment models, income and tax, and choosing a medical specialty. A 46-question financial literacy assessment was delivered to p...",
+    "openalex_id": "https://openalex.org/W4281632864"
+  },
+  {
+    "titulo": "Financial adviser users and financial literacy",
+    "ano": 2023,
+    "autores": "Bhanu Balasubramnian; Eric R. Brisker",
+    "periodico": "Financial Services Review",
+    "tipo": "article",
+    "doi": "10.61190/fsr.v25i2.3217",
+    "citacoes": 6,
+    "acesso_aberto": true,
+    "url": "https://openjournals.libs.uga.edu/fsr/article/download/3217/2857",
+    "areas": [
+      "Financial Literacy, Pension, Retirement Analysis",
+      "Microfinance and Financial Inclusion",
+      "Housing, Finance, and Neoliberalism"
+    ],
+    "abstract": "Using the 2012 National Financial Capability Study we determine what demographic characteristics are associated with individuals that use financial advisers and whether financial advisers have any impact on the financial literacy of their clients. We consider five types of financial advisers: Debt Counselors, Savings or Investment, Mortgage or Loan, Insurance, and Tax Planning. We find a significant increase in the use of financial advisers over the past decade. We also find that Savings or Investments advisers have the largest positive impact on the financial literacy of their clients, followed by Mortgage or Loan and Insurance advisers, even when controlling for financial education and pot...",
+    "openalex_id": "https://openalex.org/W2598021898"
+  },
+  {
+    "titulo": "Trends in the development of mortgage–backed securities in modern condition",
+    "ano": 2022,
+    "autores": "Shakizada Uteulievna Niyazbekova; Angela B. Mottaeva; Sergey Eroshkin; M. G. Krishtal",
+    "periodico": "MIR (Modernization Innovation Research)",
+    "tipo": "article",
+    "doi": "10.18184/2079-4665.2022.13.2.322-341",
+    "citacoes": 5,
+    "acesso_aberto": true,
+    "url": "https://www.mir-nayka.com/jour/article/download/1257/950",
+    "areas": [
+      "Banking stability, regulation, efficiency",
+      "Economic and Technological Developments in Russia",
+      "Insurance and Financial Risk Management"
+    ],
+    "abstract": "Purpose: to identify objective patterns of development of mortgage–backed securities that determine the prospects of this direction to increase its role in the Russian economy. Methods: the study used general scientific methods of cognition, including comparative analysis, economic–statistical and abstract– logical methods, generalization and complex analysis. The methodological basis is the fundamental provisions of the theory of mortgages, the general theory of mortgage lending, thematic works of domestic and foreign scientists, as well as data from the Analytical Center DOM.RF. Results: the concept and classification of mortgage–backed securities are considered, the features of securitiza...",
+    "openalex_id": "https://openalex.org/W4283516018"
+  },
+  {
+    "titulo": "Financial Literacy, Borrowing Behavior and Rural Households’ Income: Evidence from the Collective Forest Area, China",
+    "ano": 2023,
+    "autores": "Yuanyuan Guo; Can Liu; Hao Liu; Ke Chen et al.",
+    "periodico": "Sustainability",
+    "tipo": "article",
+    "doi": "10.3390/su15021153",
+    "citacoes": 12,
+    "acesso_aberto": true,
+    "url": "https://www.mdpi.com/2071-1050/15/2/1153/pdf?version=1673086072",
+    "areas": [
+      "Microfinance and Financial Inclusion",
+      "Land Rights and Reforms",
+      "Housing Market and Economics"
+    ],
+    "abstract": "Since the introduction of a series of collective forest tenure reforms in China, diverse forestland mortgage financial products have been available even in rural areas. It is difficult for rural households to make appropriate financial decisions in order to increase their income due to a lack of financial knowledge and relevant skills. It is important to analyze the relationship between financial literacy, borrowing behavior, and rural household income. Based on the learning-by-doing theory, the credit constraint theory, and the data obtained from the survey of 460 households in five rural countries of Liaoning Province, alternative econometric models were used to estimate the “Financial Lit...",
+    "openalex_id": "https://openalex.org/W4313824645"
+  },
+  {
+    "titulo": "How Much Are Borrowers Willing to Pay to Remove Uncertainty Surrounding Mortgage Defaults?",
+    "ano": 2021,
+    "autores": "Jackson T. Anderson; Scott A. Gibson; Kimberly F. Luchtenberg; Michael Joseph Seiler",
+    "periodico": "The Journal of Real Estate Finance and Economics",
+    "tipo": "article",
+    "doi": "10.1007/s11146-020-09810-4",
+    "citacoes": 4,
+    "acesso_aberto": true,
+    "url": "https://link.springer.com/content/pdf/10.1007/s11146-020-09810-4.pdf",
+    "areas": [
+      "Housing Market and Economics",
+      "Financial Literacy, Pension, Retirement Analysis",
+      "Decision-Making and Behavioral Economics"
+    ],
+    "abstract": "",
+    "openalex_id": "https://openalex.org/W3127817276"
+  },
+  {
+    "titulo": "The impact of mortgage broker use on borrower confusion and preferences",
+    "ano": 2024,
+    "autores": "Sol Chung; Julie Richardson Agnew; Hazel Bateman; Christine Eckert et al.",
+    "periodico": "Journal of Economic Behavior & Organization",
+    "tipo": "article",
+    "doi": "10.1016/j.jebo.2024.05.016",
+    "citacoes": 3,
+    "acesso_aberto": true,
+    "url": "https://doi.org/10.1016/j.jebo.2024.05.016",
+    "areas": [
+      "Housing Market and Economics",
+      "Financial Literacy, Pension, Retirement Analysis",
+      "Smart Parking Systems Research"
+    ],
+    "abstract": "We examine how mortgage brokers affect borrower confusion about key mortgage features and assess whether brokers mitigate confusion by educating borrowers. Drawing from two lab-in-the-field experiments, we first show a correlation between the attributes borrowers find most confusing and those they find least important. Second, we show that borrowers who secure loans directly from lenders demonstrate lower confusion levels compared to those using brokers, even after accounting for self-selection bias. Despite this, broker users exhibit higher decision satisfaction and confidence after taking a loan. Third, using responses from discrete choice experiments to implement a causal mediation analys...",
+    "openalex_id": "https://openalex.org/W4399516335"
+  },
+  {
+    "titulo": "Early Financial Education, Financial Literacy, and Gender Equity in Finance*",
+    "ano": 2022,
+    "autores": "Kyounghun Bae; Ga‐Young Jang; Hyoung‐Goo Kang; Pearleen Tan",
+    "periodico": "Asia-Pacific Journal of Financial Studies",
+    "tipo": "article",
+    "doi": "10.1111/ajfs.12378",
+    "citacoes": 6,
+    "acesso_aberto": false,
+    "url": "https://doi.org/10.1111/ajfs.12378",
+    "areas": [
+      "Financial Literacy, Pension, Retirement Analysis",
+      "Microfinance and Financial Inclusion",
+      "Housing Market and Economics"
+    ],
+    "abstract": "Abstract This study investigates how to promote gender equity in finance through early financial education using survey responses gathered in Singapore. The empirical tests for the effect of financial education on financial literacy suggest that women who receive early financial education better understand the compounding effect of interest rates on loans, portfolio diversification, and mortgage payments. The impact of early financial education on financial behavior is also evident in women's increased participation in the stock market, insurance activities, and savings habits. The implications can be used to guide policymakers charged with promoting gender equity through early financial edu...",
+    "openalex_id": "https://openalex.org/W4283586278"
+  },
+  {
+    "titulo": "REVERSE MORTGAGES: A BIBLIOMETRIC APPROACH",
+    "ano": 2022,
+    "autores": "Nadisah Binti Zakaria; Siong Min Foo; Norbaya Ab Rahim; Hawa Ahmad",
+    "periodico": "Quantum Journal of Social Sciences and Humanities",
+    "tipo": "article",
+    "doi": "10.55197/qjssh.v3i3.162",
+    "citacoes": 1,
+    "acesso_aberto": true,
+    "url": "https://qjssh.com/index.php/qjssh/article/download/162/99",
+    "areas": [
+      "Housing Market and Economics",
+      "Insurance and Financial Risk Management"
+    ],
+    "abstract": "The present study performed a bibliometric analysis using 119 articles in the field of reverse mortgages from the Web of Sciences (WoS) database from 1978 to May 2022. To provide a comprehensive result, this study employs VOS Viewer software to construct the networks of co-citations of authors and sources of articles. The results show that the growth trend was recognized from the beginning year 2011 and it gained significant attention from researchers before and during the predicament period of the Global financial crisis 2007-8. It can be seen that the positive trend of interest in this field of study remained in the following years, particularly in the years 2020 and 2021. Using the co-cit...",
+    "openalex_id": "https://openalex.org/W4293408979"
+  },
+  {
+    "titulo": "Analysis of the transformation of demand willingness for housing reverse mortgages in China based on a scenario simulation experiment",
+    "ano": 2024,
+    "autores": "Wei Han; Bo Zhang",
+    "periodico": "Asian Economic Journal",
+    "tipo": "article",
+    "doi": "10.1111/asej.12337",
+    "citacoes": 3,
+    "acesso_aberto": true,
+    "url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1111/asej.12337",
+    "areas": [
+      "Housing Market and Economics",
+      "Financial Literacy, Pension, Retirement Analysis",
+      "Insurance and Financial Risk Management"
+    ],
+    "abstract": "Abstract As the population rapidly ages, Housing Reverse Mortgages (HRMs) have emerged as a valuable addition to the multilevel pension insurance system, helping to alleviate the pressure on pension financing. However, the HRM market in China faces challenges due to the limited financial literacy among middle‐aged and elderly residents; there is a “cognitive bias” toward understanding the mechanisms and benefits of HRMs leading to “insufficient effective demand.” This study empirically investigates the likelihood of changing the “demand willingness” for an HRM through a scenario‐simulation experiment focused on HRM‐related information disclosure. The findings include: (1) Up to 46.78% of the...",
+    "openalex_id": "https://openalex.org/W4403174496"
+  },
+  {
+    "titulo": "Demographic and Sociocultural Determinants of Financial Literacy in South Africa",
+    "ano": 2024,
+    "autores": "Michael du Preez; SJ Ferreira-Schenk",
+    "periodico": "International Journal of Economics and Financial Issues",
+    "tipo": "article",
+    "doi": "10.32479/ijefi.15441",
+    "citacoes": 2,
+    "acesso_aberto": true,
+    "url": "https://econjournals.com/index.php/ijefi/article/download/15441/7821",
+    "areas": [
+      "Microfinance and Financial Inclusion",
+      "Financial Literacy, Pension, Retirement Analysis"
+    ],
+    "abstract": "Financial literacy is rapidly becoming more important as financial markets continue to evolve and new and more complex financial products are introduced. This study investigates the relationship between demographic and sociocultural variables and the level of financial literacy of individual investors in South Africa. This study is significant as it provides policymakers with target areas to provide incentives towards financial education programmes. Secondary data were obtained from a private domain where a private investment company collected primary data using an electronic quantitative survey. The sample consisted of 1, 059 individual investors. The study found that people over 50 years o...",
+    "openalex_id": "https://openalex.org/W4392900894"
+  },
+  {
+    "titulo": "Mortgage Curtailment Pre and Post-HARP: Income and Substitution Effects",
+    "ano": 2025,
+    "autores": "Wenzhen Lin; Y Xu",
+    "periodico": "The Journal of Real Estate Finance and Economics",
+    "tipo": "article",
+    "doi": "10.1007/s11146-025-10020-z",
+    "citacoes": 1,
+    "acesso_aberto": false,
+    "url": "https://doi.org/10.1007/s11146-025-10020-z",
+    "areas": [
+      "Housing Market and Economics",
+      "Financial Literacy, Pension, Retirement Analysis",
+      "Housing, Finance, and Neoliberalism"
+    ],
+    "abstract": "",
+    "openalex_id": "https://openalex.org/W4410732399"
+  },
+  {
+    "titulo": "Determinants of Financial Depth: A Case Study of Mortgage and Microfinance Banks in Nigeria",
+    "ano": 2023,
+    "autores": "Rafiu Ayobanji Mustapha; Ismail Kayode Waheed; Ismaila Abdullateef",
+    "periodico": "Lapai Journal of Economics",
+    "tipo": "article",
+    "doi": "10.4314/lje.v6i2.6",
+    "citacoes": 1,
+    "acesso_aberto": true,
+    "url": "https://www.ajol.info/index.php/lje/article/view/249549/235939",
+    "areas": [
+      "Islamic Finance and Banking Studies",
+      "Microfinance and Financial Inclusion"
+    ],
+    "abstract": "Financial depth is an important components of financial development for which determinants have been examined by a number of extant studies, using different kinds of financial depth indicators. This study aims at analyzing the factors that determine financial depth using the assets of mortgage and microfinance banks as indicators of financial depth. The study employs data that span from 1992 to 2021, using Autoregressive Distributed Lag (ARDL) model. It is found in the study that the policy of conversion of community banks to microfinance banks and the introduction of mortgage warehouse fund have positive effects on microfinance and mortgage banks’ assets. Also, it is found that literacy rat...",
+    "openalex_id": "https://openalex.org/W4381614897"
+  },
+  {
+    "titulo": "Cautious but short-sighted: Inflation and mortgage strategy in low-income households",
+    "ano": 2025,
+    "autores": "Mordechai Ilan; Yevgeny Mugerman",
+    "periodico": "Finance research letters",
+    "tipo": "article",
+    "doi": "10.1016/j.frl.2025.108354",
+    "citacoes": 1,
+    "acesso_aberto": true,
+    "url": "https://doi.org/10.1016/j.frl.2025.108354",
+    "areas": [
+      "Housing Market and Economics",
+      "Housing, Finance, and Neoliberalism",
+      "Financial Literacy, Pension, Retirement Analysis"
+    ],
+    "abstract": "• Low-SES borrowers adopt lower PTI and LTV ratios indicating strategic caution. • Low-SES households tend to mis-time CPI indexation. • Loans originated when inflation expectations are higher lead to faster repayment growth. • Findings underscore that improving financial literacy is critical. We study mortgage choices among low-socioeconomic-status (SES) borrowers, focusing on payment-to-income (PTI), loan-to-value (LTV), and inflation indexation decisions. Contrary to expectations of tighter financial constraints, low-SES households adopt a cautious stance at origination, selecting lower PTI and LTV ratios than higher-SES borrowers. Yet this short-term prudence proves short-sighted: many m...",
+    "openalex_id": "https://openalex.org/W4413928107"
+  },
+  {
+    "titulo": "Land Informality and Financial Exclusion Contributing to The Mortgage Dilemma in Uganda’s Housing Sector",
+    "ano": 2025,
+    "autores": "Margaret Nakiwala; Robert Bukenya; Ayodele Alaba Temitayo; Sophia Kawala et al.",
+    "periodico": "East African Journal of Interdisciplinary Studies",
+    "tipo": "article",
+    "doi": "10.37284/eajis.8.2.3460",
+    "citacoes": 1,
+    "acesso_aberto": true,
+    "url": "https://journals.eanso.org/index.php/eajis/article/download/3460/4020",
+    "areas": [
+      "Urban and Rural Development Challenges",
+      "Housing Market and Economics"
+    ],
+    "abstract": "The limited availability of affordable housing is one of the top development priorities in Uganda. The country has a total deficit of 2.4 million housing units. Approximately 70% of those who suffer from housing insecurity in Uganda fall within the low-income bracket. While mortgage financing options could help a number of people purchase houses, Uganda’s mortgage market remains underdeveloped. The mortgage market contributes to less than 1% of GDP, and is largely inaccessible to low-income earners. The primary constraints include the high interest charges (16% - 24%), a lack of secure land tenure systems, widespread informal employment (which involves over 75% of the entire labour force), a...",
+    "openalex_id": "https://openalex.org/W4413131386"
+  }
+]

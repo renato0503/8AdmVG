@@ -1,0 +1,267 @@
+[
+  {
+    "titulo": "A comprehensive review of navigation systems for visually impaired individuals",
+    "ano": 2024,
+    "autores": "Mustufa Haider Abidi; Arshad Noor Siddiquee; Hisham Alkhalefah; Vishwaraj Srivastava",
+    "periodico": "Heliyon",
+    "tipo": "article",
+    "doi": "10.1016/j.heliyon.2024.e31825",
+    "citacoes": 79,
+    "acesso_aberto": true,
+    "url": "https://doi.org/10.1016/j.heliyon.2024.e31825",
+    "areas": [
+      "Tactile and Sensory Interactions",
+      "Ophthalmology and Visual Impairment Studies",
+      "Assistive Technology in Communication and Mobility"
+    ],
+    "abstract": "Background: This review explores the evolutionary trajectory of navigation assistance tools tailored for the visually impaired, spanning from traditional aids like white canes to contemporary electronic devices. It underlines their pivotal role in fostering safe mobility for visually impaired individuals. Objectives: The primary aim is to categorize and assess the plethora of navigation assistance solutions available. Emphasis is placed on technological advancements, particularly in electronic systems employing sensors, AI, and feedback mechanisms. Furthermore, the review underscores the emerging influence of smartphone-based solutions and navigation satellite systems in augmenting independe...",
+    "openalex_id": "https://openalex.org/W4398762469",
+    "arquivo_bruto": "saidas/G3_blind_navigation.json"
+  },
+  {
+    "titulo": "DeepNAVI: A deep learning based smartphone navigation assistant for people with visual impairments",
+    "ano": 2022,
+    "autores": "Bineeth Kuriakose; Raju Shrestha; Frode Eika Sandnes",
+    "periodico": "Expert Systems with Applications",
+    "tipo": "article",
+    "doi": "10.1016/j.eswa.2022.118720",
+    "citacoes": 110,
+    "acesso_aberto": true,
+    "url": "https://www.sciencedirect.com/science/article/pii/S0957417422017432/pdf",
+    "areas": [
+      "Tactile and Sensory Interactions",
+      "Gaze Tracking and Assistive Technology",
+      "Smart Parking Systems Research"
+    ],
+    "abstract": "Navigation assistance is an active research area, where one aim is to foster independent living for people with vision impairments. Despite the fact that many navigation assistants use advanced technologies and methods, we found that they did not explicitly address two essential requirements in a navigation assistant - portability and convenience. It is equally imperative in designing a navigation assistant for the visually impaired that the device is portable and convenient to use without much training. Some navigation assistants do not provide users with detailed information about the obstacle types that can be detected, which is essential to make informed decisions when navigating in real...",
+    "openalex_id": "https://openalex.org/W4296629864",
+    "arquivo_bruto": "saidas/G3_blind_navigation.json"
+  },
+  {
+    "titulo": "An Outdoor Navigation Assistance System for Visually Impaired People in Public Transportation",
+    "ano": 2021,
+    "autores": "Salvador Martínez-Cruz; Luis Alberto Morales-Hernandez; Gerardo Israel Perez-Soto; Juan P. Benítez-Rangel et al.",
+    "periodico": "IEEE Access",
+    "tipo": "article",
+    "doi": "10.1109/access.2021.3111544",
+    "citacoes": 47,
+    "acesso_aberto": true,
+    "url": "https://doi.org/10.1109/access.2021.3111544",
+    "areas": [
+      "Tactile and Sensory Interactions",
+      "Smart Parking Systems Research",
+      "Indoor and Outdoor Localization Technologies"
+    ],
+    "abstract": "Visually impaired and blind people (VIBP) have to face significant difficulties on trying to locate public transport vehicles and bus stops due to their vision restrictions. Over the past decade, diverse assistance systems have been developed to solve this problem. However, most of them are based upon the global positioning system (GPS) and present satellite coverage problems in indoor environments. Some others are wearable prototypes that turn out to be onerous for the user. This paper presents an assistance system for VIBP in the use of public transportation. The proposed system uses Bluetooth Low Energy (BLE) technology for location and communication purposes and a developed mobile applic...",
+    "openalex_id": "https://openalex.org/W3199708877",
+    "arquivo_bruto": "saidas/G3_blind_navigation.json"
+  },
+  {
+    "titulo": "A Smartphone-Based Mobility Assistant Using Depth Imaging for Visually Impaired and Blind",
+    "ano": 2022,
+    "autores": "Aaron Raymond See; Bien Grenier Sasing; Welsey Daniel Advincula",
+    "periodico": "Applied Sciences",
+    "tipo": "article",
+    "doi": "10.3390/app12062802",
+    "citacoes": 44,
+    "acesso_aberto": true,
+    "url": "https://www.mdpi.com/2076-3417/12/6/2802/pdf?version=1646818250",
+    "areas": [
+      "Tactile and Sensory Interactions",
+      "Gaze Tracking and Assistive Technology",
+      "Smart Parking Systems Research"
+    ],
+    "abstract": "The means of assisting visually impaired and blind (VIB) people when travelling usually relies on other people. Assistive devices have been developed to assist in blind navigation, but many technologies require users to purchase more devices and they lack flexibility, thus making it inconvenient for VIB users. In this research, we made use of a mobile phone with a depth camera function for obstacle avoidance and object recognition. It includes a mobile application that is controlled using simple voice and gesture controls to assist in navigation. The proposed system gathers depth values from 23 coordinate points that are analyzed to determine whether an obstacle is present in the head area, ...",
+    "openalex_id": "https://openalex.org/W4220716266",
+    "arquivo_bruto": "saidas/G3_assistive_audio.json"
+  },
+  {
+    "titulo": "SONOICE! a Sonar–Voice dynamic user interface for assisting individuals with blindness and visual impairment in pinpointing elements in 2D tactile readers",
+    "ano": 2024,
+    "autores": "Gaspar Ramôa; Vincent Schmidt; Thorsten Schwarz; Rainer Stiefelhagen et al.",
+    "periodico": "Frontiers in Rehabilitation Sciences",
+    "tipo": "article",
+    "doi": "10.3389/fresc.2024.1368983",
+    "citacoes": 5,
+    "acesso_aberto": true,
+    "url": "https://www.frontiersin.org/journals/rehabilitation-sciences/articles/10.3389/fresc.2024.1368983/pdf",
+    "areas": [
+      "Tactile and Sensory Interactions",
+      "Interactive and Immersive Displays",
+      "Gaze Tracking and Assistive Technology"
+    ],
+    "abstract": "Pinpointing elements on large tactile surfaces is challenging for individuals with blindness and visual impairment (BVI) seeking to access two-dimensional (2D) information. This is particularly evident when using 2D tactile readers, devices designed to provide 2D information using static tactile representations with audio explanations. Traditional pinpointing methods, such as sighted assistance and trial-and-error, are limited and inefficient, while alternative pinpointing user interfaces (UI) are still emerging and need advancement. To address these limitations, we develop three distinct navigation UIs using a user-centred design approach: Sonar (proximity-radar sonification), Voice (direct...",
+    "openalex_id": "https://openalex.org/W4401828026",
+    "arquivo_bruto": "saidas/G3_assistive_audio.json"
+  },
+  {
+    "titulo": "A Training Smartphone Application for the Simulation of Outdoor Blind Pedestrian Navigation: Usability, UX Evaluation, Sentiment Analysis",
+    "ano": 2022,
+    "autores": "Paraskevi Theodorou; Kleomenis Tsiligkos; Apostolos N. Meliones; Costas Filios",
+    "periodico": "Sensors",
+    "tipo": "article",
+    "doi": "10.3390/s23010367",
+    "citacoes": 14,
+    "acesso_aberto": true,
+    "url": "https://www.mdpi.com/1424-8220/23/1/367/pdf?version=1672309737",
+    "areas": [
+      "Tactile and Sensory Interactions",
+      "Gaze Tracking and Assistive Technology",
+      "Interactive and Immersive Displays"
+    ],
+    "abstract": "Training blind and visually impaired individuals is an important but often neglected aspect of Assistive Technology solutions (ATs) that can benefit from systems utilizing multiple sensors and hardware devices. Training serves a dual purpose as it not only enables the target group to effectively utilize the ATs but, also, helps in improving their low acceptance rate. In this paper, we present the design, implementation, and validation of a smartphone-based training application. It is a form of immersive system that enables users to learn the features of an outdoor blind pedestrian navigation application and, simultaneously, to help them develop long-term Orientation and Mobility (O&M) skills...",
+    "openalex_id": "https://openalex.org/W4313294747",
+    "arquivo_bruto": "saidas/G3_assistive_audio.json"
+  },
+  {
+    "titulo": "How accessible are cities for visually impaired pedestrians? A case of Greater London",
+    "ano": 2024,
+    "autores": "Achituv Cohen; Sagi Dalyot; Asya Natapov; TRISALYN A. NELSON",
+    "periodico": "Environment and Planning B Urban Analytics and City Science",
+    "tipo": "article",
+    "doi": "10.1177/23998083241256402",
+    "citacoes": 8,
+    "acesso_aberto": true,
+    "url": "https://doi.org/10.1177/23998083241256402",
+    "areas": [
+      "Urban Transport and Accessibility",
+      "Impact of Light on Environment and Health",
+      "Urban Design and Spatial Analysis"
+    ],
+    "abstract": "Urban planning and design aim to encourage active mobility by promoting various models that assess a city’s transportability and accessibility. In practice, these models are not attuned to a huge part of the population that have mobility impairments, therefore they uphold a flawed city design and prevent these populations from being an equal part of the inclusive city vision. We suggest an approach to develop new visually impaired mobility accessibility indices of urban space using open-source geospatial data and showcase them across different wards and boroughs in Greater London. Results show the various urban accessibility levels for visually impaired pedestrians, pointing to existing prob...",
+    "openalex_id": "https://openalex.org/W4399170388",
+    "arquivo_bruto": "saidas/G3_accessibility_urban.json"
+  },
+  {
+    "titulo": "Blindness and visual impairment: quality of life and accessibility in the city of Turin",
+    "ano": 2024,
+    "autores": "Alessia Nuzzi; Alice Becco; Andrea Boschiroli; Andrea Coletto et al.",
+    "periodico": "Frontiers in Medicine",
+    "tipo": "article",
+    "doi": "10.3389/fmed.2024.1361631",
+    "citacoes": 10,
+    "acesso_aberto": true,
+    "url": "https://www.frontiersin.org/articles/10.3389/fmed.2024.1361631/pdf?isPublishedV2=False",
+    "areas": [
+      "Ophthalmology and Visual Impairment Studies",
+      "Retinal Imaging and Analysis",
+      "Retinal Diseases and Treatments"
+    ],
+    "abstract": "Purpose Despite the increase in socio-health conditions and, in general, the focus on health worldwide, many diseases still adversely affect the quality of life (QoL), including those causing vision loss. The main purpose of this study was to evaluate the QoL of people with visual impairments through a questionnaire and identify issues concerning everyday life in the urban and extra-urban areas of Turin. Patients and methods A personalized questionnaire including 25 questions was distributed to 100 enrolled patients. It was designed by integrating the most widely used questionnaires related to the QoL of people with visual impairment with questions concerning the city of Turin. The inclusion...",
+    "openalex_id": "https://openalex.org/W4393053165",
+    "arquivo_bruto": "saidas/G3_accessibility_urban.json"
+  },
+  {
+    "titulo": "Evaluation of the Visually Impaired Experience of the Sound Environment in Urban Spaces",
+    "ano": 2022,
+    "autores": "Sen Zhang; Ke Zhang; Meng Zhang; Xiaoyang Liu",
+    "periodico": "Frontiers in Psychology",
+    "tipo": "article",
+    "doi": "10.3389/fpsyg.2021.731693",
+    "citacoes": 3,
+    "acesso_aberto": true,
+    "url": "https://www.frontiersin.org/articles/10.3389/fpsyg.2021.731693/pdf",
+    "areas": [
+      "Noise Effects and Management",
+      "Urban Green Space and Health",
+      "Tactile and Sensory Interactions"
+    ],
+    "abstract": "Visually impaired people have unique perceptions of and usage requirements for various urban spaces. Therefore, understanding these perceptions can help create reasonable layouts and construct urban infrastructure. This study recruited 26 visually impaired volunteers to evaluate 24 sound environments regarding clarity, comfort, safety, vitality, and depression. This data was collected in seven different types of urban spaces. An independent sample non-parametric test was used to determine the significance of the differences between environmental evaluation results for each evaluation dimension and to summarize the compositions of sound and space elements in the positive and negative influenc...",
+    "openalex_id": "https://openalex.org/W4206023355",
+    "arquivo_bruto": "saidas/G3_accessibility_urban.json"
+  },
+  {
+    "titulo": "Multiple-Stakeholder Perspectives on Accessibility Data and the Use of Socio-Technical Tools to Improve Sidewalk Accessibility",
+    "ano": 2023,
+    "autores": "Delphine Labbé; Yochai Eisenberg; Devon Snyder; Judy Shanley et al.",
+    "periodico": "Disabilities",
+    "tipo": "article",
+    "doi": "10.3390/disabilities3040040",
+    "citacoes": 10,
+    "acesso_aberto": true,
+    "url": "https://www.mdpi.com/2673-7272/3/4/40/pdf?version=1701149066",
+    "areas": [
+      "Urban Transport and Accessibility",
+      "Human Mobility and Location-Based Analysis",
+      "Traffic and Road Safety"
+    ],
+    "abstract": "For people with disabilities, accessible pedestrian infrastructure can support independence, mobility, and improved quality of life. Yet, most pedestrian infrastructure presents barriers that impede movement. A major challenge for cities to improve pedestrian accessibility is the lack of reliable data on sidewalk accessibility. Little is known about the type of data needed for cities, as well as how different stakeholders perceive and use sidewalk data. Therefore, this study seeks to explore the perceptions of multiple stakeholders on the use, gathering, and application of sidewalk accessibility data. We conducted a series of workshops with 51 participants, including people with disabilities...",
+    "openalex_id": "https://openalex.org/W4389084731",
+    "arquivo_bruto": "saidas/G3_sidewalk_accessibility.json"
+  },
+  {
+    "titulo": "Mapping sidewalk accessibility with smartphone imagery and Visual AI: a participatory approach",
+    "ano": 2024,
+    "autores": "Diego Morra; Xiaosheng Zhu; Chang Liu; K.K. Fu et al.",
+    "periodico": "Philosophical Transactions of the Royal Society A Mathematical Physical and Engineering Sciences",
+    "tipo": "article",
+    "doi": "10.1098/rsta.2024.0106",
+    "citacoes": 7,
+    "acesso_aberto": false,
+    "url": "https://doi.org/10.1098/rsta.2024.0106",
+    "areas": [
+      "Smart Parking Systems Research",
+      "Urban Transport and Accessibility",
+      "Automated Road and Building Extraction"
+    ],
+    "abstract": "Evaluating sidewalk accessibility is conventionally a manual and time-consuming task that requires specialized personnel. While recent developments in Visual AI have paved the way for automating data analysis, the lack of sidewalk accessibility datasets remains a significant challenge. This study presents the design and validation of Sidewalk AI Scanner, a web app that enables quick, crowdsourced and low-cost sidewalk mapping. The app enables a participatory approach to data collection through imagery captured using smartphone cameras. Subsequently, dedicated algorithms automatically identify sidewalk features such as width, obstacles or pavement conditions. Though not a replacement for high...",
+    "openalex_id": "https://openalex.org/W4404336458",
+    "arquivo_bruto": "saidas/G3_sidewalk_accessibility.json"
+  },
+  {
+    "titulo": "Outlines for accessible routes on sidewalks: a big challenge for small brazilian cities",
+    "ano": 2021,
+    "autores": "Fernando Domingues Caetano; Jeronimo Paulo da Cunha Pimentel de Meira; Suzi Cristini Rodrigues",
+    "periodico": "Revista Tecnologia e Sociedade",
+    "tipo": "article",
+    "doi": "10.3895/rts.v17n47.11549",
+    "citacoes": 1,
+    "acesso_aberto": true,
+    "url": "https://doi.org/10.3895/rts.v17n47.11549",
+    "areas": [
+      "Urban Transport and Accessibility",
+      "Urban Design and Spatial Analysis"
+    ],
+    "abstract": "Sidewalks in Brazilian cities still have physical conditions that hamper pedestrians to move, especially those citizens with mobility impairments. Despite improvements on legal provisions, aiming to build more accessible cities, its fulfillment is still far from what is desired. The purpose of this paper is to present a method (virtual audit) to support local administrations, in particular of small cities, to define accessible routes on sidewalks. In order to illustrate the method application, it is shown an exploratory study in the Central Business District of Quitandinha municipality, located in Curitiba Metropolitan Area. The method allows a comprehensive knowledge of site problematic, an...",
+    "openalex_id": "https://openalex.org/W3139566901",
+    "arquivo_bruto": "saidas/G3_sidewalk_accessibility.json"
+  },
+  {
+    "titulo": "Tecnologias Assistivas para Pessoas com Deficiência Visual",
+    "ano": 2022,
+    "autores": "Adriana Monteiro Cunha; Sidnei Cerqueira dos Santos",
+    "periodico": "Cadernos de Prospecção",
+    "tipo": "article",
+    "doi": "10.9771/cp.v15i1.43946",
+    "citacoes": 3,
+    "acesso_aberto": true,
+    "url": "https://periodicos.ufba.br/index.php/nit/article/download/43946/25828",
+    "areas": [
+      "Digital Accessibility for Disabilities",
+      "Subtitles and Audiovisual Media",
+      "Smart Parking Systems Research"
+    ],
+    "abstract": "O debate envolvendo acessibilidade e inclusão tem ampliado o foco sobre a necessidade de assegurar o amplo acesso aos direitos e aos serviços a pessoas com deficiência. As soluções para enfrentar os diversos desafios da área são específicas, uma vez que cada pessoa traz consigo singularidades relacionadas à sua deficiência. O desenvolvimento de tecnologias tem sido uma das aliadas para reduzir a lacuna existente para esse público. O objetivo deste trabalho foi realizar uma análise tecnológica de produtos de acessibilidade para pessoas com deficiência visual. A pesquisa de patentes foi realizada no Instituto Nacional da Propriedade Industrial (INPI) e no Escritório Europeu de Patentes (Espace...",
+    "openalex_id": "https://openalex.org/W4214671119",
+    "arquivo_bruto": "saidas/G3_blind_brazil.json"
+  },
+  {
+    "titulo": "Indoor-Guided Navigation for People Who Are Blind: Crowdsourcing for Route Mapping and Assistance",
+    "ano": 2022,
+    "autores": "Darius Plikynas; Audrius Indriulionis; Algirdas Laukaitis; Leonidas L. Sakalauskas",
+    "periodico": "Applied Sciences",
+    "tipo": "article",
+    "doi": "10.3390/app12010523",
+    "citacoes": 17,
+    "acesso_aberto": true,
+    "url": "https://www.mdpi.com/2076-3417/12/1/523/pdf?version=1641388792",
+    "areas": [
+      "Tactile and Sensory Interactions",
+      "Indoor and Outdoor Localization Technologies",
+      "Video Surveillance and Tracking Methods"
+    ],
+    "abstract": "This paper presents an approach to enhance electronic traveling aids (ETAs) for people who are blind and severely visually impaired (BSVI) using indoor orientation and guided navigation by employing social outsourcing of indoor route mapping and assistance processes. This type of approach is necessary because GPS does not work well, and infrastructural investments are absent or too costly to install for indoor navigation. Our approach proposes the prior outsourcing of vision-based recordings of indoor routes from an online network of seeing volunteers, who gather and constantly update a web cloud database of indoor routes using specialized sensory equipment and web services. Computational in...",
+    "openalex_id": "https://openalex.org/W4205469576",
+    "arquivo_bruto": "saidas/G3_blind_navigation.json"
+  }
+]

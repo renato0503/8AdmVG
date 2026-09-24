@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#4338ca">
+<title>HoraCerta — horas complementares em tempo real</title>
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/svg+xml" href="../assets/logos/g1.svg">
+<link rel="apple-touch-icon" href="../assets/logos/g1-192.png">
+<link rel="stylesheet" href="../assets/identidade/temas.css">
+<link rel="stylesheet" href="../assets/mvp/mvp.css">
+<style>
+.anel{width:150px;height:150px;margin:6px auto}
+.anel text{font-family:var(--fonte-titulo);font-weight:700}
+.cat{margin:12px 0}
+.cat .entre{font-size:14px;font-weight:700}
+.legenda{display:flex;gap:14px;font-size:12px;color:#475569;margin-top:6px}
+.legenda i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:4px;vertical-align:-1px}
+.ativ .entre b{font-size:15px}
+.ativ .meta{font-size:12.5px;color:#64748b;margin-top:2px}
+.thumb{width:100%;max-height:220px;object-fit:contain;border-radius:10px;background:#f1f5f9;margin:8px 0}
+.evento{display:flex;gap:12px}
+.evento .data{min-width:54px;text-align:center;background:var(--accent-soft);border-radius:12px;padding:6px 4px;color:var(--accent-dark);font-weight:800;line-height:1.1}
+.evento .data small{display:block;font-size:11px;font-weight:700}
+</style>
+</head>
+<body class="tema-g1">
+<div class="app">
+  <header class="topo">
+    <div class="marca">
+      <img src="../assets/logos/g1.svg" alt="">
+      <div><h1>HoraCerta</h1><div class="sub" id="sub-curso">Horas complementares em tempo real</div></div>
+      <div class="acoes">
+        <button class="icone-btn" id="btn-instalar" hidden aria-label="Instalar app"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg></button>
+        <a class="icone-btn" href="index.html" aria-label="Sobre o projeto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/></svg></a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ============ PAINEL ============ -->
+    <section class="view" data-view="painel" aria-label="Painel">
+      <div class="aviso-exemplo">Protótipo (MVP) de pesquisa — dados de <b>exemplo</b>, salvos só neste aparelho. O regulamento de horas é ajustável em <a href="#dados">Dados</a>.</div>
+      <div class="card destaque">
+        <div class="entre"><h2>Seu saldo</h2><span class="chip" id="chip-status">—</span></div>
+        <svg class="anel" viewBox="0 0 120 120" role="img" id="anel"></svg>
+        <div class="grid3">
+          <div class="kpi"><b id="k-valid">0</b><span>validadas</span></div>
+          <div class="kpi"><b id="k-analise">0</b><span>em análise</span></div>
+          <div class="kpi"><b id="k-falta">0</b><span>faltam</span></div>
+        </div>
+        <p class="muted" id="prazo" style="margin-top:10px"></p>
+      </div>
+      <h3 class="titulo-sec">Por categoria</h3>
+      <div class="card" id="cats"></div>
+      <h3 class="titulo-sec">Próximos passos</h3>
+      <div class="card"><ul class="lista" id="passos"></ul></div>
+    </section>
+
+    <!-- ============ ATIVIDADES ============ -->
+    <section class="view" data-view="atividades" aria-label="Atividades">
+      <div class="entre"><h3 class="titulo-sec">Minhas atividades</h3><button class="btn peq" id="btn-nova">+ Nova</button></div>
+      <div class="filtros" id="filtros" role="group" aria-label="Filtrar por situação"></div>
+      <div id="lista-ativ"></div>
+    </section>
+
+    <!-- ============ OPORTUNIDADES ============ -->
+    <section class="view" data-view="oportunidades" aria-label="Oportunidades">
+      <h3 class="titulo-sec">Eventos que valem horas</h3>
+      <div class="aviso-exemplo">Agenda de <b>exemplo</b>. Na versão real, a coordenação e os parceiros publicam os eventos.</div>
+      <div id="lista-eventos"></div>
+    </section>
+
+    <!-- ============ COORDENAÇÃO (simulada) ============ -->
+    <section class="view" data-view="coord" aria-label="Coordenação">
+      <h3 class="titulo-sec">Visão da coordenação</h3>
+      <div class="aviso-exemplo"><b>Simulação:</b> aqui você faz o papel da coordenação para testar o fluxo de validação. Na versão real, esta tela fica em um painel separado da instituição.</div>
+      <div id="fila"></div>
+    </section>
+
+    <!-- ============ DADOS ============ -->
+    <section class="view" data-view="dados" aria-label="Dados e configuração">
+      <h3 class="titulo-sec">Meu curso</h3>
+      <div class="card">
+        <div class="campo"><label for="c-curso">Curso</label><input id="c-curso"></div>
+        <div class="campo"><label for="c-form">Previsão de formatura</label><input id="c-form" type="month"></div>
+        <p class="muted">Horas exigidas por categoria (regulamento de <b>exemplo</b> — ajuste ao seu PPC):</p>
+        <div id="c-cats"></div>
+        <button class="btn bloco" id="btn-salvar-curso">Salvar curso</button>
+      </div>
+      <h3 class="titulo-sec">Backup</h3>
+      <div class="card">
+        <p class="muted">Os dados ficam só neste navegador. Baixe um backup para trocar de aparelho.</p>
+        <div class="btns">
+          <button class="btn sec" data-acao="exportar">Exportar JSON</button>
+          <button class="btn sec" data-acao="importar">Importar JSON</button>
+          <button class="btn sec" id="btn-csv">Exportar CSV</button>
+        </div>
+        <button class="btn perigo bloco" data-acao="resetar" style="margin-top:10px">Apagar tudo</button>
+      </div>
+      <p class="muted" style="text-align:center;margin:18px 0">HoraCerta · Grupo 1 · 8AdmVG · Unifacc — MVP de Customer Discovery</p>
+    </section>
+  </main>
+
+  <nav class="nav-inf" aria-label="Navegação principal"><div class="dentro">
+    <button data-aba="painel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Painel</button>
+    <button data-aba="atividades"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>Atividades</button>
+    <button data-aba="oportunidades"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 11h18"/></svg>Eventos</button>
+    <button data-aba="coord"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z"/></svg>Coordenação</button>
+    <button data-aba="dados"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 00.3 1.8l.1.1a2 2 0 11-2.8 2.8l-.1-.1a1.7 1.7 0 00-1.8-.3 1.7 1.7 0 00-1 1.5V21a2 2 0 11-4 0v-.1a1.7 1.7 0 00-1.1-1.5 1.7 1.7 0 00-1.8.3l-.1.1a2 2 0 11-2.8-2.8l.1-.1a1.7 1.7 0 00.3-1.8 1.7 1.7 0 00-1.5-1H3a2 2 0 110-4h.1a1.7 1.7 0 001.5-1.1 1.7 1.7 0 00-.3-1.8l-.1-.1a2 2 0 112.8-2.8l.1.1a1.7 1.7 0 001.8.3H9a1.7 1.7 0 001-1.5V3a2 2 0 114 0v.1a1.7 1.7 0 001 1.5 1.7 1.7 0 001.8-.3l.1-.1a2 2 0 112.8 2.8l-.1.1a1.7 1.7 0 00-.3 1.8V9a1.7 1.7 0 001.5 1H21a2 2 0 110 4h-.1a1.7 1.7 0 00-1.5 1z"/></svg>Dados</button>
+  </div></nav>
+</div>
+
+<script src="../assets/mvp/mvp.js"></script>
+<script>
+const { $, $$, esc, criarEstado, fmtNum, fmtData, hoje, uid, toast, modal, confirmar, baixar, lerComoDataURL, ligarDados, abas, pwa } = MVP;
+
+const STATUS = {
+  rascunho: { rot: 'Rascunho', cls: 'cinza' },
+  analise:  { rot: 'Em análise', cls: 'atencao' },
+  validada: { rot: 'Validada', cls: 'ok' },
+  recusada: { rot: 'Recusada', cls: 'alerta' },
+};
+
+function dataRel(dias) { const d = new Date(); d.setDate(d.getDate() + dias); return d.toISOString().slice(0, 10); }
+
+function semente() {
+  const f = new Date(); f.setMonth(f.getMonth() + 14);
+  return {
+    curso: { nome: 'Administração', formatura: f.toISOString().slice(0, 7),
+      cats: [ { id: 'ensino', nome: 'Ensino', exigidas: 60 }, { id: 'pesquisa', nome: 'Pesquisa', exigidas: 40 },
+              { id: 'extensao', nome: 'Extensão', exigidas: 60 }, { id: 'cultura', nome: 'Cultura e social', exigidas: 40 } ] },
+    atividades: [
+      { id: uid(), titulo: 'Semana Acadêmica de Administração', cat: 'ensino', horas: 20, data: dataRel(-120), status: 'validada', comprovante: null, obs: '' },
+      { id: uid(), titulo: 'Curso online de Excel para gestão', cat: 'ensino', horas: 16, data: dataRel(-60), status: 'analise', comprovante: null, obs: '' },
+      { id: uid(), titulo: 'Projeto de extensão: educação financeira no bairro', cat: 'extensao', horas: 30, data: dataRel(-40), status: 'validada', comprovante: null, obs: '' },
+      { id: uid(), titulo: 'Voluntariado em campanha do agasalho', cat: 'cultura', horas: 8, data: dataRel(-15), status: 'rascunho', comprovante: null, obs: '' },
+    ],
+    eventos: [
+      { id: 'e1', titulo: 'Palestra: carreira em gestão pública', cat: 'ensino', horas: 3, data: dataRel(5), local: 'Auditório (exemplo)', interesse: false },
+      { id: 'e2', titulo: 'Oficina de Customer Discovery', cat: 'extensao', horas: 4, data: dataRel(9), local: 'Laboratório de inovação (exemplo)', interesse: false },
+      { id: 'e3', titulo: 'Grupo de estudos em finanças corporativas', cat: 'pesquisa', horas: 10, data: dataRel(14), local: 'On-line (exemplo)', interesse: false },
+      { id: 'e4', titulo: 'Mutirão cultural na praça', cat: 'cultura', horas: 6, data: dataRel(20), local: 'Várzea Grande (exemplo)', interesse: false },
+      { id: 'e5', titulo: 'Minicurso: Power BI para iniciantes', cat: 'ensino', horas: 8, data: dataRel(27), local: 'On-line (exemplo)', interesse: false },
+    ],
+  };
+}
+
+const E = criarEstado('horacerta:v1', semente);
+const catNome = id => (E.d.curso.cats.find(c => c.id === id) || { nome: id }).nome;
+
+/* horas por categoria, com teto do regulamento (o que passa do exigido não conta) */
+function saldo() {
+  const porCat = E.d.curso.cats.map(c => {
+    const soma = st => E.d.atividades.filter(a => a.cat === c.id && a.status === st).reduce((s, a) => s + Number(a.horas || 0), 0);
+    const valid = Math.min(soma('validada'), c.exigidas);
+    const anal = Math.min(soma('analise'), Math.max(0, c.exigidas - valid));
+    return { ...c, valid, anal, falta: Math.max(0, c.exigidas - valid) };
+  });
+  const total = porCat.reduce((s, c) => s + c.exigidas, 0);
+  const valid = porCat.reduce((s, c) => s + c.valid, 0);
+  const anal = porCat.reduce((s, c) => s + c.anal, 0);
+  return { porCat, total, valid, anal, falta: Math.max(0, total - valid) };
+}
+
+function mesesAteFormatura() {
+  const [a, m] = (E.d.curso.formatura || '').split('-').map(Number);
+  if (!a) return null;
+  const h = new Date();
+  return (a - h.getFullYear()) * 12 + (m - 1 - h.getMonth());
+}
+
+/* ---------------- render ---------------- */
+function renderPainel() {
+  const s = saldo();
+  const pv = s.total ? s.valid / s.total : 0, pa = s.total ? s.anal / s.total : 0;
+  const C = 2 * Math.PI * 50;
+  $('#anel').innerHTML = `
+    <circle cx="60" cy="60" r="50" fill="none" stroke="#e2e8f0" stroke-width="12"/>
+    <circle cx="60" cy="60" r="50" fill="none" stroke="var(--accent2)" stroke-width="12" stroke-dasharray="${C * (pv + pa)} ${C}" transform="rotate(-90 60 60)" stroke-linecap="round"/>
+    <circle cx="60" cy="60" r="50" fill="none" stroke="var(--accent)" stroke-width="12" stroke-dasharray="${C * pv} ${C}" transform="rotate(-90 60 60)" stroke-linecap="round"/>
+    <text x="60" y="58" text-anchor="middle" font-size="24" fill="var(--tinta)">${Math.round(pv * 100)}%</text>
+    <text x="60" y="76" text-anchor="middle" font-size="10" fill="#64748b">${s.valid} de ${s.total} h</text>`;
+  $('#anel').setAttribute('aria-label', `${Math.round(pv * 100)} por cento concluído: ${s.valid} de ${s.total} horas validadas`);
+  $('#k-valid').textContent = s.valid; $('#k-analise').textContent = s.anal; $('#k-falta').textContent = s.falta;
+  $('#sub-curso').textContent = `${E.d.curso.nome} · ${s.valid}/${s.total} h validadas`;
+
+  const meses = mesesAteFormatura();
+  let st = { t: 'Em dia', c: 'ok' };
+  if (s.falta > 0 && meses !== null) {
+    const ritmo = s.falta / Math.max(1, meses);
+    $('#prazo').innerHTML = meses <= 0 ? `<b>Formatura prevista já passou</b> e ainda faltam ${s.falta} h.` :
+      `Faltam <b>${meses} meses</b> para a formatura: ritmo necessário de <b>${fmtNum(ritmo, 1)} h/mês</b>.`;
+    if (meses <= 0 || ritmo > 12) st = { t: 'Atenção', c: 'alerta' }; else if (ritmo > 6) st = { t: 'Acelere', c: 'atencao' };
+  } else if (s.falta === 0) { $('#prazo').textContent = 'Parabéns: todas as horas exigidas estão validadas.'; st = { t: 'Completo', c: 'ok' }; }
+  else $('#prazo').textContent = 'Informe a previsão de formatura em Dados.';
+  $('#chip-status').textContent = st.t; $('#chip-status').className = 'chip ' + st.c;
+
+  $('#cats').innerHTML = s.porCat.map(c => `
+    <div class="cat"><div class="entre"><span>${esc(c.nome)}</span><span>${c.valid}/${c.exigidas} h</span></div>
+    <div class="barra" role="img" aria-label="${esc(c.nome)}: ${c.valid} validadas, ${c.anal} em análise, de ${c.exigidas}">
+      <i style="width:${c.exigidas ? c.valid / c.exigidas * 100 : 0}%"></i><i class="b2" style="width:${c.exigidas ? c.anal / c.exigidas * 100 : 0}%"></i></div></div>`).join('') +
+    `<div class="legenda"><span><i style="background:var(--accent)"></i>Validadas</span><span><i style="background:var(--accent2)"></i>Em análise</span></div>`;
+
+  const passos = [];
+  const rasc = E.d.atividades.filter(a => a.status === 'rascunho');
+  if (rasc.length) passos.push(`<li><b>${rasc.length} atividade(s) em rascunho</b> — envie para a coordenação validar. <a href="#atividades">Ver</a></li>`);
+  const rec = E.d.atividades.filter(a => a.status === 'recusada');
+  if (rec.length) passos.push(`<li><b>${rec.length} recusada(s)</b> — confira o motivo e reenvie na categoria certa. <a href="#atividades">Ver</a></li>`);
+  const pior = s.porCat.filter(c => c.falta > 0).sort((a, b) => b.falta / b.exigidas - a.falta / a.exigidas)[0];
+  if (pior) {
+    const ev = E.d.eventos.find(e => e.cat === pior.id && e.data >= hoje());
+    passos.push(`<li>Categoria mais atrasada: <b>${esc(pior.nome)}</b> (faltam ${pior.falta} h).${ev ? ` Próximo evento: <b>${esc(ev.titulo)}</b> em ${fmtData(ev.data)} (+${ev.horas} h). <a href="#oportunidades">Ver</a>` : ''}</li>`);
+  }
+  const semComp = E.d.atividades.filter(a => a.status !== 'validada' && !a.comprovante).length;
+  if (semComp) passos.push(`<li><b>${semComp} atividade(s) sem comprovante</b> anexado — tire uma foto do certificado.</li>`);
+  $('#passos').innerHTML = passos.join('') || '<li>Tudo certo por aqui. 🎓</li>';
+}
+
+let filtro = 'todas';
+function renderAtividades() {
+  const cont = st => st === 'todas' ? E.d.atividades.length : E.d.atividades.filter(a => a.status === st).length;
+  $('#filtros').innerHTML = ['todas', 'rascunho', 'analise', 'validada', 'recusada'].map(st =>
+    `<button class="${filtro === st ? 'on' : ''}" data-filtro="${st}" aria-pressed="${filtro === st}">${st === 'todas' ? 'Todas' : STATUS[st].rot} (${cont(st)})</button>`).join('');
+  const itens = E.d.atividades.filter(a => filtro === 'todas' || a.status === filtro).sort((a, b) => b.data.localeCompare(a.data));
+  $('#lista-ativ').innerHTML = itens.length ? itens.map(a => `
+    <div class="card ativ">
+      <div class="entre"><b>${esc(a.titulo)}</b><span class="chip ${STATUS[a.status].cls}">${STATUS[a.status].rot}</span></div>
+      <div class="meta">${esc(catNome(a.cat))} · ${a.horas} h · ${fmtData(a.data)} · ${a.comprovante ? '📎 comprovante anexado' : 'sem comprovante'}</div>
+      ${a.obs ? `<div class="meta">Coordenação: ${esc(a.obs)}</div>` : ''}
+      <div class="btns">
+        ${a.status === 'rascunho' || a.status === 'recusada' ? `<button class="btn peq" data-enviar="${a.id}">Enviar p/ validação</button>` : ''}
+        ${a.comprovante ? `<button class="btn sec peq" data-ver="${a.id}">Ver comprovante</button>` : ''}
+        <button class="btn sec peq" data-editar="${a.id}">Editar</button>
+        <button class="btn sec peq" data-excluir="${a.id}" aria-label="Excluir ${esc(a.titulo)}">Excluir</button>
+      </div>
+    </div>`).join('') : '<div class="vazio">Nenhuma atividade aqui. Toque em “+ Nova”.</div>';
+}
+
+function renderEventos() {
+  const futuros = E.d.eventos.filter(e => e.data >= hoje()).sort((a, b) => a.data.localeCompare(b.data));
+  $('#lista-eventos').innerHTML = futuros.length ? futuros.map(e => {
+    const d = new Date(e.data + 'T12:00:00');
+    return `<div class="card evento">
+      <div class="data">${d.getDate()}<small>${d.toLocaleDateString('pt-BR', { month: 'short' }).replace('.', '')}</small></div>
+      <div style="flex:1"><b>${esc(e.titulo)}</b><div class="muted">${esc(catNome(e.cat))} · +${e.horas} h · ${esc(e.local)}</div>
+        <div class="btns"><button class="btn ${e.interesse ? 'ok' : 'sec'} peq" data-interesse="${e.id}" aria-pressed="${e.interesse}">${e.interesse ? '✓ Lembrete ativo' : 'Me lembrar'}</button>
+        <button class="btn sec peq" data-participei="${e.id}">Participei</button></div></div></div>`;
+  }).join('') : '<div class="vazio">Sem eventos futuros.</div>';
+}
+
+function renderFila() {
+  const fila = E.d.atividades.filter(a => a.status === 'analise');
+  $('#fila').innerHTML = fila.length ? fila.map(a => `
+    <div class="card"><b>${esc(a.titulo)}</b><div class="muted">${esc(catNome(a.cat))} · ${a.horas} h · ${fmtData(a.data)} · ${a.comprovante ? 'com comprovante' : '<b style="color:#b91c1c">sem comprovante</b>'}</div>
+      <div class="btns"><button class="btn ok peq" data-validar="${a.id}">Validar</button><button class="btn perigo peq" data-recusar="${a.id}">Recusar</button>
+      ${a.comprovante ? `<button class="btn sec peq" data-ver="${a.id}">Comprovante</button>` : ''}</div></div>`).join('')
+    : '<div class="vazio">Nenhuma atividade aguardando validação.</div>';
+}
+
+function renderDados() {
+  $('#c-curso').value = E.d.curso.nome; $('#c-form').value = E.d.curso.formatura || '';
+  $('#c-cats').innerHTML = E.d.curso.cats.map(c => `<div class="campo"><label for="cat-${c.id}">${esc(c.nome)} (horas)</label><input id="cat-${c.id}" type="number" min="0" step="1" value="${c.exigidas}" inputmode="numeric"></div>`).join('');
+}
+
+function renderTudo() { renderPainel(); renderAtividades(); renderEventos(); renderFila(); renderDados(); }
+
+/* ---------------- formulário de atividade ---------------- */
+function formAtividade(a, preset = {}) {
+  const nova = !a;
+  a = a || { id: uid(), titulo: '', cat: E.d.curso.cats[0].id, horas: '', data: hoje(), status: 'rascunho', comprovante: null, obs: '', ...preset };
+  let comp = a.comprovante;
+  modal(`<h2>${nova ? 'Nova atividade' : 'Editar atividade'}</h2>
+    <div class="campo"><label for="f-tit">Atividade</label><input id="f-tit" value="${esc(a.titulo)}" placeholder="Ex.: Palestra sobre empreendedorismo"></div>
+    <div class="grid2"><div class="campo"><label for="f-cat">Categoria</label><select id="f-cat">${E.d.curso.cats.map(c => `<option value="${c.id}" ${c.id === a.cat ? 'selected' : ''}>${esc(c.nome)}</option>`).join('')}</select></div>
+    <div class="campo"><label for="f-h">Horas</label><input id="f-h" type="number" min="0.5" step="0.5" inputmode="decimal" value="${a.horas}"></div></div>
+    <div class="campo"><label for="f-d">Data</label><input id="f-d" type="date" value="${a.data}"></div>
+    <div class="campo"><label>Comprovante (foto ou PDF)</label><button class="btn sec bloco" id="f-comp" type="button">${comp ? 'Trocar comprovante' : 'Anexar foto/PDF'}</button><div id="f-prev"></div></div>
+    <div class="btns"><button class="btn sec" data-fechar>Cancelar</button><button class="btn" id="f-salvar">Salvar</button></div>`, (m, fechar) => {
+    const prev = () => { $('#f-prev', m).innerHTML = comp ? (comp.startsWith('data:image') ? `<img class="thumb" src="${comp}" alt="Prévia do comprovante">` : '<p class="muted">📎 PDF anexado</p>') : ''; };
+    prev();
+    $('#f-comp', m).addEventListener('click', () => MVP.escolherArquivo('image/*,application/pdf', f =>
+      lerComoDataURL(f).then(d => { comp = d; prev(); toast('Comprovante anexado.'); }).catch(() => toast('PDF grande demais para o protótipo (máx. 900 KB).'))));
+    $('#f-salvar', m).addEventListener('click', () => {
+      const titulo = $('#f-tit', m).value.trim(), horas = Number($('#f-h', m).value);
+      if (!titulo) return toast('Informe o nome da atividade.');
+      if (!(horas > 0)) return toast('Informe as horas (maior que zero).');
+      Object.assign(a, { titulo, horas, cat: $('#f-cat', m).value, data: $('#f-d', m).value || hoje(), comprovante: comp });
+      if (nova) E.d.atividades.push(a);
+      E.salvar(); fechar(); renderTudo(); toast(nova ? 'Atividade criada como rascunho.' : 'Atividade atualizada.');
+    });
+  });
+}
+
+/* ---------------- eventos de clique ---------------- */
+document.addEventListener('click', ev => {
+  const t = ev.target.closest('button'); if (!t) return;
+  const acha = id => E.d.atividades.find(a => a.id === id);
+  if (t.id === 'btn-nova') formAtividade();
+  else if (t.dataset.filtro) { filtro = t.dataset.filtro; renderAtividades(); }
+  else if (t.dataset.editar) formAtividade(acha(t.dataset.editar));
+  else if (t.dataset.excluir) confirmar('Excluir esta atividade?', () => { E.d.atividades = E.d.atividades.filter(a => a.id !== t.dataset.excluir); E.salvar(); renderTudo(); toast('Excluída.'); }, 'Excluir');
+  else if (t.dataset.enviar) {
+    const a = acha(t.dataset.enviar);
+    const vai = () => { a.status = 'analise'; a.obs = ''; E.salvar(); renderTudo(); toast('Enviada para a coordenação.'); };
+    if (!a.comprovante) confirmar('Esta atividade está sem comprovante e pode ser recusada. Enviar mesmo assim?', vai, 'Enviar'); else vai();
+  }
+  else if (t.dataset.ver) { const a = acha(t.dataset.ver);
+    modal(`<h2>Comprovante</h2>${a.comprovante.startsWith('data:image') ? `<img class="thumb" style="max-height:60dvh" src="${a.comprovante}" alt="Comprovante de ${esc(a.titulo)}">` : `<p><a class="btn bloco" href="${a.comprovante}" download="comprovante.pdf">Baixar PDF</a></p>`}<button class="btn sec bloco" data-fechar>Fechar</button>`); }
+  else if (t.dataset.validar) { const a = acha(t.dataset.validar); a.status = 'validada'; a.obs = 'Validada.'; E.salvar(); renderTudo(); toast('Validada.'); }
+  else if (t.dataset.recusar) {
+    const a = acha(t.dataset.recusar);
+    modal(`<h2>Recusar atividade</h2><div class="campo"><label for="r-mot">Motivo</label><select id="r-mot">
+      <option>Comprovante ilegível ou ausente</option><option>Categoria incorreta</option><option>Carga horária diferente do certificado</option><option>Atividade não prevista no regulamento</option></select></div>
+      <div class="btns"><button class="btn sec" data-fechar>Cancelar</button><button class="btn perigo" id="r-ok">Recusar</button></div>`, (m, fechar) =>
+      $('#r-ok', m).addEventListener('click', () => { a.status = 'recusada'; a.obs = $('#r-mot', m).value; E.salvar(); fechar(); renderTudo(); toast('Recusada com motivo.'); }));
+  }
+  else if (t.dataset.interesse) { const e = E.d.eventos.find(x => x.id === t.dataset.interesse); e.interesse = !e.interesse; E.salvar(); renderEventos(); toast(e.interesse ? 'Lembrete simulado ativado (aviso 1 dia antes).' : 'Lembrete removido.'); }
+  else if (t.dataset.participei) { const e = E.d.eventos.find(x => x.id === t.dataset.participei);
+    formAtividade(null, { titulo: e.titulo, cat: e.cat, horas: e.horas, data: e.data }); }
+  else if (t.id === 'btn-salvar-curso') {
+    E.d.curso.nome = $('#c-curso').value.trim() || 'Meu curso';
+    E.d.curso.formatura = $('#c-form').value;
+    E.d.curso.cats.forEach(c => { c.exigidas = Math.max(0, Number($('#cat-' + c.id).value) || 0); });
+    E.salvar(); renderTudo(); toast('Curso salvo.');
+  }
+  else if (t.id === 'btn-csv') {
+    const linhas = [['atividade', 'categoria', 'horas', 'data', 'situacao', 'tem_comprovante', 'obs_coordenacao']]
+      .concat(E.d.atividades.map(a => [a.titulo, catNome(a.cat), a.horas, a.data, STATUS[a.status].rot, a.comprovante ? 'sim' : 'nao', a.obs]));
+    baixar(`horacerta-${hoje()}.csv`, '﻿' + linhas.map(l => l.map(v => `"${String(v ?? '').replace(/"/g, '""')}"`).join(';')).join('\n'), 'text/csv');
+    toast('CSV baixado.');
+  }
+});
+
+ligarDados(E, 'horacerta', renderTudo);
+renderTudo();
+abas(v => { if (v === 'painel') renderPainel(); });
+pwa();
+</script>
+</body>
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Kit UI — Demo · 3SemVG</title>
+<link rel="stylesheet" href="../identidade/temas.css">
+<link rel="stylesheet" href="kit.css">
+<style>
+  .demo-section { margin-bottom: 32px; }
+  .demo-title { font-size: 13px; font-weight: 700; color: var(--texto-suave); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 10px; padding-bottom: 6px; border-bottom: 1px solid var(--linha); }
+  .theme-switcher { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+  .theme-btn { padding: 8px 16px; border: 2px solid var(--linha); border-radius: 100px; background: #fff; cursor: pointer; font-size: 13px; font-weight: 600; transition: all .15s; }
+  .theme-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .theme-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+  .demo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  @media (max-width: 480px) { .demo-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body style="padding: 20px; max-width: 600px; margin: 0 auto; padding-top: calc(20px + env(safe-area-inset-top));" class="tema-g3">
+
+<h1 style="font-size: 22px; margin-bottom: 4px;">Kit UI — Demonstração</h1>
+<p style="font-size: 14px; color: var(--texto-suave); margin-bottom: 24px;">Troque o tema para pré-visualizar cada identidade de grupo.</p>
+
+<div class="theme-switcher">
+  <button class="theme-btn" onclick="setTheme('g1')">G1 Dinheiro na Mão</button>
+  <button class="theme-btn active" onclick="setTheme('g3')">G3 Quita.AI</button>
+  <button class="theme-btn" onclick="setTheme('g4')">G4 SuaCasaSuaVida</button>
+  <button class="theme-btn" onclick="setTheme('g5')">G5 EDA</button>
+  <button class="theme-btn" onclick="setTheme('g6')">G6 Vida no Controle</button>
+</div>
+
+<div class="demo-section">
+  <div class="demo-title">Botões</div>
+  <div style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:10px;">
+    <button class="btn btn-primary">Primário</button>
+    <button class="btn btn-secondary">Secundário</button>
+    <button class="btn btn-ghost">Ghost</button>
+    <button class="btn btn-danger">Remover</button>
+    <button class="btn btn-success">Confirmar</button>
+  </div>
+  <div style="display:flex; flex-wrap:wrap; gap:8px;">
+    <button class="btn btn-primary btn-block">Bloco</button>
+  </div>
+</div>
+
+<div class="demo-section">
+  <div class="demo-title">Cards</div>
+  <div class="card">
+    <div class="card-header">
+      <span class="card-title">Título do Card</span>
+      <span class="badge badge-accent">Novo</span>
+    </div>
+    <div class="card-body">Descrição do card com detalhes relevantes para o usuário.</div>
+    <div class="card-footer">
+      <button class="btn btn-ghost">Cancelar</button>
+      <button class="btn btn-primary">Ação</button>
+    </div>
+  </div>
+</div>
+
+<div class="demo-section">
+  <div class="demo-title">Formulário</div>
+  <div class="card">
+    <div class="form-group">
+      <label class="form-label">Nome</label>
+      <input class="form-input" type="text" placeholder="Digite seu nome" value="Maria da Silva">
+    </div>
+    <div class="form-group">
+      <label class="form-label">Categoria</label>
+      <select class="form-select">
+        <option>Alimentação</option>
+        <option>Transporte</option>
+        <option>Lazer</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Observação</label>
+      <textarea class="form-textarea" placeholder="Detalhes adicionais...">Exemplo de texto preenchido.</textarea>
+    </div>
+    <button class="btn btn-primary btn-block">Salvar</button>
+  </div>
+</div>
+
+<div class="demo-section">
+  <div class="demo-title">Tabs</div>
+  <div class="tabs">
+    <button class="tab active">Gastos</button>
+    <button class="tab">Receitas</button>
+    <button class="tab">Resumo</button>
+  </div>
+</div>
+
+<div class="demo-section">
+  <div class="demo-title">Progresso</div>
+  <div class="progress-bar"><div class="progress-fill" style="width:65%"></div></div>
+  <div class="progress-label"><span>65%</span><span class="text-muted">meta diária</span></div>
+</div>
+
+<div class="demo-section">
+  <div class="demo-title">Badges</div>
+  <div style="display:flex; flex-wrap:wrap; gap:6px;">
+    <span class="badge badge-accent">Accent</span>
+    <span class="badge badge-soft">Soft</span>
+    <span class="badge badge-success">Sucesso</span>
+    <span class="badge badge-warn">Alerta</span>
+    <span class="badge badge-gray">Inativo</span>
+  </div>
+</div>
+
+<div class="demo-section">
+  <div class="demo-title">Lista</div>
+  <div class="card">
+    <div class="list-item">
+      <div class="list-item-icon">🍔</div>
+      <div class="list-item-body">
+        <div class="list-item-title">Almoço no restaurante</div>
+        <div class="list-item-sub">Ontem · R$ 42,50</div>
+      </div>
+      <div class="list-item-action">
+        <button class="btn-icon" aria-label="Editar">✏️</button>
+      </div>
+    </div>
+    <div class="list-item">
+      <div class="list-item-icon">🚌</div>
+      <div class="list-item-body">
+        <div class="list-item-title">Passagem de ônibus</div>
+        <div class="list-item-sub">Hoje · R$ 4,95</div>
+      </div>
+      <div class="list-item-action">
+        <button class="btn-icon" aria-label="Editar">✏️</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="demo-section">
+  <div class="demo-title">Estado Vazio</div>
+  <div class="empty-state">
+    <svg width="64" height="64" viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="30" stroke="currentColor" stroke-width="2" stroke-dasharray="4 4"/><path d="M22 32h20M32 22v20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    <h3>Nenhum item ainda</h3>
+    <p>Toque no botão abaixo para adicionar o primeiro registro.</p>
+    <button class="btn btn-primary">Adicionar</button>
+  </div>
+</div>
+
+<div class="demo-section">
+  <div class="demo-title">Toast (toque para ver)</div>
+  <div style="display:flex; flex-wrap:wrap; gap:8px;">
+    <button class="btn btn-primary" onclick="toast('Mensagem de exemplo','default')">Toast</button>
+    <button class="btn btn-success" onclick="toast('Operação bem-sucedida!','success')">Sucesso</button>
+    <button class="btn btn-danger" onclick="toast('Algo deu errado','error')">Erro</button>
+  </div>
+</div>
+
+<script type="module">
+import { toast } from './kit.js';
+window.toast = toast;
+
+function setTheme(t) {
+  document.body.className = 'tema-' + t;
+  document.querySelectorAll('.theme-btn').forEach(b => b.classList.remove('active'));
+  document.querySelector('.theme-btn:nth-child(' + ['g1','g3','g4','g5','g6'].indexOf(t) + ')').classList.add('active');
+}
+window.setTheme = setTheme;
+</script>
+</body>
+</html>

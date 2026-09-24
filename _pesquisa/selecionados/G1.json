@@ -1,0 +1,268 @@
+[
+  {
+    "titulo": "APLICATIVO UNIVERSITÁRIO DO BEM: DESENVOLVIMENTO DE TECNOLOGIA PARA GESTÃO DE ATIVIDADES COMPLEMENTARES EM INSTITUIÇÕES DE ENSINO SUPERIOR",
+    "ano": 2024,
+    "autores": "Armando Sérgio de Aguiar Filho; Frederico Giffoni de Carvalho Dutra; José Maurício Costa",
+    "periodico": "COLLOQUIUM SOCIALIS",
+    "tipo": "article",
+    "doi": "10.5747/cs.2024.v8.s178",
+    "citacoes": 1,
+    "acesso_aberto": true,
+    "url": "https://journal.unoeste.br/index.php/cs/article/download/4965/3724/24241",
+    "areas": [
+      "Academic Research in Diverse Fields",
+      "Education and Digital Technologies",
+      "Healthcare during COVID-19 Pandemic"
+    ],
+    "abstract": "This article aims to investigate and analyze the behavior profiles and preferences of undergraduate students in relation to complementary activities in order to propose technological alternatives to optimize this process. The research, of exploratory and descriptive character, adopted as a technical procedure the case study at Fumec University, a higher education institution located in the city of Belo Horizonte. Data collection took place through structured interviews, carried out with undergraduate students at Fumec University, from September 1 to 30, 2023. The results indicated the interest of students in using a mobile application as an alternative to the analog methods currently used by...",
+    "openalex_id": "https://openalex.org/W4405024121",
+    "arquivo_bruto": "saidas/G1_atividades_complementares.json"
+  },
+  {
+    "titulo": "ACC DIGITAL: DESENVOLVIMENTO DE UM SISTEMA WEB INTEGRADO PARA CONTROLE E VALIDAÇÃO AUTOMATIZADA DE ATIVIDADES COMPLEMENTARES ACADÊMICAS",
+    "ano": 2026,
+    "autores": "Franco Feitosa Corrêa de Camargo; Daniel Barros Bastos; Natyelle Santana Milhomem; Simone Pio Parreira et al.",
+    "periodico": "Revista Multidisciplinar do Nordeste Mineiro",
+    "tipo": "article",
+    "doi": "10.66104/zh5a8c55",
+    "citacoes": 0,
+    "acesso_aberto": true,
+    "url": "https://remunom.ojsbr.com/multidisciplinar/article/download/7063/6372",
+    "areas": [
+      "Evasion and Academic Success Factors",
+      "Education during COVID-19 pandemic",
+      "Software Engineering Techniques and Practices"
+    ],
+    "abstract": "A integralização curricular no curso de Bacharelado em Engenharia de Software exige o cumprimento de Atividades Curriculares Complementares (ACC), cujo processo de acompanhamento, submissão e validação é historicamente caracterizado por fluxos manuais, descentralizados e altamente burocráticos. Na Universidade do Estado do Pará (UEPA), especificamente no campus de Redenção, o problema é agravado pela dependência de triagem humana na Secretaria Acadêmica (CRCA) para aplicar os tetos de carga horária da Resolução 002/2026 e pelo constante extravio de comprovantes físicos por parte dos discentes. Este trabalho propõe, desenvolve e valida um Sistema Web Integrado para a Gestão Automatizada de At...",
+    "openalex_id": "https://openalex.org/W7167677426",
+    "arquivo_bruto": "saidas/G1_atividades_complementares.json"
+  },
+  {
+    "titulo": "Participação de estudantes de medicina em atividades complementares e suas repercussões acadêmicas e psicossociais",
+    "ano": 2025,
+    "autores": "Jaqueline Perschin Santos; Bianca Vitória Schuta Bodanese; Mariana Demétrio de Sousa Pontes",
+    "periodico": "Espaço para a Saúde - Revista de Saúde Pública do Paraná",
+    "tipo": "article",
+    "doi": "10.22421/1517-7130/es.2025v26.e1090",
+    "citacoes": 0,
+    "acesso_aberto": true,
+    "url": "https://espacoparasaude.fpp.edu.br/index.php/espacosaude/article/download/1090/763/5021",
+    "areas": [
+      "Phytochemistry Medicinal Plant Applications",
+      "Health, Education, and Aging",
+      "Complementary and Alternative Medicine Studies"
+    ],
+    "abstract": "As Atividades Complementares (AC) têm por objetivo enriquecer a formação acadêmica, e estão contempladas no projeto pedagógico de Medicina, conforme as Diretrizes Curriculares Nacionais. Esta pesquisa visou avaliar a participação de discentes do curso de Medicina em AC e suas repercussões acadêmicas e psicossociais. Trata-se de um estudo transversal, com estudantes de Medicina do 1º ao 8º período. As informações coletadas no questionário foram analisadas através do software Google Sheets®. Foram 338 respondentes, cuja média de idade foi 22,9±3,3 anos, 75,6% julgaram \"muito relevante\" o valor das AC na formação acadêmica e 73,9% destacaram o \"estresse\" como a principal repercussão psicossocia...",
+    "openalex_id": "https://openalex.org/W4416718585",
+    "arquivo_bruto": "saidas/G1_atividades_complementares.json"
+  },
+  {
+    "titulo": "Exploring the relationship between extracurricular activities and student self-efficacy within university",
+    "ano": 2021,
+    "autores": "Teri-Lisa Griffiths; Jill Dickinson; Catherine J. Day",
+    "periodico": "Journal of Further and Higher Education",
+    "tipo": "article",
+    "doi": "10.1080/0309877x.2021.1951687",
+    "citacoes": 55,
+    "acesso_aberto": true,
+    "url": "https://www.tandfonline.com/doi/pdf/10.1080/0309877X.2021.1951687?needAccess=true",
+    "areas": [
+      "Higher Education and Employability",
+      "Higher Education Research Studies",
+      "Higher Education Practises and Engagement"
+    ],
+    "abstract": "This exploratory study addresses a gap in the literature for the potential in assessing domain-specific self-efficacy within the context of Higher Education (HE). Focusing on HE students’ participation in extracurricular activities (ECAs), the study builds on the authors’ previous research which recognised the impact of ECAs on HE students’ lived experiences. An initial sample of two hundred and ninety-four students from a from a post-92 Higher Education Institution (HEI) in the North of England (UK) completed a survey designed to measure self-concepts of student self-efficacy, encompassing academic and social tasks, and fifty-four of those students completed a follow-up survey. The key find...",
+    "openalex_id": "https://openalex.org/W3179092458",
+    "arquivo_bruto": "saidas/G1_extracurricular.json"
+  },
+  {
+    "titulo": "The impact of extracurricular activities on university students’ academic success and employability",
+    "ano": 2023,
+    "autores": "Norberto Ribeiro; Carla Malafaia; Tiago Neves; Isabel Menezes",
+    "periodico": "European Journal of Higher Education",
+    "tipo": "article",
+    "doi": "10.1080/21568235.2023.2202874",
+    "citacoes": 41,
+    "acesso_aberto": false,
+    "url": "https://doi.org/10.1080/21568235.2023.2202874",
+    "areas": [
+      "Higher Education Research Studies",
+      "Higher Education and Employability",
+      "Higher Education Practises and Engagement"
+    ],
+    "abstract": "This study provides a narrative synthesis of the findings published in journal articles from a broad range of scientific fields about the impact of extracurricular activities (ECAs) on the academic success and employability of university students. The analysis included 39 articles from the Scopus and Web of Science databases, published over the period 2010–2021. Results show that the vast majority of ECAs have a positive impact on the academic success and employability of university students. ECAs showing a negative impact are residual. In light of these results, higher education institutions should promote activities with an educational purpose outside the strictly curricular objectives and...",
+    "openalex_id": "https://openalex.org/W4372270576",
+    "arquivo_bruto": "saidas/G1_extracurricular.json"
+  },
+  {
+    "titulo": "Higher education student motivations for extracurricular activities: evidence from UK universities",
+    "ano": 2023,
+    "autores": "Gary Chapman; Washad Emambocus; Demola Obembe",
+    "periodico": "Journal of Education and Work",
+    "tipo": "article",
+    "doi": "10.1080/13639080.2023.2167955",
+    "citacoes": 37,
+    "acesso_aberto": true,
+    "url": "https://www.tandfonline.com/doi/epdf/10.1080/13639080.2023.2167955?needAccess=true&role=button",
+    "areas": [
+      "Higher Education Research Studies",
+      "Motivation and Self-Concept in Sports",
+      "Tourism, Volunteerism, and Development"
+    ],
+    "abstract": "Higher education students are required to demonstrate value beyond their curricula achievements to secure jobs in increasingly competitive labour markets. Focusing on extracurricular activities as one-way students can do so, this paper uses a motivation perspective to examine what drives students to engage in extracurricular activities, and how student motivation varies between early and late-stage students. We conducted 46 in-depth interviews with students in a post-92 widening-participation university and found that four motivations – extrinsic, intrinsic, social, and pro-social – explained extracurricular participation. The motivations varied across types of extracurricular activities; ex...",
+    "openalex_id": "https://openalex.org/W4318243834",
+    "arquivo_bruto": "saidas/G1_extracurricular.json"
+  },
+  {
+    "titulo": "The role of extracurricular activities in shaping university students' employment self-efficacy perceptions",
+    "ano": 2021,
+    "autores": "Adam Michael Kanar; Dave Bouckenooghe",
+    "periodico": "Career Development International",
+    "tipo": "article",
+    "doi": "10.1108/cdi-02-2020-0036",
+    "citacoes": 34,
+    "acesso_aberto": false,
+    "url": "https://doi.org/10.1108/cdi-02-2020-0036",
+    "areas": [
+      "Higher Education and Employability",
+      "Gender Diversity and Inequality",
+      "Entrepreneurship Studies and Influences"
+    ],
+    "abstract": "Purpose The present study aimed to understand how participation in university extracurricular activities has a beneficial or detrimental impact on students’ employment self-efficacy through the intervening mechanism of information search strategy. Design/methodology/approach The authors collected data from active job-searching university students across two time-points and hypothesized that the breadth of extracurricular activity participation would positively impact employment self-efficacy perceptions and information search strategies (focused, exploratory and haphazard) would mediate this relationship. Findings Results indicate that the breadth of students' participation in extracurricula...",
+    "openalex_id": "https://openalex.org/W3128922580",
+    "arquivo_bruto": "saidas/G1_extracurricular.json"
+  },
+  {
+    "titulo": "Factors impeding university students' participation in English extracurricular activities: Time constraints and personal obstacles",
+    "ano": 2024,
+    "autores": "Ha Van Le",
+    "periodico": "Heliyon",
+    "tipo": "article",
+    "doi": "10.1016/j.heliyon.2024.e27332",
+    "citacoes": 7,
+    "acesso_aberto": true,
+    "url": "https://doi.org/10.1016/j.heliyon.2024.e27332",
+    "areas": [
+      "Youth Development and Social Support",
+      "Parental Involvement in Education",
+      "Youth Education and Societal Dynamics"
+    ],
+    "abstract": "The incorporation of extracurricular activities (ECAs) that focus on the English language is of utmost importance in higher education as it serves to improve students' interpersonal abilities and proficiency in language. The objective of this study is to ascertain the primary variables that serve as deterrents to the active engagement of university students in these activities. The results highlight notable barriers, including limited time availability and individual issues such as diminished self-assurance in social engagements and restricted competency in the English language. The findings of this study have significant significance for individuals learning a new language and organizers of...",
+    "openalex_id": "https://openalex.org/W4392362227",
+    "arquivo_bruto": "saidas/G1_extracurricular.json"
+  },
+  {
+    "titulo": "Sense of belonging in second-year undergraduate students: the value of extracurricular activities",
+    "ano": 2021,
+    "autores": "Marco De Sisto; Afreen Huq; Genevieve Dickinson",
+    "periodico": "Higher Education Research & Development",
+    "tipo": "article",
+    "doi": "10.1080/07294360.2021.1902951",
+    "citacoes": 39,
+    "acesso_aberto": true,
+    "url": "https://figshare.com/articles/journal_contribution/Sense_of_belonging_in_second-year_undergraduate_students_the_value_of_extracurricular_activities/27543462",
+    "areas": [
+      "Higher Education Research Studies",
+      "Higher Education Practises and Engagement",
+      "Higher Education and Employability"
+    ],
+    "abstract": "This article presents empirical evidence on how second-year students’ sense of belonging and overall experience can be improved through a carefully designed extracurricular activity as an effective approach to practically integrate academic and social dimensions of belongingness. Data were collected at multiple points for this exploratory study that involved a self-administered questionnaire survey with 50 participants followed by a post-activity focus group to explore the effect of cultural awareness on second-year students’ belongingness. Informed by Tinto’s student integration model and extant belonging literature, our findings highlight the importance of all three elements of belongingne...",
+    "openalex_id": "https://openalex.org/W3148433933",
+    "arquivo_bruto": "saidas/G1_extracurricular.json"
+  },
+  {
+    "titulo": "Effectiveness of a Learning Analytics Dashboard for Increasing Student Engagement Levels",
+    "ano": 2023,
+    "autores": "Gomathy Ramaswami; Teo Sušnjak; Anuradha Mathrani",
+    "periodico": "Journal of Learning Analytics",
+    "tipo": "article",
+    "doi": "10.18608/jla.2023.7935",
+    "citacoes": 50,
+    "acesso_aberto": true,
+    "url": "https://learning-analytics.info/index.php/JLA/article/download/7935/7753",
+    "areas": [
+      "Online Learning and Analytics",
+      "Online and Blended Learning",
+      "E-Learning and Knowledge Management"
+    ],
+    "abstract": "Learning Analytics Dashboards (LADs) are gaining popularity as a platform for providing students with insights into their learning behaviour patterns in online environments. Existing LAD studies are mainly centred on displaying students’ online behaviours with simplistic descriptive insights. Only a few studies have integrated predictive components, while none possess the ability to explain how the predictive models work and how they have arrived at specific conclusions for a given student. A further gap exists within existing LADs with respect to prescriptive analytics that generate data-driven feedback to students on how to adjust their learning behaviour. The LAD in this study attempts to...",
+    "openalex_id": "https://openalex.org/W4389607985",
+    "arquivo_bruto": "saidas/G1_learning_dashboard.json"
+  },
+  {
+    "titulo": "Learning analytics for academic paths: student evaluations of two dashboards for study planning and monitoring",
+    "ano": 2023,
+    "autores": "Anni Silvola; Amanda M. Sjoblom; Piia Näykki; Egle Gedrimiene et al.",
+    "periodico": "Frontline Learning Research",
+    "tipo": "article",
+    "doi": "10.14786/flr.v11i2.1277",
+    "citacoes": 9,
+    "acesso_aberto": true,
+    "url": "https://journals.sfu.ca/flr/flr/index.php/journal/article/download/1277/1173",
+    "areas": [
+      "Online Learning and Analytics",
+      "Evaluation of Teaching Practices",
+      "Online and Blended Learning"
+    ],
+    "abstract": "An in-depth understanding of student experiences and evaluations of learning analytics dashboards (LADs) is needed to develop supportive learning analytics tools. This study investigates how students (N = 140) evaluated two student-facing LADs as a support for academic path-level self-regulated learning (SRL) through the concrete processes of planning and monitoring studies. Aim of the study was to gain new understanding about student perspectives for LAD use on academic path-level context. The study specifically focused on the student evaluations of the dashboard support and challenges, and the differences of student evaluations based on their self-efficacy beliefs and resource management s...",
+    "openalex_id": "https://openalex.org/W4389392829",
+    "arquivo_bruto": "saidas/G1_learning_dashboard.json"
+  },
+  {
+    "titulo": "Investigating the impact of a gamified learning analytics dashboard: Student experiences and academic achievement",
+    "ano": 2023,
+    "autores": "Md Imtiajul Alam; Lauren Malone; Larysa Nadolny; Michael Geoffrey Brown et al.",
+    "periodico": "Journal of Computer Assisted Learning",
+    "tipo": "article",
+    "doi": "10.1111/jcal.12853",
+    "citacoes": 33,
+    "acesso_aberto": true,
+    "url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1111/jcal.12853",
+    "areas": [
+      "Educational Games and Gamification",
+      "Online Learning and Analytics",
+      "Innovations in Educational Methods"
+    ],
+    "abstract": "Abstract Background The substantial growth in gamification research has connected gamified learning to enhanced engagement, improved performance, and greater motivation. Similar to gamification, personalized learning analytics dashboards can enhance student engagement. Objectives This study explores the student experiences and academic achievements using a gamified dashboard in a large, introductory STEM course. Methods We examined two groups of students enrolled in different sections of a one‐semester‐long physical geology course with a total enrollment of 223 students. The only difference between the groups was that one had access to the dashboard. The data collection included students' as...",
+    "openalex_id": "https://openalex.org/W4385633299",
+    "arquivo_bruto": "saidas/G1_learning_dashboard.json"
+  },
+  {
+    "titulo": "Gamification as a Strategy to Increase Motivation and Engagement in Higher Education Chemistry Students",
+    "ano": 2021,
+    "autores": "Guillermo Manuel Chans; May Portuguez Castro",
+    "periodico": "Computers",
+    "tipo": "article",
+    "doi": "10.3390/computers10100132",
+    "citacoes": 173,
+    "acesso_aberto": true,
+    "url": "https://doi.org/10.3390/computers10100132",
+    "areas": [
+      "Educational Games and Gamification",
+      "Educational Innovations and Technology",
+      "Online Learning and Analytics"
+    ],
+    "abstract": "In the last year, educational experiences have become increasingly challenging due to teaching classes remotely. For this reason, it has been necessary to develop educational strategies that accompany the use of new technologies to maintain student interest. One of these methodologies is gamification, implemented in school environments more frequently due to the pandemic and whose impact on student motivation and engagement needs to be explored. The literature shows that student participation in these contexts should be increased when applying this methodology, where teachers can also provide greater support. This research proposes improving these aspects by developing a gamification strateg...",
+    "openalex_id": "https://openalex.org/W3206740857",
+    "arquivo_bruto": "saidas/G1_gamification_he.json"
+  },
+  {
+    "titulo": "Student engagement profiles in a mobile app: Links to self-regulated learning and performance",
+    "ano": 2026,
+    "autores": "Jacqueline Wong; Mohammad Khalil; Vsevolod Suschevskiy; Martine Baars et al.",
+    "periodico": "Educational Technology Research and Development",
+    "tipo": "article",
+    "doi": "10.1007/s11423-026-10586-2",
+    "citacoes": 3,
+    "acesso_aberto": true,
+    "url": "https://link.springer.com/content/pdf/10.1007/s11423-026-10586-2.pdf",
+    "areas": [
+      "Innovative Teaching and Learning Methods",
+      "Mobile Learning in Education",
+      "Innovative Teaching Methods"
+    ],
+    "abstract": "Engaging in independent learning during self-study time is an essential part of learning in higher education. The ubiquity of mobile devices and their applications offer students a flexible, on-the-go learning experience. However, flexible learning environments require students to self-regulate their learning. The current study examined student engagement with a mobile study app intended for students to engage in retrieval practice with feedback as part of self-regulated learning (SRL). Three research questions were addressed: (1) What are the student engagement profiles that can be identified based on students' activity with the study app? (2) Do the profiles differ in SRL and academic perf...",
+    "openalex_id": "https://openalex.org/W7125368076",
+    "arquivo_bruto": "saidas/G1_student_engagement_app.json"
+  }
+]

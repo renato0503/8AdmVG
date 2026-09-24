@@ -1,0 +1,23 @@
+{
+  "name": "VozGuia",
+  "short_name": "VozGuia",
+  "description": "O celular vira um assistente sonoro — e a cidade fica sabendo onde está o obstáculo",
+  "start_url": "app.html",
+  "display": "standalone",
+  "background_color": "#f7f8fb",
+  "theme_color": "#1e3a8a",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "../assets/logos/g3-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "../assets/logos/g3-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

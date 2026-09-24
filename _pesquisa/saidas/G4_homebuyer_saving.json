@@ -1,0 +1,109 @@
+[
+  {
+    "titulo": "The effect of homeownership on migrant household savings: Evidence from the removal of home purchase restrictions in China",
+    "ano": 2021,
+    "autores": "Jing Tan; Xu Hao; Jingwen Yu",
+    "periodico": "Economic Modelling",
+    "tipo": "article",
+    "doi": "10.1016/j.econmod.2021.105679",
+    "citacoes": 23,
+    "acesso_aberto": false,
+    "url": "https://doi.org/10.1016/j.econmod.2021.105679",
+    "areas": [
+      "Housing Market and Economics",
+      "Financial Literacy, Pension, Retirement Analysis",
+      "Urban and Rural Development Challenges"
+    ],
+    "abstract": "",
+    "openalex_id": "https://openalex.org/W3206967337"
+  },
+  {
+    "titulo": "Do the Retired Elderly in Europe Decumulate Their Wealth? The Importance of Bequest Motives, Precautionary Saving, Public Pensions, and Homeownership",
+    "ano": 2022,
+    "autores": "Charles Yuji Horioka; Luigi Ventura",
+    "periodico": "Review of Income and Wealth",
+    "tipo": "article",
+    "doi": "10.1111/roiw.12632",
+    "citacoes": 21,
+    "acesso_aberto": true,
+    "url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1111/roiw.12632",
+    "areas": [
+      "Financial Literacy, Pension, Retirement Analysis",
+      "Retirement, Disability, and Employment",
+      "Housing Market and Economics"
+    ],
+    "abstract": "Abstract We use microdata on a large number of European countries from the Survey of Health, Ageing and Retirement in Europe (SHARE) to examine the wealth accumulation (saving) behavior of the retired elderly in Europe. We find that less than half of the retired elderly in Europe are decumulating their wealth and that the average wealth accumulation rate of the retired elderly in Europe is positive though relatively moderate (6.6 percent over a 3‐year period). These findings suggest that the Wealth Decumulation Puzzle (the tendency of the retired elderly to not decumulate their wealth or to decumulate their wealth more slowly than expected) applies in the case of Europe. Moreover, our regres...",
+    "openalex_id": "https://openalex.org/W4312191098"
+  },
+  {
+    "titulo": "Unraveling the complexities: Impacts of energy burden on the built environment challenges among assistance-dependent populations in the United Kingdom",
+    "ano": 2024,
+    "autores": "Wei-An Chen; Chien Chen; Mingzhe Liu; Robin Rickard",
+    "periodico": "Building and Environment",
+    "tipo": "article",
+    "doi": "10.1016/j.buildenv.2024.111385",
+    "citacoes": 12,
+    "acesso_aberto": true,
+    "url": "https://doi.org/10.1016/j.buildenv.2024.111385",
+    "areas": [
+      "Energy and Environment Impacts",
+      "Urban Transport and Accessibility",
+      "Youth Education and Societal Dynamics"
+    ],
+    "abstract": "",
+    "openalex_id": "https://openalex.org/W4392380759"
+  },
+  {
+    "titulo": "Large Datasets for the Euro Area and Its Member Countries and the Dynamic Effects of the Common Monetary Policy",
+    "ano": 2026,
+    "autores": "Matteo Barigozzi; Claudio Lissona; Lorenzo Tonni",
+    "periodico": "Journal of Applied Econometrics",
+    "tipo": "article",
+    "doi": "10.1002/jae.70083",
+    "citacoes": 1,
+    "acesso_aberto": true,
+    "url": "https://doi.org/10.1002/jae.70083",
+    "areas": [
+      "Monetary Policy and Economic Impact",
+      "Italy: Economic History and Contemporary Issues"
+    ],
+    "abstract": "ABSTRACT We introduce EA‐MD‐QD, a new publicly available dataset comprising 1136 macroeconomic time series for the euro area (EA) and its ten largest member countries observed at monthly or quarterly frequency. Since January 2024, EA‐MD‐QD has been updated monthly and continuously revised, providing a valuable resource for policy analysis in the EA. Using EA‐MD‐QD, we study country‐specific impulse responses to an EA‐wide monetary policy shock. Results reveal moderate yet significant cross‐country heterogeneity, with differences between so‐called core countries, such as France and Germany, and peripheral countries, such as Italy and Spain, in their price and interest rate responses, together...",
+    "openalex_id": "https://openalex.org/W4403324053"
+  },
+  {
+    "titulo": "The intersection of caregiving and financial vulnerability: Empowerment barriers for women in sex work",
+    "ano": 2025,
+    "autores": "Massy Mutumba; Ozge Sensoy Bahar; Proscovia Nabunya; Susan S. Witte et al.",
+    "periodico": "Children and Youth Services Review",
+    "tipo": "article",
+    "doi": "10.1016/j.childyouth.2025.108374",
+    "citacoes": 1,
+    "acesso_aberto": true,
+    "url": "https://doi.org/10.1016/j.childyouth.2025.108374",
+    "areas": [
+      "Sex work and related issues",
+      "Poverty, Education, and Child Welfare",
+      "Migration and Labor Dynamics"
+    ],
+    "abstract": "",
+    "openalex_id": "https://openalex.org/W4410796000"
+  },
+  {
+    "titulo": "Large Datasets for the Euro Area and Its Member Countries and the Dynamic Effects of the Common Monetary Policy",
+    "ano": 2026,
+    "autores": "Matteo Barigozzi; Claudio Lissona; Lorenzo Tonni",
+    "periodico": "Archivio Istituzionale della Ricerca (Universita Degli Studi Di Milano)",
+    "tipo": "article",
+    "doi": "10.1002/jae.70083",
+    "citacoes": 0,
+    "acesso_aberto": true,
+    "url": "https://air.unimi.it/bitstream/2434/1271382/2/J%20of%20Applied%20Econometrics%20-%202026%20-%20Barigozzi%20-%20Large%20Datasets%20for%20the%20Euro%20Area%20and%20Its%20Member%20Countries%20and%20the%20Dynamic.pdf",
+    "areas": [
+      "Italy: Economic History and Contemporary Issues",
+      "Monetary Policy and Economic Impact",
+      "Financial Risk and Volatility Modeling"
+    ],
+    "abstract": "We introduce EA-MD-QD, a new publicly available dataset comprising 1136 macroeconomic time series for the euro area (EA) and its ten largest member countries observed at monthly or quarterly frequency.Since January 2024, EA-MD-QD has been updated monthly and continuously revised, providing a valuable resource for policy analysis in the EA.Using EA-MD-QD, we study country-specific impulse responses to an EA-wide monetary policy shock.Results reveal moderate yet significant cross-country heterogeneity, with differences between so-called core countries, such as France and Germany, and peripheral countries, such as Italy and Spain, in their price and interest rate responses, together with meanin...",
+    "openalex_id": "https://openalex.org/W7171652011"
+  }
+]

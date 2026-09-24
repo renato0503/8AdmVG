@@ -1,0 +1,268 @@
+[
+  {
+    "titulo": "Reflections of Technological Developments on Tourist Guidance: Mobile Tourist Guide Applications",
+    "ano": 2024,
+    "autores": "Remziye Ekici Cilkin; Derya TOKSÖZ",
+    "periodico": "Journal of Tourism and Gastronomy Studies",
+    "tipo": "article",
+    "doi": "10.21325/jotags.2024.1388",
+    "citacoes": 2,
+    "acesso_aberto": true,
+    "url": "https://jotags.net/index.php/jotags/article/download/2067/3168/5221",
+    "areas": [
+      "Digital Marketing and Social Media",
+      "Human Mobility and Location-Based Analysis",
+      "Technology Adoption and User Behaviour"
+    ],
+    "abstract": "Technology is spreading to all areas of life day by day and has a significant impact on the tourism system, which consists of many different components. The profession of tourist guiding is also affected by technology and innovation. Advanced GPS-supported map applications, applications that offer detailed, written and audio descriptions of museums and protected areas can now offer tourists the alternative of travelling without a guide, even in destinations they visit for the first time. In this study, the effects of mobile tourist guide applications on the field of profession were examined by giving sample technological applications. The research conducted is a review study and the applicat...",
+    "openalex_id": "https://openalex.org/W4393961076",
+    "arquivo_bruto": "saidas/G2_tourism_mobile_guide.json"
+  },
+  {
+    "titulo": "Creating Location-Based Mobile Applications for Tourism: A Virtual AR Guide for Western Macedonia",
+    "ano": 2024,
+    "autores": "Athanasios Evagelou; Alexandros Kleftodimos; Georgios Lappas",
+    "periodico": "Digital",
+    "tipo": "article",
+    "doi": "10.3390/digital4010014",
+    "citacoes": 15,
+    "acesso_aberto": true,
+    "url": "https://doi.org/10.3390/digital4010014",
+    "areas": [
+      "Augmented Reality Applications",
+      "Virtual Reality Applications and Impacts",
+      "Spatial Cognition and Navigation"
+    ],
+    "abstract": "Augmented reality (AR) applications are currently used in many fields for communication and educational purposes. Tourism is also a sector where augmented reality is used for destination marketing and cultural heritage promotion. This study will focus on mobile location-based AR applications and their potential in tourism. Such applications can guide tourists to places of interest and enhance their overall experience. The aim of this paper is to present a mobile application that was created for tourists visiting the region of Western Macedonia, Greece. The application was developed in order to guide the users in the region, entertain them, and educate them about the region’s sights, cultural...",
+    "openalex_id": "https://openalex.org/W4392388408",
+    "arquivo_bruto": "saidas/G2_tourism_mobile_guide.json"
+  },
+  {
+    "titulo": "Enhancing tourist loyalty through location-based service apps: Exploring the roles of digital literacy, perceived ease of use, perceived autonomy, virtual-content congruency, and tourist engagement",
+    "ano": 2024,
+    "autores": "Shaowei Xiong; Tong Zhang",
+    "periodico": "PLoS ONE",
+    "tipo": "article",
+    "doi": "10.1371/journal.pone.0294244",
+    "citacoes": 28,
+    "acesso_aberto": true,
+    "url": "https://journals.plos.org/plosone/article/file?id=10.1371/journal.pone.0294244&type=printable",
+    "areas": [
+      "Digital Marketing and Social Media",
+      "Technology Adoption and User Behaviour",
+      "Customer Service Quality and Loyalty"
+    ],
+    "abstract": "Advanced mobile functions and empowered smartphones have provided tourists with various location-based service apps that reshaped the business model of the tourism sector. Despite their importance to tourists, l-apps still have limitations, such as ignorance of tourist preferences and the mismatch between app introduction and tourist experience, therefore affecting tourist loyalty to destinations. Understanding tourist-oriented factors thus becomes critical for l-app designers and service providers. This study integrates the technology-acceptance model (TAM) into a unique context to examine the roles of digital literacy, perceived ease of use, perceived autonomy, virtual-content congruence, ...",
+    "openalex_id": "https://openalex.org/W4391381233",
+    "arquivo_bruto": "saidas/G2_location_based_tourism.json"
+  },
+  {
+    "titulo": "Personalized tourist route recommendation model with a trajectory understanding via neural networks",
+    "ano": 2022,
+    "autores": "Naixia Mou; Qi Jiang; Lingxian Zhang; Jiqiang Niu et al.",
+    "periodico": "International Journal of Digital Earth",
+    "tipo": "article",
+    "doi": "10.1080/17538947.2022.2130456",
+    "citacoes": 56,
+    "acesso_aberto": true,
+    "url": "https://doi.org/10.1080/17538947.2022.2130456",
+    "areas": [
+      "Human Mobility and Location-Based Analysis",
+      "Diverse Aspects of Tourism Research",
+      "Data Management and Algorithms"
+    ],
+    "abstract": "Travel recommendations form a major part of tourism service. Traditional collaborative filtering and Markov model are not appropriate for expressing the trajectory features, for travel preferences of tourists are dynamic and affected by previous behaviors. Inspired by the success of deep learning in sequence learning, a personalized recurrent neural network (P-RecN) is proposed for tourist route recommendation. It is data-driven and adaptively learns the unknown mapping of historical trajectory input to recommended route output. Specifically, a trajectory encoding module is designed to mine the semantic information of trajectory data, and LSTM neural networks are used to capture the sequence...",
+    "openalex_id": "https://openalex.org/W4307356454",
+    "arquivo_bruto": "saidas/G2_route_recommendation.json"
+  },
+  {
+    "titulo": "The effect of intelligent tour guide system based on attraction positioning and recommendation to improve the experience of tourists visiting scenic spots",
+    "ano": 2023,
+    "autores": "Haiyan Niu",
+    "periodico": "Intelligent Systems with Applications",
+    "tipo": "article",
+    "doi": "10.1016/j.iswa.2023.200263",
+    "citacoes": 14,
+    "acesso_aberto": true,
+    "url": "https://doi.org/10.1016/j.iswa.2023.200263",
+    "areas": [
+      "Diverse Aspects of Tourism Research",
+      "Digital Marketing and Social Media",
+      "Cruise Tourism Development and Management"
+    ],
+    "abstract": "With the advancement of technology and economic development, human living standards have been substantially improved. The demand for tourism has also increased. Smart tourism uses information technology to integrate tourism resources. Tourists are provided with the right travel solutions for their needs. To further enhance the tourist experience, a smart tour guide system based on attraction positioning and recommendation is proposed. The RankSVM+time algorithm and K-means clustering algorithm are used to achieve attraction recommendation. The tourist flow path planning method of scenic spots is combined with D*algorithm to realize dynamic programming of tourist routes. A smart tour guide sy...",
+    "openalex_id": "https://openalex.org/W4385582454",
+    "arquivo_bruto": "saidas/G2_route_recommendation.json"
+  },
+  {
+    "titulo": "Investigating the Impact of Smart Tourism Technologies on Tourists’ Experiences",
+    "ano": 2022,
+    "autores": "Yuwen Zhang; Marios D. Sotiriadis; Shiwei Shen",
+    "periodico": "Sustainability",
+    "tipo": "article",
+    "doi": "10.3390/su14053048",
+    "citacoes": 165,
+    "acesso_aberto": true,
+    "url": "https://www.mdpi.com/2071-1050/14/5/3048/pdf?version=1646636054",
+    "areas": [
+      "Digital Marketing and Social Media",
+      "Diverse Aspects of Tourism Research",
+      "Technology Adoption and User Behaviour"
+    ],
+    "abstract": "The adoption and implementation of smart technologies in tourism destinations and visitor attractions to enrich tourists’ experiences and improve their satisfaction has become a new trend. The main purpose of this study was to explore the influence of the dimensions/attributes of smart technologies on tourism experience in the context of visitor attractions and related outcomes (satisfaction and post-consumption behavioral intentions). The Liangzhu Museum, Zhejiang Province, China, was used as the study area, and data were collected from 486 visitors and analyzed with a regression model. The results show that accessibility and interactivity affect smart technology-enhanced experiences. Touri...",
+    "openalex_id": "https://openalex.org/W4220946781",
+    "arquivo_bruto": "saidas/G2_smart_tourism.json"
+  },
+  {
+    "titulo": "Enhancing Memorable Experiences, Tourist Satisfaction, and Revisit Intention through Smart Tourism Technologies",
+    "ano": 2022,
+    "autores": "Zabih-Allah Torabi; Ali Asghar Shalbafian; Zaheer Allam; Zahed Ghaderi et al.",
+    "periodico": "Sustainability",
+    "tipo": "article",
+    "doi": "10.3390/su14052721",
+    "citacoes": 160,
+    "acesso_aberto": true,
+    "url": "https://www.mdpi.com/2071-1050/14/5/2721/pdf?version=1662425975",
+    "areas": [
+      "Digital Marketing and Social Media",
+      "Diverse Aspects of Tourism Research",
+      "Technology Adoption and User Behaviour"
+    ],
+    "abstract": "Global connectivity facilitated tourism and redefined economic landscapes, highlight an interest in better understanding tourism retention factors. Today, in view of the global COVID-19 pandemic, this is made even more important as the world prepares to lift lockdown restrictions and to re-engage in cross border circulation; reiterating needs to understand tourism satisfaction and revisit intentions. This study thus sheds light on the predictors of tourists’ intention to the explorative and exploitative use of Smart Tourism Technologies (STTs) and memorable experiences in tourism destinations via an integrated model and a self-administered questionnaire—distributed among domestic tourists vi...",
+    "openalex_id": "https://openalex.org/W4214557193",
+    "arquivo_bruto": "saidas/G2_smart_tourism.json"
+  },
+  {
+    "titulo": "An Examination of Revisit Intention Based on Perceived Smart Tourism Technology Experience",
+    "ano": 2021,
+    "autores": "Chen-Kuo Pai; Sangguk Kang; Yumeng Liu; Yingchuan Zheng",
+    "periodico": "Sustainability",
+    "tipo": "article",
+    "doi": "10.3390/su13021007",
+    "citacoes": 86,
+    "acesso_aberto": true,
+    "url": "https://www.mdpi.com/2071-1050/13/2/1007/pdf?version=1611137340",
+    "areas": [
+      "Digital Marketing and Social Media",
+      "Diverse Aspects of Tourism Research",
+      "Technology Adoption and User Behaviour"
+    ],
+    "abstract": "With the development of sustainable technology and the continuous innovation of people’s travel styles, smart tourism technology (STT) is widely used in various tourism fields. STT has changed the traditional travel experience while enhancing destination competitiveness. This study examines the relationships between perceived STT experience, travel experience, and revisit intention. A total of 312 valid questionnaires were collected from tourists who had the experience of using local STT in Macau. A structural equation modeling (SEM) was used to test the proposed model, and the results showed that perceived STT experience had a significant influence on the travel experience, and travel exper...",
+    "openalex_id": "https://openalex.org/W3124642909",
+    "arquivo_bruto": "saidas/G2_smart_tourism.json"
+  },
+  {
+    "titulo": "Effects of privacy concern, risk, and information control in a smart tourism destination",
+    "ano": 2021,
+    "autores": "Olayinka Olasumbo Afolabi; Ali Öztüren; Mustafa İlkan",
+    "periodico": "Economic Research-Ekonomska Istraživanja",
+    "tipo": "article",
+    "doi": "10.1080/1331677x.2020.1867215",
+    "citacoes": 50,
+    "acesso_aberto": true,
+    "url": "https://www.tandfonline.com/doi/pdf/10.1080/1331677X.2020.1867215?needAccess=true",
+    "areas": [
+      "Digital Marketing and Social Media",
+      "Technology Adoption and User Behaviour",
+      "Customer Service Quality and Loyalty"
+    ],
+    "abstract": "Smart tourism destinations are growing, with the use and implementation of technology to make travel more enjoyable. Still, the tourist's information privacy concerns generated by the big data available to the destination and service providers is a significant problem for smart tourism, which can affect the sustainability and economic benefit of the smart tourism destination. This study investigates privacy concern, perceived risk, control of information, service provider trust in a smart tourism destination, and the resulting behavioural intentions. The results were obtained using an online survey of 384 respondents that have visited the smart tourism destination Dubai. The results indicate...",
+    "openalex_id": "https://openalex.org/W3120107658",
+    "arquivo_bruto": "saidas/G2_location_based_tourism.json"
+  },
+  {
+    "titulo": "Can travel apps improve tourists’ intentions? Investigating the drivers of Chinese gen Y users’ experience",
+    "ano": 2023,
+    "autores": "Ziyi Gao; Jun‐Hwa Cheah; Xin‐Jean Lim; Siew Imm Ng et al.",
+    "periodico": "Journal Of Vacation Marketing",
+    "tipo": "article",
+    "doi": "10.1177/13567667231152938",
+    "citacoes": 45,
+    "acesso_aberto": false,
+    "url": "https://doi.org/10.1177/13567667231152938",
+    "areas": [
+      "Digital Marketing and Social Media",
+      "Technology Adoption and User Behaviour",
+      "Consumer Behavior in Brand Consumption and Identification"
+    ],
+    "abstract": "In the age of digitalization, travel applications (or travel apps) are indispensable tools for modern travel activities. During an app's selection and adoption phases, privacy concerns remain a sensitive issue that may demotivate users’ from continuing to use it. This study integrated both the stimulus-organism-response model (S-O-R) and psychological reaction theory (PRT) to explore the factors that influence users’ app usage experiences and behavioral responses. A self-administered questionnaire was designed and distributed to Gen Y users in mainland China. The findings of PLS-SEM analysis showed that usage intentions are predicted by the ability of travel apps to engage with users and gen...",
+    "openalex_id": "https://openalex.org/W4318822487",
+    "arquivo_bruto": "saidas/G2_tourism_app_adoption.json"
+  },
+  {
+    "titulo": "Does domestic tourism reduce regional inequalities in Brazil?",
+    "ano": 2022,
+    "autores": "Luiz Carlos de Santana Ribeiro; Gervásio Ferreira dos Santos; Milene Takasago",
+    "periodico": "Current Issues in Tourism",
+    "tipo": "article",
+    "doi": "10.1080/13683500.2022.2126965",
+    "citacoes": 15,
+    "acesso_aberto": true,
+    "url": "https://repositorio.ufba.br/handle/ri/42839",
+    "areas": [
+      "Diverse Aspects of Tourism Research",
+      "Energy, Environment, Economic Growth",
+      "Urban Transport and Accessibility"
+    ],
+    "abstract": "The literature argues that tourism development decreases regional inequality. Brazil has one of the most unequal regional income distributions in the world. This research note aims to measure the economic impact of domestic tourism expenditure on regional inequality in Brazil. We use an inter-regional input–output model calibrated for the five macro-regions of Brazil. The main results indicate that the Northeast has felt the highest economic impact among Brazilian regions due to domestic tourism expenditure. Furthermore, domestic tourism has helped to reduce Brazilian regional inequality. Policymakers should improve the tourism sector in order to maximize this effect, especially in poor regi...",
+    "openalex_id": "https://openalex.org/W4302010939",
+    "arquivo_bruto": "saidas/G2_brazil_tourism.json"
+  },
+  {
+    "titulo": "Tourism and the economy: evidence from Brazil",
+    "ano": 2022,
+    "autores": "Thiago Christiano Silva; Pedro Vicente da Silva Neto; Benjamin Miranda Tabak",
+    "periodico": "Current Issues in Tourism",
+    "tipo": "article",
+    "doi": "10.1080/13683500.2022.2048804",
+    "citacoes": 14,
+    "acesso_aberto": false,
+    "url": "https://doi.org/10.1080/13683500.2022.2048804",
+    "areas": [
+      "Fiscal Policy and Economic Growth",
+      "Diverse Aspects of Tourism Research",
+      "Regional Economics and Spatial Analysis"
+    ],
+    "abstract": "We explore a discontinuity in the incentives created by the Brazilian Tourism Regionalization Program. We employ a research discontinuity design, focussing on municipalities in the transitions between two classes. We observe significant effects of the Program in tourist cities, including an increase in the value-added of services and per capita GDP. Additionally, we find that the value-added in industrial activities increases, implying a spillover effect from the improvement in local tourism conditions for other economic activities. Our article documents how tourism strategies can have a beneficial effect on a city's entire economic structure.",
+    "openalex_id": "https://openalex.org/W4220922808",
+    "arquivo_bruto": "saidas/G2_brazil_tourism.json"
+  },
+  {
+    "titulo": "The role of digital technologies in promoting social innovation in tourism Brazilian companies",
+    "ano": 2025,
+    "autores": "Michelle Maiurro; Zélia Maria de Jesus Breda; Filipa Brandão; Carlos Manuel Martins da Costa",
+    "periodico": "European Public & Social Innovation Review",
+    "tipo": "article",
+    "doi": "10.31637/epsir-2026-1979",
+    "citacoes": 2,
+    "acesso_aberto": true,
+    "url": "https://epsir.net/index.php/epsir/article/download/1979/1725",
+    "areas": [
+      "Entrepreneurship Studies and Influences",
+      "Innovation and Socioeconomic Development",
+      "Digital Marketing and Social Media"
+    ],
+    "abstract": "Introduction: Promoting social innovation and social entrepreneurship is key to building sustainable tourism destinations. In this way, entrepreneurship, through social innovation, aims to generate social impact to the detriment of financial benefits. Digital technologies can be important tools to support social innovation, as they enable new forms of cooperation, expanding social and innovative activities. In this sense, the aim of the study is to analyze entrepreneurship in the tourism sector, with an emphasis on good social innovation practices, and to explore the relevance of digital technologies in the creation and promotion innovation. Methodology: The empirical study used case study a...",
+    "openalex_id": "https://openalex.org/W4414800566",
+    "arquivo_bruto": "saidas/G2_brazil_tourism.json"
+  },
+  {
+    "titulo": "Tourism destination mobile applications: an AI-human loop analysis and future research programme",
+    "ano": 2026,
+    "autores": "Arghavan Hadinejad; Naser Pourazad; Lara Stocchi; Violetta Wik",
+    "periodico": "Tourism Recreation Research",
+    "tipo": "article",
+    "doi": "10.1080/02508281.2025.2598874",
+    "citacoes": 3,
+    "acesso_aberto": true,
+    "url": "https://ro.ecu.edu.au/ecuworks2022-2026/7538",
+    "areas": [
+      "Human Mobility and Location-Based Analysis",
+      "Spatial Cognition and Navigation",
+      "Transportation and Mobility Innovations"
+    ],
+    "abstract": "Despite the rise in destination mobile applications (apps) and their significance in the tourism sector, there remains a notable dearth of critical assessments of knowledge on the topic, which is necessary to guide future academic and industry endeavours. To bridge the gap, this research conducts a systematic review to synthesise scholarly knowledge on tourism destination mobile apps. The analysis reveals topical clusters including prototyping and scoping, consolidation, and forecasting and further technological advancements between 2009 and 2023. The existing scholarship is predominantly quantitative and atheoretical, with the Technology Acceptance Model being the most frequently applied fr...",
+    "openalex_id": "https://openalex.org/W7118084344",
+    "arquivo_bruto": "saidas/G2_tourism_mobile_guide.json"
+  }
+]

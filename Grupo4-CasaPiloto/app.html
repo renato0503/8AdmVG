@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#b45309">
+<title>CasaPiloto — escolha a casa e veja o caminho</title>
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/svg+xml" href="../assets/logos/g4.svg">
+<link rel="apple-touch-icon" href="../assets/logos/g4-192.png">
+<link rel="stylesheet" href="../assets/identidade/temas.css">
+<link rel="stylesheet" href="../assets/mvp/mvp.css">
+<style>
+.casa .planta{width:100%;background:#fffbeb;border:1px solid #fde68a;border-radius:12px;margin:8px 0}
+.casa .preco{font-family:var(--fonte-titulo);font-size:22px;font-weight:700;color:var(--accent-dark)}
+.casa.sel{outline:3px solid var(--accent);outline-offset:-3px}
+.sl{margin-bottom:14px}
+.sl .entre{font-size:13.5px;font-weight:700;color:#334155}
+.sl output{font-weight:800;color:var(--accent-dark)}
+.caminho{border-left:5px solid var(--accent);padding-left:12px}
+.caminho.c2{border-color:var(--accent2)}
+.caminho.c3{border-color:#1c1917}
+.caminho .grande{font-family:var(--fonte-titulo);font-size:24px;font-weight:700;color:var(--tinta)}
+.semaforo{display:inline-flex;align-items:center;gap:6px;font-weight:800;font-size:13px}
+.semaforo i{width:12px;height:12px;border-radius:50%;display:inline-block}
+table.cmp{width:100%;border-collapse:collapse;font-size:13px}
+table.cmp th,table.cmp td{padding:8px 6px;border-bottom:1px solid #e7e5e4;text-align:left;vertical-align:top}
+table.cmp th{font-size:11.5px;text-transform:uppercase;color:#78716c}
+.tab-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+</style>
+</head>
+<body class="tema-g4">
+<div class="app">
+  <header class="topo">
+    <div class="marca">
+      <img src="../assets/logos/g4.svg" alt="">
+      <div><h1>CasaPiloto</h1><div class="sub">Construtora Exemplo · simulador de compra</div></div>
+      <div class="acoes">
+        <button class="icone-btn" id="btn-instalar" hidden aria-label="Instalar app"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg></button>
+        <a class="icone-btn" href="index.html" aria-label="Sobre o projeto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/></svg></a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ============ CASAS ============ -->
+    <section class="view" data-view="casas" aria-label="Casas piloto">
+      <div class="aviso-exemplo">Modelos, preços e taxas de <b>exemplo</b>. As simulações são <b>estimativas</b> e não são proposta de crédito. Confira condições reais com a construtora e o banco.</div>
+      <h3 class="titulo-sec">Escolha sua casa piloto</h3>
+      <div id="lista-casas"></div>
+      <h3 class="titulo-sec">Comparar todas</h3>
+      <div class="card tab-wrap" id="comparar"></div>
+    </section>
+
+    <!-- ============ SIMULAR ============ -->
+    <section class="view" data-view="simular" aria-label="Simular">
+      <div class="card destaque">
+        <div class="entre"><div><div class="muted">Casa escolhida</div><b id="s-casa">—</b></div><span class="casa"><span class="preco" id="s-preco">—</span></span></div>
+      </div>
+      <h3 class="titulo-sec">Seu momento</h3>
+      <div class="card">
+        <div class="campo"><label for="i-renda">Renda familiar (faixa)</label><select id="i-renda"></select></div>
+        <div class="sl"><div class="entre"><label for="i-dep">Quanto consigo guardar por mês</label><output id="o-dep"></output></div><input type="range" id="i-dep" min="200" max="8000" step="100"></div>
+        <div class="sl"><div class="entre"><label for="i-alug">Aluguel que pago hoje</label><output id="o-alug"></output></div><input type="range" id="i-alug" min="0" max="5000" step="100"></div>
+        <div class="sl"><div class="entre"><label for="i-fgts">Saldo de FGTS para usar</label><output id="o-fgts"></output></div><input type="range" id="i-fgts" min="0" max="80000" step="1000"></div>
+      </div>
+      <h3 class="titulo-sec">Premissas <span class="chip atencao">a validar</span></h3>
+      <div class="card">
+        <div class="sl"><div class="entre"><label for="i-ent">Entrada no financiamento</label><output id="o-ent"></output></div><input type="range" id="i-ent" min="10" max="50" step="5"></div>
+        <div class="sl"><div class="entre"><label for="i-prazo">Prazo do financiamento</label><output id="o-prazo"></output></div><input type="range" id="i-prazo" min="10" max="35" step="1"></div>
+        <div class="sl"><div class="entre"><label for="i-juros">Juros do financiamento (ao ano)</label><output id="o-juros"></output></div><input type="range" id="i-juros" min="5" max="14" step="0.25"></div>
+        <div class="sl"><div class="entre"><label for="i-inv">Rendimento de investimento (ao ano, líquido)</label><output id="o-inv"></output></div><input type="range" id="i-inv" min="4" max="13" step="0.25"></div>
+        <div class="sl"><div class="entre"><label for="i-val">Valorização do imóvel (ao ano)</label><output id="o-val"></output></div><input type="range" id="i-val" min="0" max="8" step="0.5"></div>
+        <p class="muted">Poupança considerada: 6,17% ao ano. Referências de mercado mudam — revise antes de decidir.</p>
+      </div>
+      <h3 class="titulo-sec">Três caminhos</h3>
+      <div id="resultado"></div>
+      <button class="btn bloco" id="btn-plano">Criar meu plano com este cenário</button>
+    </section>
+
+    <!-- ============ PLANO ============ -->
+    <section class="view" data-view="plano" aria-label="Meu plano">
+      <div id="plano"></div>
+    </section>
+
+    <!-- ============ DADOS ============ -->
+    <section class="view" data-view="dados" aria-label="Dados">
+      <h3 class="titulo-sec">Falar com a construtora</h3>
+      <div class="card">
+        <p class="muted">Quando se sentir pronto(a), envie sua simulação para um corretor. Só é enviado o que você escolher (protótipo: o envio é <b>simulado</b>).</p>
+        <button class="btn bloco" id="btn-corretor">Quero falar com um corretor</button>
+      </div>
+      <h3 class="titulo-sec">Backup</h3>
+      <div class="card">
+        <div class="btns"><button class="btn sec" data-acao="exportar">Exportar JSON</button><button class="btn sec" data-acao="importar">Importar JSON</button></div>
+        <button class="btn perigo bloco" data-acao="resetar" style="margin-top:10px">Apagar tudo</button>
+      </div>
+      <p class="muted" style="text-align:center;margin:18px 0">CasaPiloto · Grupo 4 · 8AdmVG · Unifacc — MVP de Customer Discovery</p>
+    </section>
+  </main>
+
+  <nav class="nav-inf" aria-label="Navegação principal"><div class="dentro">
+    <button data-aba="casas"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/></svg>Casas</button>
+    <button data-aba="simular"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M8 6h8M8 11h2M12 11h2M8 15h2M12 15h2M16 11v4"/></svg>Simular</button>
+    <button data-aba="plano"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg>Meu plano</button>
+    <button data-aba="dados"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>Dados</button>
+  </div></nav>
+</div>
+
+<script src="../assets/mvp/mvp.js"></script>
+<script>
+const { $, $$, esc, criarEstado, fmtBRL, fmtNum, fmtData, hoje, uid, toast, modal, confirmar, ligarDados, abas, pwa } = MVP;
+
+/* Modelos de exemplo. Cômodos em "células" de uma grade 12x8 para desenhar a planta. */
+const CASAS = [
+  { id: 'compacta', nome: 'Compacta', desc: '2 quartos · 48 m² · 1 vaga', preco: 210000, comodos: [['Sala/cozinha', 0, 0, 6, 5], ['Quarto', 6, 0, 6, 4], ['Quarto', 6, 4, 6, 4], ['Banho', 0, 5, 3, 3], ['Área', 3, 5, 3, 3]] },
+  { id: 'familia', nome: 'Família', desc: '3 quartos (1 suíte) · 70 m² · 2 vagas', preco: 320000, comodos: [['Sala', 0, 0, 5, 4], ['Cozinha', 0, 4, 5, 4], ['Suíte', 5, 0, 4, 4], ['Quarto', 9, 0, 3, 4], ['Quarto', 9, 4, 3, 4], ['Banho', 5, 4, 2, 4], ['Área', 7, 4, 2, 4]] },
+  { id: 'sobrado', nome: 'Sobrado', desc: '3 suítes · 110 m² · 2 vagas', preco: 480000, comodos: [['Sala de estar', 0, 0, 6, 4], ['Cozinha gourmet', 0, 4, 6, 4], ['Suíte master', 6, 0, 6, 3], ['Suíte', 6, 3, 3, 3], ['Suíte', 9, 3, 3, 3], ['Varanda', 6, 6, 6, 2]] },
+  { id: 'premium', nome: 'Premium', desc: '4 suítes · 160 m² · piscina · 3 vagas', preco: 750000, comodos: [['Living', 0, 0, 7, 4], ['Cozinha', 0, 4, 4, 4], ['Suíte master', 7, 0, 5, 4], ['Suíte', 4, 4, 3, 2], ['Suíte', 4, 6, 3, 2], ['Suíte', 7, 4, 3, 4], ['Piscina', 10, 4, 2, 4]] },
+];
+const RENDAS = [
+  { id: 'r1', rot: 'Até R$ 2.850', ref: 2400 }, { id: 'r2', rot: 'R$ 2.850 a R$ 4.700', ref: 3800 },
+  { id: 'r3', rot: 'R$ 4.700 a R$ 8.600', ref: 6600 }, { id: 'r4', rot: 'R$ 8.600 a R$ 12.000', ref: 10300 },
+  { id: 'r5', rot: 'Acima de R$ 12.000', ref: 15000 },
+];
+const POUPANCA = 6.17;
+
+function semente() {
+  return { casa: 'familia', s: { renda: 'r3', dep: 1200, alug: 1300, fgts: 15000, ent: 20, prazo: 30, juros: 11.5, inv: 10, val: 4 }, plano: null, contatos: [] };
+}
+const E = criarEstado('casapiloto:v1', semente);
+const casaSel = () => CASAS.find(c => c.id === E.d.casa);
+const mensal = aa => Math.pow(1 + aa / 100, 1 / 12) - 1;
+
+/* meses até juntar "alvo(t)" (que cresce com a valorização) depositando dep/mês a uma taxa */
+function mesesParaJuntar(alvoInicial, dep, taxaAA, valAA, inicial = 0) {
+  const r = mensal(taxaAA), v = mensal(valAA);
+  let saldo = inicial, alvo = alvoInicial;
+  for (let m = 0; m <= 600; m++) {
+    if (saldo >= alvo) return { meses: m, alvo, saldo };
+    saldo = saldo * (1 + r) + dep; alvo *= 1 + v;
+  }
+  return { meses: Infinity, alvo, saldo };
+}
+function price(P, aa, anos) { const i = mensal(aa), n = anos * 12; return P * i / (1 - Math.pow(1 + i, -n)); }
+function sac(P, aa, anos) {
+  const i = mensal(aa), n = anos * 12, amort = P / n;
+  let total = 0; for (let k = 0; k < n; k++) total += amort + (P - amort * k) * i;
+  return { primeira: amort + P * i, ultima: amort + amort * i, total };
+}
+const tempo = m => !isFinite(m) ? 'mais de 50 anos' : m < 12 ? `${m} meses` : `${Math.floor(m / 12)} a${Math.floor(m / 12) > 1 ? 'nos' : 'no'}${m % 12 ? ` e ${m % 12} m` : ''}`;
+
+function calcular(casa, s) {
+  const renda = RENDAS.find(r => r.id === s.renda).ref;
+  const g = mesesParaJuntar(casa.preco, s.dep, POUPANCA, s.val, s.fgts);
+  const inv = mesesParaJuntar(casa.preco, s.dep, s.inv, s.val, s.fgts);
+  const entradaAlvo = casa.preco * s.ent / 100;
+  const juntaEnt = mesesParaJuntar(entradaAlvo, s.dep, s.inv, s.val, s.fgts);
+  const precoNaHora = juntaEnt.alvo / (s.ent / 100);
+  const financiado = Math.max(0, precoNaHora - juntaEnt.saldo);
+  const pmt = price(financiado, s.juros, s.prazo), sc = sac(financiado, s.juros, s.prazo);
+  return {
+    renda,
+    guardar: { meses: g.meses, preco: g.alvo, aluguel: isFinite(g.meses) ? g.meses * s.alug : Infinity },
+    investir: { meses: inv.meses, preco: inv.alvo, aluguel: isFinite(inv.meses) ? inv.meses * s.alug : Infinity },
+    financiar: { mesesEntrada: juntaEnt.meses, entrada: juntaEnt.saldo, financiado, pmt, totalPrice: pmt * s.prazo * 12, sac: sc,
+      aluguel: isFinite(juntaEnt.meses) ? juntaEnt.meses * s.alug : Infinity, compr: pmt / renda },
+  };
+}
+function semaforo(c) {
+  const [cor, txt] = c <= 0.30 ? ['#16a34a', 'Cabe (até 30% da renda)'] : c <= 0.35 ? ['#d97706', 'No limite'] : ['#dc2626', 'Pesado demais'];
+  return `<span class="semaforo"><i style="background:${cor}"></i>${txt} · ${fmtNum(c * 100)}% da renda</span>`;
+}
+
+function planta(casa) {
+  const cs = 26;
+  return `<svg class="planta" viewBox="0 0 ${12 * cs + 8} ${8 * cs + 8}" role="img" aria-label="Planta simplificada: ${casa.comodos.map(c => c[0]).join(', ')}">
+    ${casa.comodos.map(([n, x, y, w, h]) => `<rect x="${4 + x * cs}" y="${4 + y * cs}" width="${w * cs}" height="${h * cs}" fill="${n === 'Piscina' ? '#bae6fd' : '#fff'}" stroke="#92400e" stroke-width="2"/>
+      <text x="${4 + (x + w / 2) * cs}" y="${4 + (y + h / 2) * cs + 4}" font-size="11" text-anchor="middle" fill="#44403c" font-family="Inter,Arial">${n}</text>`).join('')}
+  </svg>`;
+}
+
+function renderCasas() {
+  $('#lista-casas').innerHTML = CASAS.map(c => `<div class="card casa ${c.id === E.d.casa ? 'sel' : ''}">
+    <div class="entre"><div><h3>${esc(c.nome)}</h3><div class="muted">${esc(c.desc)}</div></div><span class="preco">${fmtBRL(c.preco)}</span></div>
+    ${planta(c)}
+    <div class="btns"><button class="btn ${c.id === E.d.casa ? 'ok' : ''}" data-casa="${c.id}" aria-pressed="${c.id === E.d.casa}">${c.id === E.d.casa ? '✓ Escolhida — simular' : 'Escolher e simular'}</button>
+    <button class="btn sec" data-tour="${c.id}">Tour virtual</button></div></div>`).join('');
+  const s = E.d.s;
+  $('#comparar').innerHTML = `<table class="cmp"><thead><tr><th>Casa</th><th>Juntar entrada</th><th>Parcela (Price)</th><th>Na renda</th></tr></thead><tbody>
+    ${CASAS.map(c => { const r = calcular(c, s); return `<tr><td><b>${esc(c.nome)}</b><br>${fmtBRL(c.preco)}</td><td>${tempo(r.financiar.mesesEntrada)}</td><td>${fmtBRL(r.financiar.pmt)}</td><td>${fmtNum(r.financiar.compr * 100)}%</td></tr>`; }).join('')}
+    </tbody></table><p class="muted" style="margin-top:6px">Com as premissas atuais da aba Simular.</p>`;
+}
+
+const CAMPOS = { dep: v => fmtBRL(v), alug: v => fmtBRL(v), fgts: v => fmtBRL(v), ent: v => `${v}%`, prazo: v => `${v} anos`, juros: v => `${fmtNum(v, 2)}%`, inv: v => `${fmtNum(v, 2)}%`, val: v => `${fmtNum(v, 1)}%` };
+function renderSimular() {
+  const c = casaSel(), s = E.d.s;
+  $('#s-casa').textContent = `${c.nome} · ${c.desc}`; $('#s-preco').textContent = fmtBRL(c.preco);
+  $('#i-renda').innerHTML = RENDAS.map(r => `<option value="${r.id}" ${r.id === s.renda ? 'selected' : ''}>${r.rot}</option>`).join('');
+  Object.entries(CAMPOS).forEach(([k, f]) => { $('#i-' + k).value = s[k]; $('#o-' + k).textContent = f(s[k]); });
+  const r = calcular(c, s);
+  $('#resultado').innerHTML = `
+    <div class="card caminho"><div class="muted">1 · Guardar na poupança e comprar à vista</div>
+      <div class="grande">${tempo(r.guardar.meses)}</div>
+      <div class="muted">Preço estimado na data: ${fmtBRL(r.guardar.preco)} · aluguel pago enquanto junta: <b>${isFinite(r.guardar.aluguel) ? fmtBRL(r.guardar.aluguel) : '—'}</b></div></div>
+    <div class="card caminho c2"><div class="muted">2 · Investir e comprar à vista</div>
+      <div class="grande">${tempo(r.investir.meses)}</div>
+      <div class="muted">Preço estimado na data: ${fmtBRL(r.investir.preco)} · aluguel pago enquanto junta: <b>${isFinite(r.investir.aluguel) ? fmtBRL(r.investir.aluguel) : '—'}</b></div></div>
+    <div class="card caminho c3"><div class="muted">3 · Juntar a entrada (${s.ent}%) investindo e financiar o resto</div>
+      <div class="grande">${tempo(r.financiar.mesesEntrada)} <span style="font-size:14px;font-weight:600">até a chave</span></div>
+      <div class="muted">Entrada acumulada: ${fmtBRL(r.financiar.entrada)} · financiado: ${fmtBRL(r.financiar.financiado)}</div>
+      <div style="margin:8px 0"><b>Parcela Price: ${fmtBRL(r.financiar.pmt)}</b> (fixa) · SAC: ${fmtBRL(r.financiar.sac.primeira)} → ${fmtBRL(r.financiar.sac.ultima)}</div>
+      ${semaforo(r.financiar.compr)}
+      <div class="muted" style="margin-top:6px">Total pago ao banco: Price ${fmtBRL(r.financiar.totalPrice)} · SAC ${fmtBRL(r.financiar.sac.total)}</div></div>
+    ${grafico(r)}
+    <div class="card"><b>Leitura rápida</b><p class="muted" style="margin-top:4px">${leitura(r, s)}</p></div>`;
+}
+function grafico(r) {
+  const itens = [['Guardar', r.guardar.meses], ['Investir', r.investir.meses], ['Entrada + financiar', r.financiar.mesesEntrada]];
+  const max = Math.max(...itens.map(i => isFinite(i[1]) ? i[1] : 0), 1);
+  return `<div class="card"><b>Tempo até a casa (meses)</b><svg viewBox="0 0 340 110" role="img" aria-label="Comparação de tempo: ${itens.map(i => i[0] + ' ' + (isFinite(i[1]) ? i[1] + ' meses' : 'mais de 50 anos')).join(', ')}" style="width:100%;margin-top:8px">
+    ${itens.map(([n, m], k) => { const w = isFinite(m) ? 160 * m / max : 160; return `<text x="0" y="${22 + k * 34}" font-size="11" fill="#44403c">${n}</text><rect x="120" y="${10 + k * 34}" width="${Math.max(2, w)}" height="18" rx="4" fill="${['var(--accent)', 'var(--accent2)', '#1c1917'][k]}"/><text x="${126 + w}" y="${24 + k * 34}" font-size="11" font-weight="700" fill="#1c1917">${isFinite(m) ? m : '600+'}</text>`; }).join('')}
+  </svg></div>`;
+}
+function leitura(r, s) {
+  const partes = [];
+  if (isFinite(r.financiar.mesesEntrada) && r.financiar.mesesEntrada < r.investir.meses) partes.push(`Financiar faz você chegar à casa <b>${tempo(r.investir.meses - r.financiar.mesesEntrada)} antes</b> do que juntar tudo investindo — em troca de pagar juros ao banco.`);
+  if (r.financiar.compr > 0.30) partes.push('A parcela passa de 30% da renda: considere uma entrada maior, prazo maior ou outro modelo de casa.');
+  if (s.alug > 0 && isFinite(r.investir.aluguel)) partes.push(`Enquanto junta para comprar à vista, você pagaria cerca de <b>${fmtBRL(r.investir.aluguel)}</b> de aluguel.`);
+  if (RENDAS.findIndex(x => x.id === s.renda) <= 3) partes.push('Pela faixa de renda, sua família pode se enquadrar no Minha Casa, Minha Vida — confira as condições na Caixa.');
+  return partes.join(' ') || 'Ajuste os valores para comparar cenários.';
+}
+
+function renderPlano() {
+  const p = E.d.plano;
+  if (!p) { $('#plano').innerHTML = `<div class="card vazio" style="margin-top:14px">Você ainda não criou um plano.<br><br><button class="btn" data-aba="simular">Ir para o simulador</button></div>`; return; }
+  const guardado = p.depositos.reduce((s, d) => s + d.valor, 0) + p.fgts;
+  const pct = Math.min(1, guardado / p.alvo);
+  const prox = new Date(); prox.setDate(p.diaLembrete); if (prox < new Date()) prox.setMonth(prox.getMonth() + 1);
+  $('#plano').innerHTML = `<h3 class="titulo-sec">Meu plano · ${esc(p.casaNome)}</h3>
+    <div class="card destaque"><div class="entre"><b>Meta da entrada</b><span class="chip">${fmtNum(pct * 100)}%</span></div>
+      <div style="font-family:var(--fonte-titulo);font-size:26px;font-weight:700;margin:6px 0">${fmtBRL(guardado)} <span class="muted">de ${fmtBRL(p.alvo)}</span></div>
+      <div class="barra" role="img" aria-label="${fmtNum(pct * 100)} por cento da meta"><i style="width:${pct * 100}%"></i></div>
+      <p class="muted" style="margin-top:8px">Depósito planejado: ${fmtBRL(p.dep)}/mês · previsão inicial: ${tempo(p.mesesPrevistos)} · criado em ${fmtData(p.criado)}</p>
+      <p class="muted">🔔 Próximo lembrete (simulado): <b>${prox.toLocaleDateString('pt-BR')}</b></p>
+      <div class="btns"><button class="btn" id="btn-deposito">+ Registrar depósito</button><button class="btn sec" id="btn-lembrete">Dia do lembrete</button></div></div>
+    <h3 class="titulo-sec">Depósitos</h3>
+    <div class="card"><ul class="lista">${p.depositos.slice().reverse().map(d => `<li class="entre"><span>${fmtData(d.data)}</span><b>${fmtBRL(d.valor)}</b><button class="btn sec peq" data-apagar-dep="${d.id}" aria-label="Apagar depósito de ${fmtBRL(d.valor)}">Apagar</button></li>`).join('') || '<li class="vazio">Nenhum depósito ainda.</li>'}</ul>
+    ${p.fgts ? `<p class="muted">Inclui ${fmtBRL(p.fgts)} de FGTS.</p>` : ''}</div>
+    <h3 class="titulo-sec">Checklist até a chave</h3>
+    <div class="card">${p.checklist.map((c, i) => `<label class="check"><input type="checkbox" data-check="${i}" ${c.ok ? 'checked' : ''}> ${esc(c.t)}</label>`).join('')}</div>
+    <button class="btn perigo bloco" id="btn-apagar-plano">Encerrar este plano</button>`;
+}
+
+function criarPlano() {
+  const c = casaSel(), s = E.d.s, r = calcular(c, s);
+  const salvar = () => {
+    E.d.plano = { casaId: c.id, casaNome: c.nome, alvo: Math.round(c.preco * s.ent / 100), dep: s.dep, fgts: s.fgts, mesesPrevistos: r.financiar.mesesEntrada, criado: hoje(), diaLembrete: 5, depositos: [],
+      checklist: ['Separar RG, CPF e comprovante de estado civil', 'Comprovantes de renda dos últimos 3 meses', 'Extrato do FGTS', 'Consultar CPF (sem restrições)', 'Simular no banco com a proposta da construtora', 'Visitar a casa piloto presencialmente'].map(t => ({ t, ok: false })) };
+    E.salvar(); renderPlano(); location.hash = 'plano'; toast('Plano criado.');
+  };
+  if (E.d.plano) confirmar('Você já tem um plano. Substituir pelo cenário atual?', salvar, 'Substituir'); else salvar();
+}
+
+function tour(id) {
+  const c = CASAS.find(x => x.id === id);
+  let k = 0;
+  const cena = () => { const [n, , , w, h] = c.comodos[k]; return `<div style="background:linear-gradient(180deg,#fef3c7,#fff);border-radius:14px;padding:18px;text-align:center;min-height:160px">
+      <div style="font-size:44px" aria-hidden="true">${/Su[ií]te|Quarto/.test(n) ? '🛏️' : /Cozinha/.test(n) ? '🍳' : /Banho/.test(n) ? '🚿' : /Piscina/.test(n) ? '🏊' : /Varanda|Área/.test(n) ? '🌿' : '🛋️'}</div>
+      <h3 style="margin-top:8px">${esc(n)}</h3><p class="muted">≈ ${fmtNum(w * h * 1.4, 0)} m² (ilustrativo) · ${k + 1} de ${c.comodos.length}</p></div>`; };
+  modal(`<h2>Tour virtual · ${esc(c.nome)}</h2><div id="t-cena" aria-live="polite">${cena()}</div>
+    <p class="muted" style="margin:8px 0">Protótipo: na versão real, fotos 360° da casa piloto.</p>
+    <div class="btns"><button class="btn sec" id="t-ant">← Anterior</button><button class="btn sec" id="t-prox">Próximo →</button></div>
+    <button class="btn bloco" data-fechar style="margin-top:8px">Fechar</button>`, m => {
+    $('#t-ant', m).addEventListener('click', () => { k = (k - 1 + c.comodos.length) % c.comodos.length; $('#t-cena', m).innerHTML = cena(); });
+    $('#t-prox', m).addEventListener('click', () => { k = (k + 1) % c.comodos.length; $('#t-cena', m).innerHTML = cena(); });
+  });
+}
+
+function renderTudo() { renderCasas(); renderSimular(); renderPlano(); }
+
+document.addEventListener('click', ev => {
+  const t = ev.target.closest('button'); if (!t) return;
+  if (t.dataset.casa) { E.d.casa = t.dataset.casa; E.salvar(); renderTudo(); location.hash = 'simular'; }
+  else if (t.dataset.tour) tour(t.dataset.tour);
+  else if (t.id === 'btn-plano') criarPlano();
+  else if (t.id === 'btn-deposito') {
+    modal(`<h2>Registrar depósito</h2><div class="campo"><label for="d-val">Valor (R$)</label><input id="d-val" type="number" min="1" step="1" inputmode="numeric" value="${E.d.plano.dep}"></div>
+      <div class="campo"><label for="d-data">Data</label><input id="d-data" type="date" value="${hoje()}"></div>
+      <div class="btns"><button class="btn sec" data-fechar>Cancelar</button><button class="btn" id="d-ok">Salvar</button></div>`, (m, fechar) =>
+      $('#d-ok', m).addEventListener('click', () => { const v = Number($('#d-val', m).value); if (!(v > 0)) return toast('Informe um valor.');
+        E.d.plano.depositos.push({ id: uid(), valor: v, data: $('#d-data', m).value || hoje() }); E.salvar(); fechar(); renderPlano(); toast('Depósito registrado. Cada passo conta!'); }));
+  }
+  else if (t.id === 'btn-lembrete') {
+    modal(`<h2>Lembrete mensal</h2><div class="campo"><label for="l-dia">Dia do mês</label><select id="l-dia">${Array.from({ length: 28 }, (_, i) => `<option ${i + 1 === E.d.plano.diaLembrete ? 'selected' : ''}>${i + 1}</option>`).join('')}</select></div>
+      <p class="muted">Protótipo: o lembrete aparece aqui no plano (sem notificação real).</p>
+      <div class="btns"><button class="btn sec" data-fechar>Cancelar</button><button class="btn" id="l-ok">Salvar</button></div>`, (m, fechar) =>
+      $('#l-ok', m).addEventListener('click', () => { E.d.plano.diaLembrete = Number($('#l-dia', m).value); E.salvar(); fechar(); renderPlano(); toast('Lembrete ajustado.'); }));
+  }
+  else if (t.dataset.apagarDep) { E.d.plano.depositos = E.d.plano.depositos.filter(d => d.id !== t.dataset.apagarDep); E.salvar(); renderPlano(); toast('Depósito apagado.'); }
+  else if (t.id === 'btn-apagar-plano') confirmar('Encerrar e apagar o plano atual?', () => { E.d.plano = null; E.salvar(); renderPlano(); toast('Plano encerrado.'); }, 'Encerrar');
+  else if (t.id === 'btn-corretor') {
+    const c = casaSel(), r = calcular(c, E.d.s);
+    modal(`<h2>Enviar para um corretor</h2>
+      <p class="muted">Resumo que será compartilhado:</p>
+      <div class="card"><b>${esc(c.nome)}</b> · ${fmtBRL(c.preco)}<br>Entrada ${E.d.s.ent}% · ${E.d.s.prazo} anos · parcela estimada ${fmtBRL(r.financiar.pmt)}<br>Faixa de renda: ${RENDAS.find(x => x.id === E.d.s.renda).rot}</div>
+      <div class="campo"><label for="k-nome">Seu primeiro nome</label><input id="k-nome" autocomplete="given-name"></div>
+      <div class="campo"><label for="k-contato">WhatsApp ou e-mail</label><input id="k-contato" autocomplete="tel"></div>
+      <label class="check"><input type="checkbox" id="k-ok"> Autorizo o contato da construtora sobre esta simulação (LGPD)</label>
+      <div class="btns"><button class="btn sec" data-fechar>Cancelar</button><button class="btn" id="k-enviar">Enviar</button></div>`, (m, fechar) =>
+      $('#k-enviar', m).addEventListener('click', () => {
+        if (!$('#k-ok', m).checked) return toast('Marque a autorização para enviar.');
+        if (!$('#k-contato', m).value.trim()) return toast('Informe um contato.');
+        E.d.contatos.push({ data: new Date().toISOString(), casa: c.id }); E.salvar(); fechar(); toast('Simulação: pedido enviado. Um corretor entraria em contato.');
+      }));
+  }
+});
+document.addEventListener('change', ev => {
+  const cb = ev.target.closest('[data-check]');
+  if (cb) { E.d.plano.checklist[cb.dataset.check].ok = cb.checked; E.salvar(); }
+  if (ev.target.id === 'i-renda') { E.d.s.renda = ev.target.value; E.salvar(); renderSimular(); renderCasas(); }
+});
+document.addEventListener('input', ev => {
+  const k = (ev.target.id || '').replace('i-', '');
+  if (CAMPOS[k]) { E.d.s[k] = Number(ev.target.value); E.salvar(); renderSimular(); }
+});
+$('#i-dep') && document.addEventListener('change', ev => { if ((ev.target.id || '').startsWith('i-')) renderCasas(); });
+
+ligarDados(E, 'casapiloto', renderTudo);
+renderTudo();
+abas(v => { if (v === 'plano') renderPlano(); });
+pwa();
+</script>
+</body>
+</html>

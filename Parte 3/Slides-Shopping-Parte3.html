@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parte 3 — Ida ao Shopping + Sprints do App | Customer Discovery · 8AdmVG</title>
+    <link rel="stylesheet" href="../assets/reveal/reset.css">
+    <link rel="stylesheet" href="../assets/reveal/reveal.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Arial, sans-serif; }
+        .reveal .slides section { text-align: left; padding: 0 40px; }
+        .reveal .slides { text-align: left; }
+        .reveal .slides section.dark { color: #fff; background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); }
+        .reveal .slides section.cover { background: #ffffff; }
+        .reveal .slides section.cover, .reveal .slides section.dark { justify-content: center; align-items: center; text-align: center; }
+        .reveal h1 { font-size: 32px; color: #1a1a2e; margin-bottom: 12px; font-weight: 700; line-height: 1.2; text-transform: none; }
+        .reveal h2 { font-size: 24px; color: #e94560; margin-bottom: 10px; text-transform: none; }
+        .reveal h3 { font-size: 18px; color: #2d3748; margin-bottom: 8px; text-transform: none; }
+        .reveal .dark h1, .reveal .dark h2 { color: #fff; }
+        .reveal .dark h3 { color: #e94560; }
+        .reveal .subtitle { font-size: 14px; color: #666; padding-top: 10px; border-top: 1px solid #E2E8F0; margin-top: 20px; }
+        .reveal .dark .subtitle { color: #A0AEC0; border-top-color: rgba(255,255,255,0.2); }
+        .reveal .content { display: flex; flex-direction: column; justify-content: flex-start; padding: 10px 0; }
+        .reveal .content ul { list-style: none; font-size: 20px; line-height: 1.6; }
+        .reveal .content ul li { padding: 5px 0; padding-left: 20px; position: relative; }
+        .reveal .content ul li::before { content: ""; position: absolute; left: 0; top: 12px; width: 6px; height: 6px; background: #e94560; border-radius: 50%; }
+        .reveal .highlight-box { background: #FDF2F4; border-left: 4px solid #e94560; padding: 12px 15px; margin: 10px 0; border-radius: 0 8px 8px 0; }
+        .reveal .dark .highlight-box { background: rgba(233,69,96,0.15); border-left-color: #e94560; }
+        .reveal .success-box { background: #F0FDF4; border-left: 4px solid #38A169; padding: 12px 15px; margin: 10px 0; border-radius: 0 8px 8px 0; }
+        .reveal .warning-box { background: #FFFBEB; border-left: 4px solid #DD6B20; padding: 12px 15px; margin: 10px 0; border-radius: 0 8px 8px 0; }
+        .reveal table { width: 100%; border-collapse: collapse; font-size: 16px; margin: 10px 0; }
+        .reveal th { background: #1a1a2e; color: #fff; padding: 8px; text-align: left; font-weight: 600; }
+        .reveal td { padding: 6px 8px; border-bottom: 1px solid #E2E8F0; vertical-align: top; }
+        .reveal tr:nth-child(even) { background: #F7FAFC; }
+        .reveal .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: start; }
+        .reveal .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; align-items: start; }
+        .reveal .card { background: #F7FAFC; border-radius: 8px; padding: 12px; border: 1px solid #E2E8F0; }
+        .reveal .card h3 { color: #1a1a2e; font-size: 19px; margin-bottom: 6px; }
+        .reveal .card p { font-size: 17px; color: #4A5568; line-height: 1.45; }
+        .reveal .badge { display: inline-block; background: #e94560; color: #fff; padding: 5px 12px; border-radius: 15px; font-size: 15px; margin: 3px; }
+        .reveal .badge.green { background: #38A169; }
+        .reveal .badge.orange { background: #DD6B20; }
+        .reveal .badge.blue { background: #3182CE; }
+        .reveal .objective-list { counter-reset: objective; list-style: none; }
+        .reveal .objective-list li { counter-increment: objective; padding: 6px 0; padding-left: 35px; position: relative; font-size: 18px; }
+        .reveal .objective-list li::before { content: counter(objective); position: absolute; left: 0; top: 6px; width: 24px; height: 24px; background: #e94560; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 12px; }
+        .reveal .activity-box { background: #F0FDF4; border: 2px solid #38A169; padding: 15px 20px; margin: 15px 0; border-radius: 8px; }
+        .reveal .activity-box h3 { color: #38A169; margin-bottom: 8px; }
+        .reveal .prompt-box { background: #1a1a2e; color: #e9e9e9; padding: 15px 20px; border-radius: 8px; font-family: 'Consolas', monospace; font-size: 15px; line-height: 1.6; margin: 10px 0; }
+        .reveal .checklist { list-style: none; font-size: 19px; line-height: 1.9; }
+        .reveal .checklist li { padding: 4px 0; padding-left: 34px; position: relative; }
+        .reveal .checklist li::before { content: ""; position: absolute; left: 0; top: 8px; width: 20px; height: 20px; border: 2px solid #e94560; border-radius: 5px; }
+        .reveal .sprint { display: inline-block; background: #1a1a2e; color: #fff; padding: 5px 12px; border-radius: 8px; font-size: 13px; font-weight: 700; letter-spacing: .05em; }
+    </style>
+</head>
+<body>
+
+<div class="reveal">
+<div class="slides">
+
+<!-- SLIDE 1: CAPA -->
+<section class="cover">
+    <svg width="120" height="120" viewBox="0 0 120 120" style="margin-bottom: 28px;">
+        <defs>
+            <linearGradient id="g3" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#e94560"/>
+                <stop offset="100%" style="stop-color:#1a1a2e"/>
+            </linearGradient>
+        </defs>
+        <circle cx="60" cy="60" r="55" fill="url(#g3)" opacity="0.2"/>
+        <circle cx="60" cy="60" r="40" fill="url(#g3)" opacity="0.4"/>
+        <path d="M28 84 h64 M28 84 l0 -34 l16 0 l0 8 l18 0 l0 -8 l14 0 l0 12 l16 0 l0 22 Z" fill="#1a1a2e"/>
+        <circle cx="46" cy="52" r="7" fill="none" stroke="#e94560" stroke-width="4"/>
+        <path d="M51 57 l12 12" stroke="#e94560" stroke-width="4" stroke-linecap="round"/>
+    </svg>
+    <h1 style="font-size: 44px; color: #1a1a2e; margin-bottom: 15px;">PARTE 3 — A IDA AO SHOPPING</h1>
+    <h2 style="font-size: 25px; color: #e94560; margin-bottom: 40px;">Coleta em campo + sprints de desenvolvimento do app</h2>
+    <div style="background: #FDF2F4; padding: 25px 40px; border-radius: 12px; margin: 20px 0; border: 1px solid #e94560;">
+        <div style="font-size: 22px; color: #1a1a2e; font-weight: 600;">Do dado bruto ao app pronto — uma sprint por vez</div>
+        <div style="font-size: 16px; color: #e94560; margin-top: 5px;">Turma de Administração · 8º Semestre (VG) · Setembro de 2026</div>
+    </div>
+    <div style="margin-top: 34px;">
+        <div style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+            <img src="../Parte 1/Renato.jpg" alt="Prof. Renato Rosa" style="width: 76px; height: 76px; border-radius: 50%; object-fit: cover; border: 3px solid #e94560;">
+            <div style="text-align: left;">
+                <div style="font-size: 19px; color: #2D3748;">Prof. Renato Rosa</div>
+                <div style="font-size: 14px; color: #666;">Cerrado Tech · Unifacc</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SLIDE 2: O DIA -->
+<section>
+    <h1>O dia da visita</h1>
+    <div class="highlight-box" style="font-size: 17px;">
+        <strong>Tudo já está pronto.</strong> Hoje é execução: coletar, gravar os áudios e alimentar o app até o fim do dia.
+    </div>
+    <div class="content">
+        <ol class="objective-list">
+            <li><strong>Concentração</strong> no ponto de encontro e conferência do material.</li>
+            <li><strong>Distribuição</strong> dos grupos pelos pontos do shopping.</li>
+            <li><strong>Coleta</strong> em duplas: entrevistador + gravador de áudio.</li>
+            <li><strong>Parada</strong> de meio de caminho para bater a meta parcial.</li>
+            <li><strong>Sincronização</strong> dos dados ao final e fechamento do dia.</li>
+        </ol>
+    </div>
+    <div class="warning-box"><strong>Horário combinado é compromisso.</strong> Grupo atrasado perde a janela de maior fluxo.</div>
+    <div class="subtitle">Parte 3 · Ida ao shopping + sprints · Prof. Renato Rosa</div>
+</section>
+
+<!-- SLIDE 3: REGRAS DE CAMPO -->
+<section>
+    <h1>Regras de campo</h1>
+    <div class="two-col">
+        <div class="card" style="border-left: 4px solid #38A169;">
+            <h3 style="color:#38A169;">✓ Faça sempre</h3>
+            <p>Abordar um por vez · falar o código no áudio · agradecer mesmo com "não" · respeitar o silêncio de quem recusa.</p>
+        </div>
+        <div class="card" style="border-left: 4px solid #e94560;">
+            <h3 style="color:#e94560;">✗ Nunca</h3>
+            <p>Gravar a voz da pessoa · pedir dados pessoais · insistir após o "não" · abordar quem está comendo ou com criança no colo.</p>
+        </div>
+    </div>
+    <div class="highlight-box" style="margin-top: 12px;">
+        Frase de abertura: <strong>“Pesquisa rápida de 2 minutos, é anônima. Podemos?”</strong>
+    </div>
+    <div class="three-col" style="margin-top: 10px;">
+        <div class="card"><h3 style="font-size:16px;">Dupla</h3><p style="font-size:15px;">1 entrevistador + 1 gravador, sempre juntos.</p></div>
+        <div class="card"><h3 style="font-size:16px;">Celulares</h3><p style="font-size:15px;">Dois aparelhos: um do app, um do áudio.</p></div>
+        <div class="card"><h3 style="font-size:16px;">Saúde</h3><p style="font-size:15px;">Água, pausa e ninguém sozinho em área isolada.</p></div>
+    </div>
+    <div class="subtitle">Parte 3 · Ida ao shopping + sprints · Prof. Renato Rosa</div>
+</section>
+
+<!-- SLIDE 4: FLUXO DA DUPLA -->
+<section class="dark">
+    <h1>Fluxo da dupla em campo</h1>
+    <div class="prompt-box" style="font-size: 16px; margin-top: 18px;">
+1. ABORDAR      "Pesquisa de 2 min, é anônima?"
+2. PERFIL       entrevistador marca por observação
+3. PERGUNTAS    pessoa fala livre → entrevistador marca + verbatim
+4. SALVAR       app grava e mostra o CÓDIGO (ex.: G3-014)
+5. ÁUDIO        colega grava: "Código G3-014. Principais pontos..."
+6. AGRADECER    e partir para a próxima pessoa
+    </div>
+    <div class="two-col" style="margin-top: 12px;">
+        <div class="card"><h3 style="color:#e94560;">Ritmo</h3><p>Uma entrevista completa leva de <strong>2 a 4 minutos</strong>. Meta: 15–20 por grupo.</p></div>
+        <div class="card"><h3 style="color:#e94560;">Áudio primeiro</h3><p>Grave o áudio <strong>logo após salvar</strong>, enquanto a conversa está fresca.</p></div>
+    </div>
+    <div class="subtitle">Parte 3 · Ida ao shopping + sprints · Prof. Renato Rosa</div>
+</section>
+
+<!-- SLIDE 5: CHECKLIST DE SAÍDA -->
+<section>
+    <h1>Checklist de saída</h1>
+    <div class="two-col">
+        <ul class="checklist">
+            <li>App testado e <strong>com bateria</strong>.</li>
+            <li>Bloco de perfil funcionando.</li>
+            <li>Código aparecendo na tela.</li>
+        </ul>
+        <ul class="checklist">
+            <li>Plano B impresso (formulário em papel).</li>
+            <li>Dois celulares + power bank.</li>
+            <li>Ponto e horário combinados.</li>
+        </ul>
+    </div>
+    <div class="highlight-box" style="margin-top: 12px; font-size: 15px;">
+        Sem código não há correlação. Sem correlação, o áudio vira só uma gravação perdida no WhatsApp.
+    </div>
+    <div class="subtitle">Parte 3 · Ida ao shopping + sprints · Prof. Renato Rosa</div>
+</section>
+
+<!-- SLIDE 6: O QUE SÃO SPRINTS -->
+<section>
+    <h1>As sprints do desenvolvimento</h1>
+    <div class="highlight-box" style="font-size: 17px;">
+        Todo app nasce em etapas curtas. Cada etapa é uma <strong>sprint</strong>: objetivo → entrega → verificação.
+    </div>
+    <div class="three-col" style="margin-top: 12px;">
+        <div class="card"><h3 style="color:#e94560;">Objetivo</h3><p>O que esta sprint precisa entregar, em uma frase.</p></div>
+        <div class="card"><h3 style="color:#e94560;">Entrega</h3><p>O que existe de concreto ao final dela.</p></div>
+        <div class="card"><h3 style="color:#e94560;">Verificação</h3><p>Como saber que ficou pronto (teste).</p></div>
+    </div>
+    <div class="success-box" style="margin-top: 12px;">
+        <strong>Cadência:</strong> sprints curtas, de <strong>1 encontro cada</strong>, até o app estar pronto para a coleta e para a análise.
+    </div>
+    <div class="subtitle">Parte 3 · Ida ao shopping + sprints · Prof. Renato Rosa</div>
+</section>
+
+<!-- SLIDE 7: ROADMAP -->
+<section class="dark">
+    <h1>Roadmap de sprints</h1>
+    <div class="content" style="margin-top: 10px;">
+        <div class="tbl" style="color:#F1F5F9;">
+        <table>
+            <tr><th style="background:#e94560;">Sprint</th><th style="background:#e94560;">Objetivo</th><th style="background:#e94560;">Entrega</th></tr>
+            <tr><td><span class="sprint">0</span></td><td>Fundação</td><td>Estrutura do app + Bloco de perfil</td></tr>
+            <tr><td><span class="sprint">1</span></td><td>Perguntas do grupo</td><td>Blocos de perguntas no app</td></tr>
+            <tr><td><span class="sprint">2</span></td><td>Código + planilha</td><td>Código por resposta + respostas na planilha</td></tr>
+            <tr><td><span class="sprint">3</span></td><td>Campo + correlação</td><td>Coleta no shopping + áudios ligados por código</td></tr>
+            <tr><td><span class="sprint">4</span></td><td>Análise</td><td>Tabulação quanti + leitura quali</td></tr>
+            <tr><td><span class="sprint">5</span></td><td>Refino final</td><td>App pronto + relatório de achados</td></tr>
+        </table>
+        </div>
+    </div>
+    <div class="success-box"><strong>Definição de pronto (DoD):</strong> testado no celular, planilha gerando, código correlacionando áudio e sem erro bloqueante.</div>
+    <div class="subtitle">Parte 3 · Ida ao shopping + sprints · Prof. Renato Rosa</div>
+</section>
+
+<!-- SLIDE 8: REGISTRO DA SPRINT -->
+<section>
+    <h1>Como registrar cada sprint</h1>
+    <p style="font-size:16px;color:#4A5568;">Cada sprint vira uma linha no log. O log é o histórico do app até ele ficar pronto.</p>
+    <div class="prompt-box" style="font-size: 14px;">
+SPRINT 3 — Campo + correlação
+Data: __/__   Responsável: ______
+Objetivo: coletar no shopping e ligar cada áudio à sua resposta
+Entregue: 98 respostas, 74 áudios com código
+Verificação: 100% dos áudios com código válido
+Bloqueios: sinal fraco em 2 pontos do shopping
+Próxima: iniciar tabulação
+    </div>
+    <div class="activity-box">
+        <strong>Regra do log:</strong> se não está escrito, não aconteceu. Toda sprint fecha com data, entrega e verificação.
+    </div>
+    <div class="subtitle">Parte 3 · Ida ao shopping + sprints · Prof. Renato Rosa</div>
+</section>
+
+<!-- SLIDE 9: ENCERRAMENTO -->
+<section class="cover">
+    <div style="margin-bottom: 20px;">
+        <svg width="76" height="76" viewBox="0 0 80 80">
+            <circle cx="40" cy="40" r="35" fill="#e94560" opacity="0.2"/>
+            <circle cx="40" cy="40" r="25" fill="#e94560" opacity="0.4"/>
+            <path d="M25 40 L35 50 L55 30" stroke="#e94560" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </div>
+    <h1 style="font-size: 34px; color: #1a1a2e; margin-bottom: 10px;">Parte 3 — em campo</h1>
+    <h2 style="font-size: 20px; color: #e94560; margin-bottom: 25px;">Coletar a verdade e virar dado em app</h2>
+    <div style="background: #FDF2F4; padding: 20px 36px; border-radius: 12px;">
+        <div style="font-size: 18px; color: #1a1a2e; font-weight: 600;">Cada resposta é uma sprint rumo ao app pronto.</div>
+    </div>
+    <div style="margin-top: 30px;">
+        <div style="display: flex; align-items: center; justify-content: center; gap: 18px;">
+            <img src="../Parte 1/Renato.jpg" alt="Prof. Renato Rosa" style="width: 56px; height: 56px; border-radius: 50%; object-fit: cover; border: 3px solid #e94560;">
+            <div style="text-align: left;">
+                <div style="font-size: 17px; color: #2D3748;">Prof. Renato Rosa</div>
+                <div style="font-size: 13px; color: #666;">Cerrado Tech · Unifacc</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+</div>
+</div>
+
+<script src="../assets/reveal/reveal.js"></script>
+<script>
+    Reveal.initialize({
+        width: 1280,
+        height: 720,
+        margin: 0.03,
+        controls: true,
+        progress: true,
+        history: true,
+        slideNumber: 'c/t',
+        hash: true,
+        center: true,
+        transition: 'slide'
+    });
+</script>
+
+</body>
+</html>

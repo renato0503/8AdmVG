@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#1e3a8a">
+<title>VozGuia — assistente sonoro e alertas de acessibilidade</title>
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/svg+xml" href="../assets/logos/g3.svg">
+<link rel="apple-touch-icon" href="../assets/logos/g3-192.png">
+<link rel="stylesheet" href="../assets/identidade/temas.css">
+<link rel="stylesheet" href="../assets/mvp/mvp.css">
+<style>
+body{color:#0b1020}
+body.fonte-grande{font-size:19px}
+body.fonte-grande .btn{font-size:18px}
+body.contraste{background:#000;color:#fff}
+body.contraste .card{background:#0b1020;border-color:#facc15;color:#fff}
+body.contraste .card h2,body.contraste .card h3,body.contraste .muted,body.contraste .titulo-sec{color:#facc15}
+body.contraste .nav-inf{background:#000;border-color:#facc15}
+body.contraste .nav-inf button{color:#fff}
+body.contraste .nav-inf button.on{color:#facc15}
+.gigante{min-height:84px;font-size:20px;border-radius:18px;width:100%;margin-bottom:12px}
+.gigante.amarelo{background:#facc15;color:#0b1020}
+.gigante.amarelo:hover{background:#eab308}
+.fala{min-height:70px;background:#0b1020;color:#facc15;border-radius:16px;padding:14px;font-size:17px;font-weight:700;margin-bottom:14px}
+.linha-tempo{list-style:none;margin-top:8px}
+.linha-tempo li{position:relative;padding:0 0 12px 22px;font-size:14px}
+.linha-tempo li::before{content:"";position:absolute;left:4px;top:5px;width:10px;height:10px;border-radius:50%;background:#cbd5e1}
+.linha-tempo li.feito::before{background:var(--accent)}
+.linha-tempo li.feito{font-weight:700}
+.mapa{width:100%;background:#f1f5f9;border-radius:14px;border:1px solid #cbd5e1}
+.proto{font-family:monospace;font-weight:800;color:var(--accent)}
+</style>
+</head>
+<body class="tema-g3">
+<div class="app">
+  <header class="topo">
+    <div class="marca">
+      <img src="../assets/logos/g3.svg" alt="">
+      <div><h1>VozGuia</h1><div class="sub">Assistente sonoro · alertas de acessibilidade</div></div>
+      <div class="acoes">
+        <button class="icone-btn" id="btn-instalar" hidden aria-label="Instalar app"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg></button>
+        <a class="icone-btn" href="index.html" aria-label="Sobre o projeto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/></svg></a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ============ GUIA ============ -->
+    <section class="view" data-view="guia" aria-label="Guia sonoro">
+      <div class="fala" id="fala" role="status" aria-live="assertive">Toque em um botão grande. Tudo o que o app falar também aparece aqui.</div>
+      <button class="btn gigante amarelo" id="btn-perto">🔊 O que tem perto de mim?</button>
+      <button class="btn gigante" id="btn-passo">🚶 Caminhar: próximo trecho</button>
+      <button class="btn gigante sec" id="btn-auto" aria-pressed="false">▶ Caminhada automática</button>
+      <button class="btn gigante perigo" id="btn-alerta-rapido">⚠ Registrar obstáculo aqui</button>
+      <div class="card">
+        <div class="entre"><b>Trajeto de treino</b><span class="chip" id="chip-trecho">—</span></div>
+        <p class="muted">Caminhada <b>simulada</b> por um trajeto de exemplo no centro de Várzea Grande. No celular real, o app usa o GPS; aqui você avança trecho a trecho para testar os avisos.</p>
+        <div class="btns"><button class="btn sec peq" id="btn-reiniciar">Voltar ao início do trajeto</button><button class="btn sec peq" id="btn-gps">Usar meu GPS</button></div>
+      </div>
+      <div class="aviso-exemplo">Protótipo de pesquisa: <b>não detecta obstáculos pela câmera</b>. Avisa apenas pontos já cadastrados no mapa colaborativo. Não substitui bengala, cão-guia ou orientação e mobilidade.</div>
+    </section>
+
+    <!-- ============ MAPA ============ -->
+    <section class="view" data-view="mapa" aria-label="Mapa colaborativo">
+      <h3 class="titulo-sec">Mapa colaborativo</h3>
+      <div class="card" id="mapa-svg"></div>
+      <div class="filtros" id="filtro-tipo" role="group" aria-label="Filtrar pontos"></div>
+      <div id="lista-pontos"></div>
+      <button class="btn bloco" id="btn-add-ref">+ Cadastrar ponto de referência</button>
+    </section>
+
+    <!-- ============ ALERTAS ============ -->
+    <section class="view" data-view="alertas" aria-label="Alertas ao poder público">
+      <h3 class="titulo-sec">Alertas ao poder público</h3>
+      <button class="btn bloco" id="btn-novo-alerta" style="margin-bottom:12px">+ Novo alerta</button>
+      <div id="lista-alertas"></div>
+      <div class="aviso-exemplo">Envio e respostas dos órgãos são <b>simulados</b> neste protótipo. Na versão real, o alerta seguiria para a ouvidoria/secretaria da prefeitura, com protocolo oficial.</div>
+    </section>
+
+    <!-- ============ AJUSTES ============ -->
+    <section class="view" data-view="ajustes" aria-label="Ajustes e acessibilidade">
+      <h3 class="titulo-sec">Acessibilidade</h3>
+      <div class="card">
+        <label class="check"><input type="checkbox" id="a-voz"> Falar os avisos em voz alta</label>
+        <label class="check"><input type="checkbox" id="a-vib"> Vibrar nos avisos</label>
+        <label class="check"><input type="checkbox" id="a-fonte"> Letras grandes</label>
+        <label class="check"><input type="checkbox" id="a-contraste"> Alto contraste (preto e amarelo)</label>
+        <div class="campo" style="margin-top:8px"><label for="a-vel">Velocidade da voz</label><input id="a-vel" type="range" min="0.7" max="1.8" step="0.1"></div>
+        <div class="campo"><label for="a-raio">Avisar obstáculos a até</label><select id="a-raio"><option value="20">20 metros</option><option value="35">35 metros</option><option value="50">50 metros</option></select></div>
+        <button class="btn sec bloco" id="btn-tutorial">🎓 Modo aprendizagem (tutorial falado)</button>
+      </div>
+      <h3 class="titulo-sec">Backup</h3>
+      <div class="card">
+        <div class="btns"><button class="btn sec" data-acao="exportar">Exportar JSON</button><button class="btn sec" data-acao="importar">Importar JSON</button></div>
+        <button class="btn perigo bloco" data-acao="resetar" style="margin-top:10px">Apagar tudo</button>
+      </div>
+      <p class="muted" style="text-align:center;margin:18px 0">VozGuia · Grupo 3 · 8AdmVG · Unifacc — MVP de Customer Discovery. Funciona com leitor de tela (TalkBack/VoiceOver).</p>
+    </section>
+  </main>
+
+  <nav class="nav-inf" aria-label="Navegação principal"><div class="dentro">
+    <button data-aba="guia"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M16 9a4 4 0 010 6M18.5 6.5a8 8 0 010 11"/></svg>Guia</button>
+    <button data-aba="mapa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 4L3 6v14l6-2 6 2 6-2V4l-6 2z"/><path d="M9 4v14M15 6v14"/></svg>Mapa</button>
+    <button data-aba="alertas"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3L2 20h20z"/><path d="M12 10v4M12 17v.5"/></svg>Alertas</button>
+    <button data-aba="ajustes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>Ajustes</button>
+  </div></nav>
+</div>
+
+<script src="../assets/mvp/mvp.js"></script>
+<script>
+const { $, $$, esc, criarEstado, fmtData, hoje, uid, toast, modal, confirmar, ligarDados, abas, pwa, falar, vibrar, distanciaM, fmtDist, lerComoDataURL, escolherArquivo } = MVP;
+
+const TIPOS = {
+  buraco: { rot: 'Buraco na calçada', risco: true, orgao: 'Secretaria de Obras / Serviços Urbanos' },
+  calcada: { rot: 'Calçada quebrada ou desnivelada', risco: true, orgao: 'Secretaria de Obras / Serviços Urbanos' },
+  piso: { rot: 'Piso tátil interrompido', risco: true, orgao: 'Secretaria de Obras / Serviços Urbanos' },
+  obstaculo: { rot: 'Obstáculo (carro, entulho, mesa, poste)', risco: true, orgao: 'Fiscalização de Posturas / Trânsito' },
+  semaforo: { rot: 'Semáforo sonoro sem funcionar', risco: true, orgao: 'Secretaria de Mobilidade / Trânsito' },
+  ponto: { rot: 'Ponto de ônibus', risco: false, orgao: '' },
+  faixa: { rot: 'Faixa de pedestres', risco: false, orgao: '' },
+  referencia: { rot: 'Referência (loja, entrada, praça)', risco: false, orgao: '' },
+};
+/* Trajeto de treino (exemplo): 12 trechos de ~25 m no centro de Várzea Grande — coordenadas aproximadas */
+const INI = { lat: -15.64660, lng: -56.13300 };
+const TRAJETO = Array.from({ length: 13 }, (_, i) => ({ lat: INI.lat - i * 0.000165, lng: INI.lng + i * 0.000135 }));
+const off = (i, dLat, dLng) => ({ lat: TRAJETO[i].lat + dLat, lng: TRAJETO[i].lng + dLng });
+
+function semente() {
+  const p = (tipo, i, lado, desc, dLat = 0.00003, dLng = 0.00002) => ({ id: uid(), tipo, ...off(i, dLat, dLng), lado, desc, confirmacoes: 1, criado: hoje(), exemplo: true });
+  return {
+    passo: 0, auto: false,
+    cfg: { voz: true, vib: true, fonte: false, contraste: false, vel: 1.1, raio: 35 },
+    pontos: [
+      p('referencia', 1, 'direita', 'Entrada de farmácia (exemplo)'),
+      p('buraco', 3, 'direita', 'Buraco grande perto do meio-fio'),
+      p('obstaculo', 5, 'esquerda', 'Carros estacionados sobre a calçada com frequência'),
+      p('faixa', 6, 'frente', 'Faixa de pedestres com semáforo'),
+      p('semaforo', 6, 'frente', 'Botoeira do semáforo sonoro sem som', 0.00004, 0.00001),
+      p('piso', 8, 'direita', 'Piso tátil interrompido por rampa de garagem'),
+      p('ponto', 10, 'direita', 'Ponto de ônibus com abrigo (linhas de exemplo)'),
+      p('calcada', 11, 'esquerda', 'Calçada com degrau alto'),
+    ],
+    alertas: [],
+    avisados: [],
+  };
+}
+const E = criarEstado('vozguia:v1', semente);
+let posGPS = null;
+const posAtual = () => posGPS || TRAJETO[E.d.passo];
+
+function dizer(txt, padraoVib) {
+  $('#fala').textContent = txt;
+  if (E.d.cfg.vib && padraoVib) vibrar(padraoVib);
+  if (E.d.cfg.voz) falar(txt, { rate: E.d.cfg.vel });
+}
+
+function aplicarCfg() {
+  document.body.classList.toggle('fonte-grande', E.d.cfg.fonte);
+  document.body.classList.toggle('contraste', E.d.cfg.contraste);
+  $('#a-voz').checked = E.d.cfg.voz; $('#a-vib').checked = E.d.cfg.vib; $('#a-fonte').checked = E.d.cfg.fonte;
+  $('#a-contraste').checked = E.d.cfg.contraste; $('#a-vel').value = E.d.cfg.vel; $('#a-raio').value = E.d.cfg.raio;
+}
+
+function descrever(p, d) {
+  return `${TIPOS[p.tipo].risco ? 'Atenção: ' : ''}${TIPOS[p.tipo].rot.toLowerCase()} a ${Math.max(5, Math.round(d / 5) * 5)} metros${p.lado && p.lado !== 'frente' ? ', lado ' + p.lado : ', à frente'}. ${p.desc}.`;
+}
+
+function oQueTemPerto() {
+  const pos = posAtual();
+  const perto = E.d.pontos.map(p => ({ p, d: distanciaM(pos, p) })).filter(x => x.d <= 100).sort((a, b) => a.d - b.d).slice(0, 3);
+  if (!perto.length) return dizer('Nenhum ponto cadastrado em até 100 metros.', [80]);
+  dizer(`${perto.length} ponto${perto.length > 1 ? 's' : ''} perto. ` + perto.map(x => descrever(x.p, x.d)).join(' '), [60, 60, 60]);
+}
+
+function avancar() {
+  if (posGPS) { posGPS = null; toast('Voltando ao trajeto de treino.'); }
+  if (E.d.passo >= TRAJETO.length - 1) { pararAuto(); dizer('Fim do trajeto de treino. Toque em voltar ao início para repetir.', [200]); return; }
+  E.d.passo++;
+  const pos = posAtual();
+  const novos = E.d.pontos.filter(p => !E.d.avisados.includes(p.id)).map(p => ({ p, d: distanciaM(pos, p) }))
+    .filter(x => x.d <= E.d.cfg.raio).sort((a, b) => a.d - b.d);
+  novos.forEach(x => E.d.avisados.push(x.p.id));
+  E.salvar(); renderGuia();
+  if (novos.length) dizer(novos.map(x => descrever(x.p, x.d)).join(' '), novos.some(x => TIPOS[x.p.tipo].risco) ? [250, 100, 250] : [80]);
+  else dizer(`Trecho ${E.d.passo} de ${TRAJETO.length - 1}. Caminho livre nos próximos ${E.d.cfg.raio} metros.`, [40]);
+}
+let timer = null;
+function pararAuto() { clearInterval(timer); timer = null; const b = $('#btn-auto'); b.textContent = '▶ Caminhada automática'; b.setAttribute('aria-pressed', 'false'); }
+function alternarAuto() {
+  if (timer) { pararAuto(); dizer('Caminhada automática pausada.'); return; }
+  const b = $('#btn-auto'); b.textContent = '⏸ Pausar caminhada'; b.setAttribute('aria-pressed', 'true');
+  avancar(); timer = setInterval(avancar, 4500);
+}
+
+function renderGuia() { $('#chip-trecho').textContent = posGPS ? 'GPS' : `Trecho ${E.d.passo}/${TRAJETO.length - 1}`; }
+
+let filtroTipo = 'todos';
+function renderMapa() {
+  const pts = E.d.pontos, all = TRAJETO.concat(pts);
+  const lats = all.map(p => p.lat), lngs = all.map(p => p.lng);
+  const [a0, a1, o0, o1] = [Math.min(...lats), Math.max(...lats), Math.min(...lngs), Math.max(...lngs)];
+  const W = 320, H = 220, pad = 18;
+  const xy = p => [pad + (p.lng - o0) / ((o1 - o0) || 1e-4) * (W - 2 * pad), pad + (a1 - p.lat) / ((a1 - a0) || 1e-4) * (H - 2 * pad)];
+  const pos = xy(posAtual());
+  $('#mapa-svg').innerHTML = `<svg class="mapa" viewBox="0 0 ${W} ${H}" role="img" aria-label="Esquema do trajeto com ${pts.length} pontos cadastrados. A lista abaixo tem os mesmos pontos em texto.">
+    <polyline points="${TRAJETO.map(xy).map(p => p.join(',')).join(' ')}" fill="none" stroke="#94a3b8" stroke-width="10" stroke-linecap="round"/>
+    ${pts.map(p => { const [x, y] = xy(p); return `<circle cx="${x}" cy="${y}" r="7" fill="${TIPOS[p.tipo].risco ? '#dc2626' : '#1e3a8a'}" stroke="#fff" stroke-width="2"/>`; }).join('')}
+    <circle cx="${pos[0]}" cy="${pos[1]}" r="9" fill="#facc15" stroke="#0b1020" stroke-width="3"/>
+  </svg><p class="muted" style="font-size:12px">● vermelho = risco · ● azul = referência · ● amarelo = você (esquema sem escala)</p>`;
+  $('#filtro-tipo').innerHTML = [['todos', 'Todos'], ['risco', 'Riscos'], ['ref', 'Referências']].map(([k, r]) => `<button class="${filtroTipo === k ? 'on' : ''}" data-ftipo="${k}" aria-pressed="${filtroTipo === k}">${r}</button>`).join('');
+  const lista = pts.filter(p => filtroTipo === 'todos' || (filtroTipo === 'risco') === TIPOS[p.tipo].risco).map(p => ({ p, d: distanciaM(posAtual(), p) })).sort((a, b) => a.d - b.d);
+  $('#lista-pontos').innerHTML = lista.map(({ p, d }) => `<div class="card">
+    <div class="entre"><b>${esc(TIPOS[p.tipo].rot)}</b><span class="chip ${TIPOS[p.tipo].risco ? 'alerta' : ''}">${fmtDist(d)}</span></div>
+    <div class="muted">${esc(p.desc)} · lado ${esc(p.lado)} · ${p.confirmacoes} confirmação(ões)${p.exemplo ? ' · exemplo' : ''}</div>
+    <div class="btns"><button class="btn sec peq" data-ouvir="${p.id}">🔊 Ouvir</button><button class="btn sec peq" data-confirmar="${p.id}">Ainda está lá</button><button class="btn sec peq" data-resolvido="${p.id}">Já foi resolvido</button></div></div>`).join('') || '<div class="vazio">Nenhum ponto neste filtro.</div>';
+}
+
+const ETAPAS = ['Enviado', 'Recebido pelo órgão', 'Em análise', 'Serviço agendado', 'Resolvido'];
+function renderAlertas() {
+  $('#lista-alertas').innerHTML = E.d.alertas.length ? E.d.alertas.map(a => `<div class="card">
+    <div class="entre"><b>${esc(TIPOS[a.tipo].rot)}</b><span class="chip ${a.etapa >= 4 ? 'ok' : 'atencao'}">${ETAPAS[a.etapa]}</span></div>
+    <div class="muted">Protocolo <span class="proto">${a.protocolo}</span> · ${fmtData(a.criado)}<br>Para: ${esc(a.orgao)}</div>
+    ${a.foto ? `<img src="${a.foto}" alt="Foto do alerta" style="border-radius:10px;margin:8px 0;max-height:160px;object-fit:cover;width:100%">` : ''}
+    <p style="font-size:14px;margin-top:6px">${esc(a.desc)}</p>
+    <ul class="linha-tempo">${ETAPAS.map((e, i) => `<li class="${i <= a.etapa ? 'feito' : ''}">${e}${a.datas[i] ? ' · ' + fmtData(a.datas[i]) : ''}</li>`).join('')}</ul>
+    <div class="btns">${a.etapa < 4 ? `<button class="btn sec peq" data-avancar="${a.id}">Simular resposta do órgão</button>` : ''}<button class="btn sec peq" data-ouvir-alerta="${a.id}">🔊 Ouvir situação</button></div></div>`).join('')
+    : '<div class="vazio">Nenhum alerta enviado ainda.</div>';
+}
+
+function novoAlerta(tipoInicial) {
+  let foto = null;
+  modal(`<h2>Novo alerta de acessibilidade</h2>
+    <div class="campo"><label for="n-tipo">O que é?</label><select id="n-tipo">${Object.entries(TIPOS).filter(([, v]) => v.risco).map(([k, v]) => `<option value="${k}" ${k === tipoInicial ? 'selected' : ''}>${v.rot}</option>`).join('')}</select></div>
+    <div class="campo"><label for="n-lado">De que lado?</label><select id="n-lado"><option>direita</option><option>esquerda</option><option>frente</option></select></div>
+    <div class="campo"><label for="n-desc">Descreva (opcional — pode ditar pelo teclado do celular)</label><textarea id="n-desc" placeholder="Ex.: buraco fundo na frente do número 120"></textarea></div>
+    <button class="btn sec bloco" id="n-foto" type="button">📷 Anexar foto (opcional)</button><div id="n-prev"></div>
+    <p class="muted" style="margin-top:8px">Local: posição atual (${posGPS ? 'GPS' : 'trecho ' + E.d.passo + ' do trajeto de treino'}).</p>
+    <div class="btns"><button class="btn sec" data-fechar>Cancelar</button><button class="btn" id="n-ok">Enviar alerta</button></div>`, (m, fechar) => {
+    $('#n-foto', m).addEventListener('click', () => escolherArquivo('image/*', f => lerComoDataURL(f).then(d => { foto = d; $('#n-prev', m).innerHTML = `<img src="${d}" alt="Prévia da foto" style="border-radius:10px;margin-top:8px;max-height:140px">`; toast('Foto anexada.'); })));
+    $('#n-ok', m).addEventListener('click', () => {
+      const tipo = $('#n-tipo', m).value, pos = posAtual();
+      const desc = $('#n-desc', m).value.trim() || TIPOS[tipo].rot;
+      const n = 100 + E.d.alertas.length + 1;
+      const a = { id: uid(), tipo, desc, foto, lat: pos.lat, lng: pos.lng, orgao: TIPOS[tipo].orgao + ' (exemplo)', protocolo: `VG-${new Date().getFullYear()}-${String(n).padStart(5, '0')}`, etapa: 0, datas: [hoje()], criado: hoje() };
+      E.d.alertas.unshift(a);
+      E.d.pontos.push({ id: uid(), tipo, lat: pos.lat + 0.00001, lng: pos.lng, lado: $('#n-lado', m).value, desc, confirmacoes: 1, criado: hoje() });
+      E.salvar(); fechar(); renderTudo();
+      dizer(`Alerta enviado. Protocolo ${a.protocolo.split('').join(' ')}. O ponto também foi adicionado ao mapa colaborativo.`, [120, 60, 120]);
+    });
+  });
+}
+
+function novaReferencia() {
+  modal(`<h2>Cadastrar ponto</h2>
+    <div class="campo"><label for="r-tipo">Tipo</label><select id="r-tipo">${Object.entries(TIPOS).map(([k, v]) => `<option value="${k}">${v.rot}</option>`).join('')}</select></div>
+    <div class="campo"><label for="r-lado">Lado</label><select id="r-lado"><option>direita</option><option>esquerda</option><option>frente</option></select></div>
+    <div class="campo"><label for="r-desc">Descrição</label><input id="r-desc" placeholder="Ex.: entrada do mercado"></div>
+    <div class="btns"><button class="btn sec" data-fechar>Cancelar</button><button class="btn" id="r-ok">Salvar ponto</button></div>`, (m, fechar) =>
+    $('#r-ok', m).addEventListener('click', () => {
+      const pos = posAtual();
+      E.d.pontos.push({ id: uid(), tipo: $('#r-tipo', m).value, lat: pos.lat + 0.00002, lng: pos.lng, lado: $('#r-lado', m).value, desc: $('#r-desc', m).value.trim() || 'Sem descrição', confirmacoes: 1, criado: hoje() });
+      E.salvar(); fechar(); renderTudo(); dizer('Ponto cadastrado no mapa colaborativo.');
+    }));
+}
+
+function tutorial() {
+  const passos = [
+    'Bem-vindo ao modo aprendizagem do VozGuia.',
+    'Na aba Guia há quatro botões grandes, um embaixo do outro.',
+    'O primeiro, amarelo, fala o que existe perto de você.',
+    'O segundo avança a caminhada de treino. Cada toque anda cerca de vinte e cinco metros e o app avisa os obstáculos à frente.',
+    'O terceiro liga a caminhada automática.',
+    'O quarto, vermelho, registra um obstáculo e envia um alerta para a prefeitura, com protocolo.',
+    'Na parte de baixo da tela ficam as abas: Guia, Mapa, Alertas e Ajustes. Em Ajustes você muda a velocidade da voz, a vibração, o tamanho das letras e o contraste.',
+  ];
+  dizer(passos.join(' '));
+}
+
+function renderTudo() { aplicarCfg(); renderGuia(); renderMapa(); renderAlertas(); }
+
+document.addEventListener('click', ev => {
+  const t = ev.target.closest('button'); if (!t) return;
+  const ponto = id => E.d.pontos.find(p => p.id === id);
+  if (t.id === 'btn-perto') oQueTemPerto();
+  else if (t.id === 'btn-passo') avancar();
+  else if (t.id === 'btn-auto') alternarAuto();
+  else if (t.id === 'btn-alerta-rapido') novoAlerta('buraco');
+  else if (t.id === 'btn-reiniciar') { pararAuto(); posGPS = null; E.d.passo = 0; E.d.avisados = []; E.salvar(); renderTudo(); dizer('Você está no início do trajeto de treino.'); }
+  else if (t.id === 'btn-gps') {
+    if (!navigator.geolocation) return dizer('Este aparelho não informou a localização.');
+    navigator.geolocation.getCurrentPosition(p => { posGPS = { lat: p.coords.latitude, lng: p.coords.longitude }; renderTudo(); dizer('Usando sua localização real. Os pontos de exemplo ficam no centro de Várzea Grande.'); },
+      () => dizer('Não consegui obter sua localização. Continuo no trajeto de treino.'), { enableHighAccuracy: true, timeout: 10000 });
+  }
+  else if (t.id === 'btn-novo-alerta') novoAlerta();
+  else if (t.id === 'btn-add-ref') novaReferencia();
+  else if (t.id === 'btn-tutorial') tutorial();
+  else if (t.dataset.ftipo) { filtroTipo = t.dataset.ftipo; renderMapa(); }
+  else if (t.dataset.ouvir) { const p = ponto(t.dataset.ouvir); dizer(descrever(p, distanciaM(posAtual(), p))); }
+  else if (t.dataset.confirmar) { ponto(t.dataset.confirmar).confirmacoes++; E.salvar(); renderMapa(); toast('Obrigado! Confirmação registrada.'); }
+  else if (t.dataset.resolvido) confirmar('Remover este ponto do mapa porque já foi resolvido?', () => { E.d.pontos = E.d.pontos.filter(p => p.id !== t.dataset.resolvido); E.salvar(); renderMapa(); toast('Ponto removido.'); }, 'Remover');
+  else if (t.dataset.avancar) { const a = E.d.alertas.find(x => x.id === t.dataset.avancar); a.etapa++; a.datas[a.etapa] = hoje(); E.salvar(); renderAlertas(); toast(`Simulação: ${ETAPAS[a.etapa]}.`); }
+  else if (t.dataset.ouvirAlerta) { const a = E.d.alertas.find(x => x.id === t.dataset.ouvirAlerta); dizer(`Alerta de ${TIPOS[a.tipo].rot.toLowerCase()}. Situação: ${ETAPAS[a.etapa]}.`); }
+});
+[['a-voz', 'voz'], ['a-vib', 'vib'], ['a-fonte', 'fonte'], ['a-contraste', 'contraste']].forEach(([id, k]) =>
+  $('#' + id).addEventListener('change', ev => { E.d.cfg[k] = ev.target.checked; E.salvar(); aplicarCfg(); }));
+$('#a-vel').addEventListener('change', ev => { E.d.cfg.vel = Number(ev.target.value); E.salvar(); dizer('Velocidade da voz ajustada.'); });
+$('#a-raio').addEventListener('change', ev => { E.d.cfg.raio = Number(ev.target.value); E.salvar(); toast('Distância de aviso ajustada.'); });
+
+ligarDados(E, 'vozguia', () => { pararAuto(); renderTudo(); });
+renderTudo();
+abas(v => { if (v === 'mapa') renderMapa(); });
+pwa();
+</script>
+</body>
+</html>

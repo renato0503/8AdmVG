@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parte 2 — Validação dos Questionários & Construção no App | Customer Discovery · 8AdmVG</title>
+    <link rel="stylesheet" href="../assets/reveal/reset.css">
+    <link rel="stylesheet" href="../assets/reveal/reveal.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Arial, sans-serif; }
+
+        .reveal .slides section { text-align: left; padding: 0 40px; }
+        .reveal .slides { text-align: left; }
+
+        .reveal .slides section.dark { color: #fff; background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); }
+        .reveal .slides section.cover { background: #ffffff; }
+        .reveal .slides section.cover,
+        .reveal .slides section.dark { justify-content: center; align-items: center; text-align: center; }
+
+        .reveal h1 { font-size: 32px; color: #1a1a2e; margin-bottom: 12px; font-weight: 700; line-height: 1.2; text-transform: none; }
+        .reveal h2 { font-size: 24px; color: #e94560; margin-bottom: 10px; text-transform: none; }
+        .reveal h3 { font-size: 18px; color: #2d3748; margin-bottom: 8px; text-transform: none; }
+        .reveal .dark h1, .reveal .dark h2 { color: #fff; }
+        .reveal .dark h3 { color: #e94560; }
+
+        .reveal .subtitle { font-size: 14px; color: #666; padding-top: 10px; border-top: 1px solid #E2E8F0; margin-top: 20px; }
+        .reveal .dark .subtitle { color: #A0AEC0; border-top-color: rgba(255,255,255,0.2); }
+
+        .reveal .content { display: flex; flex-direction: column; justify-content: flex-start; padding: 10px 0; }
+        .reveal .content ul { list-style: none; font-size: 20px; line-height: 1.6; }
+        .reveal .content ul li { padding: 5px 0; padding-left: 20px; position: relative; }
+        .reveal .content ul li::before { content: ""; position: absolute; left: 0; top: 12px; width: 6px; height: 6px; background: #e94560; border-radius: 50%; }
+
+        .reveal .highlight-box { background: #FDF2F4; border-left: 4px solid #e94560; padding: 12px 15px; margin: 10px 0; border-radius: 0 8px 8px 0; }
+        .reveal .dark .highlight-box { background: rgba(233,69,96,0.15); border-left-color: #e94560; }
+
+        .reveal .success-box { background: #F0FDF4; border-left: 4px solid #38A169; padding: 12px 15px; margin: 10px 0; border-radius: 0 8px 8px 0; }
+        .reveal .warning-box { background: #FFFBEB; border-left: 4px solid #DD6B20; padding: 12px 15px; margin: 10px 0; border-radius: 0 8px 8px 0; }
+
+        .reveal table { width: 100%; border-collapse: collapse; font-size: 16px; margin: 10px 0; }
+        .reveal th { background: #1a1a2e; color: #fff; padding: 8px; text-align: left; font-weight: 600; }
+        .reveal td { padding: 6px 8px; border-bottom: 1px solid #E2E8F0; vertical-align: top; }
+        .reveal tr:nth-child(even) { background: #F7FAFC; }
+
+        .reveal .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: start; }
+        .reveal .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; align-items: start; }
+
+        .reveal .card { background: #F7FAFC; border-radius: 8px; padding: 12px; border: 1px solid #E2E8F0; }
+        .reveal .card h3 { color: #1a1a2e; font-size: 19px; margin-bottom: 6px; }
+        .reveal .card p { font-size: 17px; color: #4A5568; line-height: 1.45; }
+
+        .reveal .quote { font-size: 20px; font-style: italic; color: #2D3748; border-left: 4px solid #e94560; padding: 15px 20px; margin: 10px 0; background: #FDF2F4; border-radius: 0 8px 8px 0; line-height: 1.5; }
+        .reveal .dark .quote { background: rgba(233,69,96,0.15); color: #F1F5F9; }
+
+        .reveal .badge { display: inline-block; background: #e94560; color: #fff; padding: 5px 12px; border-radius: 15px; font-size: 15px; margin: 3px; }
+        .reveal .badge.green { background: #38A169; }
+        .reveal .badge.orange { background: #DD6B20; }
+        .reveal .badge.blue { background: #3182CE; }
+        .reveal .badge.purple { background: #805AD5; }
+
+        .reveal .objective-list { counter-reset: objective; list-style: none; }
+        .reveal .objective-list li { counter-increment: objective; padding: 6px 0; padding-left: 35px; position: relative; font-size: 18px; }
+        .reveal .objective-list li::before { content: counter(objective); position: absolute; left: 0; top: 6px; width: 24px; height: 24px; background: #e94560; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 12px; }
+
+        .reveal .activity-box { background: #F0FDF4; border: 2px solid #38A169; padding: 15px 20px; margin: 15px 0; border-radius: 8px; }
+        .reveal .activity-box h3 { color: #38A169; margin-bottom: 8px; }
+
+        .reveal .prompt-box { background: #1a1a2e; color: #e9e9e9; padding: 15px 20px; border-radius: 8px; font-family: 'Consolas', monospace; font-size: 15px; line-height: 1.6; margin: 10px 0; }
+
+        .reveal .checklist { list-style: none; font-size: 19px; line-height: 1.9; }
+        .reveal .checklist li { padding: 4px 0; padding-left: 34px; position: relative; }
+        .reveal .checklist li::before { content: ""; position: absolute; left: 0; top: 8px; width: 20px; height: 20px; border: 2px solid #e94560; border-radius: 5px; }
+        .reveal .group-chip { display: inline-block; background: #1a1a2e; color: #fff; padding: 6px 14px; border-radius: 8px; font-size: 14px; font-weight: 600; letter-spacing: .04em; margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+
+<div class="reveal">
+<div class="slides">
+
+<!-- SLIDE 1: CAPA -->
+<section class="cover">
+    <svg width="120" height="120" viewBox="0 0 120 120" style="margin-bottom: 30px;">
+        <defs>
+            <linearGradient id="g2" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#e94560"/>
+                <stop offset="100%" style="stop-color:#1a1a2e"/>
+            </linearGradient>
+        </defs>
+        <circle cx="60" cy="60" r="55" fill="url(#g2)" opacity="0.2"/>
+        <circle cx="60" cy="60" r="40" fill="url(#g2)" opacity="0.4"/>
+        <rect x="34" y="30" width="52" height="62" rx="8" fill="#1a1a2e"/>
+        <rect x="42" y="40" width="36" height="6" rx="3" fill="#e94560"/>
+        <path d="M42 54 h24 M42 64 h30 M42 74 h20" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+        <path d="M68 82 l6 6 12 -14" stroke="#e94560" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <h1 style="font-size: 44px; color: #1a1a2e; margin-bottom: 15px;">PARTE 2 — VALIDAÇÃO E CONSTRUÇÃO DO APP</h1>
+    <h2 style="font-size: 25px; color: #e94560; margin-bottom: 40px;">Validar os questionários e montar o app de formulário</h2>
+    <div style="background: #FDF2F4; padding: 25px 40px; border-radius: 12px; margin: 20px 0; border: 1px solid #e94560;">
+        <div style="font-size: 22px; color: #1a1a2e; font-weight: 600;">Do papel ao aplicativo: uma tela, um código, uma verdade</div>
+        <div style="font-size: 16px; color: #e94560; margin-top: 5px;">Turma de Administração · 8º Semestre (VG) · Setembro de 2026</div>
+    </div>
+    <div style="margin-top: 40px;">
+        <div style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+            <img src="../Parte 1/Renato.jpg" alt="Prof. Renato Rosa" style="width: 76px; height: 76px; border-radius: 50%; object-fit: cover; border: 3px solid #e94560;">
+            <div style="text-align: left;">
+                <div style="font-size: 19px; color: #2D3748;">Prof. Renato Rosa</div>
+                <div style="font-size: 14px; color: #666;">Cerrado Tech · Unifacc</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SLIDE 2: COMO FUNCIONA A PARTE 2 -->
+<section>
+    <h1>Como funciona a Parte 2</h1>
+    <div class="highlight-box" style="font-size: 17px;">
+        Hoje <strong>ninguém vai ao shopping</strong>. Hoje nós <strong>validamos</strong> os questionários e <strong>montamos no app</strong> tudo que será usado na Parte 3.
+    </div>
+    <div class="content">
+        <ol class="objective-list">
+            <li><strong>Validar</strong> cada pergunta — neutra? uma ideia? resposta livre?</li>
+            <li><strong>Ajustar</strong> o que induz, o que é redundante e o que não mede nada.</li>
+            <li><strong>Especificar</strong> as telas do app (bloco de perfil + blocos do grupo).</li>
+            <li><strong>Construir</strong> o formulário no app e gerar o <strong>código</strong> de correlação.</li>
+            <li><strong>Testar</strong> no celular e ensaiar o fluxo com o áudio.</li>
+        </ol>
+    </div>
+    <div class="success-box" style="margin-top: 12px;">
+        <strong>Regra da Parte 2:</strong> pergunta que não pode ser <strong>medida</strong> ou <strong>falada</strong> não entra no app.
+    </div>
+    <div class="subtitle">Parte 2 · Validação e construção do app · Prof. Renato Rosa</div>
+</section>
+
+<!-- SLIDE 3: O QUE JÁ TEMOS -->
+<section>
+    <h1>Ponto de partida: o que cada grupo traz</h1>
+    <p style="font-size: 17px; color:#4A5568; margin-bottom: 6px;">Todos os grupos chegam com a <strong>ideia</strong>. As 20 perguntas do formulário serão <strong>propostas e validadas</strong> nesta aula.</p>
+    <table>
+        <tr><th>#</th><th>Grupo</th><th>Professor(a)</th><th>Ideia</th></tr>
+        <tr><td>1</td><td>HoraCerta</td><td>Renato</td><td><span class="badge blue">App único de horas complementares</span></td></tr>
+        <tr><td>2</td><td>RotaViva</td><td>Renato</td><td><span class="badge green">Guia turístico de bolso por localização</span></td></tr>
+        <tr><td>3</td><td>VozGuia</td><td>Sandra</td><td><span class="badge purple">Assistente sonoro + alertas ao poder público</span></td></tr>
+        <tr><td>4</td><td>CasaPiloto</td><td>Polyana</td><td><span class="badge orange">Simulador da construtora por tipo de casa</span></td></tr>
+        <tr><td>5</td><td>CasaHumanizada</td><td>Heitor</td><td><span class="badge green">Programas de moradia num lugar só</span></td></tr>
+    </table>
+    <div class="success-box" style="margin-top: 12px; font-size: 15px;">
+        <strong>Ponto de partida pronto:</strong> cada grupo já tem uma proposta de 20 perguntas em <code>GrupoN/formulario-app.md</code> — a aula serve para <strong>validar, cortar e reescrever</strong>, não para começar do zero.
+    </div>
+    <div class="subtitle">Parte 2 · Validação e construção do app · Prof. Renato Rosa</div>
+</section>
+
+<!-- SLIDE 4: CRITÉRIOS DE VALIDAÇÃO -->
+<section>
+    <h1>Como validar uma pergunta</h1>
+    <div class="content">
+        <div class="three-col">
+            <div class="card"><h3 style="color:#e94560;">1. Neutra?</h3><p>A pergunta <strong>não sugere</strong> a resposta. "Você não acha que…" está proibido.</p></div>
+            <div class="card"><h3 style="color:#e94560;">2. Uma ideia?</h3><p>Não mistura duas dores ("fila <em>e</em> documentos"). Uma pergunta, um ponto.</p></div>
+            <div class="card"><h3 style="color:#e94560;">3. Mensurável?</h3><p>Dá para <strong>marcar</strong> uma opção? Se não, precisa virar escala ou aberta.</p></div>
+        </div>
+        <div class="three-col" style="margin-top: 15px;">
+            <div class="card"><h3 style="color:#e94560;">4. Relevante?</h3><p>Ajuda a <strong>testar a hipótese</strong> do grupo? Se não, sai.</p></div>
+            <div class="card"><h3 style="color:#e94560;">5. Resposta livre?</h3><p>A pessoa consegue falar naturalmente antes de marcar?</p></div>
+            <div class="card"><h3 style="color:#e94560;">6. Tem "Outro"?</h3><p>Toda fechada precisa de <strong>Outro / Qual?</strong> e campo aberto.</p></div>
+        </div>
+    </div>
+    <div class="success-box" style="margin-top: 12px;">
+        <strong>Semáforo da pergunta:</strong> ✅ entra &nbsp;·&nbsp; ⚠️ reescrever &nbsp;·&nbsp; ❌ descarta. A decisão vai registrada no caderno.
+    </div>
+    <div class="subtitle">Parte 2 · Validação e construção do app · Prof. Renato Rosa</div>
+</section>
+
+<!-- SLIDE 5: QUANTAS PERGUNTAS -->
+<section>
+    <h1>O formulário não pode cansar</h1>
+    <div class="two-col">
+        <div>
+            <div class="highlight-box" style="font-size: 17px;">
+                <strong>Regra de ouro:</strong> o entrevistado responde em <strong>2 a 3 minutos</strong>. Em campo, cada pergunta a mais derruba a taxa de resposta.
+            </div>
+            <div class="tbl" style="margin-top:10px;">
+                <table>
+                    <tr><th>Bloco</th><th>Nº ideal</th></tr>
+                    <tr><td>0 · Perfil (observação)</td><td>4 (exceção)</td></tr>
+                    <tr><td>1..N · Perguntas do grupo</td><td>20 (fixas, escala 1–5)</td></tr>
+                    <tr><td>Aberta final</td><td>0 — não existe; o quali vai no áudio</td></tr>
+                </table>
+            </div>
+        </div>
+        <div>
+            <div class="card" style="border-left: 4px solid #e94560;">
+                <h3 style="color:#e94560;">Corte sem dó</h3>
+                <ul class="content" style="font-size:16px;">
+                    <li>Pergunta que só satisfaz curiosidade</li>
+                    <li>Pergunta repetida com outras palavras</li>
+                    <li>Pergunta "educada" (você usaria um app que…)</li>
+                    <li>Pergunta que pede dados pessoais</li>
+                    <li>Pergunta longa com termos técnicos</li>
+                </ul>
+            </div>
+            <div class="activity-box" style="margin-top:10px;">
+                <strong>Meta:</strong> sair da Parte 2 com <strong>20 perguntas</strong> por grupo (fixas), todas em escala 1–5.
+            </div>
+        </div>
+    </div>
+    <div class="subtitle">Parte 2 · Validação e construção do app · Prof. Renato Rosa</div>
+</section>
+
+<!-- SLIDE 6: ARQUITETURA DO APP -->
+<section class="dark">
+    <h1>Anatomia do app de formulário</h1>
+    <h2>Uma tela, três blocos, um código</h2>
+    <div class="prompt-box" style="font-size: 15px; margin-top: 18px;">
+┌───────────────────────────────────────────────┐
+│  G1-014                    ← CÓDIGO NA TELA     │
+├───────────────────────────────────────────────┤
+│  BLOCO 0 · PERFIL   (o entrevistador marca)     │
+│    faixa etária · sexo · classe social · raça   │
+├───────────────────────────────────────────────┤
+│  BLOCO 1..N · PERGUNTAS DO GRUPO                │
+│    pessoa fala livre → entrevistador marca      │
+│    + a fala livre vai para o áudio (código)     │
+├───────────────────────────────────────────────┤
+│  [ SALVAR ]  → gera código e vai p/ planilha    │
+└───────────────────────────────────────────────┘
+    </div>
+    <div class="two-col" style="margin-top: 12px;">
+        <div class="card"><h3 style="color:#e94560;">Código aparece e permanece</h3><p>Começa em <code>G&lt;grupo&gt;-001</code> e cresce a cada resposta. Fica grande na tela para o colega do áudio ler.</p></div>
+        <div class="card"><h3 style="color:#e94560;">Uma resposta = uma linha</h3><p>Cada salvamento grava direto na planilha, com data, hora e o código.</p></div>
+    </div>
+    <div class="subtitle">Parte 2 · Validação e construção do app · Prof. Renato Rosa</div>
+</section>
+
+<!-- SLIDE 7: BLOCO DE PERFIL -->
+<section>
+    <h1>Bloco 0 — Perfil (marcado por observação)</h1>
+    <div class="warning-box" style="font-size: 16px;">
+        O entrevistador <strong>não pergunta</strong> o perfil: ele <strong>observa e marca</strong>. É estimativa — e existe a opção <strong>“Não sei estimar”</strong>.
+    </div>
+    <div class="three-col" style="margin-top: 8px;">
+        <div class="card"><h3>Faixa etária</h3><p>18–24 · 25–34 · 35–44 · 45–59 · 60+</p></div>
+        <div class="card"><h3>Sexo</h3><p>Feminino · Masculino · Não identificado</p></div>
+        <div class="card"><h3>Classe social</h3><p>A/B · C · D/E · Não sei estimar</p></div>
+    </div>
+    <div class="card" style="margin-top: 12px;">
+        <h3>Raça/cor</h3><p>Branca · Preta · Parda · Amarela · Indígena · Não sei estimar</p>
+    </div>
+    <div class="highlight-box" style="margin-top: 12px; font-size: 15px;">
+        <strong>Ética:</strong> nunca pergunte raça ou renda. Se a pessoa se autodeclarar, marque o que ela disser. Na dúvida, use <strong>“Não sei estimar”</strong>.
+    </div>
+    <div class="subtitle">Parte 2 · Validação e construção do app · Prof. Renato Rosa</div>
+</section>
+
+<!-- SLIDE 8: RESPOSTA LIVRE -->
+<section>
+    <h1>Pergunta fechada vira conversa</h1>
+    <div class="two-col">
+        <div class="card" style="border-left: 4px solid #e94560;">
+            <h3 style="color:#e94560;">Como está no papel</h3>
+            <p style="font-size:16px;">"Você gastou mais do que pretendia ultimamente?"<br>
+            ( ) Sim ( ) Não ( ) Às vezes</p>
+        </div>
+        <div class="card" style="border-left: 4px solid #38A169;">
+            <h3 style="color:#38A169;">Como fica no app</h3>
+            <p style="font-size:16px;">O entrevistador pergunta <strong>aberto</strong> e marca a alternativa que a pessoa mencionar — ou <strong>Outro / Qual?</strong> com o texto dela.</p>
+        </div>
+    </div>
+    <div class="content" style="margin-top:10px;">
+        <div class="tbl">
+            <table>
+                <tr><th>Tipo no app</th><th>Quando usar</th><th>O entrevistador…</th></tr>
+                <tr><td>Escolha única</td><td>Uma resposta entre várias</td><td>Marca a que a pessoa citizou</td></tr>
+                <tr><td>Múltipla</td><td>Pode citar várias</td><td>Marca todas as citadas</td></tr>
+                <tr><td>Escala 1–5</td><td>Intensidade (1 = polo A, 5 = polo B)</td><td>Converte a fala em nota</td></tr>
+                <tr><td>Áudio (fora do app)</td><td>Frase exata / quali</td><td>Grava no WhatsApp com o código</td></tr>
+            </table>
+        </div>
+    </div>
+    <div class="activity-box">
+        <strong>Regra:</strong> o celular fica com o <strong>entrevistador</strong>. Ele só entrega se a pessoa pedir para ver a tela.
+    </div>
+    <div class="subtitle">Parte 2 · Validação e construção do app · Prof. Renato Rosa</div>
+</section>
+
+<!-- SLIDE 9: CÓDIGO + ÁUDIO -->
+<section class="dark">
+    <h1>Código + Áudio = Quanti × Quali</h1>
+    <div class="highlight-box" style="font-size: 17px;">
+        Enquanto um aluno marca no app, <strong>outro grava um áudio no WhatsApp</strong> começando pelo <strong>código</strong> da tela.
+    </div>
+    <div class="prompt-box" style="margin-top: 12px;">
+Código na tela:  G3-014
+
+Áudio (20–40s):
+"Código G3-014. Principais pontos: convive com um tio cego; acha as calçadas do
+centro muito ruins; já reclamou na prefeitura e nunca teve resposta. Frase marcante:
+'ele só sai de casa se alguém for junto'."
+    </div>
+    <div class="success-box">
+        <strong>Por quê:</strong> o app dá o <strong>número</strong>, o áudio dá a <strong>história</strong>. O código permite provar que os dois falam da mesma pessoa.
+    </div>
+    <div class="subtitle">Parte 2 · Validação e construção do app · Prof. Renato Rosa</div>
+</section>
+
+<!-- SLIDE 10: ENTREGÁVEL -->
+<section style="background: linear-gradient(135deg, #FDF2F4 0%, #FFFFFF 100%);">
+    <h1>Entregável da Parte 2</h1>
+    <h2>Ao final da aula, cada grupo tem:</h2>
+    <div class="content">
+        <ul class="checklist">
+            <li>Questionário <strong>validado</strong> pergunta por pergunta.</li>
+            <li>Lista de <strong>cortes e reescritas</strong> registrada.</li>
+            <li>App com <strong>Bloco de Perfil</strong> + perguntas do grupo.</li>
+            <li><strong>Código</strong> por resposta funcionando.</li>
+            <li>Destino das respostas em <strong>planilha automática</strong>.</li>
+            <li><strong>Teste completo</strong> no celular + ensaio do áudio.</li>
+        </ul>
+    </div>
+    <div class="highlight-box" style="margin-top: 12px; font-size: 15px;">
+        <strong>Nada entra na Parte 3 sem este entregável.</strong> Quem não fecha o app hoje vai a campo só observando.
+    </div>
+    <div class="subtitle">Parte 2 · Validação e construção do app · Prof. Renato Rosa</div>
+</section>
+
+<!-- SLIDE 11: GRUPOS COM TEMA SENSÍVEL -->
+<section>
+    <h1>Atenção especial: Grupos 3 e 5</h1>
+    <div class="warning-box" style="font-size: 16px;">
+        <strong>G3 VozGuia</strong> pode entrevistar pessoas com deficiência visual. <strong>G5 CasaHumanizada</strong> toca em renda e moradia. Os dois exigem respeito, anonimato e acolhimento.
+    </div>
+    <div class="three-col" style="margin-top: 12px;">
+        <div class="card"><h3 style="color:#e94560;">Nunca pergunte</h3><p>Renda, se recebe benefício, diagnóstico, nome de familiares ou dados pessoais.</p></div>
+        <div class="card"><h3 style="color:#e94560;">Sempre faça</h3><p>Leia as opções em voz alta para quem não enxerga; confirme a marcação; lembre que pode parar a qualquer momento.</p></div>
+        <div class="card"><h3 style="color:#e94560;">Se surgir uma história difícil</h3><p>Acolha, agradeça e não insista. Oriente a procurar o CRAS ou a ouvidoria da prefeitura quando fizer sentido.</p></div>
+    </div>
+    <div class="success-box" style="margin-top: 12px;">
+        <strong>Nunca conduza</strong> uma pessoa cega pelo braço sem perguntar antes — ofereça o seu braço e deixe que ela segure.
+    </div>
+    <div class="subtitle">Parte 2 · Validação e construção do app · Prof. Renato Rosa</div>
+</section>
+
+<!-- SLIDE 12: FECHAMENTO -->
+<section class="cover">
+    <div style="margin-bottom: 20px;">
+        <svg width="76" height="76" viewBox="0 0 80 80">
+            <circle cx="40" cy="40" r="35" fill="#e94560" opacity="0.2"/>
+            <circle cx="40" cy="40" r="25" fill="#e94560" opacity="0.4"/>
+            <path d="M25 40 L35 50 L55 30" stroke="#e94560" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </div>
+    <h1 style="font-size: 34px; color: #1a1a2e; margin-bottom: 10px;">Parte 2 concluída</h1>
+    <h2 style="font-size: 20px; color: #e94560; margin-bottom: 25px;">Questionário validado, app montado, áudio ensaiado</h2>
+    <div style="background: #FDF2F4; padding: 20px 36px; border-radius: 12px;">
+        <div style="font-size: 18px; color: #1a1a2e; font-weight: 600;">Próxima etapa: <strong>Parte 3</strong> — a ida ao shopping e as sprints do app</div>
+    </div>
+    <div style="margin-top: 30px;">
+        <div style="display: flex; align-items: center; justify-content: center; gap: 18px;">
+            <img src="../Parte 1/Renato.jpg" alt="Prof. Renato Rosa" style="width: 56px; height: 56px; border-radius: 50%; object-fit: cover; border: 3px solid #e94560;">
+            <div style="text-align: left;">
+                <div style="font-size: 17px; color: #2D3748;">Prof. Renato Rosa</div>
+                <div style="font-size: 13px; color: #666;">Cerrado Tech · Unifacc</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+</div>
+</div>
+
+<script src="../assets/reveal/reveal.js"></script>
+<script>
+    Reveal.initialize({
+        width: 1280,
+        height: 720,
+        margin: 0.03,
+        controls: true,
+        progress: true,
+        history: true,
+        slideNumber: 'c/t',
+        hash: true,
+        center: true,
+        transition: 'slide'
+    });
+</script>
+
+</body>
+</html>

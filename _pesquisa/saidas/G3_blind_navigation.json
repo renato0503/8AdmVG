@@ -1,0 +1,440 @@
+[
+  {
+    "titulo": "A comprehensive review of navigation systems for visually impaired individuals",
+    "ano": 2024,
+    "autores": "Mustufa Haider Abidi; Arshad Noor Siddiquee; Hisham Alkhalefah; Vishwaraj Srivastava",
+    "periodico": "Heliyon",
+    "tipo": "article",
+    "doi": "10.1016/j.heliyon.2024.e31825",
+    "citacoes": 79,
+    "acesso_aberto": true,
+    "url": "https://doi.org/10.1016/j.heliyon.2024.e31825",
+    "areas": [
+      "Tactile and Sensory Interactions",
+      "Ophthalmology and Visual Impairment Studies",
+      "Assistive Technology in Communication and Mobility"
+    ],
+    "abstract": "Background: This review explores the evolutionary trajectory of navigation assistance tools tailored for the visually impaired, spanning from traditional aids like white canes to contemporary electronic devices. It underlines their pivotal role in fostering safe mobility for visually impaired individuals. Objectives: The primary aim is to categorize and assess the plethora of navigation assistance solutions available. Emphasis is placed on technological advancements, particularly in electronic systems employing sensors, AI, and feedback mechanisms. Furthermore, the review underscores the emerging influence of smartphone-based solutions and navigation satellite systems in augmenting independe...",
+    "openalex_id": "https://openalex.org/W4398762469"
+  },
+  {
+    "titulo": "DeepNAVI: A deep learning based smartphone navigation assistant for people with visual impairments",
+    "ano": 2022,
+    "autores": "Bineeth Kuriakose; Raju Shrestha; Frode Eika Sandnes",
+    "periodico": "Expert Systems with Applications",
+    "tipo": "article",
+    "doi": "10.1016/j.eswa.2022.118720",
+    "citacoes": 110,
+    "acesso_aberto": true,
+    "url": "https://www.sciencedirect.com/science/article/pii/S0957417422017432/pdf",
+    "areas": [
+      "Tactile and Sensory Interactions",
+      "Gaze Tracking and Assistive Technology",
+      "Smart Parking Systems Research"
+    ],
+    "abstract": "Navigation assistance is an active research area, where one aim is to foster independent living for people with vision impairments. Despite the fact that many navigation assistants use advanced technologies and methods, we found that they did not explicitly address two essential requirements in a navigation assistant - portability and convenience. It is equally imperative in designing a navigation assistant for the visually impaired that the device is portable and convenient to use without much training. Some navigation assistants do not provide users with detailed information about the obstacle types that can be detected, which is essential to make informed decisions when navigating in real...",
+    "openalex_id": "https://openalex.org/W4296629864"
+  },
+  {
+    "titulo": "Teleguidance-based remote navigation assistance for visually impaired and blind people—usability and user experience",
+    "ano": 2021,
+    "autores": "Babar Chaudary; Sami Pohjolainen; Saima Aziz; Leena Arhippainen et al.",
+    "periodico": "Virtual Reality",
+    "tipo": "article",
+    "doi": "10.1007/s10055-021-00536-z",
+    "citacoes": 55,
+    "acesso_aberto": true,
+    "url": "https://link.springer.com/content/pdf/10.1007/s10055-021-00536-z.pdf",
+    "areas": [
+      "Tactile and Sensory Interactions",
+      "Gaze Tracking and Assistive Technology",
+      "Assistive Technology in Communication and Mobility"
+    ],
+    "abstract": "This paper reports the development of a specialized teleguidance-based navigation assistance system for the blind and the visually impaired. We present findings from a usability and user experience study conducted with 11 blind and visually impaired participants and a sighted caretaker. Participants sent live video feed of their field of view to the remote caretaker's terminal from a smartphone camera attached to their chest. The caretaker used this video feed to guide them through indoor and outdoor navigation scenarios using a combination of haptic and voice-based communication. Haptic feedback was provided through vibrating actuators installed in the grip of a Smart Cane. Two haptic metho...",
+    "openalex_id": "https://openalex.org/W3163959941"
+  },
+  {
+    "titulo": "An Outdoor Navigation Assistance System for Visually Impaired People in Public Transportation",
+    "ano": 2021,
+    "autores": "Salvador Martínez-Cruz; Luis Alberto Morales-Hernandez; Gerardo Israel Perez-Soto; Juan P. Benítez-Rangel et al.",
+    "periodico": "IEEE Access",
+    "tipo": "article",
+    "doi": "10.1109/access.2021.3111544",
+    "citacoes": 47,
+    "acesso_aberto": true,
+    "url": "https://doi.org/10.1109/access.2021.3111544",
+    "areas": [
+      "Tactile and Sensory Interactions",
+      "Smart Parking Systems Research",
+      "Indoor and Outdoor Localization Technologies"
+    ],
+    "abstract": "Visually impaired and blind people (VIBP) have to face significant difficulties on trying to locate public transport vehicles and bus stops due to their vision restrictions. Over the past decade, diverse assistance systems have been developed to solve this problem. However, most of them are based upon the global positioning system (GPS) and present satellite coverage problems in indoor environments. Some others are wearable prototypes that turn out to be onerous for the user. This paper presents an assistance system for VIBP in the use of public transportation. The proposed system uses Bluetooth Low Energy (BLE) technology for location and communication purposes and a developed mobile applic...",
+    "openalex_id": "https://openalex.org/W3199708877"
+  },
+  {
+    "titulo": "Obs-tackle: an obstacle detection system to assist navigation of visually impaired using smartphones",
+    "ano": 2024,
+    "autores": "U Vijetha; V. Geetha",
+    "periodico": "Machine Vision and Applications",
+    "tipo": "article",
+    "doi": "10.1007/s00138-023-01499-8",
+    "citacoes": 15,
+    "acesso_aberto": false,
+    "url": "https://doi.org/10.1007/s00138-023-01499-8",
+    "areas": [
+      "Tactile and Sensory Interactions",
+      "Autonomous Vehicle Technology and Safety",
+      "Advanced Neural Network Applications"
+    ],
+    "abstract": "",
+    "openalex_id": "https://openalex.org/W4391034892"
+  },
+  {
+    "titulo": "Visually Impaired People Positioning Assistance System Using Artificial Intelligence",
+    "ano": 2023,
+    "autores": "Rui Lima; Luís Barreto; António Amaral; Sara Paiva",
+    "periodico": "IEEE Sensors Journal",
+    "tipo": "article",
+    "doi": "10.1109/jsen.2023.3244128",
+    "citacoes": 14,
+    "acesso_aberto": false,
+    "url": "https://doi.org/10.1109/jsen.2023.3244128",
+    "areas": [
+      "Tactile and Sensory Interactions",
+      "Video Surveillance and Tracking Methods",
+      "Smart Parking Systems Research"
+    ],
+    "abstract": "Blindness and visual impairment are commonly associated with social and functional limitations, almost 45 million people in the world have blindness, and 135 million have any visual impairment. This condition has a significant impact on the quality of life and brings many challenges to the individual, one of which is the navigation and positioning tasks. Although there are already apps capable of helping visually impaired people (VIP) for mobility purposes, most of them focus on detecting obstacles and, therefore, on avoiding dangerous situations. However, mobility of VIP involves many more tasks, such as knowing their exact position and staying informed along an entire route. For this purpo...",
+    "openalex_id": "https://openalex.org/W4321021967"
+  },
+  {
+    "titulo": "Indoor-Guided Navigation for People Who Are Blind: Crowdsourcing for Route Mapping and Assistance",
+    "ano": 2022,
+    "autores": "Darius Plikynas; Audrius Indriulionis; Algirdas Laukaitis; Leonidas L. Sakalauskas",
+    "periodico": "Applied Sciences",
+    "tipo": "article",
+    "doi": "10.3390/app12010523",
+    "citacoes": 17,
+    "acesso_aberto": true,
+    "url": "https://www.mdpi.com/2076-3417/12/1/523/pdf?version=1641388792",
+    "areas": [
+      "Tactile and Sensory Interactions",
+      "Indoor and Outdoor Localization Technologies",
+      "Video Surveillance and Tracking Methods"
+    ],
+    "abstract": "This paper presents an approach to enhance electronic traveling aids (ETAs) for people who are blind and severely visually impaired (BSVI) using indoor orientation and guided navigation by employing social outsourcing of indoor route mapping and assistance processes. This type of approach is necessary because GPS does not work well, and infrastructural investments are absent or too costly to install for indoor navigation. Our approach proposes the prior outsourcing of vision-based recordings of indoor routes from an online network of seeing volunteers, who gather and constantly update a web cloud database of indoor routes using specialized sensory equipment and web services. Computational in...",
+    "openalex_id": "https://openalex.org/W4205469576"
+  },
+  {
+    "titulo": "A Review on Voice Navigation System for the Visually Impaired",
+    "ano": 2024,
+    "autores": "BIMAL MOHAN",
+    "periodico": "INTERANTIONAL JOURNAL OF SCIENTIFIC RESEARCH IN ENGINEERING AND MANAGEMENT",
+    "tipo": "article",
+    "doi": "10.55041/ijsrem29925",
+    "citacoes": 2,
+    "acesso_aberto": true,
+    "url": "https://ijsrem.com/download/a-review-on-voice-navigation-system-for-the-visually-impaired/?wpdmdl=29046&refresh=660e2a3145d2e1712204337",
+    "areas": [
+      "Tactile and Sensory Interactions",
+      "Smart Parking Systems Research",
+      "IoT and GPS-based Vehicle Safety Systems"
+    ],
+    "abstract": "A ground-breaking voice navigation system seems as a ray of light in a world where blind people must overcome enormous obstacles to navigate strange places. For those with vision impairments, safely and independently navigating in unfamiliar situations presents substantial obstacles. This system is a paradigm shift in providing safe and independent mobility assistance for the visually handicapped, as it makes use of cutting-edge technologies. The voice navigation system gives users the confidence to confidently navigate uncharted territory by seamlessly integrating computer vision and machine learning capabilities. With the use of real-time obstacle classification and recognition capabilitie...",
+    "openalex_id": "https://openalex.org/W4393866432"
+  },
+  {
+    "titulo": "IoT Solution for Enhancing the Quality of Life of Visually Impaired People",
+    "ano": 2021,
+    "autores": "G. M. Siddesh; Krishnarajanagar G. Srinivasa",
+    "periodico": "International Journal of Grid and High Performance Computing",
+    "tipo": "article",
+    "doi": "10.4018/ijghpc.2021100101",
+    "citacoes": 4,
+    "acesso_aberto": false,
+    "url": "https://doi.org/10.4018/ijghpc.2021100101",
+    "areas": [
+      "Water Quality Monitoring Technologies",
+      "Smart Agriculture and AI",
+      "Currency Recognition and Detection"
+    ],
+    "abstract": "One of the treading technologies in the field of data processing and communication is internet of things. To make life a lot easier for the disabled and visually impaired people, IoT can offer assistance and support in various ways. Visually impaired (VI) is a term used to describe any kind of sight loss; some people are completely blind, but many others have legal blindness. The proposed system visually impaired-quality of life (VI-QOL) consists of Arduino UNO, ultrasonic sensors, proximity sensors, and some of the IoT components along with smartphone. Using these components, the author's research goal is to improve the mobility of VI people in a wider range of travel activities. The propos...",
+    "openalex_id": "https://openalex.org/W3195245731"
+  },
+  {
+    "titulo": "ASSISTIVE TECHNOLOGY FOR STUDENTS WITH VISUAL IMPAIRMENTS",
+    "ano": 2023,
+    "autores": "Susanna Muradyan",
+    "periodico": "Armenian Journal of Special Education",
+    "tipo": "article",
+    "doi": "10.24234/se.v6i1.309",
+    "citacoes": 9,
+    "acesso_aberto": true,
+    "url": "https://specedjournal.aspu.am/index.php/se/article/download/309/236",
+    "areas": [
+      "Transportation Systems and Logistics"
+    ],
+    "abstract": "Visual impairment is a disability resulting in partial or complete loss of vision. It results in hindrance to performing daily chores, thereby decreasing the quality of life. This study aims to augment the userâ€™s experience with digital interfaces (e.g., the display system of personal computers and smartphones) through the design of an efficient system enabling easier and more effective user navigation. Assistive technology for the visually impaired and blind people is a research field that is gaining increasing prominence owing to an explosion of new interest in it from disparate disciplines. The field has a very relevant social impact on our ever-increasing aging and blind populations. W...",
+    "openalex_id": "https://openalex.org/W4362591275"
+  },
+  {
+    "titulo": "A Mobile Lens: Voice-Assisted Smartphone Solutions for the Sightless to Assist Indoor Object Identification",
+    "ano": 2024,
+    "autores": "Talal Saleem; V. Sivakumar",
+    "periodico": "EAI Endorsed Transactions on Internet of Things",
+    "tipo": "article",
+    "doi": "10.4108/eetiot.6450",
+    "citacoes": 4,
+    "acesso_aberto": true,
+    "url": "https://doi.org/10.4108/eetiot.6450",
+    "areas": [
+      "Tactile and Sensory Interactions",
+      "Video Surveillance and Tracking Methods",
+      "Hand Gesture Recognition Systems"
+    ],
+    "abstract": "Every aspect of life is organized around sight. For visually impaired individuals, accidents often occur while walking due to collisions with people or walls. To navigate and perform daily tasks, visually impaired people typically rely on white cane sticks, assistive trained guide dogs, or volunteer individuals. However, guide dogs are expensive, making them unaffordable for many, especially since 90% of fully blind individuals live in low-income countries. Vision is crucial for participating in school, reading, walking, and working. Without it, people struggle with independent mobility and quality of life. While numerous applications are developed for the general public, there is a signific...",
+    "openalex_id": "https://openalex.org/W4400123372"
+  },
+  {
+    "titulo": "Machine Learning Based Computer Vision Application for Visually Disabled People",
+    "ano": 2021,
+    "autores": "Shubhada Mone; Nihar Salunke; Omkar Jadhav; Arjun Barge et al.",
+    "periodico": "International Journal of Scientific Research in Computer Science Engineering and Information Technology",
+    "tipo": "article",
+    "doi": "10.32628/cseit2173130",
+    "citacoes": 3,
+    "acesso_aberto": true,
+    "url": "https://doi.org/10.32628/cseit2173130",
+    "areas": [
+      "Video Surveillance and Tracking Methods",
+      "Tactile and Sensory Interactions",
+      "Retinal Imaging and Analysis"
+    ],
+    "abstract": "With the easy availability of technology, smartphones are playing an important role in every person’s life. Also, with the advancements in computer vision based research, Automatic Driving cars, Object Recognition, Depth Map Prediction, Object Distance Estimation, have reached commendable levels of intelligence and accuracy. Combining the research and technological advancements, we can be hopeful in creating a computer vision based mobile-application which will help guide visually disabled people in performing their day to day tasks with easily available mobile applications. With our study, the visually disabled can perform simple tasks like outdoor/indoor navigation without encountering obs...",
+    "openalex_id": "https://openalex.org/W3175607543"
+  },
+  {
+    "titulo": "Optimizing Reinforcement Learning-Based Visual Navigation for Resource-Constrained Devices",
+    "ano": 2023,
+    "autores": "U Vijetha; V. Geetha",
+    "periodico": "IEEE Access",
+    "tipo": "article",
+    "doi": "10.1109/access.2023.3323801",
+    "citacoes": 3,
+    "acesso_aberto": true,
+    "url": "https://ieeexplore.ieee.org/ielx7/6287639/6514899/10278417.pdf",
+    "areas": [
+      "Tactile and Sensory Interactions",
+      "Advanced Neural Network Applications",
+      "Smart Parking Systems Research"
+    ],
+    "abstract": "Existing work on Deep reinforcement learning-based visual navigation mainly focuses on autonomous agents with ample power and compute resources. However, Reinforcement learning for visual navigation on resource-constrained devices remains an under-explored area of research, primarily due to challenges posed by processing high-dimensional visual inputs and making prompt decisions in real-time scenarios. To address these hurdles, we propose a State Abstraction Technique (SAT) designed to transform high-dimensional visual inputs into a compact representation, enabling simpler reinforcement learning agents to process the information and learn effective navigation policies. The abstract represent...",
+    "openalex_id": "https://openalex.org/W4387546587"
+  },
+  {
+    "titulo": "Robust Anchor-Aided GNSS/PDR Pedestrian Localization via Factor Graph Optimization for Remote Sighted Assistance",
+    "ano": 2025,
+    "autores": "Sen Huang; Jinjing Zhao; Yihan Zhong; Yiding Liu et al.",
+    "periodico": "Sensors",
+    "tipo": "article",
+    "doi": "10.3390/s25175536",
+    "citacoes": 3,
+    "acesso_aberto": true,
+    "url": "https://doi.org/10.3390/s25175536",
+    "areas": [
+      "Automated Road and Building Extraction",
+      "Indoor and Outdoor Localization Technologies",
+      "Robotics and Sensor-Based Localization"
+    ],
+    "abstract": "Remote Sighted Assistance (RSA) systems provide visually impaired people (VIPs) with real-time guidance by connecting them with remote sighted agents to facilitate daily travel. However, unfamiliar environments often complicate decision-making for agents and can induce anxiety in VIPs, thereby reducing the effectiveness of the assistance provided. To address this challenge, this paper proposes a video-based map assistance method. By pre-recording pedestrian path videos and aligning them with geographic locations, the system enables route preview and enhances navigation guidance. This study introduces a factor graph optimization (FGO) algorithm that integrates Global Navigation Satellite Syst...",
+    "openalex_id": "https://openalex.org/W4414018302"
+  },
+  {
+    "titulo": "Augmented Reality Navigation Assistance for Visually Impaired",
+    "ano": 2025,
+    "autores": "Gagana RM; R Harshitha; V. G. Janani; Rabindranath S",
+    "periodico": "International Research Journal on Advanced Engineering Hub (IRJAEH)",
+    "tipo": "article",
+    "doi": "10.47392/irjaeh.2025.0540",
+    "citacoes": 0,
+    "acesso_aberto": true,
+    "url": "https://irjaeh.com/index.php/journal/article/download/1070/978",
+    "areas": [
+      "Tactile and Sensory Interactions"
+    ],
+    "abstract": "Moving around independently is still difficult for people with vision loss because they often need help from others or face barriers in accessibility remains a major challenge and dependence on external assistance. This study proposes a smartphone-based AR navigation system that can detect obstacles and give real-time guidance. The goal is to help visually impaired individuals move more safely and confidently, without any extra devices. Our system uses computer vision methods to identify obstacles and detect safe pathways, while providing audio instructions to assist users during navigation. The COCO dataset is employed for training and testing object recognition, and the models are optimize...",
+    "openalex_id": "https://openalex.org/W4414440037"
+  },
+  {
+    "titulo": "Object Detection and Image Classification",
+    "ano": 2024,
+    "autores": "Mr. K Dinesh",
+    "periodico": "INTERANTIONAL JOURNAL OF SCIENTIFIC RESEARCH IN ENGINEERING AND MANAGEMENT",
+    "tipo": "article",
+    "doi": "10.55041/ijsrem29148",
+    "citacoes": 1,
+    "acesso_aberto": true,
+    "url": "https://ijsrem.com/download/object-detection-and-image-classification/?wpdmdl=28013&refresh=6659e58aa63ef1717167498",
+    "areas": [
+      "Currency Recognition and Detection"
+    ],
+    "abstract": "Walking thoroughly and expectantly without any human assistance in the city or unknown environments is a tough undertaking for blind people. Blind people face numerous issues in their existence, any such issues that are the most important one is identity the stumbling blocks once they are strolling. When shifting from one vicinity to another, they want the help of different human beings around. Their independence in taking walks is misplaced. Sticks may be usable however aren't that dependable nor do all people have them. A visually impaired person needs absolution to help him conquer troubles in the navigation due to his incapacity. The project is in particular focused on providing a sort o...",
+    "openalex_id": "https://openalex.org/W4392635756"
+  },
+  {
+    "titulo": "Development of a Product Purchase Assistance Application for the Visually Impaired",
+    "ano": 2025,
+    "autores": "JunHyeok Oh; Jin-Yong Moon; Jeong-Joon Kim",
+    "periodico": "Academic Society for Appropriate Technology",
+    "tipo": "article",
+    "doi": "10.37675/jat.2025.00703",
+    "citacoes": 0,
+    "acesso_aberto": true,
+    "url": "https://www.e-jat.org/upload/pdf/jat-2025-00703.pdf",
+    "areas": [
+      "Tactile and Sensory Interactions",
+      "Currency Recognition and Detection",
+      "Digital Accessibility for Disabilities"
+    ],
+    "abstract": "The purpose of this development is to support visually impaired individuals in receiving accurate product information during convenience store purchases, thereby ensuring their rights as consumers. Currently, visually impaired users face significant difficulties in identifying products due to insufficient braille labeling, especially on cylindrical items such as beverage cans, where the braille is often small, inconsistently placed, or even missing. This makes independent product selection challenging and often unreliable. To address these challenges, the system provides navigation to the nearest convenience store based on the user’s current location. Once inside the store, users can scan th...",
+    "openalex_id": "https://openalex.org/W4413897536"
+  },
+  {
+    "titulo": "SMART STICK FOR BLIND PEOPLE",
+    "ano": 2023,
+    "autores": "s/ autor listado",
+    "periodico": "International Research Journal of Modernization in Engineering Technology and Science",
+    "tipo": "article",
+    "doi": "10.56726/irjmets35563",
+    "citacoes": 1,
+    "acesso_aberto": true,
+    "url": "https://doi.org/10.56726/irjmets35563",
+    "areas": [
+      "Tactile and Sensory Interactions",
+      "Intravenous Infusion Technology and Safety",
+      "Currency Recognition and Detection"
+    ],
+    "abstract": "The Design, Development, and testing of an IoT-enabled Smart Stick for Blind People to detect the obstacles and warn about obstacles is presented in this paper.A smart stick for blind people is a device designed to assist visually impaired individuals in navigating their surroundings.This device incorporates various sensors and technologies, such as ultrasonic, infrared, and Bluetooth, to detect obstacles, measure distances, and communicate with other devices.The stick provides feedback to the user through vibration, sound, which allows them to avoid obstacles and move around safely.The smart stick also includes GPS functionality and can connect to a smartphone or other devices, providing fu...",
+    "openalex_id": "https://openalex.org/W4363650740"
+  },
+  {
+    "titulo": "COMPARATIVE ANALYSIS OF SMARTPHONE-BASED TIFLOTECHNICAL NAVIGATION SOLUTIONS",
+    "ano": 2023,
+    "autores": "O.V. Khapchenko; O.M. Lysenko",
+    "periodico": "Scientific notes of Taurida National V I Vernadsky University Series Technical Sciences",
+    "tipo": "article",
+    "doi": "10.32782/2663-5941/2023.5/14",
+    "citacoes": 0,
+    "acesso_aberto": true,
+    "url": "https://doi.org/10.32782/2663-5941/2023.5/14",
+    "areas": [
+      "Material Properties and Applications"
+    ],
+    "abstract": "SMARTPHONE-BASED TIFLOTECHNICAL NAVIGATION SOLUTIONSIn recent years, significant progress has been observed in the development and implementation of assistive technologies aimed at improving the daily lives of blind and visually impaired individuals.Recent research and applications have been analyzed regarding the functional capabilities of modern smartphone-based assistive technologies for the blind and visually impaired.These technologies are based on Wi-Fi/Bluetooth beacons, tag markers in the form of special color images, artificial intelligence, computer vision, and utilize vibration and auditory feedback for user interaction with visual impairments in assistive systems.These technologi...",
+    "openalex_id": "https://openalex.org/W4388518123"
+  },
+  {
+    "titulo": "Cumulative Study and Development of Obstacle Alert and Assistance Device for Visually Impaired People Using Machine Learning",
+    "ano": 2024,
+    "autores": "Mr. Aarush Varma -; Mohan Kshirsagar",
+    "periodico": "International Journal For Multidisciplinary Research",
+    "tipo": "article",
+    "doi": "10.36948/ijfmr.2024.v06i03.19993",
+    "citacoes": 0,
+    "acesso_aberto": true,
+    "url": "http://dx.doi.org/10.36948/ijfmr.2024.v06i03.19993",
+    "areas": [
+      "Innovation in Digital Healthcare Systems"
+    ],
+    "abstract": "Navigating the world as a visually impaired person presents unique challenges, particularly when detecting and avoiding obstacles along with reaching the desired destination. The traditional methods for aiding visually impaired individuals, such as canes or guide dogs, provide limited information about the environment. To address these limitations, we have developed an innovative Obstacle Alert and Assistance System specifically designed for the visually impaired. This device uses Ultrasonic sensors to detect Distance data of the obstacles in the user's path and provide real-time feedback through auditory signals. Along with that we have integrated an HD night vision camera to explain live s...",
+    "openalex_id": "https://openalex.org/W4396886372"
+  },
+  {
+    "titulo": "Advanced Intelligent Navigation System: Redefining Accessibility and Mobility for Visually Impaired Individual",
+    "ano": 2025,
+    "autores": "Bin Rao; Bobbili Disshaa Bobbili Disshaa; B. Sahithi B. Sahithi; A. Ramya",
+    "periodico": "International Journal of Advances in Engineering and Management",
+    "tipo": "article",
+    "doi": "10.35629/5252-0705165172",
+    "citacoes": 0,
+    "acesso_aberto": true,
+    "url": "https://doi.org/10.35629/5252-0705165172",
+    "areas": [
+      "Tactile and Sensory Interactions"
+    ],
+    "abstract": "There are many people suffering from vision impairment or related issues. Although there are many assistive technologies to help these individuals, like Guide Dogs, White Canes, GPS enabled applications, etc. but they have few limitations like they are not flexible and are not helpful in real-time navigation. To overcome these drawbacks and help these individuals in their dayto-day life the Advanced Intelligent Navigation System, a smartphone application is designed. The application, developed with Flutter, combines several AI-powered features into an easy-to-use mobile application. The features of this app include object detection and crowd detection using Google API, nearby places discover...",
+    "openalex_id": "https://openalex.org/W4411222645"
+  },
+  {
+    "titulo": "Smart Glasses for Visually Impaired",
+    "ano": 2026,
+    "autores": "Mohammed Faize Ahmed; Harini S",
+    "periodico": "Zenodo (CERN European Organization for Nuclear Research)",
+    "tipo": "article",
+    "doi": "10.5281/zenodo.19947538",
+    "citacoes": 0,
+    "acesso_aberto": true,
+    "url": "https://www.zjujournals.ip-dynamic.org/home",
+    "areas": [
+      "Tactile and Sensory Interactions",
+      "Currency Recognition and Detection",
+      "Hand Gesture Recognition Systems"
+    ],
+    "abstract": "Abstract The novel IoT-based assistive device presented in this research is intended to increase the mobility and independence of people who are blind or visually impaired. The wearable Smart Glasses system incorporates real-time object detection, obstacle avoidance, and audio feedback to facilitate users' navigation in unfamiliar environments. With the use of camera modules, ultrasonic sensors, Raspberry Pi, and sophisticated algorithms such as YOLO (You Only Look Once) for object identification, the suggested system provides an affordable and effective means of improving the lives of visually impaired individuals The primary goal of this system is to enable visually impaired users to navig...",
+    "openalex_id": "https://openalex.org/W7159690607"
+  },
+  {
+    "titulo": "Smart Glasses for Visually Impaired",
+    "ano": 2026,
+    "autores": "Mohammed Faize Ahmed; Harini S",
+    "periodico": "",
+    "tipo": "article",
+    "doi": "10.5281/zenodo.19947537",
+    "citacoes": 0,
+    "acesso_aberto": true,
+    "url": "https://www.zjujournals.ip-dynamic.org/home",
+    "areas": [
+      "Tactile and Sensory Interactions",
+      "Currency Recognition and Detection",
+      "Hand Gesture Recognition Systems"
+    ],
+    "abstract": "Abstract The novel IoT-based assistive device presented in this research is intended to increase the mobility and independence of people who are blind or visually impaired. The wearable Smart Glasses system incorporates real-time object detection, obstacle avoidance, and audio feedback to facilitate users' navigation in unfamiliar environments. With the use of camera modules, ultrasonic sensors, Raspberry Pi, and sophisticated algorithms such as YOLO (You Only Look Once) for object identification, the suggested system provides an affordable and effective means of improving the lives of visually impaired individuals The primary goal of this system is to enable visually impaired users to navig...",
+    "openalex_id": "https://openalex.org/W7159587652"
+  },
+  {
+    "titulo": "An Integrated Deep Learning Framework for Intelligent Navigation Assistance to Visually Impaired Individuals Using CNN-Based Object Detection, RNN Based Scene Understanding, and Image Segmentation",
+    "ano": 2026,
+    "autores": "Manjunath R",
+    "periodico": "Natural Resources for Human Health",
+    "tipo": "article",
+    "doi": "10.53365/nrfhh.1233",
+    "citacoes": 0,
+    "acesso_aberto": false,
+    "url": "https://doi.org/10.53365/nrfhh.1233",
+    "areas": [
+      "Tactile and Sensory Interactions",
+      "Ophthalmology and Visual Impairment Studies",
+      "Currency Recognition and Detection"
+    ],
+    "abstract": "Navigation is an important problem for people with visual impairment. This problem has been affecting the independence and safety of the visually impaired in unfamiliar areas. This paper introduces a new deep learning-based smartphone-based navigation assistant for the visually impaired. The proposed system is named “Aurora”. The system has been designed specifically for assisting the visually impaired with navigation and obstacle avoidance. The system uses convolutional neural networks and recurrent neural networks for accurate interpretation of the visual information obtained by the smartphone’s camera. The proposed system also uses semantic segmentation for the detection of sidewalks, ped...",
+    "openalex_id": "https://openalex.org/W7213546415"
+  },
+  {
+    "titulo": "Smart Blind Stick for Visually Impaired People using Sensor-Based Assistive Technology",
+    "ano": 2026,
+    "autores": "Abhisek M; Sivakeshav N; Sandhiya S",
+    "periodico": "International Journal of Creative and Open Research in Engineering and Management",
+    "tipo": "article",
+    "doi": "10.55041/ijcope.v2i3.087",
+    "citacoes": 0,
+    "acesso_aberto": true,
+    "url": "https://ijcope.org/wp-content/uploads/2026/03/Smart-Blind-Stick-for-Visually-Impaired-People-using-Sensor-Based-Assistive-Technology.pdf",
+    "areas": [
+      "Tactile and Sensory Interactions",
+      "Currency Recognition and Detection",
+      "IoT and GPS-based Vehicle Safety Systems"
+    ],
+    "abstract": "Visual impairment significantly affects the mobility and independence of millions of people worldwide. Individuals with visual disabilities often depend on traditional white canes or assistance from others for navigation. However, these conventional aids provide limited information about obstacles, environmental hazards, and path conditions. With the advancement of sensor technology and embedded systems, assistive devices can be designed to improve safety and independence for visually impaired individuals. This paper presents the design and development of a Smart Blind Stick that assists visually impaired people in detecting obstacles and navigating safely. The proposed system integrates ult...",
+    "openalex_id": "https://openalex.org/W7138919741"
+  }
+]

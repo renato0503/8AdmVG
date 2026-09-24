@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preparação para Visita Técnica no Shopping | Customer Discovery · 8AdmVG</title>
+    <link rel="stylesheet" href="../assets/reveal/reset.css">
+    <link rel="stylesheet" href="../assets/reveal/reveal.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Arial, sans-serif; }
+
+        .reveal .slides section { text-align: left; padding: 0 40px; }
+        .reveal .slides { text-align: left; }
+
+        .reveal .slides section.dark { color: #fff; background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); }
+        .reveal .slides section.cover { background: #ffffff; }
+        .reveal .slides section.cover,
+        .reveal .slides section.dark {
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .reveal h1 { font-size: 32px; color: #1a1a2e; margin-bottom: 12px; font-weight: 700; line-height: 1.2; text-transform: none; }
+        .reveal h2 { font-size: 24px; color: #e94560; margin-bottom: 10px; text-transform: none; }
+        .reveal h3 { font-size: 18px; color: #2d3748; margin-bottom: 8px; text-transform: none; }
+        .reveal .dark h1, .reveal .dark h2 { color: #fff; }
+        .reveal .dark h3 { color: #e94560; }
+
+        .reveal .subtitle { font-size: 14px; color: #666; padding-top: 10px; border-top: 1px solid #E2E8F0; margin-top: 20px; }
+        .reveal .dark .subtitle { color: #A0AEC0; border-top-color: rgba(255,255,255,0.2); }
+
+        .reveal .content { display: flex; flex-direction: column; justify-content: flex-start; padding: 10px 0; }
+        .reveal .content ul { list-style: none; font-size: 20px; line-height: 1.6; }
+        .reveal .content ul li { padding: 5px 0; padding-left: 20px; position: relative; }
+        .reveal .content ul li::before { content: ""; position: absolute; left: 0; top: 12px; width: 6px; height: 6px; background: #e94560; border-radius: 50%; }
+
+        .reveal .highlight-box { background: #FDF2F4; border-left: 4px solid #e94560; padding: 12px 15px; margin: 10px 0; border-radius: 0 8px 8px 0; }
+        .reveal .dark .highlight-box { background: rgba(233,69,96,0.15); border-left-color: #e94560; }
+
+        .reveal .success-box { background: #F0FDF4; border-left: 4px solid #38A169; padding: 12px 15px; margin: 10px 0; border-radius: 0 8px 8px 0; }
+        .reveal .warning-box { background: #FFFBEB; border-left: 4px solid #DD6B20; padding: 12px 15px; margin: 10px 0; border-radius: 0 8px 8px 0; }
+
+        .reveal table { width: 100%; border-collapse: collapse; font-size: 16px; margin: 10px 0; }
+        .reveal th { background: #1a1a2e; color: #fff; padding: 8px; text-align: left; font-weight: 600; }
+        .reveal td { padding: 6px 8px; border-bottom: 1px solid #E2E8F0; vertical-align: top; }
+        .reveal tr:nth-child(even) { background: #F7FAFC; }
+
+        .reveal .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: start; }
+        .reveal .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; align-items: start; }
+
+        .reveal .card { background: #F7FAFC; border-radius: 8px; padding: 12px; border: 1px solid #E2E8F0; }
+        .reveal .card h3 { color: #1a1a2e; font-size: 19px; margin-bottom: 6px; }
+        .reveal .card p { font-size: 17px; color: #4A5568; line-height: 1.45; }
+
+        .reveal .quote { font-size: 20px; font-style: italic; color: #2D3748; border-left: 4px solid #e94560; padding: 15px 20px; margin: 10px 0; background: #FDF2F4; border-radius: 0 8px 8px 0; line-height: 1.5; }
+        .reveal .dark .quote { background: rgba(233,69,96,0.15); color: #F1F5F9; }
+
+        .reveal .badge { display: inline-block; background: #e94560; color: #fff; padding: 5px 12px; border-radius: 15px; font-size: 15px; margin: 3px; }
+        .reveal .badge.green { background: #38A169; }
+        .reveal .badge.orange { background: #DD6B20; }
+        .reveal .badge.blue { background: #3182CE; }
+        .reveal .badge.purple { background: #805AD5; }
+
+        .reveal .objective-list { counter-reset: objective; list-style: none; }
+        .reveal .objective-list li { counter-increment: objective; padding: 6px 0; padding-left: 35px; position: relative; font-size: 18px; }
+        .reveal .objective-list li::before { content: counter(objective); position: absolute; left: 0; top: 6px; width: 24px; height: 24px; background: #e94560; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 12px; }
+
+        .reveal .step-list { counter-reset: step; list-style: none; }
+        .reveal .step-list li { counter-increment: step; padding: 8px 0; padding-left: 40px; position: relative; font-size: 18px; }
+        .reveal .step-list li::before { content: counter(step); position: absolute; left: 0; top: 6px; width: 28px; height: 28px; background: #e94560; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 14px; }
+
+        .reveal .contact-row { display: flex; gap: 30px; justify-content: center; margin-top: 15px; }
+        .reveal .contact-item { display: flex; align-items: center; gap: 8px; font-size: 14px; color: #666; }
+
+        .reveal .activity-box { background: #F0FDF4; border: 2px solid #38A169; padding: 15px 20px; margin: 15px 0; border-radius: 8px; }
+        .reveal .activity-box h3 { color: #38A169; margin-bottom: 8px; }
+
+        .reveal .prompt-box { background: #1a1a2e; color: #e9e9e9; padding: 15px 20px; border-radius: 8px; font-family: 'Consolas', monospace; font-size: 15px; line-height: 1.6; margin: 10px 0; }
+
+        .reveal .cred-list { list-style: none; font-size: 15px; line-height: 1.8; }
+        .reveal .cred-list li { padding: 4px 0; }
+
+        .reveal .compare-box { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px; }
+        .reveal .compare-box > div { padding: 15px; border-radius: 8px; }
+        .reveal .compare-box .bad { border-left: 4px solid #e94560; background: #FDF2F4; }
+        .reveal .compare-box .good { border-left: 4px solid #38A169; background: #F0FDF4; }
+
+        .reveal .checklist { list-style: none; font-size: 19px; line-height: 1.9; }
+        .reveal .checklist li { padding: 4px 0; padding-left: 34px; position: relative; }
+        .reveal .checklist li::before { content: ""; position: absolute; left: 0; top: 8px; width: 20px; height: 20px; border: 2px solid #e94560; border-radius: 5px; }
+        .reveal .group-chip { display: inline-block; background: #1a1a2e; color: #fff; padding: 6px 14px; border-radius: 8px; font-size: 14px; font-weight: 600; letter-spacing: .04em; margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+
+<div class="reveal">
+<div class="slides">
+
+<!-- SLIDE 1: CAPA -->
+<section class="cover">
+    <svg width="120" height="120" viewBox="0 0 120 120" style="margin-bottom: 30px;">
+        <defs>
+            <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#e94560"/>
+                <stop offset="100%" style="stop-color:#1a1a2e"/>
+            </linearGradient>
+        </defs>
+        <circle cx="60" cy="60" r="55" fill="url(#g1)" opacity="0.2"/>
+        <circle cx="60" cy="60" r="40" fill="url(#g1)" opacity="0.4"/>
+        <path d="M30 50 L45 50 M30 60 L60 60 M30 70 L52 70" stroke="#1a1a2e" stroke-width="4" stroke-linecap="round"/>
+        <circle cx="78" cy="62" r="12" fill="none" stroke="#e94560" stroke-width="4"/>
+        <path d="M87 71 L97 81" stroke="#e94560" stroke-width="4" stroke-linecap="round"/>
+    </svg>
+    <h1 style="font-size: 44px; color: #1a1a2e; margin-bottom: 15px;">PREPARAÇÃO PARA VISITA TÉCNICA NO SHOPPING</h1>
+    <h2 style="font-size: 26px; color: #e94560; margin-bottom: 40px;">Customer Discovery — Inovação em Serviços — Educação, Turismo, Acessibilidade e Moradia</h2>
+    <div style="background: #FDF2F4; padding: 25px 40px; border-radius: 12px; margin: 20px 0; border: 1px solid #e94560;">
+        <div style="font-size: 24px; color: #1a1a2e; font-weight: 600;">Mão na Massa: da ideia ao formulário pronto</div>
+        <div style="font-size: 16px; color: #e94560; margin-top: 5px;">Setembro de 2026 · Turma de Administração · 8º Semestre (VG)</div>
+    </div>
+    <div style="margin-top: 50px;">
+        <div style="display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 20px;">
+            <img src="Renato.jpg" alt="Prof. Renato Rosa" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 3px solid #e94560;">
+            <div style="text-align: left;">
+                <div style="font-size: 20px; color: #2D3748;">Prof. Renato Rosa</div>
+                <div style="font-size: 14px; color: #666; margin-top: 4px;">Cerrado Tech · Unifacc</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SLIDE 2: A REGRA DE OURO -->
+<section>
+    <h1>A Regra de Ouro</h1>
+    <div class="highlight-box" style="font-size: 19px;">
+        Vocês vão a campo <strong>validar ideias com pessoas reais</strong>. Isso exige <strong>preparação</strong>. Ninguém vai criar formulário na hora. Vocês saem daqui hoje com <strong>tudo pronto</strong>.
+    </div>
+    <h3 style="color: #1a1a2e; margin-top: 15px;">O que cada grupo deve entregar ao final da aula de hoje:</h3>
+    <div class="content">
+        <ol class="objective-list">
+            <li><strong>Roteiro da visita</strong> — onde, quem e como abordar.</li>
+            <li><strong>Objetivos claros</strong> — o que querem descobrir.</li>
+            <li><strong>Divisão de tarefas</strong> da equipe.</li>
+            <li><strong>Hipóteses</strong> — o que acham que vão ouvir.</li>
+            <li><strong>Formulário Google Forms pronto</strong> (ou impresso).</li>
+        </ol>
+    </div>
+    <div class="warning-box" style="margin-top: 15px;">
+        <strong>Sem formulário, sem visita.</strong> O formulário é o instrumento de trabalho de vocês. Testem no celular antes de sair.
+    </div>
+    <div class="subtitle">Customer Discovery na Prática · Visita Técnica ao Shopping · Prof. Renato Rosa</div>
+</section>
+
+<!-- SLIDE 3: GRUPO 1 -->
+<section>
+    <span class="group-chip">GRUPO 1</span>
+    <h1>HoraCerta <span style="font-size: 18px; color: #666; font-weight: 400;">· Prof. Renato</span></h1>
+    <div>
+        <span class="badge">José Arlindo</span>
+        <span class="badge">Taynara</span>
+        <span class="badge">Luana</span>
+        <span class="badge">Leticia</span>
+        <span class="badge">Samara</span>
+    </div>
+    <div class="highlight-box" style="font-size: 16px;">
+        <strong>Objetivo:</strong> Descobrir como os alunos controlam hoje as horas complementares e validar se a <strong>falta de visibilidade do saldo</strong>, a <strong>perda de comprovantes</strong> e a <strong>burocracia da validação</strong> são as principais dores.
+    </div>
+    <div class="two-col" style="margin-top: 10px;">
+        <div class="card">
+            <h3>Roteiro no Shopping</h3>
+            <p><strong>Onde:</strong> Praça de alimentação, entrada principal e áreas de estudo/lazer.<br>
+            <strong>Abordagem:</strong> &quot;Você faz faculdade? 2 minutinhos de pesquisa sobre horas complementares.&quot;<br>
+            <strong>Meta:</strong> <span class="badge green">15–20 respostas</span></p>
+        </div>
+        <div class="card">
+            <h3>Perguntas Essenciais</h3>
+            <p>Conhecimento e situação das horas, comprovantes e processo de validação, oportunidades, tempo e motivação, app e acompanhamento em tempo real.</p>
+        </div>
+    </div>
+    <table style="margin-top: 12px;">
+        <tr><th>Integrante</th><th>Função no campo</th></tr>
+        <tr><td>José Arlindo</td><td>Formulário + controle de tempo</td></tr>
+        <tr><td>Taynara</td><td>Abordagem</td></tr>
+        <tr><td>Luana</td><td>Áudio (WhatsApp) + código</td></tr>
+        <tr><td>Leticia</td><td>Tabulação</td></tr>
+        <tr><td>Samara</td><td>Abordagem + apoio</td></tr>
+    </table>
+    <div class="subtitle">Customer Discovery na Prática · Visita Técnica ao Shopping · Prof. Renato Rosa</div>
+</section>
+
+<!-- SLIDE 4: GRUPO 2 -->
+<section>
+    <span class="group-chip">GRUPO 2</span>
+    <h1>RotaViva <span style="font-size: 18px; color: #666; font-weight: 400;">· Prof. Renato</span></h1>
+    <div>
+        <span class="badge">Cinthia</span>
+        <span class="badge">Danielly</span>
+        <span class="badge">Leandro</span>
+        <span class="badge">Guilherme</span>
+        <span class="badge">Esther</span>
+    </div>
+    <div class="highlight-box" style="font-size: 16px;">
+        <strong>Objetivo:</strong> Entender como moradores e visitantes planejam passeios e validar se a <strong>falta de informação contextual (perto de mim, agora)</strong> e a <strong>dificuldade de montar rotas</strong> são dores reais.
+    </div>
+    <div class="two-col" style="margin-top: 10px;">
+        <div class="card">
+            <h3>Roteiro no Shopping</h3>
+            <p><strong>Onde:</strong> Praça de alimentação, entrada principal e quiosques de turismo/lojas regionais.<br>
+            <strong>Abordagem:</strong> &quot;Você gosta de passear e viajar? 2 minutinhos de pesquisa sobre turismo.&quot;<br>
+            <strong>Meta:</strong> <span class="badge green">15–20 respostas</span></p>
+        </div>
+        <div class="card">
+            <h3>Perguntas Essenciais</h3>
+            <p>Hábitos de passeio e viagem, informação e orientação no destino, rotas e experiência, o guia de bolso (app).</p>
+        </div>
+    </div>
+    <table style="margin-top: 12px;">
+        <tr><th>Integrante</th><th>Função no campo</th></tr>
+        <tr><td>Cinthia</td><td>Formulário + controle de tempo</td></tr>
+        <tr><td>Danielly</td><td>Abordagem</td></tr>
+        <tr><td>Leandro</td><td>Áudio (WhatsApp) + código</td></tr>
+        <tr><td>Guilherme</td><td>Tabulação</td></tr>
+        <tr><td>Esther</td><td>Abordagem + apoio</td></tr>
+    </table>
+    <div class="subtitle">Customer Discovery na Prática · Visita Técnica ao Shopping · Prof. Renato Rosa</div>
+</section>
+
+<!-- SLIDE 5: GRUPO 3 -->
+<section>
+    <span class="group-chip">GRUPO 3</span>
+    <h1>VozGuia <span style="font-size: 18px; color: #666; font-weight: 400;">· Profa. Sandra</span></h1>
+    <div>
+        <span class="badge">Karla Moema</span>
+        <span class="badge">Victor Hugo</span>
+        <span class="badge">Nicolas</span>
+        <span class="badge">Fabio</span>
+        <span class="badge">Yasmin</span>
+    </div>
+    <div class="highlight-box" style="font-size: 16px;">
+        <strong>Objetivo:</strong> Medir como a população percebe a acessibilidade urbana para pessoas cegas e validar se um <strong>assistente sonoro</strong> somado a um <strong>canal de alertas ao poder público</strong> é visto como útil e confiável.
+    </div>
+    <div class="warning-box" style="font-size: 15px; margin-top: 8px;">
+        <strong>Acessibilidade:</strong> se o(a) entrevistado(a) tiver deficiência visual, apresente-se, <strong>leia as opções em voz alta</strong> e nunca conduza a pessoa sem perguntar.
+    </div>
+    <div class="two-col" style="margin-top: 10px;">
+        <div class="card">
+            <h3>Roteiro no Shopping</h3>
+            <p><strong>Onde:</strong> Entrada principal, corredores de acesso e ponto de ônibus/estacionamento do shopping.<br>
+            <strong>Abordagem:</strong> &quot;Podemos te fazer umas perguntas rápidas sobre acessibilidade na cidade?&quot;<br>
+            <strong>Meta:</strong> <span class="badge green">15–20 respostas</span></p>
+        </div>
+        <div class="card">
+            <h3>Perguntas Essenciais</h3>
+            <p>Percepção da acessibilidade na cidade, autonomia e tecnologia, alertas ao poder público, o assistente sonoro (app).</p>
+        </div>
+    </div>
+    <table style="margin-top: 12px;">
+        <tr><th>Integrante</th><th>Função no campo</th></tr>
+        <tr><td>Karla Moema</td><td>Formulário + controle de tempo</td></tr>
+        <tr><td>Victor Hugo</td><td>Abordagem</td></tr>
+        <tr><td>Nicolas</td><td>Áudio (WhatsApp) + código</td></tr>
+        <tr><td>Fabio</td><td>Tabulação</td></tr>
+        <tr><td>Yasmin</td><td>Abordagem + apoio</td></tr>
+    </table>
+    <div class="subtitle">Customer Discovery na Prática · Visita Técnica ao Shopping · Prof. Renato Rosa</div>
+</section>
+
+<!-- SLIDE 6: GRUPO 4 -->
+<section>
+    <span class="group-chip">GRUPO 4</span>
+    <h1>CasaPiloto <span style="font-size: 18px; color: #666; font-weight: 400;">· Profa. Polyana</span></h1>
+    <div>
+        <span class="badge">Aliny</span>
+        <span class="badge">André</span>
+        <span class="badge">Michelly</span>
+        <span class="badge">Everson</span>
+    </div>
+    <div class="highlight-box" style="font-size: 16px;">
+        <strong>Objetivo:</strong> Descobrir como as pessoas se preparam financeiramente para comprar o imóvel e validar se um <strong>simulador por tipo de casa</strong> (guardar × investir × financiar) oferecido pela construtora gera confiança e interesse.
+    </div>
+    <div class="two-col" style="margin-top: 10px;">
+        <div class="card">
+            <h3>Roteiro no Shopping</h3>
+            <p><strong>Onde:</strong> Praça de alimentação, entrada principal e perto de estandes de imobiliárias/construtoras.<br>
+            <strong>Abordagem:</strong> &quot;Você pensa em comprar sua casa? 2 minutinhos de pesquisa, é anônima.&quot;<br>
+            <strong>Meta:</strong> <span class="badge green">15–20 respostas</span></p>
+        </div>
+        <div class="card">
+            <h3>Perguntas Essenciais</h3>
+            <p>Desejo e momento da compra, guardar, investir e financiar, relação com a construtora, o simulador CasaPiloto.</p>
+        </div>
+    </div>
+    <table style="margin-top: 12px;">
+        <tr><th>Integrante</th><th>Função no campo</th></tr>
+        <tr><td>Aliny</td><td>Formulário + controle de tempo</td></tr>
+        <tr><td>André</td><td>Abordagem</td></tr>
+        <tr><td>Michelly</td><td>Áudio (WhatsApp) + código</td></tr>
+        <tr><td>Everson</td><td>Tabulação</td></tr>
+    </table>
+    <div class="subtitle">Customer Discovery na Prática · Visita Técnica ao Shopping · Prof. Renato Rosa</div>
+</section>
+
+<!-- SLIDE 7: GRUPO 5 -->
+<section>
+    <span class="group-chip">GRUPO 5</span>
+    <h1>CasaHumanizada <span style="font-size: 18px; color: #666; font-weight: 400;">· Prof. Heitor</span></h1>
+    <div>
+        <span class="badge">Bianca</span>
+        <span class="badge">Giovanna</span>
+        <span class="badge">Estefane</span>
+    </div>
+    <div class="highlight-box" style="font-size: 16px;">
+        <strong>Objetivo:</strong> Medir o quanto as pessoas conhecem os programas habitacionais e validar se <strong>informação centralizada</strong>, <strong>cadastro simplificado</strong> e <strong>acompanhamento humanizado</strong> resolvem a dor de acesso.
+    </div>
+    <div class="warning-box" style="font-size: 15px; margin-top: 8px;">
+        <strong>Tema sensível:</strong> renda e moradia. Nunca pergunte renda nem se a pessoa recebe benefício; se ela contar uma situação difícil, acolha e não insista.
+    </div>
+    <div class="two-col" style="margin-top: 10px;">
+        <div class="card">
+            <h3>Roteiro no Shopping</h3>
+            <p><strong>Onde:</strong> Entrada principal, praça de alimentação e corredores de serviços (lotéricas, bancos).<br>
+            <strong>Abordagem:</strong> &quot;2 minutinhos de pesquisa sobre moradia e programas habitacionais? É anônima.&quot;<br>
+            <strong>Meta:</strong> <span class="badge green">15–20 respostas</span></p>
+        </div>
+        <div class="card">
+            <h3>Perguntas Essenciais</h3>
+            <p>Moradia e necessidade, informação sobre os programas, cadastro, atendimento e acompanhamento, o app CasaHumanizada.</p>
+        </div>
+    </div>
+    <table style="margin-top: 12px;">
+        <tr><th>Integrante</th><th>Função no campo</th></tr>
+        <tr><td>Bianca</td><td>Formulário + controle de tempo</td></tr>
+        <tr><td>Giovanna</td><td>Abordagem</td></tr>
+        <tr><td>Estefane</td><td>Áudio (WhatsApp) + código</td></tr>
+    </table>
+    <div class="subtitle">Customer Discovery na Prática · Visita Técnica ao Shopping · Prof. Renato Rosa</div>
+</section>
+
+<!-- SLIDE 8: CHECKLIST FINAL -->
+<section style="background: linear-gradient(135deg, #FDF2F4 0%, #FFFFFF 100%);">
+    <h1>Checklist Final da Aula</h1>
+    <h2>Antes de sair hoje, garanta:</h2>
+    <div class="content" style="margin-top: 10px;">
+        <div class="two-col">
+            <ul class="checklist">
+                <li>Google Forms <strong>criado e testado no celular</strong>.</li>
+                <li>Roteiro de abordagem <strong>ensaiado</strong> (o pitch de 15 segundos).</li>
+                <li>Tarefas <strong>divididas</strong>.</li>
+            </ul>
+            <ul class="checklist">
+                <li>Hipóteses <strong>registradas</strong>.</li>
+                <li>Celular <strong>carregado</strong> para o dia da visita.</li>
+                <li><strong>Ponto de encontro</strong> combinado.</li>
+            </ul>
+        </div>
+    </div>
+    <div class="highlight-box" style="margin-top: 10px; font-size: 16px;">
+        <strong>Meta coletiva:</strong> voltar com <strong>+75 respostas somadas</strong> entre os 5 grupos e <strong>0 formulários em branco</strong>.
+    </div>
+    <div class="subtitle">Customer Discovery na Prática · Visita Técnica ao Shopping · Prof. Renato Rosa</div>
+</section>
+
+<!-- SLIDE 9: DICA DE OURO -->
+<section class="cover">
+    <div class="quote" style="font-size: 30px; text-align: center; border-left: none; background: transparent; padding: 20px 40px; font-style: normal;">
+        "Vocês não vão ao shopping para provar que a ideia é boa.<br>Vocês vão para descobrir a <span style="color: #e94560; font-weight: 700;">VERDADE</span>."
+    </div>
+    <div class="highlight-box" style="font-size: 18px; max-width: 640px;">
+        Se a pessoa disser que <strong>não usaria</strong>, isso é um <strong>dado valioso</strong>. Anotem os <strong>'nãos'</strong>. Boa pesquisa!
+    </div>
+    <div style="margin-top: 40px;">
+        <div style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+            <img src="Renato.jpg" alt="Prof. Renato Rosa" style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover; border: 3px solid #e94560;">
+            <div style="text-align: left;">
+                <div style="font-size: 18px; color: #2D3748;">Prof. Renato Rosa</div>
+                <div style="font-size: 14px; color: #666;">Cerrado Tech · Unifacc</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+</div>
+</div>
+
+<script src="../assets/reveal/reveal.js"></script>
+<script>
+    Reveal.initialize({
+        width: 1280,
+        height: 720,
+        margin: 0.03,
+        controls: true,
+        progress: true,
+        history: true,
+        slideNumber: 'c/t',
+        hash: true,
+        center: true,
+        transition: 'slide'
+    });
+</script>
+
+</body>
+</html>

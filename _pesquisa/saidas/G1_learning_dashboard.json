@@ -1,0 +1,446 @@
+[
+  {
+    "titulo": "Investigating the impact of a gamified learning analytics dashboard: Student experiences and academic achievement",
+    "ano": 2023,
+    "autores": "Md Imtiajul Alam; Lauren Malone; Larysa Nadolny; Michael Geoffrey Brown et al.",
+    "periodico": "Journal of Computer Assisted Learning",
+    "tipo": "article",
+    "doi": "10.1111/jcal.12853",
+    "citacoes": 33,
+    "acesso_aberto": true,
+    "url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1111/jcal.12853",
+    "areas": [
+      "Educational Games and Gamification",
+      "Online Learning and Analytics",
+      "Innovations in Educational Methods"
+    ],
+    "abstract": "Abstract Background The substantial growth in gamification research has connected gamified learning to enhanced engagement, improved performance, and greater motivation. Similar to gamification, personalized learning analytics dashboards can enhance student engagement. Objectives This study explores the student experiences and academic achievements using a gamified dashboard in a large, introductory STEM course. Methods We examined two groups of students enrolled in different sections of a one‐semester‐long physical geology course with a total enrollment of 223 students. The only difference between the groups was that one had access to the dashboard. The data collection included students' as...",
+    "openalex_id": "https://openalex.org/W4385633299"
+  },
+  {
+    "titulo": "Effectiveness of a Learning Analytics Dashboard for Increasing Student Engagement Levels",
+    "ano": 2023,
+    "autores": "Gomathy Ramaswami; Teo Sušnjak; Anuradha Mathrani",
+    "periodico": "Journal of Learning Analytics",
+    "tipo": "article",
+    "doi": "10.18608/jla.2023.7935",
+    "citacoes": 50,
+    "acesso_aberto": true,
+    "url": "https://learning-analytics.info/index.php/JLA/article/download/7935/7753",
+    "areas": [
+      "Online Learning and Analytics",
+      "Online and Blended Learning",
+      "E-Learning and Knowledge Management"
+    ],
+    "abstract": "Learning Analytics Dashboards (LADs) are gaining popularity as a platform for providing students with insights into their learning behaviour patterns in online environments. Existing LAD studies are mainly centred on displaying students’ online behaviours with simplistic descriptive insights. Only a few studies have integrated predictive components, while none possess the ability to explain how the predictive models work and how they have arrived at specific conclusions for a given student. A further gap exists within existing LADs with respect to prescriptive analytics that generate data-driven feedback to students on how to adjust their learning behaviour. The LAD in this study attempts to...",
+    "openalex_id": "https://openalex.org/W4389607985"
+  },
+  {
+    "titulo": "Exploring critical factors of the perceived usefulness of a learning analytics dashboard for distance university students",
+    "ano": 2021,
+    "autores": "Irina Rets; Christothea Herodotou; Vaclav Bayer; Martin Hlosta et al.",
+    "periodico": "International Journal of Educational Technology in Higher Education",
+    "tipo": "article",
+    "doi": "10.1186/s41239-021-00284-9",
+    "citacoes": 64,
+    "acesso_aberto": true,
+    "url": "https://educationaltechnologyjournal.springeropen.com/counter/pdf/10.1186/s41239-021-00284-9",
+    "areas": [
+      "Online Learning and Analytics",
+      "Online and Blended Learning",
+      "E-Learning and Knowledge Management"
+    ],
+    "abstract": "Learning analytics dashboards (LADs) can provide learners with insights about their study progress through visualisations of the learner and learning data. Despite their potential usefulness to support learning, very few studies on LADs have considered learners' needs and have engaged learners in the process of design and evaluation. Aligning with that, there is a limited understanding of what specific student cohorts, in particular distance and online learners, may seek from LADs to effectively support their studies. In this study, we present findings from 21 interviews with undergraduate distance learners, mainly high performers, that aimed to capture student perceptions about the usefulne...",
+    "openalex_id": "https://openalex.org/W3174488456"
+  },
+  {
+    "titulo": "CADA: a teacher-facing learning analytics dashboard to foster teachers’ awareness of students’ participation and discourse patterns in online discussions",
+    "ano": 2022,
+    "autores": "Rogers Kaliisa; Jan Arild Dolonen",
+    "periodico": "Technology Knowledge and Learning",
+    "tipo": "article",
+    "doi": "10.1007/s10758-022-09598-7",
+    "citacoes": 58,
+    "acesso_aberto": true,
+    "url": "https://link.springer.com/content/pdf/10.1007/s10758-022-09598-7.pdf",
+    "areas": [
+      "Online Learning and Analytics",
+      "E-Learning and Knowledge Management",
+      "Online and Blended Learning"
+    ],
+    "abstract": "Abstract Despite the potential of learning analytics (LA) to support teachers’ everyday practice, its adoption has not been fully embraced due to the limited involvement of teachers as co-designers of LA systems and interventions. This is the focus of the study described in this paper. Following a design-based research (DBR) approach and guided by concepts from the socio-cultural perspective and human-computer interaction (HCI), we design, test, and evaluate a teacher-facing LA dashboard, the Canvas Discussion Analytics Dashboard (CADA), in real educational settings. The goal of this dashboard is to support teachers’ roles in online environments through insights into students’ participation ...",
+    "openalex_id": "https://openalex.org/W4226254341"
+  },
+  {
+    "titulo": "Learning Analytics Dashboard Design and Evaluation to Support Student Self-Regulation of Study Behaviour",
+    "ano": 2024,
+    "autores": "Lars de Vreugd; Anouschka van Leeuwen; Renée S. Jansen; Marieke F. van der Schaaf",
+    "periodico": "Journal of Learning Analytics",
+    "tipo": "article",
+    "doi": "10.18608/jla.2024.8529",
+    "citacoes": 21,
+    "acesso_aberto": true,
+    "url": "https://learning-analytics.info/index.php/JLA/article/download/8529/7825",
+    "areas": [
+      "Online Learning and Analytics"
+    ],
+    "abstract": "For university students, self-regulation of study behaviour is important. However, students are not always capable of effective self-regulation. Providing study behaviour information via a learning analytics dashboard (LAD) may support phases within self-regulated learning (SRL). However, it is unclear what information a LAD should provide, how to present information in a usable manner, and what the information’s perceived usefulness is in supporting self-regulation of study behaviour. This study entails a sequential mixed design: assessing information needs in focus groups (n=7), exploring usability via think-aloud interviews (n=8), assessing usability with the System Usability Scale (n=42)...",
+    "openalex_id": "https://openalex.org/W4403348213"
+  },
+  {
+    "titulo": "How Students Use Learning Analytics Dashboards in Higher Education: A Learning Performance Perspective",
+    "ano": 2023,
+    "autores": "Li Chen; Xuewang Geng; Min Lu; Atsushi Shimada et al.",
+    "periodico": "SAGE Open",
+    "tipo": "article",
+    "doi": "10.1177/21582440231192151",
+    "citacoes": 17,
+    "acesso_aberto": true,
+    "url": "https://journals.sagepub.com/doi/pdf/10.1177/21582440231192151",
+    "areas": [
+      "Online Learning and Analytics",
+      "E-Learning and Knowledge Management",
+      "Online and Blended Learning"
+    ],
+    "abstract": "Developed to maximize learning performance, learning analytics dashboards (LAD) are becoming increasingly commonplace in education. An LAD’s effectiveness depends on how it is used and varies according to users’ academic levels. In this study, two LADs and a learning support system were used in a higher education course to support students’ cognitive and self-regulated learning (SRL) strategies. A total of 54 students’ learning logs on three systems and their learning performance scores were collected; descriptive statistics of learning behaviors, Mann-Whitney U test, and lag sequential analysis were used to explore how students with different learning performances used LADs to support their...",
+    "openalex_id": "https://openalex.org/W4386004049"
+  },
+  {
+    "titulo": "Learning analytics dashboard-based self-regulated learning approach for enhancing students’ e-book-based blended learning",
+    "ano": 2024,
+    "autores": "Christopher C. Y. Yang; Jiun‐Yu Wu; Hiroaki Ogata",
+    "periodico": "Education and Information Technologies",
+    "tipo": "article",
+    "doi": "10.1007/s10639-024-12913-7",
+    "citacoes": 20,
+    "acesso_aberto": false,
+    "url": "https://doi.org/10.1007/s10639-024-12913-7",
+    "areas": [
+      "Online Learning and Analytics",
+      "Technology-Enhanced Education Studies",
+      "Innovative Teaching and Learning Methods"
+    ],
+    "abstract": "",
+    "openalex_id": "https://openalex.org/W4401114867"
+  },
+  {
+    "titulo": "A learning analytics dashboard to support students' reflection on collaboration",
+    "ano": 2024,
+    "autores": "Vanessa Echeverría; Gloria Milena Fernandez-Nieto; Linxuan Zhao; Evelyn Palominos et al.",
+    "periodico": "Journal of Computer Assisted Learning",
+    "tipo": "article",
+    "doi": "10.1111/jcal.13088",
+    "citacoes": 12,
+    "acesso_aberto": true,
+    "url": "https://research.monash.edu/en/publications/6064e7aa-2278-44c9-9b52-7d1fb8907cce",
+    "areas": [
+      "Online Learning and Analytics",
+      "Innovative Teaching and Learning Methods",
+      "Reflective Practices in Education"
+    ],
+    "abstract": "Abstract Background Dashboards play a prominent role in learning analytics (LA) research. In collaboration activities, dashboards can show traces of team participation. They are often evaluated based on students' perceived satisfaction and engagement with the dashboard. However, there is a notable methodological gap in understanding how these dashboards support the nuanced process of student reflection. Objective This paper presents empirical evidence on how students from high and low‐performing groups reflect individually on their performance while using a Learning Analytics Dashboard (LAD). Methods We address this in the context of education in healthcare, wherein we captured actions and p...",
+    "openalex_id": "https://openalex.org/W4404195773"
+  },
+  {
+    "titulo": "Student-Facing Learning Analytics Dashboard for Remote Lab Practical Work",
+    "ano": 2024,
+    "autores": "David P. Reid; Timothy D. Drysdale",
+    "periodico": "IEEE Transactions on Learning Technologies",
+    "tipo": "article",
+    "doi": "10.1109/tlt.2024.3354128",
+    "citacoes": 11,
+    "acesso_aberto": true,
+    "url": "https://www.research.ed.ac.uk/en/publications/71fbe9a9-6888-4c33-89ca-3c686901b4a0",
+    "areas": [
+      "Online Learning and Analytics",
+      "Innovative Teaching and Learning Methods",
+      "Intelligent Tutoring Systems and Adaptive Learning"
+    ],
+    "abstract": "The designs of many student-facing learning analytics (SFLA) dashboards are insufficiently informed by educational research and lack rigorous evaluation in authentic learning contexts, including during remote laboratory practical work. We present and evaluate an SFLA dashboard designed using the principles of formative assessment to provide feedback to students during remote lab activities. Feedback is based upon graphical visualisations of student actions performed during lab tasks and comparison to expected procedures using TaskCompare - our custom, asymmetric graph dissimilarity measure that distinguishes students who miss expected actions from those who perform additional actions, a capa...",
+    "openalex_id": "https://openalex.org/W4390872872"
+  },
+  {
+    "titulo": "From awareness to empowerment: self-determination theory-informed learning analytics dashboards to enhance student engagement in asynchronous online courses",
+    "ano": 2024,
+    "autores": "Jeongwon Lee; Dongho Kim",
+    "periodico": "Journal of Computing in Higher Education",
+    "tipo": "article",
+    "doi": "10.1007/s12528-024-09416-2",
+    "citacoes": 19,
+    "acesso_aberto": true,
+    "url": "https://link.springer.com/content/pdf/10.1007/s12528-024-09416-2.pdf",
+    "areas": [
+      "Online Learning and Analytics",
+      "E-Learning and Knowledge Management",
+      "Online and Blended Learning"
+    ],
+    "abstract": "Abstract Although learning analytics dashboards (LADs) are being recognized as tools that can enhance engagement—a crucial factor for the success of asynchronous online higher education—their impact may be limited without a solid theoretical basis for motivation. Furthermore, the processes through which students make decisions using dashboards and engage are not well understood. This study aimed to design a LAD informed by self-determination theory and to investigate university students’ experiences with it. The findings, including those from stimulated recall interviews using eye-tracking data, shed light on how the LAD fosters student engagement. Interacting with the LAD fulfilled students...",
+    "openalex_id": "https://openalex.org/W4404671427"
+  },
+  {
+    "titulo": "Supporting Student Agency with a Student-Facing Learning Analytics Dashboard",
+    "ano": 2023,
+    "autores": "Anceli Kaveri; Anni Silvola; Hanni Muukkonen",
+    "periodico": "Journal of Learning Analytics",
+    "tipo": "article",
+    "doi": "10.18608/jla.2023.7729",
+    "citacoes": 6,
+    "acesso_aberto": true,
+    "url": "https://learning-analytics.info/index.php/JLA/article/download/7729/7721",
+    "areas": [
+      "Online Learning and Analytics",
+      "E-Learning and Knowledge Management"
+    ],
+    "abstract": "Learning analytics dashboard (LAD) development has been criticized for being too data-driven and for developers lacking an understanding of the nontechnical aspects of learning analytics (LA). The ability of developers to address their understanding of learners as well as systematic efforts to involve students in the development process are central to creating pedagogically grounded student-facing dashboards. However, limited research is available about developer perceptions on supporting students with LA. We examined an interdisciplinary LA development team’s (IDT) perceptions of and intentions to support student agency, and the student-facing LAD development process. Qualitative content an...",
+    "openalex_id": "https://openalex.org/W4385725293"
+  },
+  {
+    "titulo": "A Current Overview of the Use of Learning Analytics Dashboards",
+    "ano": 2024,
+    "autores": "Italo Masiello; Zeynab Artemis Mohseni; Francis Palma; Susanna Nordmark et al.",
+    "periodico": "Education Sciences",
+    "tipo": "article",
+    "doi": "10.3390/educsci14010082",
+    "citacoes": 52,
+    "acesso_aberto": true,
+    "url": "https://www.mdpi.com/2227-7102/14/1/82/pdf?version=1704985689",
+    "areas": [
+      "Online Learning and Analytics",
+      "E-Learning and Knowledge Management",
+      "Online and Blended Learning"
+    ],
+    "abstract": "The promise of Learning Analytics Dashboards in education is to collect, analyze, and visualize data with the ultimate ambition of improving students’ learning. Our overview of the latest systematic reviews on the topic shows a number of research trends: learning analytics research is growing rapidly; it brings to the front inequality and inclusiveness measures; it reveals an unclear path to data ownership and privacy; it provides predictions which are not clearly translated into pedagogical actions; and the possibility of self-regulated learning and game-based learning are not capitalized upon. However, as learning analytics research progresses, greater opportunities lie ahead, and a better...",
+    "openalex_id": "https://openalex.org/W4390738608"
+  },
+  {
+    "titulo": "Students' Use of a Learning Analytics Dashboard and Influence of Reference Frames: Goal Setting, Motivation, and Performance",
+    "ano": 2025,
+    "autores": "Lars de Vreugd; Anouschka van Leeuwen; Marieke F. van der Schaaf",
+    "periodico": "Journal of Computer Assisted Learning",
+    "tipo": "article",
+    "doi": "10.1111/jcal.70015",
+    "citacoes": 11,
+    "acesso_aberto": true,
+    "url": "https://doi.org/10.1111/jcal.70015",
+    "areas": [
+      "Online Learning and Analytics",
+      "Educational Games and Gamification",
+      "Gender and Technology in Education"
+    ],
+    "abstract": "ABSTRACT Background University students need to self‐regulate but are sometimes incapable of doing so. Learning Analytics Dashboards (LADs) can support students' appraisal of study behaviour, from which goals can be set and performed. However, it is unclear how goal‐setting and self‐motivation within self‐regulated learning elicits behaviour when using an LAD. Objectives This study's purpose is exploring reference frames’ influence on goal setting, LAD elements’ influence on student motivation, and the predictive value of goal setting and motivation on behaviour, adding to our understanding of the factors predicting task attainment and the role of reference frames. Methods In an experimental...",
+    "openalex_id": "https://openalex.org/W4408465166"
+  },
+  {
+    "titulo": "Use of Predictive Analytics within Learning Analytics Dashboards: A Review of Case Studies",
+    "ano": 2022,
+    "autores": "Gomathy Suganya Ramaswami; Teo Sušnjak; Anuradha Mathrani; Rahila Umer",
+    "periodico": "Technology Knowledge and Learning",
+    "tipo": "article",
+    "doi": "10.1007/s10758-022-09613-x",
+    "citacoes": 60,
+    "acesso_aberto": true,
+    "url": "https://link.springer.com/content/pdf/10.1007/s10758-022-09613-x.pdf",
+    "areas": [
+      "Online Learning and Analytics",
+      "Explainable Artificial Intelligence (XAI)",
+      "Machine Learning and Data Classification"
+    ],
+    "abstract": "Abstract Learning analytics dashboards (LADs) provide educators and students with a comprehensive snapshot of the learning domain. Visualizations showcasing student learning behavioral patterns can help students gain greater self-awareness of their learning progression, and at the same time assist educators in identifying those students who may be facing learning difficulties. While LADs have gained popularity, existing LADs are still far behind when it comes to employing predictive analytics into their designs. Our systematic literature review has revealed limitations in the utilization of predictive analytics tools among existing LADs. We find that studies leveraging predictive analytics o...",
+    "openalex_id": "https://openalex.org/W4293149314"
+  },
+  {
+    "titulo": "Learning analytics for academic paths: student evaluations of two dashboards for study planning and monitoring",
+    "ano": 2023,
+    "autores": "Anni Silvola; Amanda M. Sjoblom; Piia Näykki; Egle Gedrimiene et al.",
+    "periodico": "Frontline Learning Research",
+    "tipo": "article",
+    "doi": "10.14786/flr.v11i2.1277",
+    "citacoes": 9,
+    "acesso_aberto": true,
+    "url": "https://journals.sfu.ca/flr/flr/index.php/journal/article/download/1277/1173",
+    "areas": [
+      "Online Learning and Analytics",
+      "Evaluation of Teaching Practices",
+      "Online and Blended Learning"
+    ],
+    "abstract": "An in-depth understanding of student experiences and evaluations of learning analytics dashboards (LADs) is needed to develop supportive learning analytics tools. This study investigates how students (N = 140) evaluated two student-facing LADs as a support for academic path-level self-regulated learning (SRL) through the concrete processes of planning and monitoring studies. Aim of the study was to gain new understanding about student perspectives for LAD use on academic path-level context. The study specifically focused on the student evaluations of the dashboard support and challenges, and the differences of student evaluations based on their self-efficacy beliefs and resource management s...",
+    "openalex_id": "https://openalex.org/W4389392829"
+  },
+  {
+    "titulo": "Dashboard stories: How narratives told by predictive analytics reconfigure roles, risk and sociality in education",
+    "ano": 2021,
+    "autores": "Juliane Jarke; Felicitas Macgilchrist",
+    "periodico": "Big Data & Society",
+    "tipo": "article",
+    "doi": "10.1177/20539517211025561",
+    "citacoes": 117,
+    "acesso_aberto": true,
+    "url": "https://journals.sagepub.com/doi/pdf/10.1177/20539517211025561",
+    "areas": [
+      "Online Learning and Analytics",
+      "Data Visualization and Analytics",
+      "Educational Assessment and Improvement"
+    ],
+    "abstract": "In this paper, we explore how the development and affordances of predictive analytics may impact how teachers and other educational actors think about and teach students and, more broadly, how society understands education. Our particular focus is on the data dashboards of learning support systems which are based on Machine Learning (ML). While previous research has focused on how these systems produce credible knowledge, we explore here how they also produce compelling, persuasive and convincing narratives. Our main argument is that particular kinds of stories are written by predictive analytics and written into their data dashboards. Based on a case study of a leading predictive analytics ...",
+    "openalex_id": "https://openalex.org/W3176924040"
+  },
+  {
+    "titulo": "A checklist to guide the planning, designing, implementation, and evaluation of learning analytics dashboards",
+    "ano": 2023,
+    "autores": "Rogers Kaliisa; Ioana Jivet; Paul Prinsloo",
+    "periodico": "International Journal of Educational Technology in Higher Education",
+    "tipo": "article",
+    "doi": "10.1186/s41239-023-00394-6",
+    "citacoes": 52,
+    "acesso_aberto": true,
+    "url": "https://educationaltechnologyjournal.springeropen.com/counter/pdf/10.1186/s41239-023-00394-6",
+    "areas": [
+      "Online Learning and Analytics",
+      "E-Learning and Knowledge Management",
+      "Educational Innovations and Technology"
+    ],
+    "abstract": "Abstract Higher education institutions are moving to design and implement teacher-facing learning analytics (LA) dashboards with the hope that instructors can extract deep insights about student learning and make informed decisions to improve their teaching. While much attention has been paid to developing teacher-facing dashboards, less is known about how they are designed, implemented and evaluated. This paper presents a systematic literature review of existing studies reporting on teacher-facing LA dashboards. Out of the 1968 articles retrieved from several databases, 50 articles were included in the final analysis. Guided by several frameworks, articles were coded based on the following ...",
+    "openalex_id": "https://openalex.org/W4367670172"
+  },
+  {
+    "titulo": "Which Data Sets Are Preferred by University Students in Learning Analytics Dashboards? A Situated Learning Theory Perspective",
+    "ano": 2023,
+    "autores": "Paul Joseph‐Richard; James Onohuome Uhomoibhi",
+    "periodico": "INFORMS Transactions on Education",
+    "tipo": "article",
+    "doi": "10.1287/ited.2023.0289",
+    "citacoes": 5,
+    "acesso_aberto": true,
+    "url": "https://doi.org/10.1287/ited.2023.0289",
+    "areas": [
+      "Online Learning and Analytics",
+      "E-Learning and Knowledge Management"
+    ],
+    "abstract": "Scholarly interests in developing personalized learning analytics dashboards (LADs) in universities have been increasing. LADs are data visualization tools for both teachers and learners that allow them to support student success and improve teaching and learning. In most LADs, however, a teacher-centric, institutional view drives their designs, treating students only as passive end-users, which results in LADs being less useful to students. To address this limitation, we used a card-sorting technique and asked 42 students at a university in Northern Ireland to construct dashboards that reflect their priorities. Using a situated theory of learning as a lens and with the help of multiple qual...",
+    "openalex_id": "https://openalex.org/W4382316761"
+  },
+  {
+    "titulo": "Team interactions with learning analytics dashboards",
+    "ano": 2022,
+    "autores": "Andrew Zamecnik; Vitomir Kovanović; Georg Großmann; Srécko Joksimovíc et al.",
+    "periodico": "Computers & Education",
+    "tipo": "article",
+    "doi": "10.1016/j.compedu.2022.104514",
+    "citacoes": 27,
+    "acesso_aberto": false,
+    "url": "https://doi.org/10.1016/j.compedu.2022.104514",
+    "areas": [
+      "Online Learning and Analytics",
+      "Innovative Teaching and Learning Methods",
+      "Online and Blended Learning"
+    ],
+    "abstract": "",
+    "openalex_id": "https://openalex.org/W4224306272"
+  },
+  {
+    "titulo": "Towards Optimization of Learning Analytics Dashboards That are Customized for the Students’ Requirements",
+    "ano": 2023,
+    "autores": "Rotem Israel‐Fishelson; Dan Kohen-Vacs",
+    "periodico": "IEEE Transactions on Learning Technologies",
+    "tipo": "article",
+    "doi": "10.1109/tlt.2023.3332500",
+    "citacoes": 3,
+    "acesso_aberto": false,
+    "url": "http://dx.doi.org/10.1109/tlt.2023.3332500",
+    "areas": [
+      "Online Learning and Analytics",
+      "E-Learning and Knowledge Management"
+    ],
+    "abstract": "Educational dashboards enable students to monitor and reflect on academic performance and administrative aspects of the learning processes. Occasionally, educational institutions integrate dashboards using the information found in their learning management systems or their students' information desks. Learning analytics offers ways to enrich these dashboards and expose students to analyzed information beyond the monitored data provided such as smart recommendations. Despite the large variety of dashboards, the students’ centric perspective and the ability to adapt the dashboard to their personal needs is not a common practice. To identify and support the needs of students who wish to track a...",
+    "openalex_id": "https://openalex.org/W4388692466"
+  },
+  {
+    "titulo": "Intelligent Learning Analytics Dashboards: Automated Drill-Down Recommendations to Support Teacher Data Exploration",
+    "ano": 2021,
+    "autores": "Hassan Mozaffari Khosravi; Shiva Shabaninejad; Aneesha Bakharia; Shazia Wasim Sadiq et al.",
+    "periodico": "Journal of Learning Analytics",
+    "tipo": "article",
+    "doi": "10.18608/jla.2021.7279",
+    "citacoes": 46,
+    "acesso_aberto": true,
+    "url": "https://www.learning-analytics.info/index.php/JLA/article/download/7279/7603",
+    "areas": [
+      "Online Learning and Analytics",
+      "Data Stream Mining Techniques",
+      "Intelligent Tutoring Systems and Adaptive Learning"
+    ],
+    "abstract": "Learning analytics dashboards commonly visualize data about students with the aim of helping students and educators understand and make informed decisions about the learning process. To assist with making sense of complex and multidimensional data, many learning analytics systems and dashboards have relied strongly on AI algorithms based on predictive analytics. While predictive models have been successful in many domains, there is an increasing realization of the inadequacies of using predictive models in decision-making tasks that affect individuals without human oversight. In this paper, we employ a suite of state-of-the-art algorithms, from the online analytics processing, data mining, a...",
+    "openalex_id": "https://openalex.org/W3213397539"
+  },
+  {
+    "titulo": "Social comparison in learning analytics dashboard supporting motivation and academic achievement",
+    "ano": 2023,
+    "autores": "Damien S. Fleur; Wouter van den Bos; Bert Bredeweg",
+    "periodico": "Computers and Education Open",
+    "tipo": "article",
+    "doi": "10.1016/j.caeo.2023.100130",
+    "citacoes": 38,
+    "acesso_aberto": true,
+    "url": "https://doi.org/10.1016/j.caeo.2023.100130",
+    "areas": [
+      "Online Learning and Analytics",
+      "Innovative Teaching and Learning Methods",
+      "Online and Blended Learning"
+    ],
+    "abstract": "A promising contribution of Learning Analytics is the presentation of a learner's own learning behaviour and achievements via dashboards, often in comparison to peers, with the goal of improving self-regulated learning. However, there is a lack of empirical evidence on the impact of these dashboards and few designs are informed by theory. Many dashboard designs struggle to translate awareness of learning processes into actual self-regulated learning. In this study we investigate a Learning Analytics dashboard based on existing evidence on social comparison to support motivation, metacognition and academic achievement. Motivation plays a key role in whether learners will engage in self-regula...",
+    "openalex_id": "https://openalex.org/W4321378940"
+  },
+  {
+    "titulo": "Technology Enhanced Learning Analytics Dashboard in Higher Education",
+    "ano": 2022,
+    "autores": "Rangana Jayashanka; Enosha Hettiarachchi; Kamalanath Priyantha Hewagamage",
+    "periodico": "The Electronic Journal of e-Learning",
+    "tipo": "article",
+    "doi": "10.34190/ejel.20.2.2189",
+    "citacoes": 28,
+    "acesso_aberto": true,
+    "url": "https://academic-publishing.org/index.php/ejel/article/download/2189/2052",
+    "areas": [
+      "Online Learning and Analytics",
+      "Technology-Enhanced Education Studies"
+    ],
+    "abstract": "During the COVID-19 pandemic period, all the Sri Lankan universities delivered lectures in fully online mode using Virtual Learning Environments. In fully online mode, students cannot track their performance level, their progress in the course, and their performances compared to the rest of the class. This paper presents research work conducted at the University of Colombo School of Computing (UCSC), Sri Lanka, to solve the above problems and facilitate students learning in fully online and blended learning environments using Learning Analytics. The research objective is to design and create a Technology Enhanced Learning Analytics (TELA) dashboard for improving students’ motivation, engagem...",
+    "openalex_id": "https://openalex.org/W4213053423"
+  },
+  {
+    "titulo": "The effects of generative AI agents and scaffolding on enhancing students’ comprehension of visual learning analytics",
+    "ano": 2025,
+    "autores": "Lixiang Yan; Roberto Martínez‐Maldonado; Yueqiao Jin; Vanessa Echeverría et al.",
+    "periodico": "Computers & Education",
+    "tipo": "article",
+    "doi": "10.1016/j.compedu.2025.105322",
+    "citacoes": 74,
+    "acesso_aberto": true,
+    "url": "https://doi.org/10.1016/j.compedu.2025.105322",
+    "areas": [
+      "Online Learning and Analytics",
+      "Educational Games and Gamification",
+      "Intelligent Tutoring Systems and Adaptive Learning"
+    ],
+    "abstract": "Visual learning analytics (VLA) is becoming increasingly adopted in educational technologies and learning analytics dashboards to convey critical insights to students and educators. Yet many students experienced difficulties in comprehending complex VLA due to their limited data visualisation literacy. While conventional scaffolding approaches like data storytelling have shown effectiveness in enhancing students’ comprehension of VLA, these approaches remain difficult to scale and adapt to individual learning needs. Generative AI (GenAI) technologies, especially conversational agents , offer potential solutions by providing personalised and dynamic support to enhance students’ comprehension ...",
+    "openalex_id": "https://openalex.org/W4409829362"
+  },
+  {
+    "titulo": "Ready or not? Investigating in-service teachers’ integration of learning analytics dashboard for assessing students’ collaborative problem solving in K–12 classrooms",
+    "ano": 2024,
+    "autores": "Yiming Liu; Xiao Hu; Jeremy Tzi-Dong Ng; Zhengyang Ma et al.",
+    "periodico": "Education and Information Technologies",
+    "tipo": "article",
+    "doi": "10.1007/s10639-024-12842-5",
+    "citacoes": 7,
+    "acesso_aberto": true,
+    "url": "https://doi.org/10.1007/s10639-024-12842-5",
+    "areas": [
+      "Online Learning and Analytics",
+      "Innovative Teaching and Learning Methods",
+      "Motivation and Self-Concept in Sports"
+    ],
+    "abstract": "Abstract Collaborative problem solving (CPS) has emerged as a crucial 21st century competence that benefits students’ studies, future careers, and general well-being, prevailing across disciplines and learning approaches. Given the complex and dynamic nature of CPS, teacher-facing learning analytics dashboards (LADs) have increasingly been adopted to support teachers’ CPS assessments by analysing and visualising various dimensions of students’ CPS. However, there is limited research investigating K-12 teachers’ integration of LADs for CPS assessments in authentic classrooms. In this study, a LAD was implemented to assist K-12 teachers in assessing students’ CPS skills in an educational game....",
+    "openalex_id": "https://openalex.org/W4400495980"
+  }
+]

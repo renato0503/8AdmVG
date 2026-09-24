@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Customer Discovery · 8AdmVG</title>
+<meta name="description" content="Materiais, pesquisa e MVPs dos 5 grupos de Customer Discovery da turma 8AdmVG (Unifacc).">
+<meta name="theme-color" content="#0b1220">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><rect width='24' height='24' rx='6' fill='%230b1220'/><path d='M12 3l2.2 6.8L21 12l-6.8 2.2L12 21l-2.2-6.8L3 12l6.8-2.2z' fill='%2338bdf8'/></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/landing.css">
+<style>
+:root{--acc:#38bdf8;--acc2:#f59e0b;--tinta:#0b1220}
+.nav .links{margin-left:auto;display:flex;gap:16px;font-size:13px;font-weight:600}
+.nav .links a{color:#c7cee8;text-decoration:none}
+.nav .links a:hover{color:#fff}
+.nav .marca{display:flex;align-items:center;gap:8px;font-family:'Space Grotesk',sans-serif;font-weight:700}
+.hero h1 span{color:var(--acc)}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:12px;margin-top:28px;max-width:640px}
+.stats div{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:12px 14px}
+.stats b{display:block;font-family:'Space Grotesk',sans-serif;font-size:26px;color:#fff}
+.stats span{font-size:12px;color:#9aa5c3}
+.faixa{display:flex;gap:10px;margin-top:26px;flex-wrap:wrap}
+.faixa img{border-radius:12px;box-shadow:0 6px 16px rgba(0,0,0,.35)}
+.mvps{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
+.mvp{background:#fff;border:1px solid var(--line);border-top:5px solid var(--c);border-radius:18px;padding:18px;text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:10px;transition:transform .15s,box-shadow .15s}
+.mvp:hover{transform:translateY(-3px);box-shadow:var(--shadow-card)}
+.mvp-top{display:flex;gap:12px;align-items:center}
+.mvp-top img{border-radius:14px}
+.mvp-g{font-size:11.5px;font-weight:700;color:var(--c);text-transform:uppercase;letter-spacing:.04em}
+.mvp h3{font-family:'Space Grotesk',sans-serif;font-size:20px;color:var(--t)}
+.mvp p{font-size:13.5px;color:var(--ink-soft);line-height:1.5}
+.mvp-feats{display:flex;flex-wrap:wrap;gap:6px}
+.mvp-feats span{font-size:11.5px;font-weight:700;background:color-mix(in srgb,var(--c) 12%,white);color:var(--t);padding:4px 9px;border-radius:999px}
+.mvp-team{font-size:12px;color:var(--ink-soft)}
+.mvp-cta{margin-top:auto;font-weight:700;font-size:13.5px;color:var(--c)}
+@media (max-width:560px){.nav .links{display:none}}
+</style>
+</head>
+<body>
+
+<nav class="nav"><div class="wrap">
+  <span class="marca"><img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><rect width='24' height='24' rx='6' fill='%230b1220'/><path d='M12 3l2.2 6.8L21 12l-6.8 2.2L12 21l-2.2-6.8L3 12l6.8-2.2z' fill='%2338bdf8'/></svg>" alt="" width="22" height="22"> Customer Discovery · 8AdmVG</span>
+  <div class="links"><a href="#mvps">MVPs</a><a href="#materiais">Materiais</a><a href="#cadernos">Cadernos</a><a href="#defesa">Defesa</a></div>
+</div></nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-group">Administração · 8º Semestre (VG) · FACC/Unifacc · Cerrado Tech</div>
+    <h1>5 ideias, <span>5 MVPs funcionais</span><br>prontos para o campo</h1>
+    <p class="pitch">Horas complementares, turismo por localização, acessibilidade para pessoas cegas, simulador de compra da casa e acesso humanizado a programas de moradia. Cada grupo tem defesa com dados reais, pesquisa científica verificada, formulário de campo e um app que funciona no celular.</p>
+    <div class="stats">
+      <div><b>5</b><span>MVPs publicados</span></div>
+      <div><b>100</b><span>perguntas de campo</span></div>
+      <div><b>70</b><span>artigos com DOI</span></div>
+      <div><b>PWA</b><span>funciona offline</span></div>
+    </div>
+    <div class="faixa"><img src="assets/logos/g1.svg" alt="HoraCerta" width="44" height="44"><img src="assets/logos/g2.svg" alt="RotaViva" width="44" height="44"><img src="assets/logos/g3.svg" alt="VozGuia" width="44" height="44"><img src="assets/logos/g4.svg" alt="CasaPiloto" width="44" height="44"><img src="assets/logos/g5.svg" alt="CasaHumanizada" width="44" height="44"></div>
+  </div>
+</header>
+
+<main>
+  <section class="block" id="mvps"><div class="wrap">
+    <div class="block-head"><h2>Os projetos</h2><p>Toque num projeto para ver a landing do grupo, os documentos e abrir o app.</p></div>
+    <div class="mvps">
+        <a href="Grupo1-HoraCerta/" class="mvp" style="--c:#4338ca;--c2:#f59e0b;--t:#1e1b4b">
+          <div class="mvp-top"><img src="assets/logos/g1.svg" alt="" width="52" height="52"><div><span class="mvp-g">Grupo 1 · Prof. Renato</span><h3>HoraCerta</h3></div></div>
+          <p>Suas horas complementares em tempo real, num app só.</p>
+          <div class="mvp-feats"><span>Saldo em tempo real</span><span>Comprovantes no bolso</span><span>Oportunidades próximas</span></div>
+          <div class="mvp-team">José Arlindo · Taynara · Luana · Leticia · Samara</div>
+          <span class="mvp-cta">Ver projeto →</span>
+        </a>
+        <a href="Grupo2-RotaViva/" class="mvp" style="--c:#0f766e;--c2:#f97316;--t:#042f2e">
+          <div class="mvp-top"><img src="assets/logos/g2.svg" alt="" width="52" height="52"><div><span class="mvp-g">Grupo 2 · Prof. Renato</span><h3>RotaViva</h3></div></div>
+          <p>Seu guia turístico de bolso, guiado pela sua localização.</p>
+          <div class="mvp-feats"><span>Perto de mim, agora</span><span>Guia que conta a história</span><span>Rota do seu jeito</span></div>
+          <div class="mvp-team">Cinthia · Danielly · Leandro · Guilherme · Esther</div>
+          <span class="mvp-cta">Ver projeto →</span>
+        </a>
+        <a href="Grupo3-VozGuia/" class="mvp" style="--c:#1e3a8a;--c2:#facc15;--t:#0b1020">
+          <div class="mvp-top"><img src="assets/logos/g3.svg" alt="" width="52" height="52"><div><span class="mvp-g">Grupo 3 · Profa. Sandra</span><h3>VozGuia</h3></div></div>
+          <p>O celular vira um assistente sonoro — e a cidade fica sabendo onde está o obstáculo.</p>
+          <div class="mvp-feats"><span>Assistente sonoro</span><span>Mapa colaborativo</span><span>Alerta ao poder público</span></div>
+          <div class="mvp-team">Karla Moema · Victor Hugo · Nicolas · Fabio · Yasmin</div>
+          <span class="mvp-cta">Ver projeto →</span>
+        </a>
+        <a href="Grupo4-CasaPiloto/" class="mvp" style="--c:#b45309;--c2:#0d9488;--t:#1c1917">
+          <div class="mvp-top"><img src="assets/logos/g4.svg" alt="" width="52" height="52"><div><span class="mvp-g">Grupo 4 · Profa. Polyana</span><h3>CasaPiloto</h3></div></div>
+          <p>Escolha a casa e veja o caminho: guardar, investir ou financiar.</p>
+          <div class="mvp-feats"><span>Escolha a casa piloto</span><span>Três caminhos lado a lado</span><span>Plano até a chave</span></div>
+          <div class="mvp-team">Aliny · André · Michelly · Everson</div>
+          <span class="mvp-cta">Ver projeto →</span>
+        </a>
+        <a href="Grupo5-CasaHumanizada/" class="mvp" style="--c:#15803d;--c2:#e11d48;--t:#14301f">
+          <div class="mvp-top"><img src="assets/logos/g5.svg" alt="" width="52" height="52"><div><span class="mvp-g">Grupo 5 · Prof. Heitor</span><h3>CasaHumanizada</h3></div></div>
+          <p>Todos os programas de moradia num lugar só — com atendimento humano.</p>
+          <div class="mvp-feats"><span>Tudo num lugar só</span><span>&quot;Tenho direito?&quot;</span><span>Status, prazos e avisos</span></div>
+          <div class="mvp-team">Bianca · Giovanna · Estefane</div>
+          <span class="mvp-cta">Ver projeto →</span>
+        </a>
+    </div>
+  </div></section>
+
+  <section class="block" id="materiais"><div class="wrap">
+    <div class="block-head"><h2>Materiais da atividade</h2><p>App de coleta do shopping e os slides das três partes.</p></div>
+    <div class="doc-grid">
+        <a href="coleta/" class="doc-card"><div class="doc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M11 18h2"/></svg></div><b>App de coleta (campo)</b><small>Formulário offline · perfil + 20 perguntas · código G&lt;n&gt;-&lt;nnn&gt;</small></a>
+        <a href="Parte%201/Slides-Shopping.html" class="doc-card"><div class="doc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div><b>Parte 1 · Preparação</b><small>Slides da visita técnica e roteiros por grupo</small></a>
+        <a href="Parte%202/Slides-Shopping-Parte2.html" class="doc-card"><div class="doc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div><b>Parte 2 · Formulários</b><small>Validação das perguntas e construção no app</small></a>
+        <a href="Parte%203/Slides-Shopping-Parte3.html" class="doc-card"><div class="doc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div><b>Parte 3 · Campo + sprints</b><small>Ida ao shopping e log de sprints</small></a>
+    </div>
+  </div></section>
+
+  <section class="block" id="cadernos"><div class="wrap">
+    <div class="block-head"><h2>Cadernos e pesquisa</h2><p>Guias completos para estudar (com versão PDF) e o índice dos artigos científicos.</p></div>
+    <div class="doc-grid">
+        <a href="Parte%201/caderno-shopping.html" class="doc-card"><div class="doc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg></div><b>Caderno · Parte 1</b><small>Guia completo da preparação (PDF disponível)</small></a>
+        <a href="Parte%202/caderno-shopping-parte2.html" class="doc-card"><div class="doc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg></div><b>Caderno · Parte 2</b><small>Validação, app de formulário e áudio</small></a>
+        <a href="Parte%203/caderno-shopping-parte3.html" class="doc-card"><div class="doc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg></div><b>Caderno · Parte 3</b><small>Protocolo de campo e sprints</small></a>
+        <a href="assets/md-viewer.html?src=../_pesquisa/INDICE-PESQUISA.md&voltar=../index.html" class="doc-card"><div class="doc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></div><b>Índice de pesquisa</b><small>70 artigos reais (OpenAlex) com DOI</small></a>
+    </div>
+  </div></section>
+
+  <section class="block" id="defesa"><div class="wrap">
+    <div class="block-head"><h2>Slides de defesa</h2><p>Dor com dados reais, ideia, hipótese, referencial científico e pitch de 30 segundos.</p></div>
+    <div class="doc-grid">
+        <a href="Grupo1-HoraCerta/Slides-HoraCerta.html" class="doc-card"><div class="doc-icon" style="color:#4338ca"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div><b>HoraCerta</b><small>Grupo 1 · 12 slides · <span>PDF</span></small></a>
+        <a href="Grupo2-RotaViva/Slides-RotaViva.html" class="doc-card"><div class="doc-icon" style="color:#0f766e"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div><b>RotaViva</b><small>Grupo 2 · 12 slides · <span>PDF</span></small></a>
+        <a href="Grupo3-VozGuia/Slides-VozGuia.html" class="doc-card"><div class="doc-icon" style="color:#1e3a8a"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div><b>VozGuia</b><small>Grupo 3 · 12 slides · <span>PDF</span></small></a>
+        <a href="Grupo4-CasaPiloto/Slides-CasaPiloto.html" class="doc-card"><div class="doc-icon" style="color:#b45309"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div><b>CasaPiloto</b><small>Grupo 4 · 12 slides · <span>PDF</span></small></a>
+        <a href="Grupo5-CasaHumanizada/Slides-CasaHumanizada.html" class="doc-card"><div class="doc-icon" style="color:#15803d"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div><b>CasaHumanizada</b><small>Grupo 5 · 12 slides · <span>PDF</span></small></a>
+    </div>
+  </div></section>
+</main>
+
+<footer><div class="wrap">
+  <p>Customer Discovery · 8AdmVG · Prof. Renato Rosa · Cerrado Tech · Unifacc · 2026</p>
+  <p><a href="https://github.com/renato0503/8AdmVG" target="_blank" rel="noopener">Repositório</a> · <a href="coleta/">App de coleta</a> · <a href="#mvps">Voltar ao topo</a></p>
+</div></footer>
+
+</body>
+</html>

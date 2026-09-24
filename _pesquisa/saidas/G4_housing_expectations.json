@@ -1,0 +1,74 @@
+[
+  {
+    "titulo": "Housing and fertility: a macro-level, multi-country investigation, 1993-2017",
+    "ano": 2021,
+    "autores": "Sarah R. Brauner‐Otto",
+    "periodico": "Housing Studies",
+    "tipo": "article",
+    "doi": "10.1080/02673037.2021.1893279",
+    "citacoes": 119,
+    "acesso_aberto": false,
+    "url": "https://doi.org/10.1080/02673037.2021.1893279",
+    "areas": [
+      "Family Dynamics and Relationships",
+      "Intergenerational Family Dynamics and Caregiving",
+      "Demographic Trends and Gender Preferences"
+    ],
+    "abstract": "Postponement of first birth has implications for the health and well-being of women and is often associated with lower fertility levels, a demographic reality affecting most high-income countries. Country-level institutional differences are one factor behind the variation in fertility in these countries. This paper examines the relationship between housing and mean age at first birth across 39 low-fertility countries. Using newly compiled indicators of multiple dimensions of the housing context we explore housing from the perspective of renters and homebuyers and examine differences for former-communist and non-former-communist countries. We use six indicators of the housing context and comb...",
+    "openalex_id": "https://openalex.org/W3136414866"
+  },
+  {
+    "titulo": "Digital information-seeking of homebuyers on real estate platforms in Taiwan",
+    "ano": 2025,
+    "autores": "Pei-Chun Lee; P. L. F. Liu",
+    "periodico": "The Electronic Library",
+    "tipo": "article",
+    "doi": "10.1108/el-09-2024-0261",
+    "citacoes": 2,
+    "acesso_aberto": false,
+    "url": "https://doi.org/10.1108/el-09-2024-0261",
+    "areas": [
+      "Technology Adoption and User Behaviour",
+      "Digital Marketing and Social Media",
+      "Sharing Economy and Platforms"
+    ],
+    "abstract": "Purpose This study aims to investigate the information-seeking behaviours of home buyers – primarily owner-occupants – using digital real estate platforms, a key element in the industry’s shift towards digital services. It focuses on first-time buyers and repurchasers to examine how these platforms assist in the home-buying process and influence buyer behaviour in Taiwan. Design/methodology/approach A mixed methods approach was adopted, combining quantitative surveys and qualitative interviews to gather comprehensive data on user experiences and preferences. Findings The research identifies brand perception, search functionality and search results as critical factors influencing platform usa...",
+    "openalex_id": "https://openalex.org/W4410625227"
+  },
+  {
+    "titulo": "An empirical investigation of home buying behavior in a high-context culture: a strategic marketing-oriented approach",
+    "ano": 2022,
+    "autores": "Erdener Kaynak; Ali Kara; Azamat Maksüdünov",
+    "periodico": "International Journal of Housing Markets and Analysis",
+    "tipo": "article",
+    "doi": "10.1108/ijhma-07-2022-0095",
+    "citacoes": 19,
+    "acesso_aberto": true,
+    "url": "https://scholarsphere.psu.edu/resources/f1f6520c-18a8-435f-8d4f-310cf84dd1cb/downloads/25912?download_token=eyJfcmFpbHMiOnsiZGF0YSI6MjU5MTIsImV4cCI6IjIwMjYtMDktMTlUMDU6MTU6NDIuNjAyWiIsInB1ciI6ImRvd25sb2FkX3JlcXVlc3QifX0%3D--e1d96ec3f9d70694f747f6768d6e96a29c0b30a5",
+    "areas": [
+      "Consumer Retail Behavior Studies",
+      "Consumer Behavior in Brand Consumption and Identification",
+      "Customer Service Quality and Loyalty"
+    ],
+    "abstract": "Purpose The housing/real estate sector is one of the most important sectors in any country. However, existing marketing literature on the home buying behavior and the decision-making process is still in the early stage of development. The purpose of this study is to examine the home buying behavior from the consumers’ perspective in a high-context culture, namely, Kyrgyzstan and its managerial and/or public policy implications to other countries which are at a similar level of socio-economic development as Kyrgyzstan. Design/methodology/approach Using a questionnaire, data for the study (n = 300) is collected from households in Bishkek, Kyrgyzstan. Personal interviews were used to collect da...",
+    "openalex_id": "https://openalex.org/W4292088968"
+  },
+  {
+    "titulo": "Untangling proximity and accessibility effects of transit on property prices",
+    "ano": 2025,
+    "autores": "Robert Nutifafa Arku; Christopher D. Higgins; Steven Farber",
+    "periodico": "Transport Policy",
+    "tipo": "article",
+    "doi": "10.1016/j.tranpol.2025.103852",
+    "citacoes": 2,
+    "acesso_aberto": true,
+    "url": "https://doi.org/10.1016/j.tranpol.2025.103852",
+    "areas": [
+      "Urban Transport and Accessibility",
+      "Transportation Planning and Optimization",
+      "Housing Market and Economics"
+    ],
+    "abstract": "Most research interested in understanding the causal impacts of transit investments on property prices approach the topic through the lens of proximity. However, recent research highlights the networked nature of accessibility impacts. This presents challenges in causal research, particularly in mapping accessibility impacts, defining treatment and control groups, and estimating property price effects. Using the Evergreen Extension in Metro Vancouver, this research examines how proximity to new stations and changes in accessibility over time are capitalized into property prices, disentangling their distinct and combined effects. As commonly applied in the literature, the proximity-based meas...",
+    "openalex_id": "https://openalex.org/W4415053658"
+  }
+]

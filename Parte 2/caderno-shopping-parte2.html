@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Caderno · Parte 2 — Validação dos Questionários & App de Formulário · 8AdmVG</title>
+<meta name="description" content="Parte 2 — como validar cada pergunta e montar o app de formulário com bloco de perfil, marcação em escala 1–5 e código de correlação.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+<link rel="stylesheet" href="../assets/caderno.css">
+</head>
+<body>
+
+<button class="pdfbtn" id="pp" aria-label="Salvar em PDF">⤓ salvar PDF</button>
+<button class="themebtn" id="tt" aria-label="Alternar tema">◐ tema</button>
+
+<header class="top">
+  <div class="wrap">
+    <div class="kicker">8º Semestre (VG) · Administração · Customer Discovery</div>
+    <h1>Validação dos Questionários & App de Formulário</h1>
+    <p class="sub">Como validar cada pergunta, montar o bloco de perfil, marcar todas as respostas em escala 1–5 (exceto o perfil) e ligar tudo ao áudio por um código.</p>
+    <div class="meta">
+      <span><b>Professor</b> Renato Rosa</span>
+      <span><b>Data</b> Setembro de 2026</span>
+      <span><b>Entregável</b> App montado e testado</span>
+      <span><b>Próxima</b> Parte 3 — ida ao shopping</span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap shell">
+  <nav class="toc" aria-label="Índice">
+    <ol>
+      <li><a href="#visao">00 · Visão da Parte 2</a></li>
+      <li><a href="#pipeline">01 · Pipeline: validar → construir → testar</a></li>
+      <li><a href="#criterios">02 · Critérios de validação de pergunta</a></li>
+      <li><a href="#ficha">03 · Ficha de validação (template + casos)</a></li>
+      <li class="grp">O app</li>
+      <li><a href="#anatomia">04 · Anatomia do app de formulário</a></li>
+      <li><a href="#perfil">05 · Bloco 0 — Perfil por observação</a></li>
+      <li><a href="#resposta">06 · Marcação em escala 1–5 (sem resposta aberta)</a></li>
+      <li><a href="#codigo">07 · Código de correlação + áudio</a></li>
+      <li class="grp">Produção</li>
+      <li><a href="#spec">08 · Especificação por grupo</a></li>
+      <li><a href="#decisoes">09 · Registro de decisões</a></li>
+      <li><a href="#entregaveis">10 · Entregáveis e checklist</a></li>
+      <li><a href="#cola">11 · Folha de cola</a></li>
+    </ol>
+  </nav>
+
+  <main class="col">
+
+  <!-- 00 -->
+  <section id="visao">
+    <div class="secnum">00</div>
+    <h2>Visão da Parte 2</h2>
+    <p class="lead">Na Parte 2 ninguém vai ao shopping. O objetivo é <strong>transformar a ideia em um app de formulário pronto</strong> para a coleta da Parte 3.</p>
+    <div class="callout note"><span class="lbl">Onde estamos</span>
+      <strong>Parte 1</strong> preparou a ida a campo · <strong>Parte 2</strong> valida e constrói o app · <strong>Parte 3</strong> é a ida ao shopping + as sprints de desenvolvimento até o app ficar pronto.</div>
+    <div class="tbl"><table>
+      <tr><th>Etapa</th><th>Pergunta que responde</th></tr>
+      <tr><td>Validar</td><td>A pergunta mede o que o grupo precisa?</td></tr>
+      <tr><td>Especificar</td><td>Como essa pergunta vira um campo do app?</td></tr>
+      <tr><td>Construir</td><td>O app está montado e com código?</td></tr>
+      <tr><td>Testar</td><td>Funciona no celular e com o áudio?</td></tr>
+    </table></div>
+  </section>
+
+  <!-- 01 -->
+  <section id="pipeline">
+    <div class="secnum">01</div>
+    <h2>Pipeline da Parte 2</h2>
+    <ol class="step">
+      <li><span class="t">Triagem das perguntas</span><p>Cada grupo lê as perguntas em voz alta e aplica os critérios. Marca <strong>✅ entra · ⚠️ reescrever · ❌ descarta</strong>.</p></li>
+      <li><span class="t">Corte e reescrita</span><p>Corta o que é irrelevante ou repetido e reescreve o que induz. Meta: <strong>20 perguntas</strong> por grupo (fixas, escala 1–5).</p></li>
+      <li><span class="t">Especificação das telas</span><p>Cada pergunta vira uma <strong>escala 1–5</strong> com os dois polos rotulados (o perfil é a exceção).</p></li>
+      <li><span class="t">Montagem no app</span><p>Constrói o Bloco 0 (perfil) + blocos do grupo, com o <strong>código</strong> visível por resposta.</p></li>
+      <li><span class="t">Teste e ensaio</span><p>Testa no celular, confere a planilha e ensaia o par <strong>entrevistador + gravador de áudio</strong>.</p></li>
+    </ol>
+    <div class="callout tip"><span class="lbl">Regra</span>
+      Nada entra na Parte 3 sem o app testado no celular e o código funcionando.</div>
+  </section>
+
+  <!-- 02 -->
+  <section id="criterios">
+    <div class="secnum">02</div>
+    <h2>Critérios de validação de pergunta</h2>
+    <p class="lead">Aplique os 6 critérios a <strong>cada</strong> pergunta. Uma pergunta reprovada em um critério recebe ⚠️ ou ❌.</p>
+    <div class="tbl"><table>
+      <tr><th>#</th><th>Critério</th><th>Reprova quando…</th></tr>
+      <tr><td>1</td><td><strong>Neutra</strong></td><td>Sugere a resposta ("você não acha que…")</td></tr>
+      <tr><td>2</td><td><strong>Uma ideia</strong></td><td>Mistura duas dores na mesma pergunta</td></tr>
+      <tr><td>3</td><td><strong>Mensurável</strong></td><td>Não dá para marcar uma opção ou escala</td></tr>
+      <tr><td>4</td><td><strong>Relevante</strong></td><td>Não ajuda a testar a hipótese do grupo</td></tr>
+      <tr><td>5</td><td><strong>Resposta em escala</strong></td><td>Não dá para marcar de 1 a 5 (1 = um polo, 5 = o oposto)</td></tr>
+      <tr><td>6</td><td><strong>Tem "Outro / Qual?"</strong></td><td>É fechada e não permite resposta fora das opções</td></tr>
+    </table></div>
+    <div class="semaforo">
+      <span class="chip v">✅ Entra no app</span>
+      <span class="chip a">⚠️ Reescrever</span>
+      <span class="chip r">❌ Descartar</span>
+    </div>
+    <div class="callout err"><span class="lbl">Erro mais comum</span>
+      Pergunta de futuro ("você usaria…") em vez de passado ("como você resolveu da última vez"). Prefira sempre o comportamento passado.</div>
+  </section>
+
+  <!-- 03 -->
+  <section id="ficha">
+    <div class="secnum">03</div>
+    <h2>Ficha de validação</h2>
+    <p>Use esta ficha para registrar a decisão de cada pergunta. Preencha uma linha por pergunta.</p>
+    <div class="f">
+FICHA DE VALIDAÇÃO — GRUPO ___
+
+Nº | Pergunta (resumo)        | 1..6 critérios | Decisão | Observação
+---|--------------------------|----------------|---------|------------
+1  |                          | __ __ __ __ __ __ | ✅/⚠️/❌ |
+2  |                          | __ __ __ __ __ __ | ✅/⚠️/❌ |
+3  |                          | __ __ __ __ __ __ | ✅/⚠️/❌ |
+...
+
+RESUMO:  ✅ ___   ⚠️ ___   ❌ ___
+Mantidas após reescrita: ___
+    </div>
+
+    <div class="ex">
+      <span class="tag">Caso — Grupo 1 HoraCerta</span>
+      <h4>Validação das perguntas propostas (20 perguntas)</h4>
+      <p>Aplicar os 6 critérios à lista de perguntas de cada bloco:</p>
+      <div class="tbl"><table>
+        <tr><th>Problema</th><th>Exemplo</th><th>Ação</th></tr>
+        <tr><td>Pergunta de futuro</td><td>"Você usaria um app de horas complementares?"</td><td>Reescrever para comportamento: "Com que frequência você já perdeu um certificado?"</td></tr>
+        <tr><td>Duas ideias</td><td>"O processo é demorado e burocrático?"</td><td>Dividir: tempo de espera (Q8) e dependência de papel (Q10)</td></tr>
+        <tr><td>Público errado</td><td>Aplicar as 20 perguntas a quem nunca fez faculdade</td><td>Usar a <strong>triagem</strong> e encerrar com agradecimento</td></tr>
+      </table></div>
+    </div>
+
+    <div class="ex">
+      <span class="tag">Caso — Grupo 3 VozGuia</span>
+      <h4>Validação das perguntas — acessibilidade</h4>
+      <div class="tbl"><table>
+        <tr><th>Problema</th><th>Exemplo</th><th>Ação</th></tr>
+        <tr><td>Pergunta sobre a condição da pessoa</td><td>"Você é cego?"</td><td>Remover — usar a triagem com delicadeza: "Você convive com alguém com deficiência visual?"</td></tr>
+        <tr><td>Pergunta de hipótese</td><td>"Você usaria um app para cegos?"</td><td>Reescrever: "Com que frequência você vê obstáculos nas calçadas?"</td></tr>
+        <tr><td>Escala visual</td><td>Mostrar a tela para quem não enxerga</td><td>Ler as opções em voz alta e confirmar a marcação</td></tr>
+      </table></div>
+    </div>
+
+    <div class="ex">
+      <span class="tag">Caso — Grupo 5 CasaHumanizada</span>
+      <h4>Validação das perguntas — tema sensível</h4>
+      <p>O risco clássico aqui é a <strong>"pergunta educada"</strong> e a pergunta que expõe a pessoa (renda, benefício).</p>
+      <div class="tbl"><table>
+        <tr><th>Problema</th><th>Exemplo</th><th>Ação</th></tr>
+        <tr><td>Pergunta pessoal sensível</td><td>"Quanto a família ganha?" / "Recebe Bolsa Família?"</td><td>Remover — medir só percepção: "O quanto o aluguel pesa no orçamento?"</td></tr>
+        <tr><td>Pergunta de futuro</td><td>"Você se inscreveria num programa?"</td><td>Reescrever para passado: "Com que frequência já pensou em se inscrever?"</td></tr>
+        <tr><td>Duas ideias</td><td>"O cadastro é difícil e demorado?"</td><td>Dividir: facilidade do cadastro (Q11) e idas repetidas ao órgão (Q13)</td></tr>
+      </table></div>
+      <div class="callout err"><span class="lbl">Reprovado no critério</span>
+        Pergunta de futuro gera resposta educada. <strong>"Você usaria um app do governo?"</strong> quase sempre recebe "sim" — e isso não é dado, é gentileza.</div>
+    </div>
+  </section>
+
+  <!-- 04 -->
+  <section id="anatomia">
+    <div class="secnum">04</div>
+    <h2>Anatomia do app de formulário</h2>
+    <p class="lead">Uma tela, três blocos e um código sempre visível.</p>
+    <div class="f">
+┌───────────────────────────────────────────────┐
+│  G1-014                    ← CÓDIGO NA TELA    │
+├───────────────────────────────────────────────┤
+│  BLOCO 0 · PERFIL  (o entrevistador marca)      │
+│    faixa etária · sexo · classe social · raça   │
+├───────────────────────────────────────────────┤
+│  BLOCO 1..N · PERGUNTAS DO GRUPO                │
+│    pessoa fala livre → entrevistador marca      │
+│    + a fala livre vai para o áudio (código)   │
+├───────────────────────────────────────────────┤
+│  [ SALVAR ]  → gera código e vai p/ planilha    │
+└───────────────────────────────────────────────┘
+    </div>
+    <div class="tbl"><table>
+      <tr><th>Elemento</th><th>Função</th></tr>
+      <tr><td><strong>Código</strong></td><td>Identifica a resposta (ex.: <code>G3-014</code>) e é lido no áudio</td></tr>
+      <tr><td><strong>Bloco 0</strong></td><td>Perfil marcado por observação</td></tr>
+      <tr><td><strong>Blocos 1..N</strong></td><td>Perguntas do grupo, em escala 1–5; a fala vai no áudio</td></tr>
+      <tr><td><strong>Salvar</strong></td><td>Grava direto na planilha e incrementa o código</td></tr>
+    </table></div>
+    <div class="callout note"><span class="lbl">Tela grande</span>
+      O código deve ficar <strong>grande e fixo</strong> na tela para o colega do áudio conseguir ler sem interromper a conversa.</div>
+  </section>
+
+  <!-- 05 -->
+  <section id="perfil">
+    <div class="secnum">05</div>
+    <h2>Bloco 0 — Perfil por observação</h2>
+    <div class="callout err"><span class="lbl">Regra de ouro</span>
+      O entrevistador <strong>não pergunta</strong> o perfil: <strong>observa e marca</strong>. É estimativa — na dúvida, use <em>“Não sei estimar”</em>.</div>
+    <div class="tbl"><table>
+      <tr><th>Dado</th><th>Opções</th></tr>
+      <tr><td><strong>Faixa etária</strong></td><td>18–24 · 25–34 · 35–44 · 45–59 · 60+</td></tr>
+      <tr><td><strong>Sexo</strong></td><td>Feminino · Masculino · Não identificado</td></tr>
+      <tr><td><strong>Classe social</strong></td><td>A/B · C · D/E · Não sei estimar</td></tr>
+      <tr><td><strong>Raça/cor</strong></td><td>Branca · Preta · Parda · Amarela · Indígena · Não sei estimar</td></tr>
+    </table></div>
+    <div class="callout note"><span class="lbl">Ética</span>
+      Nunca questione raça ou renda. Se a pessoa se autodeclarar espontaneamente, marque o que ela disser.</div>
+  </section>
+
+  <!-- 06 -->
+  <section id="resposta">
+    <div class="secnum">06</div>
+    <h2>Marcação em escala 1–5 (sem resposta aberta)</h2>
+    <p class="lead">A pessoa responde <strong>falando, livremente</strong>; o entrevistador <strong>não digita texto</strong> — ele apenas marca <strong>de 1 a 5</strong>, onde <strong>1 é uma dimensão e 5 é a dimensão oposta</strong>. As falas interessantes ficam no <strong>áudio</strong>.</p>
+    <div class="compare">
+      <div class="bad"><h5>✗ Pergunta de futuro</h5>
+        <ul class="clean"><li>"Você usaria um app que avisa sobre gastos?"</li><li>Resposta educada — não é dado</li></ul>
+      </div>
+      <div class="good"><h5>✓ Pergunta conduzida em escala</h5>
+        <ul class="clean"><li>"Com que frequência você perdeu um certificado?"</li><li>Entrevistador marca 1 (nunca) … 5 (sempre)</li></ul>
+      </div>
+    </div>
+    <div class="tbl"><table>
+      <tr><th>Regra</th><th>Como fica no app</th></tr>
+      <tr><td>Todas as perguntas</td><td>Escala <strong>1–5</strong> com os dois polos rotulados</td></tr>
+      <tr><td>Exceção</td><td><strong>Bloco 0 — Perfil</strong> (por observação, categórico)</td></tr>
+      <tr><td>Respostas abertas</td><td><strong>Não existem no formulário</strong></td></tr>
+      <tr><td>Falas / justificativas</td><td>Vão para o <strong>áudio</strong>, com o código</td></tr>
+    </table></div>
+    <div class="callout tip"><span class="lbl">Celular com o entrevistador</span>
+      Ele lê a pergunta, ouve a resposta e marca a nota 1–5. Só entrega a tela se a pessoa pedir para ver.</div>
+  </section>
+
+  <!-- 07 -->
+  <section id="codigo">
+    <div class="secnum">07</div>
+    <h2>Código de correlação + áudio</h2>
+    <p class="lead">Enquanto um aluno marca no app, <strong>outro grava um áudio no WhatsApp</strong> começando pelo <strong>código</strong> da tela.</p>
+    <div class="f">
+Código na tela:  G3-014
+
+Áudio (20 a 40 segundos):
+"Código G3-014. Principais pontos: convive com um tio cego; calçadas do centro
+muito ruins; já reclamou na prefeitura e não teve resposta.
+Frase marcante: 'ele só sai de casa se alguém for junto'."
+    </div>
+    <div class="semaforo">
+      <span class="chip v">Fale o código devagar</span>
+      <span class="chip v">1 áudio por entrevista</span>
+      <span class="chip v">20–40 segundos</span>
+      <span class="chip r">Gravar a voz da pessoa</span>
+      <span class="chip r">Áudio sem código</span>
+    </div>
+    <div class="callout note"><span class="lbl">Formato</span>
+      <code>G&lt;grupo&gt;-&lt;nº da resposta&gt;</code> — o mesmo código aparece na tela do app e no início do áudio. É o que prova que número e fala são da mesma pessoa.</div>
+  </section>
+
+  <!-- 08 -->
+  <section id="spec">
+    <div class="secnum">08</div>
+    <h2>Especificação por grupo</h2>
+    <p>Preencha uma especificação por grupo. É o documento que guia a montagem no app.</p>
+    <div class="f">
+ESPECIFICAÇÃO DO FORMULÁRIO — GRUPO ___
+
+Hipótese: ______________________________________
+Meta de respostas: ______   Nº de perguntas finais: ______
+
+BLOCO 0 — PERFIL (fixo, igual p/ todos)
+  [ ] faixa etária   [ ] sexo   [ ] classe social   [ ] raça/cor
+
+PERGUNTAS (nº | texto final | tipo | obrigatória?)
+  1 |                                    | escolha única | sim
+  2 |                                    | múltipla      | não
+  3 |                                    | escala 1–5    | sim
+  ...
+
+QUALI NO ÁUDIO (gravado com o código): ____________________
+
+CÓDIGO: G__-___     DESTINO: planilha Google (auto)
+    </div>
+    <details><summary>Exemplo — bloco 1 do Grupo 1 (HoraCerta)</summary>
+    <div class="body">
+      <div class="tbl"><table>
+        <tr><th>#</th><th>Pergunta final</th><th>Tipo</th></tr>
+        <tr><td>1</td><td>O quanto você conhece as regras de horas complementares do seu curso (total exigido, o que vale)</td><td>Escala 1–5 (não conhece nada → conhece muito bem)</td></tr>
+        <tr><td>2</td><td>Como está a sua situação de horas em relação ao que falta para se formar</td><td>Escala 1–5 (muito atrasada → em dia ou completa)</td></tr>
+        <tr><td>3</td><td>Com que frequência você perdeu uma atividade que valeria horas por não saber dela a tempo</td><td>Escala 1–5 (nunca → sempre)</td></tr>
+        <tr><td>4</td><td>Clareza sobre quantas horas você já tem validadas hoje</td><td>Escala 1–5 (nenhuma clareza → clareza total)</td></tr>
+        <tr><td>5</td><td>Preocupação de não fechar as horas a tempo da formatura</td><td>Escala 1–5 (nenhuma → muita)</td></tr>
+      </table></div>
+    </div>
+    </details>
+  </section>
+
+  <!-- 09 -->
+  <section id="decisoes">
+    <div class="secnum">09</div>
+    <h2>Registro de decisões</h2>
+    <p class="lead">Toda pergunta cortada ou reescrita precisa de <strong>motivo registrado</strong>. Isso vira material de defesa do projeto e evita refazer o debate.</p>
+    <div class="f">
+REGISTRO DE DECISÕES — GRUPO ___
+
+Pergunta | Ação        | Motivo                        | Quem decidiu
+---------|-------------|-------------------------------|-------------
+1        | ⚠️ reescrita| pergunta de futuro → passado | grupo
+2        | ❌ cortada  | duas ideias misturadas        | grupo
+5        | ⚠️ reescrita| escala sem polo definido     | grupo
+...
+    </div>
+    <div class="callout tip"><span class="lbl">Dica</span>
+      Se houver dúvida sobre uma pergunta, teste como <strong>pergunta piloto</strong> com 2 colegas antes de decidir cortar.</div>
+  </section>
+
+  <!-- 10 -->
+  <section id="entregaveis">
+    <div class="secnum">10</div>
+    <h2>Entregáveis e checklist</h2>
+    <ul class="check">
+      <li>Questionário <strong>validado</strong> pergunta por pergunta (ficha preenchida).</li>
+      <li><strong>Registro de decisões</strong> com cortes e reescritas.</li>
+      <li>Especificação do formulário do grupo.</li>
+      <li>App com <strong>Bloco 0 (perfil)</strong> + perguntas do grupo.</li>
+      <li><strong>Código</strong> por resposta configurado e visível.</li>
+      <li>Respostas caindo em <strong>planilha automática</strong>.</li>
+      <li><strong>Teste completo</strong> no celular (mínimo 2 respostas de teste).</li>
+      <li>Ensaio do par <strong>entrevistador + gravador de áudio</strong>.</li>
+    </ul>
+    <div class="callout err"><span class="lbl">Portão para a Parte 3</span>
+      Sem app testado e código funcionando, o grupo vai a campo apenas observando.</div>
+  </section>
+
+  <!-- 11 -->
+  <section id="cola">
+    <div class="secnum">11</div>
+    <h2>Folha de cola — Parte 2</h2>
+    <h3>Fluxo</h3>
+    <div class="tbl"><table>
+      <tr><th>Passo</th><th>Saída</th></tr>
+      <tr><td>Validar</td><td>Decisão ✅/⚠️/❌ por pergunta</td></tr>
+      <tr><td>Especificar</td><td>Lista final com tipo de cada campo</td></tr>
+      <tr><td>Montar</td><td>App com perfil + perguntas + código</td></tr>
+      <tr><td>Testar</td><td>2 respostas de teste + planilha + áudio</td></tr>
+    </table></div>
+    <h3>Contagens-alvo</h3>
+    <div class="tbl"><table>
+      <tr><th>Bloco</th><th>Nº</th></tr>
+      <tr><td>Perfil</td><td>4</td></tr>
+      <tr><td>Perguntas do grupo</td><td>20 (fixas, escala 1–5)</td></tr>
+      <tr><td>Resposta aberta</td><td>0 — o quali vai no áudio</td></tr>
+    </table></div>
+    <h3>Nunca esqueça</h3>
+    <div class="semaforo">
+      <span class="chip v">Pergunta no passado</span>
+      <span class="chip v">Uma ideia por pergunta</span>
+      <span class="chip v">Código visível</span>
+      <span class="chip r">Pergunta de futuro</span>
+      <span class="chip r">Dado pessoal</span>
+    </div>
+  </section>
+
+  <div class="foot">
+    Parte 2 · Validação e construção do app · Setembro de 2026 · Prof. Renato Rosa · Cerrado Tech · Unifacc · 8º Semestre (VG) · Administração
+  </div>
+
+  </main>
+</div>
+
+<script>
+(function(){
+  var b=document.getElementById('tt'),r=document.documentElement;
+  function cur(){return r.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');}
+  try{var s=localStorage.getItem('cd-p2-theme');if(s)r.setAttribute('data-theme',s);}catch(e){}
+  b.addEventListener('click',function(){
+    var n=cur()==='dark'?'light':'dark';
+    r.setAttribute('data-theme',n);
+    try{localStorage.setItem('cd-p2-theme',n);}catch(e){}
+  });
+  var p=document.getElementById('pp');
+  if(p) p.addEventListener('click',function(){window.print();});
+})();
+</script>
+</body>
+</html>

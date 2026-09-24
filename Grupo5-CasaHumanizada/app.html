@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#15803d">
+<title>CasaHumanizada — programas de moradia num lugar só</title>
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/svg+xml" href="../assets/logos/g5.svg">
+<link rel="apple-touch-icon" href="../assets/logos/g5-192.png">
+<link rel="stylesheet" href="../assets/identidade/temas.css">
+<link rel="stylesheet" href="../assets/mvp/mvp.css">
+<style>
+.golpe{background:#fff1f2;border:1.5px solid #fda4af;border-radius:14px;padding:12px;font-size:14px;color:#881337;margin:12px 0}
+.prog .quem{font-size:12.5px;color:#15803d;font-weight:700}
+.res{border-left:5px solid #cbd5e1;padding-left:12px}
+.res.sim{border-color:#16a34a}.res.talvez{border-color:#d97706}.res.nao{border-color:#dc2626;opacity:.8}
+.etapas{list-style:none;margin:8px 0}
+.etapas li{display:flex;gap:10px;align-items:flex-start;padding:6px 0}
+.etapas .b{width:24px;height:24px;border-radius:50%;border:2px solid #cbd5e1;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:#fff}
+.etapas li.ok .b{background:var(--accent);border-color:var(--accent)}
+.etapas li.atual .b{border-color:var(--accent2);background:#fff;color:var(--accent2)}
+.chat{display:flex;flex-direction:column;gap:8px;max-height:46dvh;overflow:auto;padding:4px}
+.msg{max-width:85%;padding:10px 12px;border-radius:14px;font-size:14.5px}
+.msg.eu{align-self:flex-end;background:var(--accent);color:#fff;border-bottom-right-radius:4px}
+.msg.ela{align-self:flex-start;background:#f1f5f9;border-bottom-left-radius:4px}
+.passo-quiz{font-size:12px;font-weight:800;color:var(--accent-dark);text-transform:uppercase;letter-spacing:.05em}
+</style>
+</head>
+<body class="tema-g5">
+<div class="app">
+  <header class="topo">
+    <div class="marca">
+      <img src="../assets/logos/g5.svg" alt="">
+      <div><h1>CasaHumanizada</h1><div class="sub">Programas de moradia · informação, cadastro e acompanhamento</div></div>
+      <div class="acoes">
+        <button class="icone-btn" id="btn-instalar" hidden aria-label="Instalar app"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg></button>
+        <a class="icone-btn" href="index.html" aria-label="Sobre o projeto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/></svg></a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ============ INÍCIO / PROGRAMAS ============ -->
+    <section class="view" data-view="inicio" aria-label="Programas">
+      <div class="card destaque" style="margin-top:14px">
+        <h2>Olá! Vamos encontrar o seu caminho para a moradia.</h2>
+        <p class="muted" style="margin:6px 0 10px">Responda 7 perguntas rápidas. Nada sai do seu celular.</p>
+        <button class="btn bloco" data-aba="direito">Tenho direito? Fazer o teste</button>
+      </div>
+      <div class="golpe" role="note"><b>⚠ Cuidado com golpes.</b> Inscrição em programa habitacional <b>não é paga</b> e ninguém pode “furar a fila” mediante pagamento. Desconfie de quem pede dinheiro, senha ou Pix.</div>
+      <h3 class="titulo-sec">Programas e caminhos</h3>
+      <div class="filtros" id="filtro-esfera" role="group" aria-label="Filtrar por esfera"></div>
+      <div id="lista-prog"></div>
+      <div class="aviso-exemplo">Informações de <b>referência (2025)</b> resumidas para o protótipo — regras e valores mudam. Confira sempre no site oficial de cada programa antes de decidir.</div>
+    </section>
+
+    <!-- ============ TESTE ============ -->
+    <section class="view" data-view="direito" aria-label="Tenho direito">
+      <div id="quiz"></div>
+    </section>
+
+    <!-- ============ MEU PROCESSO ============ -->
+    <section class="view" data-view="processo" aria-label="Meu processo">
+      <h3 class="titulo-sec">Avisos <span class="chip" id="chip-avisos">0</span></h3>
+      <div class="card"><ul class="lista" id="avisos" aria-live="polite"></ul><p class="muted" style="font-size:12px">Protótipo: os avisos aparecem aqui. Na versão real, chegariam por notificação ou WhatsApp.</p></div>
+      <h3 class="titulo-sec">Documentos</h3>
+      <div class="card"><div class="entre"><b>Checklist</b><span class="chip" id="chip-docs">0/0</span></div><div id="docs"></div></div>
+      <div class="entre"><h3 class="titulo-sec">Minhas inscrições</h3><button class="btn peq" id="btn-nova-insc">+ Adicionar</button></div>
+      <div id="inscricoes"></div>
+    </section>
+
+    <!-- ============ ATENDIMENTO ============ -->
+    <section class="view" data-view="atendimento" aria-label="Atendimento humano">
+      <h3 class="titulo-sec">Falar com uma pessoa</h3>
+      <div class="card">
+        <p class="muted">Prefere ser atendido(a) pessoalmente? Agende um horário no plantão social de habitação.</p>
+        <button class="btn bloco" id="btn-agendar">Agendar atendimento presencial</button>
+        <div id="agendamentos"></div>
+      </div>
+      <div class="card">
+        <div class="entre"><b>Tire dúvidas no chat</b><span class="chip cinza">simulado</span></div>
+        <div class="chat" id="chat" role="log" aria-live="polite"></div>
+        <div class="filtros" id="sugestoes" aria-label="Perguntas frequentes"></div>
+        <div class="linha" style="margin-top:6px"><div class="campo" style="flex:1;margin:0"><label for="chat-in" class="sr-only">Sua pergunta</label><input id="chat-in" placeholder="Escreva sua dúvida"></div><button class="btn" id="chat-enviar" aria-label="Enviar pergunta">Enviar</button></div>
+      </div>
+    </section>
+
+    <!-- ============ DADOS ============ -->
+    <section class="view" data-view="dados" aria-label="Dados e privacidade">
+      <h3 class="titulo-sec">Privacidade</h3>
+      <div class="card"><p class="muted">Suas respostas, documentos marcados e inscrições ficam <b>somente neste aparelho</b>. Nenhum dado é enviado a servidor neste protótipo. Você pode apagar tudo a qualquer momento.</p></div>
+      <h3 class="titulo-sec">Backup</h3>
+      <div class="card">
+        <div class="btns"><button class="btn sec" data-acao="exportar">Exportar JSON</button><button class="btn sec" data-acao="importar">Importar JSON</button></div>
+        <button class="btn perigo bloco" data-acao="resetar" style="margin-top:10px">Apagar tudo</button>
+      </div>
+      <p class="muted" style="text-align:center;margin:18px 0">CasaHumanizada · Grupo 5 · 8AdmVG · Unifacc — MVP de Customer Discovery</p>
+    </section>
+  </main>
+
+  <nav class="nav-inf" aria-label="Navegação principal"><div class="dentro">
+    <button data-aba="inicio"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/></svg>Programas</button>
+    <button data-aba="direito"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 114 2c-1 .6-1.5 1.2-1.5 2.5M12 17v.5"/></svg>Tenho direito?</button>
+    <button data-aba="processo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>Meu processo</button>
+    <button data-aba="atendimento"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a8 8 0 01-11.5 7.2L4 21l1.8-5.5A8 8 0 1121 12z"/></svg>Atendimento</button>
+    <button data-aba="dados"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 118 0v3"/></svg>Privacidade</button>
+  </div></nav>
+</div>
+
+<script src="../assets/mvp/mvp.js"></script>
+<script>
+const { $, $$, esc, criarEstado, fmtData, hoje, uid, toast, modal, confirmar, ligarDados, abas, pwa } = MVP;
+
+const LINK_MCMV = 'https://www.gov.br/cidades/pt-br/acesso-a-informacao/acoes-e-programas/habitacao/programa-minha-casa-minha-vida';
+/* Resumo de referência (2025) para o protótipo — conferir sempre na fonte oficial. */
+const PROGRAMAS = [
+  { id: 'cad', nome: 'Cadastro Único (CadÚnico)', esfera: 'federal', quem: 'Porta de entrada para vários programas sociais', onde: 'CRAS do seu bairro',
+    txt: 'Registro das famílias de baixa renda. Estar com o cadastro atualizado (revisão a cada 2 anos ou quando algo muda) é exigido em muitos programas de moradia.', link: 'https://www.gov.br/mds/pt-br/acoes-e-programas/cadastro-unico', docs: ['cpf', 'rg', 'resid', 'renda'] },
+  { id: 'mcmv1', nome: 'Minha Casa, Minha Vida — Faixa 1', esfera: 'federal', quem: 'Renda familiar até R$ 2.850 (ref. 2025)', onde: 'Inscrição pela prefeitura; seleção por critérios',
+    txt: 'Moradia com subsídio alto e parcelas pequenas. As famílias são indicadas pela prefeitura a partir de cadastro, com prioridades (ex.: mulheres chefes de família, pessoas com deficiência, idosos, área de risco).', link: LINK_MCMV, docs: ['cpf', 'rg', 'resid', 'renda', 'nis', 'civil'], rmax: 2850, rmin: 0 },
+  { id: 'mcmv23', nome: 'Minha Casa, Minha Vida — Faixas 2 e 3', esfera: 'federal', quem: 'Renda familiar de R$ 2.850 a R$ 8.600 (ref. 2025)', onde: 'Financiamento com banco (ex.: Caixa)',
+    txt: 'Financiamento com juros menores e, na faixa 2, possível desconto (subsídio). Pode usar o FGTS.', link: LINK_MCMV, docs: ['cpf', 'rg', 'resid', 'renda', 'civil', 'fgts'], rmax: 8600, rmin: 2850 },
+  { id: 'mcmv4', nome: 'Minha Casa, Minha Vida — Faixa 4', esfera: 'federal', quem: 'Renda familiar de R$ 8.600 a R$ 12.000 (criada em 2025)', onde: 'Financiamento com banco',
+    txt: 'Financiamento de imóveis de até R$ 500 mil com juros abaixo do mercado (referência 2025: 10,5% ao ano).', link: 'https://agenciabrasil.ebc.com.br/economia/noticia/2025-04/entenda-ampliacao-do-programa-minha-casa-minha-vida', docs: ['cpf', 'rg', 'resid', 'renda', 'civil', 'fgts'], rmax: 12000, rmin: 8600 },
+  { id: 'entidades', nome: 'MCMV Entidades', esfera: 'federal', quem: 'Famílias organizadas em associações ou cooperativas', onde: 'Por meio de uma entidade habilitada',
+    txt: 'A construção é organizada por associações e cooperativas habitacionais. Procure entidades da sua cidade.', link: LINK_MCMV, docs: ['cpf', 'rg', 'resid', 'renda', 'nis'], rmax: 2850, rmin: 0 },
+  { id: 'casacuiabana', nome: 'Casa Cuiabana (Prefeitura de Cuiabá)', esfera: 'municipal', cidade: 'cuiaba', quem: 'Renda familiar bruta até R$ 2.850, sem imóvel e sem benefício habitacional anterior da prefeitura', onde: 'Secretaria de Habitação e Regularização Fundiária de Cuiabá',
+    txt: 'Inscrições de 15/07 a 19/09/2025, com 83.991 cadastros. O 1º sorteio (dez/2025) selecionou 1.000 famílias (500 titulares + 500 em cadastro reserva), que precisam comparecer no prazo para conferir as informações. Acompanhe os próximos sorteios e prazos no site da prefeitura.', link: 'https://www.cuiaba.mt.gov.br/noticias/casa-cuiabana-encerra-inscricoes-com-quase-84-mil-cadastros-realizados', docs: ['cpf', 'rg', 'resid', 'renda', 'civil'], rmax: 2850, rmin: 0 },
+  { id: 'estadual', nome: 'Programa habitacional estadual (MT)', esfera: 'estadual', quem: 'Regras próprias do Governo de Mato Grosso', onde: 'Órgão estadual de habitação',
+    txt: 'O estado pode ter programas complementares (ex.: ajuda na entrada). Regras e editais mudam — confirme o programa vigente no site do Governo de MT.', link: 'https://www.mt.gov.br', docs: ['cpf', 'rg', 'resid', 'renda'] },
+  { id: 'aluguel', nome: 'Aluguel social / auxílio moradia', esfera: 'municipal', quem: 'Situações de emergência ou vulnerabilidade', onde: 'Assistência social da prefeitura (CRAS/CREAS)',
+    txt: 'Ajuda temporária para pagar aluguel em casos como desastre, despejo ou área de risco. Regras variam por município.', link: 'https://www.varzeagrande.mt.gov.br', docs: ['cpf', 'rg', 'resid', 'nis'] },
+  { id: 'reurb', nome: 'Regularização fundiária (Reurb)', esfera: 'municipal', quem: 'Quem mora em área ocupada sem escritura', onde: 'Prefeitura',
+    txt: 'Processo para dar título e segurança jurídica a quem já mora no imóvel (Lei nº 13.465/2017).', link: 'https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2017/lei/l13465.htm', docs: ['cpf', 'rg', 'resid'] },
+];
+const DOCS = { cpf: 'CPF de todos da família', rg: 'Documento com foto (RG ou CNH)', resid: 'Comprovante de residência', renda: 'Comprovante de renda (ou declaração)', nis: 'Número do NIS / CadÚnico atualizado', civil: 'Certidão de nascimento ou casamento', fgts: 'Extrato do FGTS' };
+const ETAPAS = ['Inscrição feita', 'Documentos entregues', 'Análise', 'Seleção / aprovação', 'Assinatura do contrato', 'Entrega das chaves'];
+const PERGUNTAS = [
+  { id: 'renda', q: 'Qual é a renda mensal de toda a família, somando todos?', ops: [['1400', 'Até R$ 2.850'], ['3800', 'R$ 2.850 a R$ 4.700'], ['6600', 'R$ 4.700 a R$ 8.600'], ['10300', 'R$ 8.600 a R$ 12.000'], ['15000', 'Mais de R$ 12.000']] },
+  { id: 'cidade', q: 'Em que cidade vocês moram?', ops: [['cuiaba', 'Cuiabá'], ['vg', 'Várzea Grande'], ['outra', 'Outra cidade de MT']] },
+  { id: 'imovel', q: 'Alguém da família já tem casa própria?', ops: [['nao', 'Não'], ['sim', 'Sim']] },
+  { id: 'cad', q: 'A família está no CadÚnico, com cadastro atualizado?', ops: [['sim', 'Sim, atualizado'], ['velho', 'Tenho, mas desatualizado'], ['nao', 'Não tenho'], ['naosei', 'Não sei']] },
+  { id: 'moradia', q: 'Como vocês moram hoje?', ops: [['aluguel', 'De aluguel'], ['favor', 'Na casa de parentes / de favor'], ['risco', 'Em área de risco ou despejo'], ['ocupada', 'Em área ocupada sem escritura']] },
+  { id: 'prior', q: 'Na família há: mulher chefe de família, idoso(a) ou pessoa com deficiência?', ops: [['sim', 'Sim'], ['nao', 'Não']] },
+  { id: 'entidade', q: 'Vocês participam de associação ou cooperativa de moradia?', ops: [['sim', 'Sim'], ['nao', 'Não']] },
+];
+const FAQ = [
+  [/taxa|pag|cobr|pix|dinheiro/i, 'Nenhum programa habitacional cobra taxa de inscrição. Se alguém pedir dinheiro para inscrever ou “adiantar” sua vez, é golpe. Denuncie na prefeitura ou na polícia.'],
+  [/cad|nis|cras/i, 'O CadÚnico é feito no CRAS do seu bairro. Leve CPF e documento com foto de todos da família e comprovante de residência. Mantenha atualizado a cada 2 anos ou quando algo mudar.'],
+  [/document|papel|levar/i, 'Os documentos mais pedidos são: CPF e documento com foto de todos, comprovante de residência, comprovante de renda e certidão de nascimento ou casamento. Veja o checklist em “Meu processo”.'],
+  [/demor|tempo|quando|fila|sorteio/i, 'O tempo varia por programa e cidade. Na Faixa 1, a seleção depende da prefeitura e das prioridades. Guarde o número do protocolo e acompanhe as etapas em “Meu processo”.'],
+  [/direito|posso|consigo|renda/i, 'Faça o teste “Tenho direito?”. Ele considera a renda da família, se já tem imóvel, o CadÚnico e as prioridades. É uma orientação — a confirmação é do órgão responsável.'],
+  [/aluguel|despejo|risco/i, 'Em situação de despejo, desastre ou área de risco, procure a assistência social da prefeitura (CRAS/CREAS) para verificar o aluguel social.'],
+];
+
+function semente() {
+  return { respostas: {}, passo: 0, docsOk: {}, inscricoes: [], agendamentos: [], chat: [{ de: 'ela', t: 'Oi! Sou a Ana, do atendimento (simulado). Como posso te ajudar? 😊' }], esfera: 'todas' };
+}
+const E = criarEstado('casahumanizada:v1', semente);
+
+function renderProgramas() {
+  $('#filtro-esfera').innerHTML = [['todas', 'Todos'], ['federal', 'Federal'], ['estadual', 'Estadual'], ['municipal', 'Municipal']]
+    .map(([k, r]) => `<button class="${E.d.esfera === k ? 'on' : ''}" data-esfera="${k}" aria-pressed="${E.d.esfera === k}">${r}</button>`).join('');
+  $('#lista-prog').innerHTML = PROGRAMAS.filter(p => E.d.esfera === 'todas' || p.esfera === E.d.esfera).map(p => `<div class="card prog">
+    <div class="quem">${esc(p.quem)}</div><h3 style="margin:2px 0 6px">${esc(p.nome)}</h3><p class="muted">${esc(p.txt)}</p>
+    <p style="font-size:13px;margin-top:6px"><b>Onde:</b> ${esc(p.onde)}</p>
+    <div class="btns"><button class="btn sec peq" data-inscrever="${p.id}">Acompanhar este</button><a class="btn sec peq" href="${p.link}" target="_blank" rel="noopener">Site oficial ↗</a></div></div>`).join('');
+}
+
+/* ---------- teste de elegibilidade (roda só no aparelho) ---------- */
+function avaliar(r) {
+  const renda = Number(r.renda), temImovel = r.imovel === 'sim';
+  return PROGRAMAS.map(p => {
+    let st = 'talvez', por = '';
+    if (p.rmax !== undefined) {
+      if (temImovel) { st = 'nao'; por = 'Os programas de aquisição exigem que a família não tenha imóvel próprio.'; }
+      else if (renda > p.rmin && renda <= p.rmax || (p.rmin === 0 && renda <= p.rmax)) {
+        st = 'sim'; por = 'A renda informada está na faixa do programa.';
+        if (p.id === 'mcmv1' && r.cad !== 'sim') { st = 'talvez'; por = 'A renda combina, mas é preciso estar no CadÚnico atualizado.'; }
+        if (p.cidade && r.cidade !== p.cidade) { st = 'nao'; por = 'Programa só para quem mora em Cuiabá.'; }
+        if (p.id === 'entidades' && r.entidade !== 'sim') { st = 'talvez'; por = 'A renda combina; é preciso participar de uma entidade habilitada.'; }
+      } else { st = 'nao'; por = 'A renda informada está fora da faixa deste programa.'; }
+    } else if (p.id === 'cad') { st = r.cad === 'sim' ? 'sim' : 'talvez'; por = r.cad === 'sim' ? 'Ótimo: mantenha atualizado.' : 'Recomendado fazer ou atualizar no CRAS — é o primeiro passo.'; if (renda > 3800) { st = 'nao'; por = 'O CadÚnico é voltado a famílias de baixa renda.'; } }
+    else if (p.id === 'aluguel') { st = r.moradia === 'risco' ? 'sim' : 'nao'; por = r.moradia === 'risco' ? 'Situação de risco ou despejo: procure a assistência social.' : 'Voltado a emergências e vulnerabilidade.'; }
+    else if (p.id === 'reurb') { st = r.moradia === 'ocupada' ? 'sim' : 'nao'; por = r.moradia === 'ocupada' ? 'Pode dar escritura a quem já mora na área.' : 'Só para quem mora em área sem escritura.'; }
+    else { st = 'talvez'; por = 'Confirme o programa estadual vigente.'; }
+    return { p, st, por };
+  }).sort((a, b) => ['sim', 'talvez', 'nao'].indexOf(a.st) - ['sim', 'talvez', 'nao'].indexOf(b.st));
+}
+
+function renderQuiz() {
+  const k = E.d.passo;
+  if (k < PERGUNTAS.length) {
+    const P = PERGUNTAS[k];
+    $('#quiz').innerHTML = `<div class="card destaque" style="margin-top:14px"><div class="passo-quiz">Pergunta ${k + 1} de ${PERGUNTAS.length}</div>
+      <div class="barra" style="margin:8px 0 12px"><i style="width:${k / PERGUNTAS.length * 100}%"></i></div>
+      <h2 id="q-tit">${esc(P.q)}</h2>
+      <div role="radiogroup" aria-labelledby="q-tit" style="margin-top:10px">${P.ops.map(([v, r]) => `<button class="btn ${E.d.respostas[P.id] === v ? '' : 'sec'} bloco" style="margin-bottom:8px" data-resp="${v}" role="radio" aria-checked="${E.d.respostas[P.id] === v}">${esc(r)}</button>`).join('')}</div>
+      ${k > 0 ? '<button class="btn sec peq" id="q-voltar">← Voltar</button>' : ''}
+      <p class="muted" style="margin-top:10px">🔒 Suas respostas não saem do celular.</p></div>`;
+    return;
+  }
+  const res = avaliar(E.d.respostas);
+  const rot = { sim: '✅ Parece compatível', talvez: '🟡 Talvez — veja o que falta', nao: '⛔ Não parece compatível' };
+  $('#quiz').innerHTML = `<h3 class="titulo-sec">Seu resultado</h3>
+    <div class="aviso-exemplo">Isto é uma <b>orientação</b>, não uma aprovação. Quem confirma é o órgão responsável por cada programa.</div>
+    ${res.map(({ p, st, por }) => `<div class="card res ${st}"><b>${esc(p.nome)}</b><div class="muted">${rot[st]} · ${esc(por)}</div>
+      ${st !== 'nao' ? `<div class="btns"><button class="btn sec peq" data-inscrever="${p.id}">Acompanhar este</button></div>` : ''}</div>`).join('')}
+    <div class="btns"><button class="btn sec" id="q-refazer">Refazer o teste</button><button class="btn" data-aba="processo">Ver documentos</button></div>`;
+}
+
+function docsNecessarios() {
+  const ids = new Set(E.d.inscricoes.flatMap(i => (PROGRAMAS.find(p => p.id === i.prog) || { docs: [] }).docs));
+  if (!ids.size) ['cpf', 'rg', 'resid', 'renda', 'nis'].forEach(d => ids.add(d));
+  return [...ids];
+}
+function renderProcesso() {
+  const docs = docsNecessarios(), feitos = docs.filter(d => E.d.docsOk[d]).length;
+  $('#chip-docs').textContent = `${feitos}/${docs.length}`;
+  $('#docs').innerHTML = docs.map(d => `<label class="check"><input type="checkbox" data-doc="${d}" ${E.d.docsOk[d] ? 'checked' : ''}> ${esc(DOCS[d])}</label>`).join('') +
+    `<p class="muted" style="margin-top:6px">${E.d.inscricoes.length ? 'Lista montada a partir dos programas que você acompanha.' : 'Lista básica. Acompanhe um programa para ajustar.'}</p>`;
+  const av = avisos();
+  $('#avisos').innerHTML = av.length ? av.map(a => `<li><span class="chip ${a.n}">${a.n === 'alerta' ? 'Urgente' : a.n === 'atencao' ? 'Atenção' : a.n === 'ok' ? 'Lembrete' : 'Dica'}</span> ${esc(a.t)}</li>`).join('') : '<li class="vazio">Nenhum aviso agora. 🎉</li>';
+  $('#chip-avisos').textContent = av.length;
+  $('#inscricoes').innerHTML = E.d.inscricoes.length ? E.d.inscricoes.map(i => { const p = PROGRAMAS.find(x => x.id === i.prog); return `<div class="card">
+    <div class="entre"><b>${esc(p.nome)}</b><span class="chip ${i.etapa >= ETAPAS.length - 1 ? 'ok' : 'atencao'}">${esc(ETAPAS[i.etapa])}</span></div>
+    <div class="muted">${i.protocolo ? 'Protocolo ' + esc(i.protocolo) + ' · ' : ''}desde ${fmtData(i.desde)}</div>
+    ${i.prazo ? `<p style="font-size:14px;margin-top:6px">⏰ Prazo para <b>${esc(ETAPAS[Math.min(i.etapa + 1, ETAPAS.length - 1)])}</b>: ${fmtData(i.prazo)} · ${rotDias(diasAte(i.prazo))}</p>` : ''}
+    <ul class="etapas">${ETAPAS.map((e, k) => `<li class="${k < i.etapa ? 'ok' : k === i.etapa ? 'atual ok' : ''}"><span class="b">${k <= i.etapa ? '✓' : ''}</span><span>${esc(e)}${i.datas[k] ? ' · ' + fmtData(i.datas[k]) : ''}</span></li>`).join('')}</ul>
+    <div class="btns">${i.etapa < ETAPAS.length - 1 ? `<button class="btn peq" data-avancar="${i.id}">Marcar próxima etapa</button>` : ''}<button class="btn sec peq" data-protocolo="${i.id}">Protocolo</button><button class="btn sec peq" data-prazo="${i.id}">Prazo</button><button class="btn sec peq" data-remover="${i.id}">Remover</button></div></div>`; }).join('')
+    : '<div class="vazio">Você ainda não acompanha nenhum programa. Toque em “Acompanhar este” num programa ou em “+ Adicionar”.</div>';
+}
+
+const diasAte = d => Math.round((new Date(d + 'T12:00:00') - new Date(hoje() + 'T12:00:00')) / 864e5);
+const rotDias = n => n < 0 ? `venceu há ${-n} dia(s)` : n === 0 ? 'vence hoje' : `faltam ${n} dia(s)`;
+
+/* Central de avisos: gerada a partir dos dados (na versão real: push/WhatsApp) */
+function avisos() {
+  const L = [];
+  E.d.inscricoes.forEach(i => {
+    const p = PROGRAMAS.find(x => x.id === i.prog);
+    if (i.prazo && diasAte(i.prazo) <= 7) L.push({ n: diasAte(i.prazo) < 0 ? 'alerta' : 'atencao', t: `${p.nome}: prazo ${rotDias(diasAte(i.prazo))} (${fmtData(i.prazo)}).` });
+    if (!i.protocolo) L.push({ n: 'cinza', t: `${p.nome}: anote o número de protocolo para não perder o acompanhamento.` });
+  });
+  const faltam = docsNecessarios().filter(d => !E.d.docsOk[d]).length;
+  if (faltam) L.push({ n: 'atencao', t: `Faltam ${faltam} documento(s) no seu checklist.` });
+  E.d.agendamentos.forEach(a => { const n = diasAte(a.data); if (n >= 0 && n <= 3) L.push({ n: 'ok', t: `Atendimento ${n === 0 ? 'hoje' : 'em ' + n + ' dia(s)'} às ${a.hora} — ${a.local}.` }); });
+  return L;
+}
+
+function inscrever(prog) {
+  if (E.d.inscricoes.some(i => i.prog === prog)) { toast('Você já acompanha este programa.'); location.hash = 'processo'; return; }
+  E.d.inscricoes.push({ id: uid(), prog, etapa: 0, desde: hoje(), datas: [hoje()], protocolo: '', prazo: '' });
+  E.salvar(); renderProcesso(); toast('Adicionado em “Meu processo”.');
+}
+
+function renderAtendimento() {
+  $('#agendamentos').innerHTML = E.d.agendamentos.map(a => `<div class="card" style="margin-top:10px;background:var(--accent-soft)"><div class="entre"><div><b>${fmtData(a.data)} às ${esc(a.hora)}</b><div class="muted">${esc(a.local)} · ${esc(a.assunto)}</div></div>
+    <button class="btn sec peq" data-cancelar="${a.id}" aria-label="Cancelar agendamento de ${fmtData(a.data)}">Cancelar</button></div></div>`).join('');
+  $('#chat').innerHTML = E.d.chat.map(m => `<div class="msg ${m.de}">${esc(m.t)}</div>`).join('');
+  $('#chat').scrollTop = 99999;
+  $('#sugestoes').innerHTML = ['Tem taxa para se inscrever?', 'Como faço o CadÚnico?', 'Quais documentos levar?', 'Quanto tempo demora?']
+    .map(s => `<button data-sug="${esc(s)}">${esc(s)}</button>`).join('');
+}
+function perguntar(txt) {
+  txt = txt.trim(); if (!txt) return;
+  E.d.chat.push({ de: 'eu', t: txt });
+  const r = FAQ.find(([re]) => re.test(txt));
+  E.d.chat.push({ de: 'ela', t: r ? r[1] : 'Boa pergunta! Essa eu preciso ver com a equipe. Quer agendar um atendimento presencial? Toque em “Agendar atendimento presencial”.' });
+  E.salvar(); renderAtendimento();
+}
+
+function renderTudo() { renderProgramas(); renderQuiz(); renderProcesso(); renderAtendimento(); }
+
+document.addEventListener('click', ev => {
+  const t = ev.target.closest('button'); if (!t) return;
+  if (t.dataset.esfera) { E.d.esfera = t.dataset.esfera; E.salvar(); renderProgramas(); }
+  else if (t.dataset.resp) { E.d.respostas[PERGUNTAS[E.d.passo].id] = t.dataset.resp; E.d.passo++; E.salvar(); renderQuiz(); }
+  else if (t.id === 'q-voltar') { E.d.passo = Math.max(0, E.d.passo - 1); E.salvar(); renderQuiz(); }
+  else if (t.id === 'q-refazer') { E.d.passo = 0; E.d.respostas = {}; E.salvar(); renderQuiz(); }
+  else if (t.dataset.inscrever) inscrever(t.dataset.inscrever);
+  else if (t.id === 'btn-nova-insc') {
+    modal(`<h2>Acompanhar programa</h2><div class="campo"><label for="n-prog">Programa</label><select id="n-prog">${PROGRAMAS.map(p => `<option value="${p.id}">${esc(p.nome)}</option>`).join('')}</select></div>
+      <div class="btns"><button class="btn sec" data-fechar>Cancelar</button><button class="btn" id="n-ok">Adicionar</button></div>`, (m, fechar) =>
+      $('#n-ok', m).addEventListener('click', () => { inscrever($('#n-prog', m).value); fechar(); }));
+  }
+  else if (t.dataset.avancar) { const i = E.d.inscricoes.find(x => x.id === t.dataset.avancar); i.etapa++; i.datas[i.etapa] = hoje(); i.prazo = ''; E.salvar(); renderProcesso(); toast(`Etapa registrada: ${ETAPAS[i.etapa]}.`); }
+  else if (t.dataset.protocolo) {
+    const i = E.d.inscricoes.find(x => x.id === t.dataset.protocolo);
+    modal(`<h2>Número de protocolo</h2><div class="campo"><label for="p-num">Protocolo informado pelo órgão</label><input id="p-num" value="${esc(i.protocolo)}"></div>
+      <div class="btns"><button class="btn sec" data-fechar>Cancelar</button><button class="btn" id="p-ok">Salvar</button></div>`, (m, fechar) =>
+      $('#p-ok', m).addEventListener('click', () => { i.protocolo = $('#p-num', m).value.trim(); E.salvar(); fechar(); renderProcesso(); toast('Protocolo salvo.'); }));
+  }
+  else if (t.dataset.prazo) {
+    const i = E.d.inscricoes.find(x => x.id === t.dataset.prazo);
+    modal(`<h2>Prazo da próxima etapa</h2><p class="muted">Próxima etapa: ${esc(ETAPAS[Math.min(i.etapa + 1, ETAPAS.length - 1)])}. Informe o prazo divulgado pelo órgão (edital, e-mail, SMS).</p>
+      <div class="campo"><label for="pz-data">Data limite</label><input id="pz-data" type="date" value="${i.prazo || hoje()}"></div>
+      <div class="btns"><button class="btn sec" data-fechar>Cancelar</button><button class="btn" id="pz-ok">Salvar prazo</button></div>`, (m, fechar) =>
+      $('#pz-ok', m).addEventListener('click', () => { i.prazo = $('#pz-data', m).value; E.salvar(); fechar(); renderProcesso(); toast('Prazo salvo. Você será avisado(a) na semana do vencimento.'); }));
+  }
+  else if (t.dataset.remover) confirmar('Parar de acompanhar este programa?', () => { E.d.inscricoes = E.d.inscricoes.filter(x => x.id !== t.dataset.remover); E.salvar(); renderProcesso(); toast('Removido.'); }, 'Remover');
+  else if (t.id === 'btn-agendar') {
+    const amanha = new Date(); amanha.setDate(amanha.getDate() + 1);
+    modal(`<h2>Agendar atendimento</h2>
+      <div class="campo"><label for="a-local">Onde</label><select id="a-local"><option>CRAS do meu bairro (exemplo)</option><option>Plantão de habitação da prefeitura (exemplo)</option></select></div>
+      <div class="grid2"><div class="campo"><label for="a-data">Dia</label><input id="a-data" type="date" min="${amanha.toISOString().slice(0, 10)}" value="${amanha.toISOString().slice(0, 10)}"></div>
+      <div class="campo"><label for="a-hora">Horário</label><select id="a-hora">${['08:00', '09:00', '10:00', '11:00', '13:00', '14:00', '15:00', '16:00'].map(h => `<option>${h}</option>`).join('')}</select></div></div>
+      <div class="campo"><label for="a-ass">Assunto</label><select id="a-ass"><option>Tirar dúvidas sobre programas</option><option>Fazer ou atualizar o CadÚnico</option><option>Ajuda com documentos</option><option>Situação urgente (despejo, risco)</option></select></div>
+      <div class="btns"><button class="btn sec" data-fechar>Cancelar</button><button class="btn" id="a-ok">Agendar</button></div>`, (m, fechar) =>
+      $('#a-ok', m).addEventListener('click', () => {
+        E.d.agendamentos.push({ id: uid(), local: $('#a-local', m).value, data: $('#a-data', m).value, hora: $('#a-hora', m).value, assunto: $('#a-ass', m).value });
+        E.salvar(); fechar(); renderAtendimento(); renderProcesso(); toast('Agendamento simulado salvo. Leve seus documentos!');
+      }));
+  }
+  else if (t.dataset.cancelar) { E.d.agendamentos = E.d.agendamentos.filter(a => a.id !== t.dataset.cancelar); E.salvar(); renderAtendimento(); toast('Agendamento cancelado.'); }
+  else if (t.dataset.sug) perguntar(t.dataset.sug);
+  else if (t.id === 'chat-enviar') { perguntar($('#chat-in').value); $('#chat-in').value = ''; }
+});
+document.addEventListener('change', ev => { const d = ev.target.closest('[data-doc]'); if (d) { E.d.docsOk[d.dataset.doc] = d.checked; E.salvar(); renderProcesso(); } });
+$('#chat-in').addEventListener('keydown', ev => { if (ev.key === 'Enter') { perguntar(ev.target.value); ev.target.value = ''; } });
+
+ligarDados(E, 'casahumanizada', renderTudo);
+renderTudo();
+abas(v => { if (v === 'processo') renderProcesso(); });
+pwa();
+</script>
+</body>
+</html>

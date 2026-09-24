@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Documento — Customer Discovery 8AdmVG</title>
+<meta name="theme-color" content="#0b1220">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.2/marked.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --acc:#38bdf8; --ink:#0f172a; --ink-soft:#5b6478; --line:#e7e9f2;
+  --surface:#fff; --surface-2:#f4f6fb;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:'Inter',system-ui,-apple-system,sans-serif;background:var(--surface-2);color:var(--ink);min-height:100dvh}
+.nav{position:sticky;top:0;z-index:50;background:rgba(11,18,32,.94);backdrop-filter:blur(10px);padding:12px 20px;display:flex;align-items:center;gap:14px}
+.nav a{color:#c7cee8;text-decoration:none;font-size:13px;font-weight:600;display:flex;align-items:center;gap:6px}
+.nav a:hover{color:#fff}
+.nav a svg{width:15px;height:15px}
+.nav .doc-name{margin-left:auto;color:#9aa5c3;font-size:12.5px;font-family:monospace}
+.wrap{max-width:760px;margin:0 auto;padding:36px 20px 64px}
+.doc{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:36px 32px;box-shadow:0 10px 30px -12px rgba(15,23,42,.15)}
+.doc h1{font-family:'Space Grotesk',sans-serif;font-size:26px;margin:0 0 6px;color:var(--ink)}
+.doc h2{font-family:'Space Grotesk',sans-serif;font-size:19px;margin:28px 0 10px;padding-top:14px;border-top:1px solid var(--line);color:var(--ink)}
+.doc h2:first-child{border-top:none;padding-top:0}
+.doc h3{font-size:15.5px;margin:20px 0 8px}
+.doc p{line-height:1.65;font-size:14.5px;margin:0 0 12px;color:#374151}
+.doc ul,.doc ol{padding-left:22px;margin:0 0 14px;line-height:1.65;font-size:14.5px}
+.doc li{margin-bottom:4px}
+.doc a{color:var(--acc)}
+.doc code{background:#eef2ff;padding:1px 6px;border-radius:5px;font-size:13px}
+.doc pre{background:#0f172a;color:#e2e8f0;padding:14px;border-radius:10px;overflow-x:auto;font-size:12.5px}
+.doc pre code{background:none;padding:0;color:inherit}
+.doc blockquote{border-left:3px solid var(--acc);margin:0 0 14px;padding:6px 14px;background:#f0f9ff;border-radius:0 8px 8px 0;color:#334155;font-size:14px}
+.doc table{width:100%;border-collapse:collapse;margin:0 0 16px;font-size:13.5px}
+.doc th,.doc td{border:1px solid var(--line);padding:8px 10px;text-align:left}
+.doc th{background:#f8fafc;font-weight:700}
+.doc hr{border:none;border-top:1px solid var(--line);margin:22px 0}
+.doc strong{color:var(--ink)}
+.state{text-align:center;padding:60px 20px;color:var(--ink-soft)}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <a href="#" id="linkVoltar">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+    Voltar ao projeto
+  </a>
+  <span class="doc-name" id="docNome"></span>
+</nav>
+<div class="wrap">
+  <div class="doc" id="doc">
+    <div class="state">Carregando documento…</div>
+  </div>
+</div>
+<script>
+(function(){
+  const params = new URLSearchParams(location.search);
+  const src = params.get("src") || "";
+  const voltar = params.get("voltar") || "./";
+  document.getElementById("linkVoltar").href = voltar;
+  document.getElementById("docNome").textContent = src;
+
+  if(!src){
+    document.getElementById("doc").innerHTML = '<div class="state">Nenhum documento informado.</div>';
+    return;
+  }
+  fetch(src)
+    .then(r => { if(!r.ok) throw new Error("HTTP " + r.status); return r.text(); })
+    .then(md => {
+      document.title = src.split("/").pop() + " — Customer Discovery 8AdmVG";
+      const doc = document.getElementById("doc");
+      doc.innerHTML = marked.parse(md);
+      // links relativos do .md apontam para a pasta do documento, não para assets/
+      const base = new URL(src, location.href);
+      doc.querySelectorAll("a[href], img[src]").forEach(el => {
+        const attr = el.tagName === "A" ? "href" : "src";
+        const v = el.getAttribute(attr);
+        if (!v || /^([a-z]+:|#|\/)/i.test(v)) return;
+        const alvo = new URL(v, base);
+        if (el.tagName === "A" && /\.md$/i.test(alvo.pathname)) {
+          const raiz = new URL("../", location.href).pathname; // assets/ fica um nível abaixo da raiz do site
+          el.href = "?src=" + encodeURIComponent("../" + decodeURIComponent(alvo.pathname).slice(raiz.length)) + "&voltar=" + encodeURIComponent(voltar);
+        } else el.setAttribute(attr, alvo.href);
+      });
+    })
+    .catch(err => {
+      document.getElementById("doc").innerHTML =
+        '<div class="state">Não foi possível carregar <code>' + src + '</code>.<br>' + err.message + '</div>';
+    });
+})();
+</script>
+</body>
+</html>

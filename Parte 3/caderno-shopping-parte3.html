@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Caderno · Parte 3 — Ida ao Shopping + Sprints do App · 8AdmVG</title>
+<meta name="description" content="Parte 3 — logística da visita, fluxo de coleta em dupla e o log de sprints do desenvolvimento do app de formulário até ficar pronto.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+<link rel="stylesheet" href="../assets/caderno.css">
+</head>
+<body>
+
+<button class="pdfbtn" id="pp" aria-label="Salvar em PDF">⤓ salvar PDF</button>
+<button class="themebtn" id="tt" aria-label="Alternar tema">◐ tema</button>
+
+<header class="top">
+  <div class="wrap">
+    <div class="kicker">8º Semestre (VG) · Administração · Customer Discovery</div>
+    <h1>A Ida ao Shopping + Sprints do App</h1>
+    <p class="sub">Como executar a coleta em campo com a dupla (entrevistador + gravador), sincronizar os dados e registrar as sprints de desenvolvimento do app até ele ficar pronto.</p>
+    <div class="meta">
+      <span><b>Professor</b> Renato Rosa</span>
+      <span><b>Data</b> Setembro de 2026</span>
+      <span><b>Campo</b> Shopping · duplas em pontos distintos</span>
+      <span><b>Entregável</b> Respostas + áudios + relatório</span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap shell">
+  <nav class="toc" aria-label="Índice">
+    <ol>
+      <li><a href="#visao">00 · Visão da Parte 3</a></li>
+      <li><a href="#logistica">01 · Logística da visita</a></li>
+      <li><a href="#fluxo">02 · Fluxo da dupla em campo</a></li>
+      <li><a href="#coleta">03 · Coleta passo a passo</a></li>
+      <li><a href="#sinc">04 · Do campo ao dado</a></li>
+      <li class="grp">Sprints</li>
+      <li><a href="#sprints">05 · O que são sprints</a></li>
+      <li><a href="#roadmap">06 · Roadmap de sprints</a></li>
+      <li><a href="#registro">07 · Registro de sprint (modelo)</a></li>
+      <li><a href="#dod">08 · Definição de pronto (DoD)</a></li>
+      <li><a href="#riscos">09 · Riscos e mitigações</a></li>
+      <li class="grp">Fechamento</li>
+      <li><a href="#checklist">10 · Checklist final</a></li>
+      <li><a href="#cola">11 · Folha de cola</a></li>
+    </ol>
+  </nav>
+
+  <main class="col">
+
+  <!-- 00 -->
+  <section id="visao">
+    <div class="secnum">00</div>
+    <h2>Visão da Parte 3</h2>
+    <p class="lead">A Parte 3 tem dois trilhos que correm juntos: <strong>a coleta em campo</strong> (a ida ao shopping) e o <strong>desenvolvimento do app</strong> em sprints, até ele ficar pronto para gerar e organizar os dados.</p>
+    <div class="callout note"><span class="lbl">Onde estamos</span>
+      <strong>Parte 1</strong> preparou · <strong>Parte 2</strong> validou e montou o app · <strong>Parte 3</strong> coleta a verdade e evoluí o app em sprints.</div>
+    <div class="tbl"><table>
+      <tr><th>Trilho</th><th>Entrega</th></tr>
+      <tr><td>Campo</td><td>Respostas no app + áudios com código</td></tr>
+      <tr><td>Desenvolvimento</td><td>App evoluindo sprint a sprint até ficar pronto</td></tr>
+    </table></div>
+  </section>
+
+  <!-- 01 -->
+  <section id="logistica">
+    <div class="secnum">01</div>
+    <h2>Logística da visita</h2>
+    <div class="tbl"><table>
+      <tr><th>Item</th><th>Definição</th></tr>
+      <tr><td>Ponto de encontro</td><td>Combinado antes de sair — concentração única e conferência</td></tr>
+      <tr><td>Distribuição</td><td>Cada grupo em um ponto do shopping (praça, entradas, corredores, cafés)</td></tr>
+      <tr><td>Formato</td><td><strong>Duplas</strong>: 1 entrevistador + 1 gravador de áudio</td></tr>
+      <tr><td>Meta por grupo</td><td>15 a 20 respostas válidas</td></tr>
+      <tr><td>Duração</td><td>Blocos de coleta com pausa de meio de caminho</td></tr>
+      <tr><td>Retorno</td><td>Sincronização no ponto de encontro e fechamento</td></tr>
+    </table></div>
+    <div class="callout err"><span class="lbl">Regra</span>
+      Ninguém sai do ponto de encontro sem celular carregado, app testado e plano B impresso.</div>
+  </section>
+
+  <!-- 02 -->
+  <section id="fluxo">
+    <div class="secnum">02</div>
+    <h2>Fluxo da dupla em campo</h2>
+    <div class="f">
+1. ABORDAR      "Pesquisa de 2 min, é anônima. Podemos?"
+2. PERFIL       entrevistador marca por observação (não pergunta)
+3. PERGUNTAS    pessoa fala livre → entrevistador marca + verbatim
+4. SALVAR       app grava e mostra o CÓDIGO (ex.: G3-014)
+5. ÁUDIO        colega grava no WhatsApp: "Código G3-014. Principais pontos..."
+6. AGRADECER    e partir para a próxima pessoa
+    </div>
+    <div class="tbl"><table>
+      <tr><th>Papel</th><th>Faz</th></tr>
+      <tr><td><strong>Entrevistador</strong></td><td>Aborda, conduz e marca no app (perfil + perguntas)</td></tr>
+      <tr><td><strong>Gravador</strong></td><td>Lê o código na tela e grava o áudio quali</td></tr>
+    </table></div>
+    <div class="callout tip"><span class="lbl">Ritmo</span>
+      Uma entrevista leva de <strong>2 a 4 minutos</strong>. A cada 5 abordagens, troquem de papel.</div>
+  </section>
+
+  <!-- 03 -->
+  <section id="coleta">
+    <div class="secnum">03</div>
+    <h2>Coleta passo a passo</h2>
+    <ol class="step">
+      <li><span class="t">Escolha a pessoa</span><p>Evite quem está comendo, no telefone ou com criança no colo. Prefira pessoas sentadas ociosas ou esperando.</p></li>
+      <li><span class="t">Faça o pitch</span><p>Curto, sorrindo, dizendo o tempo e que é anônimo.</p></li>
+      <li><span class="t">Marque o perfil</span><p>O entrevistador observa e marca. Na dúvida, "Não sei estimar".</p></li>
+      <li><span class="t">Conduza as perguntas</span><p>Deixe a pessoa falar. Marque a opção mais próxima e digite a frase exata quando houver.</p></li>
+      <li><span class="t">Salve e leia o código</span><p>Ao salvar, o app mostra o código. Diga em voz alta para o gravador.</p></li>
+      <li><span class="t">Grave o áudio</span><p>O colega grava 20–40s começando pelo código e citando as ideias principais.</p></li>
+      <li><span class="t">Agradeça e siga</span><p>Mesmo com "não", agradeça. Registre a recusa no controle do grupo.</p></li>
+    </ol>
+  </section>
+
+  <!-- 04 -->
+  <section id="sinc">
+    <div class="secnum">04</div>
+    <h2>Do campo ao dado</h2>
+    <p class="lead">Coleta sem sincronização vira dado perdido. Fechem o dia no mesmo dia.</p>
+    <div class="tbl"><table>
+      <tr><th>Etapa</th><th>O que fazer</th></tr>
+      <tr><td>Conferir respostas</td><td>Ver se todas entraram na planilha do app</td></tr>
+      <tr><td>Conferir áudios</td><td>Ver se cada áudio começa com um código válido</td></tr>
+      <tr><td>Contar</td><td>Respostas por grupo e áudios com código</td></tr>
+      <tr><td>Registrar falhas</td><td>Quantas recusas, quantos áudios sem código, problemas de sinal</td></tr>
+      <tr><td>Guardar</td><td>Planilha + pasta de áudios + link no log de sprints</td></tr>
+    </table></div>
+    <div class="callout err"><span class="lbl">Correlação</span>
+      Áudio sem código é áudio perdido — não dá para ligar à resposta do formulário. Reforce isso na dupla.</div>
+  </section>
+
+  <!-- 05 -->
+  <section id="sprints">
+    <div class="secnum">05</div>
+    <h2>O que são sprints</h2>
+    <p class="lead">Uma <strong>sprint</strong> é um ciclo curto com objetivo claro, entrega concreta e verificação. O app é construído uma sprint por vez.</p>
+    <div class="tbl"><table>
+      <tr><th>Elemento</th><th>Pergunta</th></tr>
+      <tr><td><strong>Objetivo</strong></td><td>O que esta sprint precisa entregar, em 1 frase?</td></tr>
+      <tr><td><strong>Entrega</strong></td><td>O que existe de concreto ao final?</td></tr>
+      <tr><td><strong>Verificação</strong></td><td>Como provar que ficou pronto?</td></tr>
+      <tr><td><strong>Bloqueios</strong></td><td>O que travou e o que fazer na próxima?</td></tr>
+    </table></div>
+    <div class="callout tip"><span class="lbl">Cadência</span>
+      Sprints curtas, de <strong>1 encontro cada</strong>, até o app estar pronto para a coleta e para a análise.</div>
+  </section>
+
+  <!-- 06 -->
+  <section id="roadmap">
+    <div class="secnum">06</div>
+    <h2>Roadmap de sprints</h2>
+    <div class="tbl"><table>
+      <tr><th>Sprint</th><th>Objetivo</th><th>Entrega</th><th>Verificação</th></tr>
+      <tr><td><strong>0</strong></td><td>Fundação</td><td>Estrutura do app + Bloco de perfil</td><td>Perfil aparece em nova resposta</td></tr>
+      <tr><td><strong>1</strong></td><td>Perguntas do grupo</td><td>Blocos de perguntas no app</td><td>Perguntas na ordem e com os tipos certos</td></tr>
+      <tr><td><strong>2</strong></td><td>Código + planilha</td><td>Código por resposta + respostas na planilha</td><td>Salvar gera linha e incrementa o código</td></tr>
+      <tr><td><strong>3</strong></td><td>Campo + correlação</td><td>Coleta no shopping + áudios ligados por código</td><td>Todo áudio começa por um código válido</td></tr>
+      <tr><td><strong>4</strong></td><td>Análise</td><td>Tabulação quanti + leitura quali</td><td>Achados com % e frases por código</td></tr>
+      <tr><td><strong>5</strong></td><td>Refino final</td><td>App pronto + relatório de achados</td><td>DoD cumprido e relatório entregue</td></tr>
+    </table></div>
+  </section>
+
+  <!-- 07 -->
+  <section id="registro">
+    <div class="secnum">07</div>
+    <h2>Registro de sprint (modelo)</h2>
+    <p>Use este modelo como entrada no log de sprints (<span class="path">SPRINTS.md</span>). Se não está escrito, não aconteceu.</p>
+    <div class="f">
+SPRINT ___   Data: __/__   Responsável: ____________
+
+Objetivo:  ______________________________________
+Entregue:  ______________________________________
+Verificação: ___________________________________
+Bloqueios: _____________________________________
+Próxima sprint: ________________________________
+    </div>
+    <div class="ex">
+      <span class="tag">Exemplo preenchido</span>
+      <h4>Sprint 3 — Campo + correlação</h4>
+      <div class="f">
+Objetivo:    coletar no shopping e ligar cada áudio à sua resposta
+Entregue:    98 respostas · 74 áudios com código
+Verificação: 100% dos áudios aceitos começam com código válido
+Bloqueios:   sinal fraco em 2 pontos → usar formulário impresso
+Próxima:     iniciar tabulação e leitura quali
+      </div>
+    </div>
+  </section>
+
+  <!-- 08 -->
+  <section id="dod">
+    <div class="secnum">08</div>
+    <h2>Definição de pronto (DoD)</h2>
+    <p class="lead">Dizemos que o app está pronto quando <strong>todos</strong> os itens abaixo são verdadeiros.</p>
+    <ul class="check">
+      <li><strong>Testado no celular</strong> com respostas reais de teste.</li>
+      <li>Bloco de perfil gravando corretamente.</li>
+      <li>Perguntas na ordem final, sem erro de tipo.</li>
+      <li><strong>Código</strong> aparecendo e incrementando a cada resposta.</li>
+      <li>Respostas caindo automaticamente na <strong>planilha</strong>.</li>
+      <li><strong>Áudios correlacionáveis</strong> (todo áudio tem código).</li>
+      <li>Sem erro bloqueante em uso contínuo.</li>
+    </ul>
+    <div class="callout err"><span class="lbl">Portão</span>
+      Enquanto um item estiver aberto, o app ainda está em sprint — não em produção.</div>
+  </section>
+
+  <!-- 09 -->
+  <section id="riscos">
+    <div class="secnum">09</div>
+    <h2>Riscos e mitigações</h2>
+    <div class="tbl"><table>
+      <tr><th>Risco</th><th>Mitigação</th></tr>
+      <tr><td>Sinal de celular fraco</td><td>Plano B impresso + QR Code</td></tr>
+      <tr><td>Bateria acabar</td><td>Power bank + economia de tela</td></tr>
+      <tr><td>Áudio sem código</td><td>Gravador lê o código em voz alta antes de começar</td></tr>
+      <tr><td>Pergunta confundir o respondente</td><td>Conduzir em voz alta, sem mostrar os números 1–5</td></tr>
+      <tr><td>Recusa alta</td><td>Melhorar o pitch, mudar de ponto, tentar outro horário</td></tr>
+      <tr><td>Dados pessoais coletados por engano</td><td>Reforçar anonimato; excluir qualquer dado pessoal</td></tr>
+    </table></div>
+  </section>
+
+  <!-- 10 -->
+  <section id="checklist">
+    <div class="secnum">10</div>
+    <h2>Checklist final</h2>
+    <ul class="check">
+      <li>App testado e celular <strong>carregado</strong> (+ power bank).</li>
+      <li>Bloco de perfil e <strong>código</strong> funcionando.</li>
+      <li>Plano B impresso separado.</li>
+      <li>Dois celulares por dupla (app + áudio).</li>
+      <li>Ponto de encontro e horário combinados.</li>
+      <li>Log de sprints aberto para registrar o dia.</li>
+    </ul>
+    <div class="callout tip"><span class="lbl">Depois do campo</span>
+      Sincronizar os dados, preencher o log da sprint e atualizar o roadmap até o app ficar <strong>pronto</strong>.</div>
+  </section>
+
+  <!-- 11 -->
+  <section id="cola">
+    <div class="secnum">11</div>
+    <h2>Folha de cola — Parte 3</h2>
+    <h3>Fluxo da dupla</h3>
+    <div class="tbl"><table>
+      <tr><th>Passo</th><th>Quem</th></tr>
+      <tr><td>Abordar + perfil + perguntas + salvar</td><td>Entrevistador</td></tr>
+      <tr><td>Ler o código e gravar áudio</td><td>Gravador</td></tr>
+      <tr><td>Agradecer e seguir</td><td>Dupla</td></tr>
+    </table></div>
+    <h3>Roadmap</h3>
+    <div class="tbl"><table>
+      <tr><th>Sprint</th><th>Entrega</th></tr>
+      <tr><td>0</td><td>Estrutura + perfil</td></tr>
+      <tr><td>1</td><td>Perguntas</td></tr>
+      <tr><td>2</td><td>Código + planilha</td></tr>
+      <tr><td>3</td><td>Campo + correlação</td></tr>
+      <tr><td>4</td><td>Análise</td></tr>
+      <tr><td>5</td><td>Refino final</td></tr>
+    </table></div>
+    <h3>Nunca esqueça</h3>
+    <div class="semaforo">
+      <span class="chip v">Código no áudio</span>
+      <span class="chip v">Anotar os "nãos"</span>
+      <span class="chip v">Sincronizar no mesmo dia</span>
+      <span class="chip r">Gravar a voz da pessoa</span>
+      <span class="chip r">Dado pessoal</span>
+    </div>
+  </section>
+
+  <div class="foot">
+    Parte 3 · Ida ao shopping + sprints · Setembro de 2026 · Prof. Renato Rosa · Cerrado Tech · Unifacc · 8º Semestre (VG) · Administração
+  </div>
+
+  </main>
+</div>
+
+<script>
+(function(){
+  var b=document.getElementById('tt'),r=document.documentElement;
+  function cur(){return r.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');}
+  try{var s=localStorage.getItem('cd-p3-theme');if(s)r.setAttribute('data-theme',s);}catch(e){}
+  b.addEventListener('click',function(){
+    var n=cur()==='dark'?'light':'dark';
+    r.setAttribute('data-theme',n);
+    try{localStorage.setItem('cd-p3-theme',n);}catch(e){}
+  });
+  var p=document.getElementById('pp');
+  if(p) p.addEventListener('click',function(){window.print();});
+})();
+</script>
+</body>
+</html>
