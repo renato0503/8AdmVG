@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0f766e">
+<title>GuiaMobi — seu guia turístico de bolso</title>
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/svg+xml" href="../assets/logos/g2.svg">
+<link rel="apple-touch-icon" href="../assets/logos/g2-192.png">
+<link rel="stylesheet" href="../assets/identidade/temas.css">
+<link rel="stylesheet" href="../assets/mvp/mvp.css">
+<style>
+.pos{display:flex;align-items:center;gap:8px;font-size:13.5px}
+.pos b{color:var(--accent-dark)}
+.poi{display:flex;gap:12px;align-items:flex-start;cursor:pointer}
+.poi .ic{width:46px;height:46px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;background:var(--accent-soft)}
+.poi b{font-size:15px}
+.poi .dist{margin-left:auto;font-weight:800;color:var(--accent-dark);font-size:13.5px;white-space:nowrap}
+.mapa{width:100%;height:auto;background:linear-gradient(160deg,#ecfdf5,#f0f9ff);border-radius:14px;border:1px solid #cbd5e1}
+.passo{display:flex;gap:10px;padding:10px 0;border-bottom:1px dashed #cbd5e1}
+.passo .n{width:28px;height:28px;border-radius:50%;background:var(--accent);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.tag-int{display:inline-flex;align-items:center;gap:6px}
+</style>
+</head>
+<body class="tema-g2">
+<div class="app">
+  <header class="topo">
+    <div class="marca">
+      <img src="../assets/logos/g2.svg" alt="">
+      <div><h1>GuiaMobi</h1><div class="sub">Guia turístico de bolso · Cuiabá, VG e arredores</div></div>
+      <div class="acoes">
+        <button class="icone-btn" id="btn-instalar" hidden aria-label="Instalar app"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg></button>
+        <a class="icone-btn" href="index.html" aria-label="Sobre o projeto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/></svg></a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ============ PERTO ============ -->
+    <section class="view" data-view="perto" aria-label="Perto de mim">
+      <div class="card destaque">
+        <div class="pos"><span aria-hidden="true">📍</span><span>Você está em: <b id="pos-nome">—</b></span></div>
+        <div class="btns">
+          <button class="btn" id="btn-gps">Usar minha localização</button>
+          <button class="btn sec" id="btn-simular">Simular lugar</button>
+        </div>
+        <p class="muted" style="margin-top:8px">Sua localização fica <b>só no celular</b> e é usada apenas para calcular distâncias.</p>
+      </div>
+      <div class="filtros" id="filtro-int" role="group" aria-label="Filtrar por interesse"></div>
+      <div id="lista-perto"></div>
+      <div class="aviso-exemplo">Conteúdo de <b>exemplo</b>, com coordenadas aproximadas — a validar com fontes oficiais (Sedec-MT, ICMBio, IPHAN, prefeituras) antes de publicar.</div>
+    </section>
+
+    <!-- ============ ROTA ============ -->
+    <section class="view" data-view="rota" aria-label="Montar rota">
+      <h3 class="titulo-sec">Monte sua rota</h3>
+      <div class="card">
+        <div class="campo"><label for="r-tempo">Quanto tempo você tem?</label>
+          <select id="r-tempo"><option value="120">2 horas</option><option value="240" selected>Meio período (4 h)</option><option value="480">Dia inteiro (8 h)</option><option value="720">Dia longo com estrada (12 h)</option></select></div>
+        <div class="campo"><label>Interesses</label><div id="r-int"></div></div>
+        <div class="campo"><label for="r-transp">Como vai se deslocar?</label>
+          <select id="r-transp"><option value="25">Carro / app de transporte (≈25 km/h na cidade)</option><option value="4">A pé (≈4 km/h)</option></select></div>
+        <button class="btn bloco" id="btn-rota">Montar rota a partir de onde estou</button>
+      </div>
+      <div id="rota-res"></div>
+      <h3 class="titulo-sec">Rotas salvas</h3>
+      <div id="rotas-salvas"></div>
+    </section>
+
+    <!-- ============ DIÁRIO ============ -->
+    <section class="view" data-view="diario" aria-label="Diário de viagem">
+      <div class="grid3" style="margin-top:14px">
+        <div class="kpi"><b id="k-vis">0</b><span>visitados</span></div>
+        <div class="kpi"><b id="k-fav">0</b><span>favoritos</span></div>
+        <div class="kpi"><b id="k-rot">0</b><span>rotas</span></div>
+      </div>
+      <h3 class="titulo-sec">Favoritos</h3>
+      <div id="lista-fav"></div>
+      <h3 class="titulo-sec">Já visitei</h3>
+      <div id="lista-vis"></div>
+    </section>
+
+    <!-- ============ DADOS ============ -->
+    <section class="view" data-view="dados" aria-label="Dados">
+      <h3 class="titulo-sec">Sugerir um lugar</h3>
+      <div class="card">
+        <p class="muted">Conhece um lugar que merece estar no guia? Cadastre aqui (fica só no seu celular neste protótipo; na versão real, passa por curadoria).</p>
+        <button class="btn sec bloco" id="btn-sugerir">+ Sugerir lugar na minha posição</button>
+      </div>
+      <h3 class="titulo-sec">Voz</h3>
+      <div class="card">
+        <div class="campo"><label for="c-vel">Velocidade da narração</label><input id="c-vel" type="range" min="0.7" max="1.4" step="0.1"></div>
+        <button class="btn sec bloco" id="btn-teste-voz">Testar narração</button>
+      </div>
+      <h3 class="titulo-sec">Backup</h3>
+      <div class="card">
+        <div class="btns"><button class="btn sec" data-acao="exportar">Exportar JSON</button><button class="btn sec" data-acao="importar">Importar JSON</button></div>
+        <button class="btn perigo bloco" data-acao="resetar" style="margin-top:10px">Apagar tudo</button>
+      </div>
+      <p class="muted" style="text-align:center;margin:18px 0">GuiaMobi · Grupo 2 · 8AdmVG · Unifacc — MVP de Customer Discovery</p>
+    </section>
+  </main>
+
+  <nav class="nav-inf" aria-label="Navegação principal"><div class="dentro">
+    <button data-aba="perto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-6.5-7-12a7 7 0 0114 0c0 5.5-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>Perto</button>
+    <button data-aba="rota"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6" cy="19" r="2"/><circle cx="18" cy="5" r="2"/><path d="M8 19h7a3 3 0 000-6H9a3 3 0 010-6h7"/></svg>Rota</button>
+    <button data-aba="diario"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20V3H6.5A2.5 2.5 0 004 5.5z"/></svg>Diário</button>
+    <button data-aba="dados"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>Dados</button>
+  </div></nav>
+</div>
+
+<script src="../assets/mvp/mvp.js"></script>
+<script>
+const { $, $$, esc, criarEstado, fmtNum, fmtData, hoje, uid, toast, modal, confirmar, ligarDados, abas, pwa, falar, distanciaM, fmtDist } = MVP;
+
+const INTERESSES = {
+  historia: { rot: 'História', ic: '🏛️' }, natureza: { rot: 'Natureza', ic: '🌿' },
+  cultura: { rot: 'Cultura', ic: '🎭' }, lazer: { rot: 'Lazer e sabores', ic: '🍽️' },
+};
+/* Lugares de exemplo — coordenadas aproximadas; textos gerais, a validar com fontes oficiais. */
+const LUGARES = [
+  { id: 'aero', nome: 'Aeroporto Internacional Marechal Rondon', cidade: 'Várzea Grande', lat: -15.6529, lng: -56.1167, int: 'lazer', min: 20,
+    txt: 'Porta de entrada aérea de Mato Grosso, fica em Várzea Grande. Daqui partem os roteiros para Cuiabá, Chapada dos Guimarães e Pantanal.' },
+  { id: 'centro', nome: 'Centro Histórico de Cuiabá', cidade: 'Cuiabá', lat: -15.5985, lng: -56.0960, int: 'historia', min: 60,
+    txt: 'Conjunto de ruas, casarões e igrejas protegido pelo patrimônio histórico, que guarda a memória da fundação da cidade no século dezoito, no ciclo do ouro.' },
+  { id: 'rosario', nome: 'Igreja de N. Sra. do Rosário e São Benedito', cidade: 'Cuiabá', lat: -15.5962, lng: -56.0987, int: 'historia', min: 30,
+    txt: 'Uma das igrejas mais antigas de Cuiabá, ligada às irmandades religiosas e à história da população negra da cidade. Local de tradicionais festas de São Benedito.' },
+  { id: 'arsenal', nome: 'Sesc Arsenal', cidade: 'Cuiabá', lat: -15.6003, lng: -56.0929, int: 'cultura', min: 60,
+    txt: 'Centro cultural instalado em um antigo arsenal de guerra do século dezenove. Recebe shows, exposições, feiras e apresentações de cultura regional.' },
+  { id: 'porto', nome: 'Orla do Porto', cidade: 'Cuiabá', lat: -15.6158, lng: -56.1058, int: 'lazer', min: 60,
+    txt: 'Área de lazer às margens do rio Cuiabá. Bom lugar para ver o pôr do sol e provar a culinária cuiabana, como peixes de rio e a maria-isabel.' },
+  { id: 'museurio', nome: 'Museu do Rio Cuiabá', cidade: 'Cuiabá', lat: -15.6150, lng: -56.1072, int: 'cultura', min: 45,
+    txt: 'Museu no bairro do Porto dedicado ao rio Cuiabá, à pesca e à vida ribeirinha, que ajudaram a formar a cidade.' },
+  { id: 'maebon', nome: 'Parque Mãe Bonifácia', cidade: 'Cuiabá', lat: -15.5812, lng: -56.1071, int: 'natureza', min: 60,
+    txt: 'Parque urbano com trilhas em meio ao cerrado, muito usado para caminhadas no fim da tarde. Leve água e boné.' },
+  { id: 'arena', nome: 'Arena Pantanal', cidade: 'Cuiabá', lat: -15.6040, lng: -56.1210, int: 'lazer', min: 30,
+    txt: 'Estádio construído para a Copa do Mundo de 2014, hoje usado para jogos e grandes eventos.' },
+  { id: 'veu', nome: 'Cachoeira Véu de Noiva', cidade: 'Chapada dos Guimarães', lat: -15.4065, lng: -55.8323, int: 'natureza', min: 90,
+    txt: 'Queda d’água de cerca de 86 metros, principal cartão-postal do Parque Nacional da Chapada dos Guimarães. Confira horários e regras de visita do parque antes de ir.' },
+  { id: 'santana', nome: 'Igreja de Nossa Senhora de Sant’Ana', cidade: 'Chapada dos Guimarães', lat: -15.4610, lng: -55.7500, int: 'historia', min: 30,
+    txt: 'Igreja do século dezoito no centro da cidade de Chapada dos Guimarães, um dos marcos históricos da região.' },
+  { id: 'mirante', nome: 'Mirante da Chapada', cidade: 'Chapada dos Guimarães', lat: -15.4630, lng: -55.7420, int: 'natureza', min: 45,
+    txt: 'Mirante nas bordas do planalto, com vista ampla para a baixada cuiabana. Um dos melhores lugares para o pôr do sol.' },
+  { id: 'transp', nome: 'Estrada-Parque Transpantaneira', cidade: 'Poconé', lat: -16.2560, lng: -56.6230, int: 'natureza', min: 240,
+    txt: 'Estrada de terra de cerca de 147 quilômetros que corta o Pantanal a partir de Poconé, famosa pela observação de aves, jacarés e outros animais. Ideal com guia local.' },
+];
+const POSICOES = {
+  aero: { nome: 'Aeroporto (Várzea Grande)', lat: -15.6529, lng: -56.1167 },
+  centro: { nome: 'Centro de Cuiabá', lat: -15.5990, lng: -56.0970 },
+  chapada: { nome: 'Cidade de Chapada dos Guimarães', lat: -15.4605, lng: -55.7495 },
+};
+
+function semente() {
+  return { pos: { ...POSICOES.aero, fonte: 'simulada' }, favoritos: [], visitados: [], rotas: [], sugestoes: [], voz: 1, filtro: 'todos' };
+}
+const E = criarEstado('guiamobi:v1', semente);
+const todos = () => LUGARES.concat(E.d.sugestoes);
+const acha = id => todos().find(l => l.id === id);
+const dist = l => distanciaM(E.d.pos, l);
+
+function renderPerto() {
+  $('#pos-nome').textContent = `${E.d.pos.nome}${E.d.pos.fonte === 'simulada' ? ' (simulado)' : ''}`;
+  const f = E.d.filtro;
+  $('#filtro-int').innerHTML = [['todos', 'Todos']].concat(Object.entries(INTERESSES).map(([k, v]) => [k, v.ic + ' ' + v.rot]))
+    .map(([k, r]) => `<button class="${f === k ? 'on' : ''}" data-int="${k}" aria-pressed="${f === k}">${r}</button>`).join('');
+  const itens = todos().filter(l => f === 'todos' || l.int === f).sort((a, b) => dist(a) - dist(b));
+  $('#lista-perto').innerHTML = itens.map(l => `
+    <div class="card poi" data-lugar="${l.id}" role="button" tabindex="0" aria-label="${esc(l.nome)}, ${fmtDist(dist(l))}">
+      <div class="ic" aria-hidden="true">${INTERESSES[l.int].ic}</div>
+      <div><b>${esc(l.nome)}</b><div class="muted">${esc(l.cidade)} · ${INTERESSES[l.int].rot} · ~${l.min} min de visita${E.d.visitados.includes(l.id) ? ' · ✓ visitado' : ''}${l.sugestao ? ' · sugestão sua' : ''}</div></div>
+      <span class="dist">${fmtDist(dist(l))}</span>
+    </div>`).join('');
+}
+
+function abrirLugar(id) {
+  const l = acha(id);
+  const fav = E.d.favoritos.includes(id), vis = E.d.visitados.includes(id);
+  modal(`<h2>${INTERESSES[l.int].ic} ${esc(l.nome)}</h2>
+    <p class="muted">${esc(l.cidade)} · ${fmtDist(dist(l))} de você · ~${l.min} min de visita</p>
+    <p style="margin:12px 0">${esc(l.txt)}</p>
+    <div class="btns">
+      <button class="btn" id="m-ouvir">🔊 Ouvir</button>
+      <button class="btn sec" id="m-fav" aria-pressed="${fav}">${fav ? '★ Favorito' : '☆ Favoritar'}</button>
+      <button class="btn sec" id="m-vis" aria-pressed="${vis}">${vis ? '✓ Visitado' : 'Marcar visitado'}</button>
+      <a class="btn sec" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=${l.lat},${l.lng}">Abrir no mapa</a>
+    </div>
+    <button class="btn sec bloco" data-fechar style="margin-top:10px">Fechar</button>`, (m) => {
+    $('#m-ouvir', m).addEventListener('click', () => falar(`${l.nome}. ${l.txt}`, { rate: E.d.voz }) || null);
+    $('#m-fav', m).addEventListener('click', ev => { alterna('favoritos', id); ev.target.textContent = E.d.favoritos.includes(id) ? '★ Favorito' : '☆ Favoritar'; });
+    $('#m-vis', m).addEventListener('click', ev => { alterna('visitados', id); ev.target.textContent = E.d.visitados.includes(id) ? '✓ Visitado' : 'Marcar visitado'; });
+  });
+}
+function alterna(lista, id) {
+  const a = E.d[lista], i = a.indexOf(id);
+  if (i >= 0) a.splice(i, 1); else a.push(id);
+  E.salvar(); renderTudo();
+  toast(lista === 'favoritos' ? (i >= 0 ? 'Removido dos favoritos.' : 'Adicionado aos favoritos.') : (i >= 0 ? 'Desmarcado.' : 'Marcado como visitado.'));
+}
+
+/* ---------- rota: vizinho mais próximo dentro do tempo disponível ---------- */
+function montarRota() {
+  const tempo = Number($('#r-tempo').value), vel = Number($('#r-transp').value);
+  const ints = $$('#r-int input:checked').map(i => i.value);
+  if (!ints.length) return toast('Escolha pelo menos um interesse.');
+  let atual = { ...E.d.pos }, usado = 0;
+  const cand = todos().filter(l => ints.includes(l.int) && !E.d.visitados.includes(l.id));
+  const paradas = [];
+  while (cand.length) {
+    cand.sort((a, b) => distanciaM(atual, a) - distanciaM(atual, b));
+    const prox = cand.find(l => usado + (distanciaM(atual, l) * 1.3 / 1000) / vel * 60 + l.min <= tempo);
+    if (!prox) break;
+    const desl = (distanciaM(atual, prox) * 1.3 / 1000) / vel * 60; // 1,3 = ruas não são linha reta
+    usado += desl + prox.min;
+    paradas.push({ id: prox.id, desl: Math.round(desl) });
+    atual = prox; cand.splice(cand.indexOf(prox), 1);
+  }
+  if (!paradas.length) {
+    $('#rota-res').innerHTML = '<div class="card vazio">Nenhum lugar cabe nesse tempo a partir de onde você está. Tente mais tempo, outro interesse ou outra posição.</div>';
+    return;
+  }
+  const rota = { id: uid(), criada: new Date().toISOString(), origem: E.d.pos.nome, origemPos: { lat: E.d.pos.lat, lng: E.d.pos.lng }, tempo, vel, paradas, total: Math.round(usado) };
+  mostrarRota(rota, true);
+}
+
+function mapaSVG(rota) {
+  const pts = [rota.origemPos].concat(rota.paradas.map(p => acha(p.id)));
+  const lats = pts.map(p => p.lat), lngs = pts.map(p => p.lng);
+  const [a0, a1, o0, o1] = [Math.min(...lats), Math.max(...lats), Math.min(...lngs), Math.max(...lngs)];
+  const W = 320, H = 200, pad = 22;
+  const sx = (o1 - o0) || 0.01, sy = (a1 - a0) || 0.01;
+  const xy = p => [pad + (p.lng - o0) / sx * (W - 2 * pad), pad + (a1 - p.lat) / sy * (H - 2 * pad)];
+  const linha = pts.map(xy).map(([x, y]) => `${x.toFixed(1)},${y.toFixed(1)}`).join(' ');
+  return `<svg class="mapa" viewBox="0 0 ${W} ${H}" role="img" aria-label="Esquema da rota com ${rota.paradas.length} paradas">
+    <polyline points="${linha}" fill="none" stroke="var(--accent2)" stroke-width="3" stroke-dasharray="6 5"/>
+    ${pts.map((p, i) => { const [x, y] = xy(p); return `<circle cx="${x}" cy="${y}" r="${i ? 10 : 8}" fill="${i ? 'var(--accent)' : '#0f172a'}"/><text x="${x}" y="${y + 4}" font-size="11" font-weight="800" text-anchor="middle" fill="#fff">${i || '●'}</text>`; }).join('')}
+  </svg><p class="muted" style="font-size:11.5px">Esquema sem escala (não é mapa de navegação).</p>`;
+}
+
+function mostrarRota(rota, nova) {
+  $('#rota-res').innerHTML = `<div class="card destaque">
+    <div class="entre"><h3>Sua rota · ${rota.paradas.length} parada(s)</h3><span class="chip">~${Math.floor(rota.total / 60)}h${String(rota.total % 60).padStart(2, '0')}</span></div>
+    <p class="muted">Saindo de ${esc(rota.origem)}</p>
+    ${mapaSVG(rota)}
+    ${rota.paradas.map((p, i) => { const l = acha(p.id); return `<div class="passo"><span class="n">${i + 1}</span><div><b>${esc(l.nome)}</b><div class="muted">${p.desl} min de deslocamento · ~${l.min} min no local</div></div></div>`; }).join('')}
+    <div class="btns"><button class="btn" id="btn-narrar">🔊 Narrar rota</button>${nova ? '<button class="btn sec" id="btn-salvar-rota">Salvar rota</button>' : ''}</div></div>`;
+  $('#btn-narrar').addEventListener('click', () => falar(`Rota com ${rota.paradas.length} paradas. ` + rota.paradas.map((p, i) => `Parada ${i + 1}: ${acha(p.id).nome}.`).join(' '), { rate: E.d.voz }));
+  if (nova) $('#btn-salvar-rota').addEventListener('click', ev => { E.d.rotas.unshift(rota); E.salvar(); renderTudo(); ev.target.remove(); toast('Rota salva no Diário.'); });
+}
+
+function renderRota() {
+  $('#r-int').innerHTML = Object.entries(INTERESSES).map(([k, v]) => `<label class="check"><input type="checkbox" value="${k}" ${k !== 'lazer' ? 'checked' : ''}> <span class="tag-int">${v.ic} ${v.rot}</span></label>`).join('');
+  renderRotasSalvas();
+}
+function renderRotasSalvas() {
+  $('#rotas-salvas').innerHTML = E.d.rotas.length ? E.d.rotas.map(r => `<div class="card"><div class="entre"><div><b>${r.paradas.length} paradas · ${esc(r.origem)}</b><div class="muted">${fmtData(r.criada)} · ~${Math.round(r.total / 60 * 10) / 10} h</div></div></div>
+    <div class="btns"><button class="btn sec peq" data-ver-rota="${r.id}">Ver</button><button class="btn sec peq" data-apagar-rota="${r.id}">Apagar</button></div></div>`).join('')
+    : '<div class="vazio">Nenhuma rota salva ainda.</div>';
+}
+
+function renderDiario() {
+  $('#k-vis').textContent = E.d.visitados.length; $('#k-fav').textContent = E.d.favoritos.length; $('#k-rot').textContent = E.d.rotas.length;
+  const item = id => { const l = acha(id); return l ? `<div class="card poi" data-lugar="${l.id}" role="button" tabindex="0"><div class="ic" aria-hidden="true">${INTERESSES[l.int].ic}</div><div><b>${esc(l.nome)}</b><div class="muted">${esc(l.cidade)}</div></div></div>` : ''; };
+  $('#lista-fav').innerHTML = E.d.favoritos.map(item).join('') || '<div class="vazio">Toque em ☆ num lugar para favoritar.</div>';
+  $('#lista-vis').innerHTML = E.d.visitados.map(item).join('') || '<div class="vazio">Marque os lugares que visitou.</div>';
+}
+
+function renderTudo() { renderPerto(); renderRotasSalvas(); renderDiario(); $('#c-vel').value = E.d.voz; }
+
+document.addEventListener('click', ev => {
+  const card = ev.target.closest('[data-lugar]'); if (card) return abrirLugar(card.dataset.lugar);
+  const t = ev.target.closest('button'); if (!t) return;
+  if (t.dataset.int) { E.d.filtro = t.dataset.int; E.salvar(); renderPerto(); }
+  else if (t.id === 'btn-gps') {
+    if (!navigator.geolocation) return toast('Este navegador não informa localização. Use “Simular lugar”.');
+    toast('Buscando sua localização…');
+    navigator.geolocation.getCurrentPosition(p => {
+      E.d.pos = { nome: 'Sua localização atual', lat: p.coords.latitude, lng: p.coords.longitude, fonte: 'gps' }; E.salvar(); renderPerto(); toast('Localização atualizada.');
+    }, () => toast('Não foi possível obter a localização. Use “Simular lugar”.'), { enableHighAccuracy: true, timeout: 10000 });
+  }
+  else if (t.id === 'btn-simular') {
+    modal(`<h2>Simular onde estou</h2>${Object.entries(POSICOES).map(([k, p]) => `<button class="btn sec bloco" style="margin-bottom:8px" data-pos="${k}">${esc(p.nome)}</button>`).join('')}<button class="btn sec bloco" data-fechar>Cancelar</button>`,
+      (m, fechar) => m.addEventListener('click', e2 => { const b = e2.target.closest('[data-pos]'); if (!b) return; E.d.pos = { ...POSICOES[b.dataset.pos], fonte: 'simulada' }; E.salvar(); renderPerto(); fechar(); toast('Posição simulada.'); }));
+  }
+  else if (t.id === 'btn-rota') montarRota();
+  else if (t.dataset.verRota) mostrarRota(E.d.rotas.find(r => r.id === t.dataset.verRota), false);
+  else if (t.dataset.apagarRota) confirmar('Apagar esta rota salva?', () => { E.d.rotas = E.d.rotas.filter(r => r.id !== t.dataset.apagarRota); E.salvar(); renderTudo(); $('#rota-res').innerHTML = ''; toast('Rota apagada.'); }, 'Apagar');
+  else if (t.id === 'btn-teste-voz') falar('Olá! Eu sou a narração do GuiaMobi. Bem-vindo a Mato Grosso.', { rate: E.d.voz });
+  else if (t.id === 'btn-sugerir') {
+    modal(`<h2>Sugerir lugar</h2><p class="muted">Posição usada: ${esc(E.d.pos.nome)}</p>
+      <div class="campo"><label for="s-nome">Nome do lugar</label><input id="s-nome"></div>
+      <div class="campo"><label for="s-int">Tipo</label><select id="s-int">${Object.entries(INTERESSES).map(([k, v]) => `<option value="${k}">${v.rot}</option>`).join('')}</select></div>
+      <div class="campo"><label for="s-txt">Por que vale a visita?</label><textarea id="s-txt"></textarea></div>
+      <div class="btns"><button class="btn sec" data-fechar>Cancelar</button><button class="btn" id="s-ok">Salvar sugestão</button></div>`, (m, fechar) =>
+      $('#s-ok', m).addEventListener('click', () => {
+        const nome = $('#s-nome', m).value.trim(); if (!nome) return toast('Dê um nome ao lugar.');
+        E.d.sugestoes.push({ id: 's' + uid(), nome, cidade: 'Sugestão da comunidade', lat: E.d.pos.lat, lng: E.d.pos.lng, int: $('#s-int', m).value, min: 30, txt: $('#s-txt', m).value.trim() || 'Sem descrição.', sugestao: true });
+        E.salvar(); renderTudo(); fechar(); toast('Sugestão salva. Ela aparece em “Perto”.');
+      }));
+  }
+});
+document.addEventListener('keydown', ev => { const c = ev.target.closest && ev.target.closest('[data-lugar]'); if (c && (ev.key === 'Enter' || ev.key === ' ')) { ev.preventDefault(); abrirLugar(c.dataset.lugar); } });
+$('#c-vel').addEventListener('change', ev => { E.d.voz = Number(ev.target.value); E.salvar(); toast('Velocidade ajustada.'); });
+
+ligarDados(E, 'guiamobi', renderTudo);
+renderRota(); renderTudo();
+abas();
+pwa();
+</script>
+</body>
+</html>

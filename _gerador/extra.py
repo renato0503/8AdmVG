@@ -38,7 +38,7 @@ EXTRA = {
         ("Rota do seu jeito", "Monta roteiros por tempo (manhã, tarde, dia) e interesse (natureza, história, gastronomia), com modo offline."),
     ],
     diferencial="Conteúdo <strong>local</strong> e contextualizado pela localização, valorizando guias e comércio da região.",
-    pitch30=("Chegou em Várzea Grande ou Cuiabá e não sabe o que fazer com a tarde livre? O RotaViva usa a sua localização "
+    pitch30=("Chegou em Várzea Grande ou Cuiabá e não sabe o que fazer com a tarde livre? O GuiaMobi usa a sua localização "
              "para mostrar o que tem de interessante perto de você, conta a história de cada lugar em áudio, como um guia de "
              "bolso, e monta uma rota que cabe no seu tempo — da Chapada ao centro histórico, passando pelo comércio local. "
              "Menos tempo procurando, mais tempo vivendo o lugar."),

@@ -14,12 +14,12 @@ Registro do que foi pedido e feito, para continuar depois.
 | Grupo | Projeto | Responsável | Integrantes | Código |
 |---|---|---|---|---|
 | 1 | **HoraCerta** — app único de horas complementares em tempo real | Prof. Renato | José Arlindo, Taynara, Luana, Leticia, Samara | `G1-<nnn>` |
-| 2 | **RotaViva** — guia turístico de bolso por latitude/longitude, rotas e áudio | Prof. Renato | Cinthia, Danielly, Leandro, Guilherme, Esther | `G2-<nnn>` |
+| 2 | **GuiaMobi** — guia turístico de bolso por latitude/longitude, rotas e áudio | Prof. Renato | Cinthia, Danielly, Leandro, Guilherme, Esther | `G2-<nnn>` |
 | 3 | **VozGuia** — celular vira assistente sonoro para cegos + alertas ao poder público | Profa. Sandra | Karla Moema, Victor Hugo, Nicolas, Fabio, Yasmin | `G3-<nnn>` |
 | 4 | **CasaPiloto** — simulador da construtora: guardar × investir × financiar por tipo de casa | Profa. Polyana | Aliny, André, Michelly, Everson | `G4-<nnn>` |
 | 5 | **CasaHumanizada** — programas de moradia num lugar só (nome dado pelo grupo) | Prof. Heitor | Bianca, Giovanna, Estefane | `G5-<nnn>` |
 
-- Os nomes **HoraCerta, RotaViva, VozGuia e CasaPiloto foram propostos por nós** (os grupos só enviaram a ideia). Trocar é fácil: `nome` em `_gerador/dados.py` + renomear a pasta + `py _gerador/gen.py`.
+- Os nomes **HoraCerta, VozGuia e CasaPiloto foram propostos por nós** (os grupos só enviaram a ideia). O G2 começou como "RotaViva" e foi **renomeado para GuiaMobi** a pedido do professor (23/09/2026); `Grupo2-RotaViva/` ficou só com um redirecionamento para os links antigos não quebrarem. Trocar é fácil: `nome` em `_gerador/dados.py` + renomear a pasta + `py _gerador/gen.py`.
 - 23/09/2026: **Samara saiu do Grupo 5 e foi para o Grupo 1** (já refletido em `grupos.md`).
 - G5 enviou contexto extra (apresentação "Projeto de Gestão da Mudança — Inovação e Gestão Pública", de Geovanna Shara e Bianca Veronez): caso **Casa Cuiabana** (83.991 cadastros em 2025, confirmado no site da Prefeitura de Cuiabá), jornada em 4 etapas, 6 funcionalidades (consulta de oportunidades, requisitos claros, notificações, checklist, status, etapas e prazos) e quadro antes × depois. Incorporado em dados, pesquisa, slides, ContextoApp e app. Obs.: a lista de integrantes diz "Giovanna"; a apresentação assina "Geovanna Shara" — confirmar a grafia.
 
@@ -70,7 +70,7 @@ Todos: PWA, dados só no aparelho (localStorage), exportar/importar JSON, apagar
 | Grupo | O que faz |
 |---|---|
 | HoraCerta | Saldo por categoria com teto, ritmo até a formatura, atividades com foto/PDF do certificado, fluxo de validação (coordenação simulada), eventos, CSV |
-| RotaViva | Perto de mim (GPS ou posição simulada), 12 pontos de Cuiabá/VG/Chapada/Pantanal (coordenadas aproximadas), narração por voz, rota por tempo e interesse com esquema SVG, diário, sugestões |
+| GuiaMobi | Perto de mim (GPS ou posição simulada), 12 pontos de Cuiabá/VG/Chapada/Pantanal (coordenadas aproximadas), narração por voz, rota por tempo e interesse com esquema SVG, diário, sugestões |
 | VozGuia | Botões grandes, voz + vibração, caminhada de treino simulada em VG, mapa colaborativo, alertas com foto e protocolo (resposta do órgão simulada), alto contraste, tutorial falado |
 | CasaPiloto | 4 casas piloto com planta SVG e tour, simulador guardar × investir × financiar (Price/SAC, FGTS, aluguel, valorização), semáforo 30% da renda, plano com depósitos e checklist, contato com corretor (simulado, com consentimento) |
 | CasaHumanizada | Programas (incl. Casa Cuiabana e MCMV faixas 2025), teste "tenho direito?" local (7 perguntas), checklist de documentos, inscrições com etapas, prazos e central de avisos, agendamento e chat (simulados), alerta anti-golpe |
@@ -80,5 +80,5 @@ Todos: PWA, dados só no aparelho (localStorage), exportar/importar JSON, apagar
 - [ ] Grupos revisarem os nomes propostos e as 20 perguntas (Parte 2)
 - [ ] Confirmar datas reais da defesa e da ida ao shopping (materiais dizem "Setembro de 2026")
 - [ ] Conferir `[verificar]` nos Pesquisa-Dados (G1 evasão; G5 unidades MCMV)
-- [ ] Conteúdo do RotaViva (textos e coordenadas) validar com fontes oficiais
+- [ ] Conteúdo do GuiaMobi (textos e coordenadas) validar com fontes oficiais
 - [ ] Ida ao shopping, tabulação e sprints 3–5 (ver `SPRINTS.md`)

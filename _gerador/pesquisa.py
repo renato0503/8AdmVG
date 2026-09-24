@@ -123,7 +123,7 @@ P = {
   "**VG é a porta de entrada.** O aeroporto internacional fica em Várzea Grande; o visitante passa pela cidade, mas raramente a *conhece*: oportunidade para o guia de bolso.",
   "**Natureza puxa o fluxo.** A Chapada dobrou visitas em três anos; um app que monte rotas combinando natureza, história e gastronomia distribui o fluxo para atrativos menos conhecidos.",
   "**Celular é o guia.** 65% dos usuários de internet acessam só pelo celular (TIC 2025) — mas em áreas naturais o sinal falha: o app precisa de **modo offline**.",
-  "**Turismo gera renda local.** Evidência brasileira mostra impacto no PIB municipal e na redução de desigualdade regional — o RotaViva pode destacar comércio e guias locais.",
+  "**Turismo gera renda local.** Evidência brasileira mostra impacto no PIB municipal e na redução de desigualdade regional — o GuiaMobi pode destacar comércio e guias locais.",
  ],
  blocos=[
   ("Bloco A. Turismo e desenvolvimento no Brasil", ["10.1080/13683500.2022.2126965", "10.1080/13683500.2022.2048804", "10.31637/epsir-2026-1979"]),
@@ -138,7 +138,7 @@ P = {
   "10.1080/13683500.2022.2048804": ("Usa desenho de regressão descontínua no Programa de Regionalização do Turismo: municípios turísticos beneficiados tiveram aumento do valor adicionado dos serviços e do PIB per capita, com efeito também na indústria.",
                                     "Mostra que política de turismo tem efeito econômico mensurável — útil para buscar parceria com prefeitura/secretaria de turismo."),
   "10.31637/epsir-2026-1979": ("Analisa empreendedorismo e inovação social em empresas de turismo brasileiras e o papel das tecnologias digitais em criar e promover essa inovação.",
-                               "Posiciona o RotaViva como tecnologia que conecta turista a pequenos negócios locais (inovação social)."),
+                               "Posiciona o GuiaMobi como tecnologia que conecta turista a pequenos negócios locais (inovação social)."),
   "10.3390/su14053048": ("Com 486 visitantes de um museu na China, mostra que acessibilidade e interatividade das tecnologias inteligentes influenciam a experiência, a satisfação e as intenções pós-visita.",
                          "Artigo muito citado (165): a experiência melhora quando a tecnologia é acessível e interativa — requisito de design do app."),
   "10.3390/su14052721": ("Modelo integrado que liga o uso exploratório e aproveitador de tecnologias de turismo inteligente a experiências memoráveis, satisfação e intenção de revisita.",
@@ -168,7 +168,7 @@ P = {
   "\"Tecnologias de turismo inteligente melhoram **experiência, satisfação e revisita** (Zhang et al., 2022; Torabi et al., 2022; Pai et al., 2021).\"",
   "\"Apps de localização geram **lealdade** quando o conteúdo combina com o que o turista vê (Xiong & Zhang, 2024).\"",
   "\"Rotas personalizadas já são tecnicamente maduras (Mou et al., 2022) — o desafio é conteúdo local de qualidade.\"",
-  "\"A principal barreira é **privacidade da localização** (Afolabi et al., 2021): no RotaViva a localização fica no celular e só é usada com permissão.\"",
+  "\"A principal barreira é **privacidade da localização** (Afolabi et al., 2021): no GuiaMobi a localização fica no celular e só é usada com permissão.\"",
   "\"Turismo doméstico **reduz desigualdade regional** (Ribeiro et al., 2022): o app leva o visitante ao comércio local.\"",
  ],
  lacunas=[

@@ -1,6 +1,6 @@
 {
-  "name": "RotaViva",
-  "short_name": "RotaViva",
+  "name": "GuiaMobi",
+  "short_name": "GuiaMobi",
   "description": "Seu guia turístico de bolso, guiado pela sua localização",
   "start_url": "app.html",
   "display": "standalone",

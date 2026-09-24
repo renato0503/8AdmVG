@@ -1,13 +1,13 @@
-# Contexto do App — RotaViva
+# Contexto do App — GuiaMobi
 
-**Grupo 2 — RotaViva** · Prof. Renato · Integrantes: Cinthia, Danielly, Leandro, Guilherme, Esther.
+**Grupo 2 — GuiaMobi** · Prof. Renato · Integrantes: Cinthia, Danielly, Leandro, Guilherme, Esther.
 Código de coleta: `G2-<nnn>` · Formulário: 20 perguntas · Meta: 15–20 respostas · MVP: [`app.html`](app.html)
 
 ---
 
 ## 1. Pitch em uma frase
 
-O RotaViva é um **guia turístico de bolso**: pela latitude e longitude do celular, mostra o que há de interessante por perto, **conta a história do lugar em áudio** e **monta rotas** que cabem no tempo do visitante — valorizando o comércio e os guias locais.
+O GuiaMobi é um **guia turístico de bolso**: pela latitude e longitude do celular, mostra o que há de interessante por perto, **conta a história do lugar em áudio** e **monta rotas** que cabem no tempo do visitante — valorizando o comércio e os guias locais.
 
 ---
 
@@ -82,7 +82,7 @@ O RotaViva é um **guia turístico de bolso**: pela latitude e longitude do celu
 
 ## 7. Diferenciais e alternativas
 
-| Alternativa | Limitação | Diferencial do RotaViva |
+| Alternativa | Limitação | Diferencial do GuiaMobi |
 | --- | --- | --- |
 | Google Maps | Mostra lugares, não conta a história nem monta roteiro por tempo | Rota por tempo + narração |
 | Redes sociais | Conteúdo disperso, focado em lugares da moda | Curadoria local e lugares pouco conhecidos |
@@ -161,4 +161,4 @@ O RotaViva é um **guia turístico de bolso**: pela latitude e longitude do celu
 
 ## 14. Pitch de 30 segundos
 
-"Chegou em Várzea Grande ou Cuiabá e não sabe o que fazer com a tarde livre? O RotaViva usa a sua localização para mostrar o que tem de interessante perto de você, conta a história de cada lugar em áudio, como um guia de bolso, e monta uma rota que cabe no seu tempo — da Chapada ao centro histórico, passando pelo comércio local. Menos tempo procurando, mais tempo vivendo o lugar."
+"Chegou em Várzea Grande ou Cuiabá e não sabe o que fazer com a tarde livre? O GuiaMobi usa a sua localização para mostrar o que tem de interessante perto de você, conta a história de cada lugar em áudio, como um guia de bolso, e monta uma rota que cabe no seu tempo — da Chapada ao centro histórico, passando pelo comércio local. Menos tempo procurando, mais tempo vivendo o lugar."

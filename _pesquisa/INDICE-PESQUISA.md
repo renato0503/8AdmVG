@@ -7,7 +7,7 @@
 | Grupo | Projeto | Professor(a) | Artigos | Buscas brutas |
 |---|---|---|---|---|
 | G1 | HoraCerta | Prof. Renato | 14 | `G1_atividades_complementares`, `G1_complementary_hours`, `G1_extracurricular`, `G1_gamification_he`, `G1_learning_dashboard`, `G1_student_engagement_app` |
-| G2 | RotaViva | Prof. Renato | 14 | `G2_brazil_tourism`, `G2_location_based_tourism`, `G2_route_recommendation`, `G2_smart_tourism`, `G2_tourism_app_adoption`, `G2_tourism_mobile_guide` |
+| G2 | GuiaMobi | Prof. Renato | 14 | `G2_brazil_tourism`, `G2_location_based_tourism`, `G2_route_recommendation`, `G2_smart_tourism`, `G2_tourism_app_adoption`, `G2_tourism_mobile_guide` |
 | G3 | VozGuia | Profa. Sandra | 14 | `G3_accessibility_urban`, `G3_assistive_audio`, `G3_blind_brazil`, `G3_blind_navigation`, `G3_citizen_reporting`, `G3_sidewalk_accessibility` |
 | G4 | CasaPiloto | Profa. Polyana | 14 | `G4_brazil_housing`, `G4_homebuyer_saving`, `G4_housing_affordability`, `G4_housing_expectations`, `G4_housing_purchase`, `G4_mortgage_literacy`, `G4_saving_down_payment`, `G4_virtual_tour_realestate` |
 | G5 | CasaHumanizada | Prof. Heitor | 14 | `G5_administrative_burden`, `G5_egov_housing`, `G5_housing_deficit_brazil`, `G5_housing_policy_access`, `G5_humanized_service`, `G5_social_housing_brazil` |
@@ -31,7 +31,7 @@
 | 13 | Chans & Castro (2021) | Gamification as a Strategy to Increase Motivation and Engagement in Higher Education Chemistry Students | Computers | [10.3390/computers10100132](https://doi.org/10.3390/computers10100132) | 173 |
 | 14 | Wong et al. (2026) | Student engagement profiles in a mobile app: Links to self-regulated learning and performance | Educational Technology Research and Development | [10.1007/s11423-026-10586-2](https://doi.org/10.1007/s11423-026-10586-2) | 3 |
 
-## G2 · RotaViva
+## G2 · GuiaMobi
 
 | # | Referência | Título | Periódico | DOI | Citações |
 |---|---|---|---|---|---|

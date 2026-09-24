@@ -1,4 +1,4 @@
-# Grupo 2 — RotaViva
+# Grupo 2 — GuiaMobi
 
 **Professor(a) responsável:** Prof. Renato
 **Atividade:** Customer Discovery na prática — defesa da ideia + pesquisa de campo no shopping
@@ -26,7 +26,7 @@
 
 ## Ideia proposta (organizada)
 
-O **RotaViva** é um guia turístico de bolso: a partir da **latitude e longitude** do celular, mostra os atrativos próximos, conta a **história e a cultura** de cada ponto (texto e áudio) e **monta rotas** de acordo com o tempo disponível (manhã, tarde, dia inteiro) e o perfil do visitante (natureza, história, gastronomia). O foco inicial é a região de Cuiabá e Várzea Grande, porta de entrada da Chapada dos Guimarães e do Pantanal.
+O **GuiaMobi** é um guia turístico de bolso: a partir da **latitude e longitude** do celular, mostra os atrativos próximos, conta a **história e a cultura** de cada ponto (texto e áudio) e **monta rotas** de acordo com o tempo disponível (manhã, tarde, dia inteiro) e o perfil do visitante (natureza, história, gastronomia). O foco inicial é a região de Cuiabá e Várzea Grande, porta de entrada da Chapada dos Guimarães e do Pantanal.
 
 **Foco temático:** turismo guiado por localização (latitude/longitude), rotas e conhecimento sobre o lugar.
 
@@ -96,7 +96,7 @@ As pessoas deixam de conhecer atrativos que estão perto porque **não sabem que
 - `formulario-app.md` — as 20 perguntas (escala 1–5) + perfil + regras
 - `ContextoApp.md` — documento de produto (personas, jornada, MVP/v1/v2, KPIs, riscos, LGPD)
 - `Pesquisa-Dados.md` — dados oficiais + 14 artigos científicos reais (OpenAlex) com DOI
-- `Slides-RotaViva.html` / `.pdf` — apresentação de defesa (12 slides)
+- `Slides-GuiaMobi.html` / `.pdf` — apresentação de defesa (12 slides)
 - `app.html` — MVP funcional (PWA, dados no próprio celular)
 
 ## Materiais da turma

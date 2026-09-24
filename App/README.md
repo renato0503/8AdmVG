@@ -32,7 +32,7 @@ Formulário de campo **offline** em arquivo único (`index.html`), usado na **Pa
 | Sprint | Status | Entrega no app |
 |---|---|---|
 | 0 — Fundação | ✅ | Estrutura, seleção de grupo, Bloco 0 (perfil) por observação |
-| 1 — Perguntas | ✅ | 20 perguntas por grupo (G1 HoraCerta, G2 RotaViva, G3 VozGuia, G4 CasaPiloto, G5 CasaHumanizada) com polos rotulados |
+| 1 — Perguntas | ✅ | 20 perguntas por grupo (G1 HoraCerta, G2 GuiaMobi, G3 VozGuia, G4 CasaPiloto, G5 CasaHumanizada) com polos rotulados |
 | 2 — Código + planilha | ✅ | Código `G<n>-<nnn>` por resposta + export CSV/JSON |
 | 3 — Campo + correlação | ⏳ | Uso real no shopping (log em `SPRINTS.md`) |
 | 4 — Análise | ⏳ | Tabulação do CSV + leitura dos áudios |

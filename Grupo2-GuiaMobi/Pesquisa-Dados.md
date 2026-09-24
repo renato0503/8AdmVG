@@ -1,8 +1,8 @@
-# Pesquisa e Dados — Grupo 2 · RotaViva
+# Pesquisa e Dados — Grupo 2 · GuiaMobi
 
 > Apoio à defesa da ideia: dados reais (Brasil/MT) + 14 artigos peer-reviewed (2021–2026). Os metadados dos artigos (autores, título, periódico, DOI, citações) foram copiados **automaticamente** dos resultados da API OpenAlex salvos em `_pesquisa/saidas/` — o script `_pesquisa/selecao.py` falha se algum DOI não existir nesses brutos. Números brasileiros têm fonte com link (conferidos em 23/09/2026). O que não foi confirmado está marcado `[verificar]`.
 
-**Grupo:** 2 · RotaViva · **Professor(a):** Prof. Renato · **Integrantes:** Cinthia, Danielly, Leandro, Guilherme, Esther · **Código:** G2-<nnn> · **Meta:** 15–20
+**Grupo:** 2 · GuiaMobi · **Professor(a):** Prof. Renato · **Integrantes:** Cinthia, Danielly, Leandro, Guilherme, Esther · **Código:** G2-<nnn> · **Meta:** 15–20
 
 **Hipótese de campo:** As pessoas deixam de conhecer atrativos que estão perto porque **não sabem que eles existem** e **não têm tempo de montar um roteiro** — a informação existe, mas está espalhada e não é contextualizada pela localização.
 
@@ -35,7 +35,7 @@ A literatura mostra que as **tecnologias de turismo inteligente** (apps, localiz
 2. **VG é a porta de entrada.** O aeroporto internacional fica em Várzea Grande; o visitante passa pela cidade, mas raramente a *conhece*: oportunidade para o guia de bolso.
 3. **Natureza puxa o fluxo.** A Chapada dobrou visitas em três anos; um app que monte rotas combinando natureza, história e gastronomia distribui o fluxo para atrativos menos conhecidos.
 4. **Celular é o guia.** 65% dos usuários de internet acessam só pelo celular (TIC 2025) — mas em áreas naturais o sinal falha: o app precisa de **modo offline**.
-5. **Turismo gera renda local.** Evidência brasileira mostra impacto no PIB municipal e na redução de desigualdade regional — o RotaViva pode destacar comércio e guias locais.
+5. **Turismo gera renda local.** Evidência brasileira mostra impacto no PIB municipal e na redução de desigualdade regional — o GuiaMobi pode destacar comércio e guias locais.
 
 ---
 
@@ -53,7 +53,7 @@ A literatura mostra que as **tecnologias de turismo inteligente** (apps, localiz
 
 **3. Michelle Maiurro; Zélia Maria de Jesus Breda; Filipa Brandão; Carlos Manuel Martins da Costa (2025).** The role of digital technologies in promoting social innovation in tourism Brazilian companies. *European Public & Social Innovation Review*. DOI: [10.31637/epsir-2026-1979](https://doi.org/10.31637/epsir-2026-1979). Citações (OpenAlex): 2. Acesso: aberto.
 - **O que sustenta:** Analisa empreendedorismo e inovação social em empresas de turismo brasileiras e o papel das tecnologias digitais em criar e promover essa inovação.
-- **Como usar na defesa:** Posiciona o RotaViva como tecnologia que conecta turista a pequenos negócios locais (inovação social).
+- **Como usar na defesa:** Posiciona o GuiaMobi como tecnologia que conecta turista a pequenos negócios locais (inovação social).
 
 ### Bloco B. Tecnologias de turismo inteligente e experiência
 
@@ -135,7 +135,7 @@ A literatura mostra que as **tecnologias de turismo inteligente** (apps, localiz
 3. "Tecnologias de turismo inteligente melhoram **experiência, satisfação e revisita** (Zhang et al., 2022; Torabi et al., 2022; Pai et al., 2021)."
 4. "Apps de localização geram **lealdade** quando o conteúdo combina com o que o turista vê (Xiong & Zhang, 2024)."
 5. "Rotas personalizadas já são tecnicamente maduras (Mou et al., 2022) — o desafio é conteúdo local de qualidade."
-6. "A principal barreira é **privacidade da localização** (Afolabi et al., 2021): no RotaViva a localização fica no celular e só é usada com permissão."
+6. "A principal barreira é **privacidade da localização** (Afolabi et al., 2021): no GuiaMobi a localização fica no celular e só é usada com permissão."
 7. "Turismo doméstico **reduz desigualdade regional** (Ribeiro et al., 2022): o app leva o visitante ao comércio local."
 
 ---

@@ -1,4 +1,4 @@
-# Formulário do App — Grupo 2 · RotaViva
+# Formulário do App — Grupo 2 · GuiaMobi
 
 **Professor(a):** Prof. Renato · **Meta:** 15–20 respostas · **Código:** `G2-<nnn>` · **Total:** 20 perguntas
 

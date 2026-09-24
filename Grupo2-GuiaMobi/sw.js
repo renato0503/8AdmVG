@@ -1,4 +1,4 @@
-const CACHE = 'rotaviva-v1';
+const CACHE = 'guiamobi-v1';
 const PRE = ['./', './index.html', './app.html', '../assets/mvp/mvp.css', '../assets/mvp/mvp.js', '../assets/logos/g2.svg'];
 
 self.addEventListener('install', e => {

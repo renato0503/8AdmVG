@@ -7,7 +7,7 @@ Materiais, pesquisa e MVPs dos 5 grupos de Customer Discovery da turma de **Admi
 | Grupo | Projeto | Professor(a) | Landing | App |
 |---|---|---|---|---|
 | 1 | HoraCerta — horas complementares em tempo real | Prof. Renato | [Grupo1-HoraCerta/](Grupo1-HoraCerta/) | [app](Grupo1-HoraCerta/app.html) |
-| 2 | RotaViva — guia turístico de bolso por localização | Prof. Renato | [Grupo2-RotaViva/](Grupo2-RotaViva/) | [app](Grupo2-RotaViva/app.html) |
+| 2 | GuiaMobi — guia turístico de bolso por localização | Prof. Renato | [Grupo2-GuiaMobi/](Grupo2-GuiaMobi/) | [app](Grupo2-GuiaMobi/app.html) |
 | 3 | VozGuia — assistente sonoro + alertas de acessibilidade | Profa. Sandra | [Grupo3-VozGuia/](Grupo3-VozGuia/) | [app](Grupo3-VozGuia/app.html) |
 | 4 | CasaPiloto — simulador da construtora por tipo de casa | Profa. Polyana | [Grupo4-CasaPiloto/](Grupo4-CasaPiloto/) | [app](Grupo4-CasaPiloto/app.html) |
 | 5 | CasaHumanizada — programas de moradia num lugar só | Prof. Heitor | [Grupo5-CasaHumanizada/](Grupo5-CasaHumanizada/) | [app](Grupo5-CasaHumanizada/app.html) |
