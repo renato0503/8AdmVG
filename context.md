@@ -82,3 +82,31 @@ Todos: PWA, dados só no aparelho (localStorage), exportar/importar JSON, apagar
 - [ ] Conferir `[verificar]` nos Pesquisa-Dados (G1 evasão; G5 unidades MCMV)
 - [ ] Conteúdo do GuiaMobi (textos e coordenadas) validar com fontes oficiais
 - [ ] Ida ao shopping, tabulação e sprints 3–5 (ver `SPRINTS.md`)
+
+---
+
+## 8. Sessão 23/09/2026 (noite) — estado para continuar amanhã
+
+### 8.1 Feito hoje
+- Pacote completo publicado em https://renato0503.github.io/8AdmVG/ (5 grupos, pesquisa verificada, slides + PDFs, coleta, MVPs, hub). Commits `084ce91`, `2d4f11e` (.nojekyll — sem ele o Pages esconde `_pesquisa/` e `_gerador/`), `0a717ef`, `51823a4`.
+- **G2 renomeado de RotaViva para GuiaMobi** (pedido do professor). `Grupo2-RotaViva/` ficou só com redirecionamento para os links antigos.
+- **G5 Casa Humanizada** recebeu o contexto da apresentação do grupo (Casa Cuiabana 83.991 cadastros, jornada em 4 etapas, 6 funcionalidades, antes × depois); app ganhou Casa Cuiabana, prazos por etapa e central de avisos.
+- **Kit CONFACC 2026** montado em `D:\Dev\UnifaccApps\Confacc2026\` (17 resumos das 3 turmas; ver `LEIA-ME.md` de lá).
+- **Curso confirmado pela chamada:** Administração (FACC-MT), disciplina Laboratório de Criação e Inovação, turma 2120231N.
+
+### 8.2 Nomes completos (chamada de 23/09/2026)
+| Grupo | Integrantes |
+|---|---|
+| G1 HoraCerta | José Arlindo da Cunha Filho, Taynara Luana de Oliveira, Luana da Silva Araújo, Leticia Leydiane de Oliveira, Samara de Campos Henrique |
+| G2 GuiaMobi | Cinthia Ferreira da Silva Oliveira, Danielly Gomes de Souza Pinto, Leandro Teodoro de Santana, Guilherme Henrique Xavier Sampaio, Esther Rodrigues da Conceição |
+| G3 VozGuia | Karla Moema Henning Pitaluga, Victor Hugo Gomes de Almeida dos Passos, Nicolas Alexandre Freitas Moraes, Fabio Teyllor Tatehira do Couto, Yasmim Quéren Rodrigues Feitosa |
+| G4 CasaPiloto | Aliny Suquerê Guimarães, André Henrique Magalhães Duarte, Michelly de Jesus Pereira Silva, Everson Alencar de Souza |
+| G5 Casa Humanizada | Bianca Veronez Dias, Geovanna Shara Soares da Silveira, Estefane Souza da Costa |
+
+- **Sem grupo na chamada:** Valéria Cristina dos Santos — perguntar ao professor em qual grupo entra (G4 e G5 têm vaga).
+- `grupos.md` e o site ainda usam os primeiros nomes (decidir se trocar pelos completos; se sim, editar `grupos.md` e rodar `py _gerador/gen.py`, e ajustar os `ContextoApp.md` à mão).
+
+### 8.3 Próximos passos (amanhã)
+1. Resolver o grupo da Valéria e, se for o caso, atualizar `grupos.md` + kit CONFACC.
+2. Sobrenomes das orientadoras/orientadores Sandra, Polyana e Heitor (para o kit CONFACC).
+3. Seguir as pendências da seção 7 (validação das 20 perguntas com os grupos, datas, `[verificar]`, ida ao shopping).
