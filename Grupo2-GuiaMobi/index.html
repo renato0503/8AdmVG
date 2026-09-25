@@ -3,124 +3,92 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GuiaMobi — Grupo 2 · Customer Discovery 8AdmVG</title>
-<meta name="description" content="Seu guia turístico de bolso, guiado pela sua localização">
 <meta name="theme-color" content="#042f2e">
+<title>GuiaMobi — Grupo 2 · 8AdmVG</title>
+<meta name="description" content="GuiaMobi: guia turístico de bolso por localização, com rotas e narração. Grupo 2 · Administração 8º semestre (VG) · UNIFACC.">
 <link rel="icon" type="image/svg+xml" href="../assets/logos/g2.svg">
 <link rel="apple-touch-icon" href="../assets/logos/g2-192.png">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/landing.css">
-<style>:root{--acc:#0f766e;--acc2:#f97316;--tinta:#042f2e}</style>
+<link rel="manifest" href="manifest.json">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;700;900&display=swap" rel="stylesheet">
+<style>
+/* Landing do GuiaMobi · a página é um roteiro: cada seção é uma "parada" ligada por trilha laranja sobre o mapa */
+:root{--noite:#042f2e;--agua:#0e4d4a;--sol:#f97316;--sol2:#fdba74;--creme:#fff7ed;--claro:#8fd3c9}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Nunito,system-ui,sans-serif;color:var(--creme);background:var(--noite);line-height:1.55;overflow-x:hidden}
+a{color:var(--sol2)}
+.mapa{position:fixed;inset:0;z-index:-1;opacity:.5;background:radial-gradient(circle at 80% 10%,#0f5a55,transparent 40%),radial-gradient(circle at 10% 70%,#0b4540,transparent 45%)}
+.mapa svg{width:100%;height:100%}
+.w{max-width:980px;margin:0 auto;padding:0 18px}
+.topo{display:flex;align-items:center;gap:10px;padding:16px 0}
+.topo img{width:38px;height:38px;border-radius:10px}
+.topo a{margin-left:auto;text-decoration:none;font-weight:800;font-size:14px}
+.heroi{display:grid;grid-template-columns:1fr auto;gap:30px;align-items:center;padding:30px 0 20px}
+.pino{display:inline-flex;gap:6px;align-items:center;background:rgba(249,115,22,.15);color:var(--sol2);border:1px solid rgba(249,115,22,.4);padding:4px 12px;border-radius:999px;font-weight:800;font-size:13px}
+h1{font-weight:900;font-size:clamp(44px,9vw,86px);line-height:.95;margin:14px 0}
+h1 em{font-style:normal;color:var(--sol)}
+.lead{font-size:19px;max-width:520px;color:#d5ece8}
+.acoes{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.btn{min-height:50px;display:inline-flex;align-items:center;padding:0 22px;border-radius:16px;background:var(--sol);color:#fff;text-decoration:none;font-weight:900}
+.btn.sec{background:transparent;border:2px solid var(--claro);color:var(--creme)}
+.fone{width:290px;height:590px;border-radius:44px;background:#000;padding:11px;box-shadow:0 0 0 2px #1b6660,0 40px 80px -30px #000}
+.fone div{width:268px;height:568px;border-radius:34px;overflow:hidden}
+.fone iframe{width:375px;height:795px;border:0;transform:scale(.7147);transform-origin:0 0}
+.trilha{position:relative;margin:40px 0;padding-left:56px}
+.trilha::before{content:"";position:absolute;left:21px;top:10px;bottom:10px;border-left:4px dashed var(--sol)}
+.parada{position:relative;margin-bottom:36px}
+.parada>.n{position:absolute;left:-56px;top:-2px;width:46px;height:46px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);background:var(--creme);display:grid;place-items:center;box-shadow:0 6px 14px rgba(0,0,0,.3)}
+.parada>.n b{transform:rotate(45deg);color:var(--noite);font-weight:900;font-size:18px}
+.parada h2{font-weight:900;font-size:28px;line-height:1.1}
+.parada .dist{font-size:13px;color:var(--sol2);font-weight:800;letter-spacing:.06em;text-transform:uppercase}
+.parada p{max-width:640px;color:#d5ece8;margin-top:6px}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.chips span{background:#fff;color:var(--noite);border-radius:999px;padding:6px 14px;font-weight:800;font-size:14px}
+.postais{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:14px}
+.postal{display:block;background:var(--creme);color:var(--noite);border-radius:14px;padding:16px;text-decoration:none;border:3px dashed #fdba74;min-height:44px;transition:transform .2s}
+.postal:hover{transform:rotate(-1deg) translateY(-3px)}
+.postal b{display:block;font-size:17px}.postal small{color:#5b7875}
+.equipe{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}.equipe span{border:2px solid var(--claro);border-radius:14px;padding:8px 14px;font-weight:800}
+footer{padding:20px 0 40px;color:var(--claro);font-size:14px}
+@media(max-width:760px){.heroi{grid-template-columns:1fr}.fone{justify-self:center}}
+</style>
 </head>
 <body>
-
-<nav class="nav">
-  <div class="wrap">
-    <a href="../index.html" class="nav-back">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
-      Todos os projetos
-    </a>
-    <span class="nav-title">Grupo 2 · GuiaMobi</span>
-  </div>
-</nav>
-
-<header class="hero">
-  <div class="wrap">
-    <div class="hero-top">
-      <img class="hero-logo" src="../assets/logos/g2.svg" alt="Logo GuiaMobi">
-      <div>
-        <div class="hero-group">Grupo 2 · Customer Discovery</div>
-        <h1>GuiaMobi</h1>
-      </div>
+<div class="mapa" aria-hidden="true"><svg viewBox="0 0 400 800" preserveAspectRatio="xMidYMid slice"><path d="M40 0 C120 180 60 300 180 420 S 260 650 360 800" fill="none" stroke="#3ba7b8" stroke-width="10" opacity=".35"/><circle cx="300" cy="140" r="90" fill="#0d4a45"/><circle cx="90" cy="560" r="120" fill="#0b4540"/></svg></div>
+<div class="w">
+  <header class="topo"><img src="../assets/logos/g2.svg" alt=""><b>GuiaMobi</b><a href="../index.html">← Todos os projetos</a></header>
+  <section class="heroi">
+    <div>
+      <span class="pino">📍 Grupo 2 · Customer Discovery</span>
+      <h1>Você chegou.<br><em>E agora?</em></h1>
+      <p class="lead">O GuiaMobi mostra o que tem perto de você em Cuiabá, Várzea Grande, Chapada e Pantanal, conta a história de cada lugar em áudio e monta uma rota que cabe no tempo que você tem.</p>
+      <div class="acoes"><a class="btn" href="app.html">Abrir o guia</a><a class="btn sec" href="Slides-GuiaMobi.html">Slides de defesa</a></div>
     </div>
-    <p class="pitch">Seu guia turístico de bolso, guiado pela sua localização. O GuiaMobi é um guia turístico de bolso: a partir da <strong>latitude e longitude</strong> do celular, mostra os atrativos próximos, conta a <strong>história e a cultura</strong> de cada ponto (texto e áudio) e <strong>monta rotas</strong> de acordo com o tempo disponível (manhã, tarde, dia inteiro) e o perfil do visitante (natureza, história, gastronomia).</p>
-    <div class="hero-meta">
-      <div><b>Professor(a)</b>Prof. Renato</div>
-      <div><b>Integrantes</b>Cinthia, Danielly, Leandro, Guilherme, Esther</div>
-      <div><b>Código de campo</b>G2-&lt;nnn&gt;</div>
-    </div>
-    <div class="cta-row">
-      <a href="app.html" class="btn-cta">
-        Abrir o app
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-      </a>
-      <a href="Slides-GuiaMobi.html" class="btn-secondary">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-        Ver slides de defesa
-      </a>
-    </div>
-  </div>
-</header>
-
-<main>
-  <section class="block">
-    <div class="wrap">
-      <div class="block-head">
-        <h2>O que o app faz</h2>
-        <p>Conteúdo local e contextualizado pela localização, valorizando guias e comércio da região.</p>
-      </div>
-      <div class="feat-grid">
-        <div class="feat"><b>Perto de mim, agora</b><p>Pela latitude e longitude do celular, mostra os atrativos próximos com distância, horário e acesso.</p></div>
-        <div class="feat"><b>Guia que conta a história</b><p>Cada ponto tem texto e narração em áudio sobre história, cultura e curiosidades — um guia de bolso.</p></div>
-        <div class="feat"><b>Rota do seu jeito</b><p>Monta roteiros por tempo (manhã, tarde, dia) e interesse (natureza, história, gastronomia), com modo offline.</p></div>
-      </div>
-    </div>
+    <div class="fone" aria-label="Prévia do app"><div><iframe src="app.html" title="GuiaMobi em funcionamento" loading="lazy"></iframe></div></div>
   </section>
-  <section class="block">
-    <div class="wrap">
-      <div class="block-head">
-        <h2>Materiais do grupo</h2>
-        <p>Toda a documentação produzida para a defesa e para a pesquisa de campo.</p>
-      </div>
-      <div class="doc-grid">
-        <a href="../assets/md-viewer.html?src=../Grupo2-GuiaMobi/README.md&voltar=../Grupo2-GuiaMobi/" class="doc-card">
-          <div class="doc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg></div>
-          <b>README do grupo</b>
-          <small>Integrantes, hipótese, roteiro de campo e pitch</small>
-        </a>
-        <a href="../assets/md-viewer.html?src=../Grupo2-GuiaMobi/formulario-app.md&voltar=../Grupo2-GuiaMobi/" class="doc-card">
-          <div class="doc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></div>
-          <b>Formulário de campo</b>
-          <small>20 perguntas em escala 1–5, código G2-&lt;nnn&gt;</small>
-        </a>
-        <a href="../assets/md-viewer.html?src=../Grupo2-GuiaMobi/ContextoApp.md&voltar=../Grupo2-GuiaMobi/" class="doc-card">
-          <div class="doc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.4 6.6L21 11l-6.6 2.4L12 20l-2.4-6.6L3 11l6.6-2.4z"/></svg></div>
-          <b>Contexto do produto</b>
-          <small>Personas, jornada, MVP/v1/v2, KPIs, riscos e LGPD</small>
-        </a>
-        <a href="../assets/md-viewer.html?src=../Grupo2-GuiaMobi/Pesquisa-Dados.md&voltar=../Grupo2-GuiaMobi/" class="doc-card">
-          <div class="doc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></div>
-          <b>Pesquisa e dados</b>
-          <small>Dados oficiais + 14 artigos científicos com DOI</small>
-        </a>
-        <a href="Slides-GuiaMobi.pdf" class="doc-card">
-          <div class="doc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
-          <b>Slides de defesa (PDF)</b>
-          <small>Versão para download e impressão</small>
-        </a>
-        <a href="../coleta/" class="doc-card">
-          <div class="doc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M11 18h2"/></svg></div>
-          <b>App de coleta (campo)</b>
-          <small>Formulário offline usado no shopping</small>
-        </a>
-      </div>
-      <div class="team">
-        <span>Cinthia</span>
-        <span>Danielly</span>
-        <span>Leandro</span>
-        <span>Guilherme</span>
-        <span>Esther</span>
-      </div>
-    </div>
-  </section>
-</main>
 
-<footer>
-  <div class="wrap">
-    <a href="../index.html">← Voltar ao hub Customer Discovery</a>
-    <p>Grupo 2 · GuiaMobi · Cerrado Tech · Unifacc · Administração · 8º Semestre (VG), 2026</p>
+  <div class="trilha">
+    <section class="parada"><span class="n"><b>1</b></span><span class="dist">Ponto de partida · o problema</span><h2>Informação turística espalhada</h2>
+      <p>Quem desembarca no aeroporto de Várzea Grande tem poucas horas e muitas abas abertas. Os atrativos existem, mas não aparecem juntos, com distância, tempo de visita e história.</p></section>
+    <section class="parada"><span class="n"><b>2</b></span><span class="dist">+ perto de você</span><h2>Mapa primeiro, lista depois</h2>
+      <p>Pontos ordenados pela distância (GPS ou posição simulada), com filtro por interesse.</p>
+      <div class="chips"><span>🏛️ História</span><span>🌿 Natureza</span><span>🎭 Cultura</span><span>🍽️ Sabores</span></div></section>
+    <section class="parada"><span class="n"><b>3</b></span><span class="dist">+ ouvir</span><h2>A história no ouvido</h2><p>Narração em voz de cada lugar e da rota inteira — dá para andar olhando a cidade, não a tela.</p></section>
+    <section class="parada"><span class="n"><b>4</b></span><span class="dist">+ 2 a 12 horas</span><h2>Rota que cabe no seu tempo</h2><p>Escolha tempo, interesses e deslocamento: o app encadeia as paradas mais próximas e desenha a rota no mapa. Salve, marque visitados e favoritos, sugira novos lugares.</p></section>
+    <section class="parada"><span class="n"><b>5</b></span><span class="dist">Chegada · materiais</span><h2>Tudo do grupo</h2>
+      <div class="postais">
+        <a class="postal" href="../assets/md-viewer.html?src=../Grupo2-GuiaMobi/README.md&voltar=../Grupo2-GuiaMobi/"><b>README do grupo</b><small>integrantes, hipótese e pitch</small></a>
+        <a class="postal" href="../assets/md-viewer.html?src=../Grupo2-GuiaMobi/formulario-app.md&voltar=../Grupo2-GuiaMobi/"><b>Formulário de campo</b><small>20 perguntas · G2-&lt;nnn&gt;</small></a>
+        <a class="postal" href="../assets/md-viewer.html?src=../Grupo2-GuiaMobi/ContextoApp.md&voltar=../Grupo2-GuiaMobi/"><b>Contexto do produto</b><small>personas, jornada, KPIs</small></a>
+        <a class="postal" href="../assets/md-viewer.html?src=../Grupo2-GuiaMobi/Pesquisa-Dados.md&voltar=../Grupo2-GuiaMobi/"><b>Pesquisa e dados</b><small>14 artigos com DOI</small></a>
+        <a class="postal" href="Slides-GuiaMobi.pdf"><b>Slides (PDF)</b><small>para baixar</small></a>
+        <a class="postal" href="../coleta/"><b>App de coleta</b><small>formulário offline</small></a>
+      </div></section>
   </div>
-</footer>
 
+  <h2 style="font-weight:900">Equipe</h2>
+  <div class="equipe"><span>Cinthia</span><span>Danielly</span><span>Leandro</span><span>Guilherme</span><span>Esther</span></div>
+  <p style="margin-top:8px;color:var(--claro)">Prof. Renato · conteúdo e coordenadas de exemplo, a validar com fontes oficiais.</p>
+  <footer>Grupo 2 · GuiaMobi · Cerrado Tech · UNIFACC · Administração 8º semestre (VG), 2026</footer>
+</div>
 </body>
 </html>

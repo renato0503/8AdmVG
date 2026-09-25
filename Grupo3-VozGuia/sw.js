@@ -1,5 +1,5 @@
-const CACHE = 'vozguia-v1';
-const PRE = ['./', './index.html', './app.html', '../assets/mvp/mvp.css', '../assets/mvp/mvp.js', '../assets/logos/g3.svg'];
+const CACHE = 'vozguia-v2';
+const PRE = ['./', './index.html', './app.html', '../assets/logos/g3.svg'];
 
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(PRE)).then(() => self.skipWaiting()));

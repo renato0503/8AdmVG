@@ -1,5 +1,5 @@
-const CACHE = 'casapiloto-v1';
-const PRE = ['./', './index.html', './app.html', '../assets/mvp/mvp.css', '../assets/mvp/mvp.js', '../assets/logos/g4.svg'];
+const CACHE = 'casapiloto-v2';
+const PRE = ['./', './index.html', './app.html', '../assets/logos/g4.svg'];
 
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(PRE)).then(() => self.skipWaiting()));

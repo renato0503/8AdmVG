@@ -3,333 +3,352 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="theme-color" content="#b45309">
-<title>CasaPiloto — escolha a casa e veja o caminho</title>
+<meta name="theme-color" content="#0b2a5b">
+<title>CasaPiloto — do sonho à chave</title>
 <link rel="manifest" href="manifest.json">
 <link rel="icon" type="image/svg+xml" href="../assets/logos/g4.svg">
 <link rel="apple-touch-icon" href="../assets/logos/g4-192.png">
-<link rel="stylesheet" href="../assets/identidade/temas.css">
-<link rel="stylesheet" href="../assets/mvp/mvp.css">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;900&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
-.casa .planta{width:100%;background:#fffbeb;border:1px solid #fde68a;border-radius:12px;margin:8px 0}
-.casa .preco{font-family:var(--fonte-titulo);font-size:22px;font-weight:700;color:var(--accent-dark)}
-.casa.sel{outline:3px solid var(--accent);outline-offset:-3px}
-.sl{margin-bottom:14px}
-.sl .entre{font-size:13.5px;font-weight:700;color:#334155}
-.sl output{font-weight:800;color:var(--accent-dark)}
-.caminho{border-left:5px solid var(--accent);padding-left:12px}
-.caminho.c2{border-color:var(--accent2)}
-.caminho.c3{border-color:#1c1917}
-.caminho .grande{font-family:var(--fonte-titulo);font-size:24px;font-weight:700;color:var(--tinta)}
-.semaforo{display:inline-flex;align-items:center;gap:6px;font-weight:800;font-size:13px}
-.semaforo i{width:12px;height:12px;border-radius:50%;display:inline-block}
-table.cmp{width:100%;border-collapse:collapse;font-size:13px}
-table.cmp th,table.cmp td{padding:8px 6px;border-bottom:1px solid #e7e5e4;text-align:left;vertical-align:top}
-table.cmp th{font-size:11.5px;text-transform:uppercase;color:#78716c}
-.tab-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+/* ===== CasaPiloto · estética de prancha técnica (blueprint): azul, grade, traço branco, cotas em monoespaçada ===== */
+:root{--azul:#0b2a5b;--azul2:#123a78;--traco:#e8f0ff;--ciano:#7dd3fc;--laranja:#fb923c;--verde:#4ade80;--verm:#f87171;--mono:"IBM Plex Mono",monospace}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Archivo,system-ui,sans-serif;color:var(--traco);min-height:100dvh;
+  background:var(--azul) linear-gradient(rgba(125,211,252,.08) 1px,transparent 1px) 0 0/22px 22px,linear-gradient(90deg,rgba(125,211,252,.08) 1px,transparent 1px) 0 0/22px 22px;background-color:var(--azul)}
+button,input,select{font:inherit;color:inherit}
+header{position:sticky;top:0;z-index:5;background:rgba(11,42,91,.94);backdrop-filter:blur(6px);border-bottom:2px solid var(--traco);padding:calc(10px + env(safe-area-inset-top)) 14px 0}
+.cab{display:flex;align-items:center;gap:10px}
+.cab img{width:36px;height:36px;border-radius:8px;background:#fff}
+.cab h1{font-weight:900;font-size:20px;letter-spacing:.02em;flex:1}
+.cab .carimbo{font-family:var(--mono);font-size:10.5px;border:1.5px solid var(--traco);padding:2px 6px;transform:rotate(-3deg);opacity:.8}
+.etapas{display:flex;margin-top:10px;overflow-x:auto;scrollbar-width:none}
+.etapas a{flex:1 0 auto;text-decoration:none;color:var(--traco);opacity:.6;font-family:var(--mono);font-size:12px;padding:10px 8px;min-height:44px;border-bottom:3px solid transparent;text-align:center;white-space:nowrap}
+.etapas a[aria-current=page]{opacity:1;border-color:var(--laranja);font-weight:600}
+main{max-width:720px;margin:0 auto;padding:16px 14px 90px}
+.tela{display:none}.tela.on{display:block;animation:entra .25s}
+@keyframes entra{from{opacity:0;transform:translateY(6px)}}
+h2{font-weight:900;font-size:24px;margin-bottom:4px}
+.cota{font-family:var(--mono);font-size:12px;opacity:.75;letter-spacing:.04em}
+.prancha{border:1.5px solid var(--traco);border-radius:4px;padding:14px;margin:18px 0 12px;background:rgba(18,58,120,.55);position:relative}
+.prancha::before{content:attr(data-rotulo);position:absolute;top:-9px;left:10px;background:var(--azul);font-family:var(--mono);font-size:11px;padding:0 6px}
+.casas{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.casa{border:1.5px solid var(--traco);border-radius:4px;padding:10px;cursor:pointer;background:transparent;text-align:left;min-height:44px}
+.casa[aria-pressed=true]{background:var(--traco);color:var(--azul)}
+.casa svg{width:100%;height:auto;display:block;margin-bottom:6px}
+.casa b{font-size:16px;display:block}
+.num{font-family:var(--mono);font-weight:600}
+.btn{min-height:46px;border:1.5px solid var(--traco);border-radius:4px;background:transparent;font-weight:700;padding:0 14px;cursor:pointer}
+.btn.cheio{background:var(--laranja);border-color:var(--laranja);color:#111}
+.fila{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.fila .btn{flex:1 1 auto}
+.campo{display:grid;grid-template-columns:1fr auto;align-items:center;gap:4px 10px;margin:12px 0}
+.campo label{font-weight:700;font-size:14.5px}
+.campo output{font-family:var(--mono);font-weight:600;color:var(--ciano)}
+.campo input[type=range]{grid-column:1/-1;width:100%;accent-color:var(--laranja);height:28px}
+.in{width:100%;min-height:46px;border:1.5px solid var(--traco);border-radius:4px;background:var(--azul);padding:8px 10px}
+.cena{display:grid;grid-template-columns:1fr;gap:10px}
+.cena .prancha{margin:0}
+.cena h3{font-size:17px;display:flex;justify-content:space-between;gap:8px}
+.big{font-family:var(--mono);font-size:26px;font-weight:600;color:var(--ciano)}
+.sinal{display:flex;gap:10px;align-items:center;margin-top:8px}
+.sinal i{width:22px;height:22px;border-radius:50%;border:2px solid var(--traco);opacity:.25}
+.sinal i.on{opacity:1}.sinal i:nth-child(1){background:var(--verde)}.sinal i:nth-child(2){background:#facc15}.sinal i:nth-child(3){background:var(--verm)}
+canvas{width:100%;height:220px;display:block}
+.leg{display:flex;gap:12px;flex-wrap:wrap;font-family:var(--mono);font-size:11.5px;margin-top:6px}.leg span::before{content:"";display:inline-block;width:14px;height:3px;margin-right:5px;vertical-align:middle;background:var(--c)}
+.tab{width:100%;border-collapse:collapse;font-size:13.5px}.tab th,.tab td{border-bottom:1px dashed rgba(232,240,255,.35);padding:7px 4px;text-align:right}.tab th:first-child,.tab td:first-child{text-align:left}
+.barra{height:14px;border:1.5px solid var(--traco);border-radius:2px;overflow:hidden}.barra i{display:block;height:100%;background:repeating-linear-gradient(45deg,var(--laranja) 0 6px,#fdba74 6px 12px)}
+.check{display:flex;gap:10px;align-items:center;padding:8px 0;border-bottom:1px dashed rgba(232,240,255,.3);min-height:44px;cursor:pointer}
+.check input{width:22px;height:22px;accent-color:var(--laranja)}
+.aviso{font-family:var(--mono);font-size:11.5px;border-left:3px solid var(--laranja);padding:6px 10px;margin:10px 0;opacity:.9}
+#brinde{position:fixed;bottom:18px;left:50%;transform:translateX(-50%) translateY(20px);opacity:0;background:var(--traco);color:var(--azul);padding:10px 16px;border-radius:4px;font-weight:700;transition:.25s;z-index:20;max-width:92vw}
+#brinde.on{opacity:1;transform:translateX(-50%)}
+.planta rect{transition:fill .3s}
+:focus-visible{outline:3px solid var(--laranja);outline-offset:2px}
+[hidden]{display:none!important}
+@media(min-width:620px){.cena{grid-template-columns:1fr 1fr 1fr}.casas{grid-template-columns:repeat(4,1fr)}}
 </style>
 </head>
-<body class="tema-g4">
-<div class="app">
-  <header class="topo">
-    <div class="marca">
-      <img src="../assets/logos/g4.svg" alt="">
-      <div><h1>CasaPiloto</h1><div class="sub">Construtora Exemplo · simulador de compra</div></div>
-      <div class="acoes">
-        <button class="icone-btn" id="btn-instalar" hidden aria-label="Instalar app"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg></button>
-        <a class="icone-btn" href="index.html" aria-label="Sobre o projeto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/></svg></a>
-      </div>
+<body>
+<header>
+  <div class="cab"><img src="../assets/logos/g4.svg" alt=""><h1>CasaPiloto</h1><span class="carimbo">SIMULAÇÃO · NÃO É OFERTA</span></div>
+  <nav class="etapas" aria-label="Etapas">
+    <a href="#/casas">01 CASA</a><a href="#/simular">02 DINHEIRO</a><a href="#/cenarios">03 CENÁRIOS</a><a href="#/plano">04 PLANO</a><a href="#/corretor">05 CORRETOR</a>
+  </nav>
+</header>
+<main>
+  <!-- 01 -->
+  <section class="tela" id="t-casas">
+    <h2>Escolha a casa piloto</h2><p class="cota">4 MODELOS ILUSTRATIVOS · PREÇOS DE EXEMPLO</p>
+    <div class="casas" id="lista-casas"></div>
+    <div class="fila"><button class="btn" id="ver-planta">Ver planta e tour</button><button class="btn cheio" data-ir="#/simular">Próximo: seu dinheiro →</button></div>
+  </section>
+  <!-- planta -->
+  <section class="tela" id="t-casa">
+    <h2 data-out="casaNome"></h2><p class="cota" data-out="casaDesc"></p>
+    <div class="prancha" data-rotulo="PLANTA BAIXA · ESC. ILUSTRATIVA"><svg class="planta" id="planta" viewBox="-1 -1 14 10" role="img" aria-label="Planta baixa"></svg></div>
+    <div class="prancha" data-rotulo="TOUR"><p id="tour-txt" aria-live="polite">Toque em ▶ para percorrer os cômodos.</p>
+      <div class="fila"><button class="btn" id="tour-ant" aria-label="Cômodo anterior">◀</button><button class="btn cheio" id="tour-auto">▶ Tour automático</button><button class="btn" id="tour-prox" aria-label="Próximo cômodo">▶</button></div></div>
+    <div class="fila"><button class="btn" data-ir="#/casas">← Modelos</button><button class="btn cheio" data-ir="#/simular">Simular esta casa →</button></div>
+  </section>
+  <!-- 02 -->
+  <section class="tela" id="t-simular">
+    <h2>Seu dinheiro hoje</h2><p class="cota">TUDO FICA NO APARELHO · MUDE E VEJA OS CENÁRIOS NA HORA</p>
+    <div class="prancha" data-rotulo="RENDA E GASTOS">
+      <div class="campo"><label for="i-renda">Renda familiar/mês</label><output data-out="renda"></output><input type="range" id="i-renda" min="1500" max="25000" step="100" data-bind="renda"></div>
+      <div class="campo"><label for="i-alug">Aluguel atual/mês</label><output data-out="alug"></output><input type="range" id="i-alug" min="0" max="5000" step="50" data-bind="alug"></div>
     </div>
-  </header>
+    <div class="prancha" data-rotulo="PARA A ENTRADA">
+      <div class="campo"><label for="i-dep">Consigo guardar/mês</label><output data-out="dep"></output><input type="range" id="i-dep" min="100" max="8000" step="50" data-bind="dep"></div>
+      <div class="campo"><label for="i-fgts">FGTS + reserva hoje</label><output data-out="fgts"></output><input type="range" id="i-fgts" min="0" max="200000" step="1000" data-bind="fgts"></div>
+      <div class="campo"><label for="i-ent">Entrada</label><output data-out="ent"></output><input type="range" id="i-ent" min="10" max="50" step="5" data-bind="ent"></div>
+    </div>
+    <div class="prancha" data-rotulo="PREMISSAS (EDITÁVEIS)">
+      <div class="campo"><label for="i-rend">Rendimento do investimento/ano</label><output data-out="rend"></output><input type="range" id="i-rend" min="4" max="14" step="0.5" data-bind="rend"></div>
+      <div class="campo"><label for="i-val">Valorização do imóvel/ano</label><output data-out="val"></output><input type="range" id="i-val" min="0" max="10" step="0.5" data-bind="val"></div>
+      <label class="cota" for="i-linha">LINHA DE CRÉDITO</label>
+      <select class="in" id="i-linha" data-bind="linha"></select>
+      <div class="campo"><label for="i-juros">Juros do financiamento/ano</label><output data-out="juros"></output><input type="range" id="i-juros" min="3" max="16" step="0.05" data-bind="juros"></div>
+      <div class="campo"><label for="i-prazo">Prazo</label><output data-out="prazo"></output><input type="range" id="i-prazo" min="10" max="35" step="1" data-bind="prazo"></div>
+      <label class="cota" for="i-sist">SISTEMA DE AMORTIZAÇÃO</label>
+      <select class="in" id="i-sist" data-bind="sist"><option value="price">Price (parcelas iguais)</option><option value="sac">SAC (parcelas caem)</option></select>
+      <p class="aviso">Taxas de referência para comparação — confirmar na Caixa/banco. Faixas do Minha Casa, Minha Vida mudam por portaria.</p>
+    </div>
+    <div class="fila"><button class="btn cheio" data-ir="#/cenarios">Ver cenários →</button></div>
+  </section>
+  <!-- 03 -->
+  <section class="tela" id="t-cenarios">
+    <h2>Três caminhos, lado a lado</h2><p class="cota" data-out="resumoCasa"></p>
+    <div class="cena">
+      <div class="prancha" data-rotulo="A · GUARDAR NA POUPANÇA"><h3>À vista</h3><div class="big" data-out="tGuardar"></div><p class="cota" data-out="aGuardar"></p></div>
+      <div class="prancha" data-rotulo="B · INVESTIR"><h3>À vista</h3><div class="big" data-out="tInvestir"></div><p class="cota" data-out="aInvestir"></p></div>
+      <div class="prancha" data-rotulo="C · FINANCIAR"><h3>Chave após entrada</h3><div class="big" data-out="tFinanciar"></div><p class="cota" data-out="aFinanciar"></p>
+        <div class="sinal" aria-label="Semáforo do comprometimento da renda"><i data-sinal="0"></i><i data-sinal="1"></i><i data-sinal="2"></i><span class="num" data-out="compr"></span></div></div>
+    </div>
+    <div class="prancha" data-rotulo="CAMINHO ATÉ A CHAVE"><canvas id="g-caminho" aria-label="Gráfico do saldo acumulado em cada caminho comparado ao preço do imóvel"></canvas>
+      <div class="leg"><span style="--c:#e8f0ff">preço (valorizando)</span><span style="--c:#7dd3fc">A poupança</span><span style="--c:#4ade80">B investir</span><span style="--c:#fb923c">entrada (C)</span></div></div>
+    <div class="prancha" data-rotulo="PARCELAS DO FINANCIAMENTO"><canvas id="g-parcelas" aria-label="Gráfico das parcelas ao longo do tempo"></canvas>
+      <table class="tab" style="margin-top:8px"><tr><th></th><th>1ª parcela</th><th>Última</th><th>Total pago</th></tr><tr><td>Price</td><td data-out="p1"></td><td data-out="pN"></td><td data-out="pT"></td></tr><tr><td>SAC</td><td data-out="s1"></td><td data-out="sN"></td><td data-out="sT"></td></tr></table></div>
+    <p class="aviso">Premissa de poupança: 6,17% ao ano. Simulação educativa; não considera seguros, taxas nem correção da TR.</p>
+    <div class="fila"><button class="btn cheio" id="criar-plano">Transformar em plano →</button></div>
+  </section>
+  <!-- 04 -->
+  <section class="tela" id="t-plano">
+    <h2>Plano da entrada</h2>
+    <div id="plano-vazio" class="prancha" data-rotulo="SEM PLANO"><p>Monte os cenários e toque em “Transformar em plano”.</p><div class="fila"><button class="btn cheio" data-ir="#/cenarios">Ir aos cenários</button></div></div>
+    <div id="plano-cheio" hidden>
+      <div class="prancha" data-rotulo="META"><p class="cota" data-out="planoCasa"></p><div class="big" data-out="planoSaldo"></div><div class="barra" style="margin:8px 0"><i data-estilo="planoPct"></i></div><p class="cota" data-out="planoFalta"></p></div>
+      <div class="prancha" data-rotulo="DEPÓSITOS"><div class="fila" style="margin-top:0"><input class="in" id="dep-valor" type="number" inputmode="decimal" placeholder="Valor (R$)" style="flex:1 1 140px"><button class="btn cheio" id="dep-add">Registrar depósito</button></div>
+        <table class="tab" style="margin-top:8px" id="deps"></table></div>
+      <div class="prancha" data-rotulo="LEMBRETE MENSAL"><div class="campo"><label for="i-dia">Dia do depósito</label><output data-out="dia"></output><input type="range" id="i-dia" min="1" max="28" data-bind="plano.dia"></div>
+        <p class="cota" data-out="proxLembrete"></p><div class="fila"><button class="btn" id="baixar-ics">Adicionar à agenda (.ics)</button><button class="btn" id="notif">Ativar aviso no celular</button></div></div>
+      <div class="prancha" data-rotulo="CHECKLIST DO FINANCIAMENTO"><div id="checklist"></div></div>
+      <div class="fila"><button class="btn" id="apagar-plano">Descartar plano</button><button class="btn cheio" data-ir="#/corretor">Falar com corretor →</button></div>
+    </div>
+  </section>
+  <!-- 05 -->
+  <section class="tela" id="t-corretor">
+    <h2>Enviar ao corretor</h2><p class="cota">SÓ COM O SEU CONSENTIMENTO · ENVIO SIMULADO NESTA VERSÃO</p>
+    <div class="prancha" data-rotulo="O QUE SERÁ ENVIADO"><p data-out="resumoEnvio"></p></div>
+    <div class="prancha" data-rotulo="CONTATO">
+      <label class="cota" for="c-nome">NOME</label><input class="in" id="c-nome" autocomplete="name">
+      <label class="cota" for="c-tel" style="display:block;margin-top:10px">WHATSAPP</label><input class="in" id="c-tel" type="tel" inputmode="tel" autocomplete="tel">
+      <label class="check"><input type="checkbox" id="c-ok"> Autorizo o envio desta simulação e do meu contato à construtora para retorno (LGPD). Posso revogar quando quiser.</label>
+      <div class="fila"><button class="btn cheio" id="enviar">Enviar simulação</button></div>
+    </div>
+    <div id="envios"></div>
+    <div class="prancha" data-rotulo="DADOS"><div class="fila" style="margin-top:0"><button class="btn" id="exportar">Exportar JSON</button><button class="btn" id="importar" data-teste="pular">Importar</button><button class="btn" id="zerar">Apagar tudo</button></div>
+      <p class="cota" style="margin-top:10px">CASAPILOTO · GRUPO 4 · 8ADMVG · UNIFACC-MT</p></div>
+  </section>
+</main>
+<div id="brinde" role="status" aria-live="polite"></div>
 
-  <main>
-    <!-- ============ CASAS ============ -->
-    <section class="view" data-view="casas" aria-label="Casas piloto">
-      <div class="aviso-exemplo">Modelos, preços e taxas de <b>exemplo</b>. As simulações são <b>estimativas</b> e não são proposta de crédito. Confira condições reais com a construtora e o banco.</div>
-      <h3 class="titulo-sec">Escolha sua casa piloto</h3>
-      <div id="lista-casas"></div>
-      <h3 class="titulo-sec">Comparar todas</h3>
-      <div class="card tab-wrap" id="comparar"></div>
-    </section>
-
-    <!-- ============ SIMULAR ============ -->
-    <section class="view" data-view="simular" aria-label="Simular">
-      <div class="card destaque">
-        <div class="entre"><div><div class="muted">Casa escolhida</div><b id="s-casa">—</b></div><span class="casa"><span class="preco" id="s-preco">—</span></span></div>
-      </div>
-      <h3 class="titulo-sec">Seu momento</h3>
-      <div class="card">
-        <div class="campo"><label for="i-renda">Renda familiar (faixa)</label><select id="i-renda"></select></div>
-        <div class="sl"><div class="entre"><label for="i-dep">Quanto consigo guardar por mês</label><output id="o-dep"></output></div><input type="range" id="i-dep" min="200" max="8000" step="100"></div>
-        <div class="sl"><div class="entre"><label for="i-alug">Aluguel que pago hoje</label><output id="o-alug"></output></div><input type="range" id="i-alug" min="0" max="5000" step="100"></div>
-        <div class="sl"><div class="entre"><label for="i-fgts">Saldo de FGTS para usar</label><output id="o-fgts"></output></div><input type="range" id="i-fgts" min="0" max="80000" step="1000"></div>
-      </div>
-      <h3 class="titulo-sec">Premissas <span class="chip atencao">a validar</span></h3>
-      <div class="card">
-        <div class="sl"><div class="entre"><label for="i-ent">Entrada no financiamento</label><output id="o-ent"></output></div><input type="range" id="i-ent" min="10" max="50" step="5"></div>
-        <div class="sl"><div class="entre"><label for="i-prazo">Prazo do financiamento</label><output id="o-prazo"></output></div><input type="range" id="i-prazo" min="10" max="35" step="1"></div>
-        <div class="sl"><div class="entre"><label for="i-juros">Juros do financiamento (ao ano)</label><output id="o-juros"></output></div><input type="range" id="i-juros" min="5" max="14" step="0.25"></div>
-        <div class="sl"><div class="entre"><label for="i-inv">Rendimento de investimento (ao ano, líquido)</label><output id="o-inv"></output></div><input type="range" id="i-inv" min="4" max="13" step="0.25"></div>
-        <div class="sl"><div class="entre"><label for="i-val">Valorização do imóvel (ao ano)</label><output id="o-val"></output></div><input type="range" id="i-val" min="0" max="8" step="0.5"></div>
-        <p class="muted">Poupança considerada: 6,17% ao ano. Referências de mercado mudam — revise antes de decidir.</p>
-      </div>
-      <h3 class="titulo-sec">Três caminhos</h3>
-      <div id="resultado"></div>
-      <button class="btn bloco" id="btn-plano">Criar meu plano com este cenário</button>
-    </section>
-
-    <!-- ============ PLANO ============ -->
-    <section class="view" data-view="plano" aria-label="Meu plano">
-      <div id="plano"></div>
-    </section>
-
-    <!-- ============ DADOS ============ -->
-    <section class="view" data-view="dados" aria-label="Dados">
-      <h3 class="titulo-sec">Falar com a construtora</h3>
-      <div class="card">
-        <p class="muted">Quando se sentir pronto(a), envie sua simulação para um corretor. Só é enviado o que você escolher (protótipo: o envio é <b>simulado</b>).</p>
-        <button class="btn bloco" id="btn-corretor">Quero falar com um corretor</button>
-      </div>
-      <h3 class="titulo-sec">Backup</h3>
-      <div class="card">
-        <div class="btns"><button class="btn sec" data-acao="exportar">Exportar JSON</button><button class="btn sec" data-acao="importar">Importar JSON</button></div>
-        <button class="btn perigo bloco" data-acao="resetar" style="margin-top:10px">Apagar tudo</button>
-      </div>
-      <p class="muted" style="text-align:center;margin:18px 0">CasaPiloto · Grupo 4 · 8AdmVG · Unifacc — MVP de Customer Discovery</p>
-    </section>
-  </main>
-
-  <nav class="nav-inf" aria-label="Navegação principal"><div class="dentro">
-    <button data-aba="casas"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/></svg>Casas</button>
-    <button data-aba="simular"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M8 6h8M8 11h2M12 11h2M8 15h2M12 15h2M16 11v4"/></svg>Simular</button>
-    <button data-aba="plano"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg>Meu plano</button>
-    <button data-aba="dados"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>Dados</button>
-  </div></nav>
-</div>
-
-<script src="../assets/mvp/mvp.js"></script>
 <script>
-const { $, $$, esc, criarEstado, fmtBRL, fmtNum, fmtData, hoje, uid, toast, modal, confirmar, ligarDados, abas, pwa } = MVP;
+/* ============================================================================
+   Construção do CasaPiloto: reatividade por Proxy. O estado é embrulhado num Proxy
+   profundo; qualquer escrita agenda (1 por quadro) a atualização de todos os
+   [data-bind] (entradas de mão dupla), [data-out] (saídas calculadas), dos gráficos em
+   <canvas> e a gravação no localStorage. As telas não se redesenham "à mão".
+   ============================================================================ */
+const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const R$ = v => isFinite(v) ? v.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL', maximumFractionDigits: 0 }) : '—';
+const anos = m => !isFinite(m) ? 'mais de 40 anos' : m < 12 ? `${m} meses` : `${Math.floor(m / 12)} a ${m % 12 ? m % 12 + ' m' : ''}`.replace(/ a $/, ' anos').replace(/^(\d+) a (\d+ m)$/, '$1 anos e $2').replace(/^1 anos/, '1 ano');
+let tb; const brinde = m => { const e = $('#brinde'); e.textContent = m; e.classList.add('on'); clearTimeout(tb); tb = setTimeout(() => e.classList.remove('on'), 2400); };
 
-/* Modelos de exemplo. Cômodos em "células" de uma grade 12x8 para desenhar a planta. */
 const CASAS = [
-  { id: 'compacta', nome: 'Compacta', desc: '2 quartos · 48 m² · 1 vaga', preco: 210000, comodos: [['Sala/cozinha', 0, 0, 6, 5], ['Quarto', 6, 0, 6, 4], ['Quarto', 6, 4, 6, 4], ['Banho', 0, 5, 3, 3], ['Área', 3, 5, 3, 3]] },
-  { id: 'familia', nome: 'Família', desc: '3 quartos (1 suíte) · 70 m² · 2 vagas', preco: 320000, comodos: [['Sala', 0, 0, 5, 4], ['Cozinha', 0, 4, 5, 4], ['Suíte', 5, 0, 4, 4], ['Quarto', 9, 0, 3, 4], ['Quarto', 9, 4, 3, 4], ['Banho', 5, 4, 2, 4], ['Área', 7, 4, 2, 4]] },
-  { id: 'sobrado', nome: 'Sobrado', desc: '3 suítes · 110 m² · 2 vagas', preco: 480000, comodos: [['Sala de estar', 0, 0, 6, 4], ['Cozinha gourmet', 0, 4, 6, 4], ['Suíte master', 6, 0, 6, 3], ['Suíte', 6, 3, 3, 3], ['Suíte', 9, 3, 3, 3], ['Varanda', 6, 6, 6, 2]] },
-  { id: 'premium', nome: 'Premium', desc: '4 suítes · 160 m² · piscina · 3 vagas', preco: 750000, comodos: [['Living', 0, 0, 7, 4], ['Cozinha', 0, 4, 4, 4], ['Suíte master', 7, 0, 5, 4], ['Suíte', 4, 4, 3, 2], ['Suíte', 4, 6, 3, 2], ['Suíte', 7, 4, 3, 4], ['Piscina', 10, 4, 2, 4]] },
+  { id: 'compacta', nome: 'Compacta', desc: '2 quartos · 48 m² · 1 vaga', preco: 210000, com: [['Sala/cozinha', 0, 0, 6, 5, 'Ambiente integrado, janela ampla voltada ao nascente.'], ['Quarto 1', 6, 0, 6, 4, 'Cabe cama de casal e guarda-roupa de 2 portas.'], ['Quarto 2', 6, 4, 6, 4, 'Bom para criança ou escritório.'], ['Banho', 0, 5, 3, 3, 'Banheiro social com box.'], ['Área', 3, 5, 3, 3, 'Área de serviço coberta.']] },
+  { id: 'familia', nome: 'Família', desc: '3 quartos (1 suíte) · 70 m² · 2 vagas', preco: 320000, com: [['Sala', 0, 0, 5, 4, 'Sala de estar com acesso à varanda.'], ['Cozinha', 0, 4, 5, 4, 'Cozinha com bancada e espaço para mesa.'], ['Suíte', 5, 0, 4, 4, 'Suíte do casal com banheiro privativo.'], ['Quarto', 9, 0, 3, 4, 'Quarto para um filho.'], ['Quarto', 9, 4, 3, 4, 'Quarto para outro filho ou visitas.'], ['Banho', 5, 4, 2, 4, 'Banheiro social.'], ['Área', 7, 4, 2, 4, 'Lavanderia.']] },
+  { id: 'sobrado', nome: 'Sobrado', desc: '3 suítes · 110 m² · 2 vagas', preco: 480000, com: [['Estar', 0, 0, 6, 4, 'Pé-direito duplo na entrada.'], ['Cozinha gourmet', 0, 4, 6, 4, 'Churrasqueira integrada.'], ['Suíte master', 6, 0, 6, 3, 'Closet e varanda.'], ['Suíte', 6, 3, 3, 3, 'Suíte com janela para o jardim.'], ['Suíte', 9, 3, 3, 3, 'Suíte com escrivaninha.'], ['Varanda', 6, 6, 6, 2, 'Varanda superior.']] },
+  { id: 'premium', nome: 'Premium', desc: '4 suítes · 160 m² · piscina · 3 vagas', preco: 750000, com: [['Living', 0, 0, 7, 4, 'Living integrado com a área gourmet.'], ['Cozinha', 0, 4, 4, 4, 'Cozinha com ilha.'], ['Suíte master', 7, 0, 5, 4, 'Suíte com banheira.'], ['Suíte', 4, 4, 3, 2, 'Suíte de hóspedes.'], ['Suíte', 4, 6, 3, 2, 'Suíte de hóspedes.'], ['Suíte', 7, 4, 3, 4, 'Suíte com varanda.'], ['Piscina', 10, 4, 2, 4, 'Piscina com deck.']] },
 ];
-const RENDAS = [
-  { id: 'r1', rot: 'Até R$ 2.850', ref: 2400 }, { id: 'r2', rot: 'R$ 2.850 a R$ 4.700', ref: 3800 },
-  { id: 'r3', rot: 'R$ 4.700 a R$ 8.600', ref: 6600 }, { id: 'r4', rot: 'R$ 8.600 a R$ 12.000', ref: 10300 },
-  { id: 'r5', rot: 'Acima de R$ 12.000', ref: 15000 },
-];
-const POUPANCA = 6.17;
+const LINHAS = { mcmv1: ['MCMV Faixa 1 (ref. ~4,25%)', 4.25], mcmv2: ['MCMV Faixa 2 (ref. ~6%)', 6], mcmv3: ['MCMV Faixa 3 (ref. ~8,16%)', 8.16], mcmv4: ['MCMV Faixa 4 (ref. ~10%)', 10], sbpe: ['Mercado / SBPE (ref. ~11,5%)', 11.5], livre: ['Outra taxa (ajuste abaixo)', null] };
+const POUP = 6.17;
+const DOCS = ['RG e CPF de todos os compradores', 'Certidão de estado civil', 'Comprovante de renda (3 últimos meses)', 'Declaração de Imposto de Renda', 'Extrato do FGTS', 'Comprovante de residência', 'Carteira de trabalho (se usar FGTS)'];
 
-function semente() {
-  return { casa: 'familia', s: { renda: 'r3', dep: 1200, alug: 1300, fgts: 15000, ent: 20, prazo: 30, juros: 11.5, inv: 10, val: 4 }, plano: null, contatos: [] };
-}
-const E = criarEstado('casapiloto:v1', semente);
-const casaSel = () => CASAS.find(c => c.id === E.d.casa);
-const mensal = aa => Math.pow(1 + aa / 100, 1 / 12) - 1;
-
-/* meses até juntar "alvo(t)" (que cresce com a valorização) depositando dep/mês a uma taxa */
-function mesesParaJuntar(alvoInicial, dep, taxaAA, valAA, inicial = 0) {
-  const r = mensal(taxaAA), v = mensal(valAA);
-  let saldo = inicial, alvo = alvoInicial;
-  for (let m = 0; m <= 600; m++) {
-    if (saldo >= alvo) return { meses: m, alvo, saldo };
-    saldo = saldo * (1 + r) + dep; alvo *= 1 + v;
-  }
-  return { meses: Infinity, alvo, saldo };
-}
-function price(P, aa, anos) { const i = mensal(aa), n = anos * 12; return P * i / (1 - Math.pow(1 + i, -n)); }
-function sac(P, aa, anos) {
-  const i = mensal(aa), n = anos * 12, amort = P / n;
-  let total = 0; for (let k = 0; k < n; k++) total += amort + (P - amort * k) * i;
-  return { primeira: amort + P * i, ultima: amort + amort * i, total };
-}
-const tempo = m => !isFinite(m) ? 'mais de 50 anos' : m < 12 ? `${m} meses` : `${Math.floor(m / 12)} a${Math.floor(m / 12) > 1 ? 'nos' : 'no'}${m % 12 ? ` e ${m % 12} m` : ''}`;
-
-function calcular(casa, s) {
-  const renda = RENDAS.find(r => r.id === s.renda).ref;
-  const g = mesesParaJuntar(casa.preco, s.dep, POUPANCA, s.val, s.fgts);
-  const inv = mesesParaJuntar(casa.preco, s.dep, s.inv, s.val, s.fgts);
-  const entradaAlvo = casa.preco * s.ent / 100;
-  const juntaEnt = mesesParaJuntar(entradaAlvo, s.dep, s.inv, s.val, s.fgts);
-  const precoNaHora = juntaEnt.alvo / (s.ent / 100);
-  const financiado = Math.max(0, precoNaHora - juntaEnt.saldo);
-  const pmt = price(financiado, s.juros, s.prazo), sc = sac(financiado, s.juros, s.prazo);
-  return {
-    renda,
-    guardar: { meses: g.meses, preco: g.alvo, aluguel: isFinite(g.meses) ? g.meses * s.alug : Infinity },
-    investir: { meses: inv.meses, preco: inv.alvo, aluguel: isFinite(inv.meses) ? inv.meses * s.alug : Infinity },
-    financiar: { mesesEntrada: juntaEnt.meses, entrada: juntaEnt.saldo, financiado, pmt, totalPrice: pmt * s.prazo * 12, sac: sc,
-      aluguel: isFinite(juntaEnt.meses) ? juntaEnt.meses * s.alug : Infinity, compr: pmt / renda },
-  };
-}
-function semaforo(c) {
-  const [cor, txt] = c <= 0.30 ? ['#16a34a', 'Cabe (até 30% da renda)'] : c <= 0.35 ? ['#d97706', 'No limite'] : ['#dc2626', 'Pesado demais'];
-  return `<span class="semaforo"><i style="background:${cor}"></i>${txt} · ${fmtNum(c * 100)}% da renda</span>`;
-}
-
-function planta(casa) {
-  const cs = 26;
-  return `<svg class="planta" viewBox="0 0 ${12 * cs + 8} ${8 * cs + 8}" role="img" aria-label="Planta simplificada: ${casa.comodos.map(c => c[0]).join(', ')}">
-    ${casa.comodos.map(([n, x, y, w, h]) => `<rect x="${4 + x * cs}" y="${4 + y * cs}" width="${w * cs}" height="${h * cs}" fill="${n === 'Piscina' ? '#bae6fd' : '#fff'}" stroke="#92400e" stroke-width="2"/>
-      <text x="${4 + (x + w / 2) * cs}" y="${4 + (y + h / 2) * cs + 4}" font-size="11" text-anchor="middle" fill="#44403c" font-family="Inter,Arial">${n}</text>`).join('')}
-  </svg>`;
-}
-
-function renderCasas() {
-  $('#lista-casas').innerHTML = CASAS.map(c => `<div class="card casa ${c.id === E.d.casa ? 'sel' : ''}">
-    <div class="entre"><div><h3>${esc(c.nome)}</h3><div class="muted">${esc(c.desc)}</div></div><span class="preco">${fmtBRL(c.preco)}</span></div>
-    ${planta(c)}
-    <div class="btns"><button class="btn ${c.id === E.d.casa ? 'ok' : ''}" data-casa="${c.id}" aria-pressed="${c.id === E.d.casa}">${c.id === E.d.casa ? '✓ Escolhida — simular' : 'Escolher e simular'}</button>
-    <button class="btn sec" data-tour="${c.id}">Tour virtual</button></div></div>`).join('');
-  const s = E.d.s;
-  $('#comparar').innerHTML = `<table class="cmp"><thead><tr><th>Casa</th><th>Juntar entrada</th><th>Parcela (Price)</th><th>Na renda</th></tr></thead><tbody>
-    ${CASAS.map(c => { const r = calcular(c, s); return `<tr><td><b>${esc(c.nome)}</b><br>${fmtBRL(c.preco)}</td><td>${tempo(r.financiar.mesesEntrada)}</td><td>${fmtBRL(r.financiar.pmt)}</td><td>${fmtNum(r.financiar.compr * 100)}%</td></tr>`; }).join('')}
-    </tbody></table><p class="muted" style="margin-top:6px">Com as premissas atuais da aba Simular.</p>`;
-}
-
-const CAMPOS = { dep: v => fmtBRL(v), alug: v => fmtBRL(v), fgts: v => fmtBRL(v), ent: v => `${v}%`, prazo: v => `${v} anos`, juros: v => `${fmtNum(v, 2)}%`, inv: v => `${fmtNum(v, 2)}%`, val: v => `${fmtNum(v, 1)}%` };
-function renderSimular() {
-  const c = casaSel(), s = E.d.s;
-  $('#s-casa').textContent = `${c.nome} · ${c.desc}`; $('#s-preco').textContent = fmtBRL(c.preco);
-  $('#i-renda').innerHTML = RENDAS.map(r => `<option value="${r.id}" ${r.id === s.renda ? 'selected' : ''}>${r.rot}</option>`).join('');
-  Object.entries(CAMPOS).forEach(([k, f]) => { $('#i-' + k).value = s[k]; $('#o-' + k).textContent = f(s[k]); });
-  const r = calcular(c, s);
-  $('#resultado').innerHTML = `
-    <div class="card caminho"><div class="muted">1 · Guardar na poupança e comprar à vista</div>
-      <div class="grande">${tempo(r.guardar.meses)}</div>
-      <div class="muted">Preço estimado na data: ${fmtBRL(r.guardar.preco)} · aluguel pago enquanto junta: <b>${isFinite(r.guardar.aluguel) ? fmtBRL(r.guardar.aluguel) : '—'}</b></div></div>
-    <div class="card caminho c2"><div class="muted">2 · Investir e comprar à vista</div>
-      <div class="grande">${tempo(r.investir.meses)}</div>
-      <div class="muted">Preço estimado na data: ${fmtBRL(r.investir.preco)} · aluguel pago enquanto junta: <b>${isFinite(r.investir.aluguel) ? fmtBRL(r.investir.aluguel) : '—'}</b></div></div>
-    <div class="card caminho c3"><div class="muted">3 · Juntar a entrada (${s.ent}%) investindo e financiar o resto</div>
-      <div class="grande">${tempo(r.financiar.mesesEntrada)} <span style="font-size:14px;font-weight:600">até a chave</span></div>
-      <div class="muted">Entrada acumulada: ${fmtBRL(r.financiar.entrada)} · financiado: ${fmtBRL(r.financiar.financiado)}</div>
-      <div style="margin:8px 0"><b>Parcela Price: ${fmtBRL(r.financiar.pmt)}</b> (fixa) · SAC: ${fmtBRL(r.financiar.sac.primeira)} → ${fmtBRL(r.financiar.sac.ultima)}</div>
-      ${semaforo(r.financiar.compr)}
-      <div class="muted" style="margin-top:6px">Total pago ao banco: Price ${fmtBRL(r.financiar.totalPrice)} · SAC ${fmtBRL(r.financiar.sac.total)}</div></div>
-    ${grafico(r)}
-    <div class="card"><b>Leitura rápida</b><p class="muted" style="margin-top:4px">${leitura(r, s)}</p></div>`;
-}
-function grafico(r) {
-  const itens = [['Guardar', r.guardar.meses], ['Investir', r.investir.meses], ['Entrada + financiar', r.financiar.mesesEntrada]];
-  const max = Math.max(...itens.map(i => isFinite(i[1]) ? i[1] : 0), 1);
-  return `<div class="card"><b>Tempo até a casa (meses)</b><svg viewBox="0 0 340 110" role="img" aria-label="Comparação de tempo: ${itens.map(i => i[0] + ' ' + (isFinite(i[1]) ? i[1] + ' meses' : 'mais de 50 anos')).join(', ')}" style="width:100%;margin-top:8px">
-    ${itens.map(([n, m], k) => { const w = isFinite(m) ? 160 * m / max : 160; return `<text x="0" y="${22 + k * 34}" font-size="11" fill="#44403c">${n}</text><rect x="120" y="${10 + k * 34}" width="${Math.max(2, w)}" height="18" rx="4" fill="${['var(--accent)', 'var(--accent2)', '#1c1917'][k]}"/><text x="${126 + w}" y="${24 + k * 34}" font-size="11" font-weight="700" fill="#1c1917">${isFinite(m) ? m : '600+'}</text>`; }).join('')}
-  </svg></div>`;
-}
-function leitura(r, s) {
-  const partes = [];
-  if (isFinite(r.financiar.mesesEntrada) && r.financiar.mesesEntrada < r.investir.meses) partes.push(`Financiar faz você chegar à casa <b>${tempo(r.investir.meses - r.financiar.mesesEntrada)} antes</b> do que juntar tudo investindo — em troca de pagar juros ao banco.`);
-  if (r.financiar.compr > 0.30) partes.push('A parcela passa de 30% da renda: considere uma entrada maior, prazo maior ou outro modelo de casa.');
-  if (s.alug > 0 && isFinite(r.investir.aluguel)) partes.push(`Enquanto junta para comprar à vista, você pagaria cerca de <b>${fmtBRL(r.investir.aluguel)}</b> de aluguel.`);
-  if (RENDAS.findIndex(x => x.id === s.renda) <= 3) partes.push('Pela faixa de renda, sua família pode se enquadrar no Minha Casa, Minha Vida — confira as condições na Caixa.');
-  return partes.join(' ') || 'Ajuste os valores para comparar cenários.';
-}
-
-function renderPlano() {
-  const p = E.d.plano;
-  if (!p) { $('#plano').innerHTML = `<div class="card vazio" style="margin-top:14px">Você ainda não criou um plano.<br><br><button class="btn" data-aba="simular">Ir para o simulador</button></div>`; return; }
-  const guardado = p.depositos.reduce((s, d) => s + d.valor, 0) + p.fgts;
-  const pct = Math.min(1, guardado / p.alvo);
-  const prox = new Date(); prox.setDate(p.diaLembrete); if (prox < new Date()) prox.setMonth(prox.getMonth() + 1);
-  $('#plano').innerHTML = `<h3 class="titulo-sec">Meu plano · ${esc(p.casaNome)}</h3>
-    <div class="card destaque"><div class="entre"><b>Meta da entrada</b><span class="chip">${fmtNum(pct * 100)}%</span></div>
-      <div style="font-family:var(--fonte-titulo);font-size:26px;font-weight:700;margin:6px 0">${fmtBRL(guardado)} <span class="muted">de ${fmtBRL(p.alvo)}</span></div>
-      <div class="barra" role="img" aria-label="${fmtNum(pct * 100)} por cento da meta"><i style="width:${pct * 100}%"></i></div>
-      <p class="muted" style="margin-top:8px">Depósito planejado: ${fmtBRL(p.dep)}/mês · previsão inicial: ${tempo(p.mesesPrevistos)} · criado em ${fmtData(p.criado)}</p>
-      <p class="muted">🔔 Próximo lembrete (simulado): <b>${prox.toLocaleDateString('pt-BR')}</b></p>
-      <div class="btns"><button class="btn" id="btn-deposito">+ Registrar depósito</button><button class="btn sec" id="btn-lembrete">Dia do lembrete</button></div></div>
-    <h3 class="titulo-sec">Depósitos</h3>
-    <div class="card"><ul class="lista">${p.depositos.slice().reverse().map(d => `<li class="entre"><span>${fmtData(d.data)}</span><b>${fmtBRL(d.valor)}</b><button class="btn sec peq" data-apagar-dep="${d.id}" aria-label="Apagar depósito de ${fmtBRL(d.valor)}">Apagar</button></li>`).join('') || '<li class="vazio">Nenhum depósito ainda.</li>'}</ul>
-    ${p.fgts ? `<p class="muted">Inclui ${fmtBRL(p.fgts)} de FGTS.</p>` : ''}</div>
-    <h3 class="titulo-sec">Checklist até a chave</h3>
-    <div class="card">${p.checklist.map((c, i) => `<label class="check"><input type="checkbox" data-check="${i}" ${c.ok ? 'checked' : ''}> ${esc(c.t)}</label>`).join('')}</div>
-    <button class="btn perigo bloco" id="btn-apagar-plano">Encerrar este plano</button>`;
-}
-
-function criarPlano() {
-  const c = casaSel(), s = E.d.s, r = calcular(c, s);
-  const salvar = () => {
-    E.d.plano = { casaId: c.id, casaNome: c.nome, alvo: Math.round(c.preco * s.ent / 100), dep: s.dep, fgts: s.fgts, mesesPrevistos: r.financiar.mesesEntrada, criado: hoje(), diaLembrete: 5, depositos: [],
-      checklist: ['Separar RG, CPF e comprovante de estado civil', 'Comprovantes de renda dos últimos 3 meses', 'Extrato do FGTS', 'Consultar CPF (sem restrições)', 'Simular no banco com a proposta da construtora', 'Visitar a casa piloto presencialmente'].map(t => ({ t, ok: false })) };
-    E.salvar(); renderPlano(); location.hash = 'plano'; toast('Plano criado.');
-  };
-  if (E.d.plano) confirmar('Você já tem um plano. Substituir pelo cenário atual?', salvar, 'Substituir'); else salvar();
-}
-
-function tour(id) {
-  const c = CASAS.find(x => x.id === id);
-  let k = 0;
-  const cena = () => { const [n, , , w, h] = c.comodos[k]; return `<div style="background:linear-gradient(180deg,#fef3c7,#fff);border-radius:14px;padding:18px;text-align:center;min-height:160px">
-      <div style="font-size:44px" aria-hidden="true">${/Su[ií]te|Quarto/.test(n) ? '🛏️' : /Cozinha/.test(n) ? '🍳' : /Banho/.test(n) ? '🚿' : /Piscina/.test(n) ? '🏊' : /Varanda|Área/.test(n) ? '🌿' : '🛋️'}</div>
-      <h3 style="margin-top:8px">${esc(n)}</h3><p class="muted">≈ ${fmtNum(w * h * 1.4, 0)} m² (ilustrativo) · ${k + 1} de ${c.comodos.length}</p></div>`; };
-  modal(`<h2>Tour virtual · ${esc(c.nome)}</h2><div id="t-cena" aria-live="polite">${cena()}</div>
-    <p class="muted" style="margin:8px 0">Protótipo: na versão real, fotos 360° da casa piloto.</p>
-    <div class="btns"><button class="btn sec" id="t-ant">← Anterior</button><button class="btn sec" id="t-prox">Próximo →</button></div>
-    <button class="btn bloco" data-fechar style="margin-top:8px">Fechar</button>`, m => {
-    $('#t-ant', m).addEventListener('click', () => { k = (k - 1 + c.comodos.length) % c.comodos.length; $('#t-cena', m).innerHTML = cena(); });
-    $('#t-prox', m).addEventListener('click', () => { k = (k + 1) % c.comodos.length; $('#t-cena', m).innerHTML = cena(); });
+/* ---------- Proxy profundo ---------- */
+const CH = 'casapiloto:v2';
+const semente = () => ({ casa: 'familia', renda: 6600, alug: 1500, dep: 1200, fgts: 15000, ent: 20, rend: 10, val: 4, linha: 'sbpe', juros: 11.5, prazo: 30, sist: 'price', plano: null, envios: [] });
+let bruto; try { bruto = JSON.parse(localStorage.getItem(CH)); } catch (e) {} if (!bruto) bruto = semente();
+let agendado = false;
+function reativo(obj) {
+  return new Proxy(obj, {
+    get(t, k) { const v = t[k]; return v && typeof v === 'object' ? reativo(v) : v; },
+    set(t, k, v) { if (t[k] === v) return true; t[k] = v; agendar(); return true; },
+    deleteProperty(t, k) { delete t[k]; agendar(); return true; }
   });
 }
+let E = reativo(bruto);
+function agendar() { if (agendado) return; agendado = true; requestAnimationFrame(() => { agendado = false; localStorage.setItem(CH, JSON.stringify(bruto)); atualizar(); }); }
+const caminho = (o, p) => p.split('.').reduce((a, k) => a && a[k], o);
+const definir = (o, p, v) => { const ks = p.split('.'), u = ks.pop(); const alvo = ks.reduce((a, k) => a[k], o); if (alvo) alvo[u] = v; };
 
-function renderTudo() { renderCasas(); renderSimular(); renderPlano(); }
+/* ---------- motor financeiro ---------- */
+const mensal = a => Math.pow(1 + a / 100, 1 / 12) - 1;
+function juntar(precoHoje, fracao, taxa) { // meses até o saldo alcançar a fração do preço (que valoriza)
+  const r = mensal(taxa), v = mensal(E.val); let s = E.fgts, alvo = precoHoje * fracao, m = 0; const serie = [s];
+  while (s < alvo && m < 480) { m++; s = s * (1 + r) + E.dep; alvo *= 1 + v; serie.push(s); }
+  return { meses: s >= alvo ? m : Infinity, alvo, saldo: s, serie };
+}
+function amortizar(pv, sist) {
+  const i = mensal(E.juros), n = E.prazo * 12, parc = [];
+  if (sist === 'price') { const p = i ? pv * i / (1 - Math.pow(1 + i, -n)) : pv / n; for (let k = 0; k < n; k++) parc.push(p); }
+  else { const a = pv / n; for (let k = 0; k < n; k++) parc.push(a + (pv - a * k) * i); }
+  return { parc, total: parc.reduce((x, y) => x + y, 0) };
+}
+function calc() {
+  const casa = CASAS.find(c => c.id === E.casa);
+  const g = juntar(casa.preco, 1, POUP), inv = juntar(casa.preco, 1, E.rend), en = juntar(casa.preco, E.ent / 100, E.rend);
+  const precoNaEntrada = en.alvo / (E.ent / 100), fin = Math.max(0, precoNaEntrada - en.saldo);
+  const price = amortizar(fin, 'price'), sac = amortizar(fin, 'sac'), escolhido = E.sist === 'price' ? price : sac;
+  const compr = escolhido.parc[0] / E.renda;
+  return { casa, g, inv, en, fin, price, sac, compr, precoNaEntrada };
+}
 
-document.addEventListener('click', ev => {
-  const t = ev.target.closest('button'); if (!t) return;
-  if (t.dataset.casa) { E.d.casa = t.dataset.casa; E.salvar(); renderTudo(); location.hash = 'simular'; }
-  else if (t.dataset.tour) tour(t.dataset.tour);
-  else if (t.id === 'btn-plano') criarPlano();
-  else if (t.id === 'btn-deposito') {
-    modal(`<h2>Registrar depósito</h2><div class="campo"><label for="d-val">Valor (R$)</label><input id="d-val" type="number" min="1" step="1" inputmode="numeric" value="${E.d.plano.dep}"></div>
-      <div class="campo"><label for="d-data">Data</label><input id="d-data" type="date" value="${hoje()}"></div>
-      <div class="btns"><button class="btn sec" data-fechar>Cancelar</button><button class="btn" id="d-ok">Salvar</button></div>`, (m, fechar) =>
-      $('#d-ok', m).addEventListener('click', () => { const v = Number($('#d-val', m).value); if (!(v > 0)) return toast('Informe um valor.');
-        E.d.plano.depositos.push({ id: uid(), valor: v, data: $('#d-data', m).value || hoje() }); E.salvar(); fechar(); renderPlano(); toast('Depósito registrado. Cada passo conta!'); }));
-  }
-  else if (t.id === 'btn-lembrete') {
-    modal(`<h2>Lembrete mensal</h2><div class="campo"><label for="l-dia">Dia do mês</label><select id="l-dia">${Array.from({ length: 28 }, (_, i) => `<option ${i + 1 === E.d.plano.diaLembrete ? 'selected' : ''}>${i + 1}</option>`).join('')}</select></div>
-      <p class="muted">Protótipo: o lembrete aparece aqui no plano (sem notificação real).</p>
-      <div class="btns"><button class="btn sec" data-fechar>Cancelar</button><button class="btn" id="l-ok">Salvar</button></div>`, (m, fechar) =>
-      $('#l-ok', m).addEventListener('click', () => { E.d.plano.diaLembrete = Number($('#l-dia', m).value); E.salvar(); fechar(); renderPlano(); toast('Lembrete ajustado.'); }));
-  }
-  else if (t.dataset.apagarDep) { E.d.plano.depositos = E.d.plano.depositos.filter(d => d.id !== t.dataset.apagarDep); E.salvar(); renderPlano(); toast('Depósito apagado.'); }
-  else if (t.id === 'btn-apagar-plano') confirmar('Encerrar e apagar o plano atual?', () => { E.d.plano = null; E.salvar(); renderPlano(); toast('Plano encerrado.'); }, 'Encerrar');
-  else if (t.id === 'btn-corretor') {
-    const c = casaSel(), r = calcular(c, E.d.s);
-    modal(`<h2>Enviar para um corretor</h2>
-      <p class="muted">Resumo que será compartilhado:</p>
-      <div class="card"><b>${esc(c.nome)}</b> · ${fmtBRL(c.preco)}<br>Entrada ${E.d.s.ent}% · ${E.d.s.prazo} anos · parcela estimada ${fmtBRL(r.financiar.pmt)}<br>Faixa de renda: ${RENDAS.find(x => x.id === E.d.s.renda).rot}</div>
-      <div class="campo"><label for="k-nome">Seu primeiro nome</label><input id="k-nome" autocomplete="given-name"></div>
-      <div class="campo"><label for="k-contato">WhatsApp ou e-mail</label><input id="k-contato" autocomplete="tel"></div>
-      <label class="check"><input type="checkbox" id="k-ok"> Autorizo o contato da construtora sobre esta simulação (LGPD)</label>
-      <div class="btns"><button class="btn sec" data-fechar>Cancelar</button><button class="btn" id="k-enviar">Enviar</button></div>`, (m, fechar) =>
-      $('#k-enviar', m).addEventListener('click', () => {
-        if (!$('#k-ok', m).checked) return toast('Marque a autorização para enviar.');
-        if (!$('#k-contato', m).value.trim()) return toast('Informe um contato.');
-        E.d.contatos.push({ data: new Date().toISOString(), casa: c.id }); E.salvar(); fechar(); toast('Simulação: pedido enviado. Um corretor entraria em contato.');
-      }));
-  }
-});
-document.addEventListener('change', ev => {
-  const cb = ev.target.closest('[data-check]');
-  if (cb) { E.d.plano.checklist[cb.dataset.check].ok = cb.checked; E.salvar(); }
-  if (ev.target.id === 'i-renda') { E.d.s.renda = ev.target.value; E.salvar(); renderSimular(); renderCasas(); }
-});
-document.addEventListener('input', ev => {
-  const k = (ev.target.id || '').replace('i-', '');
-  if (CAMPOS[k]) { E.d.s[k] = Number(ev.target.value); E.salvar(); renderSimular(); }
-});
-$('#i-dep') && document.addEventListener('change', ev => { if ((ev.target.id || '').startsWith('i-')) renderCasas(); });
+/* ---------- saídas declarativas ---------- */
+const SAIDAS = {
+  casaNome: c => c.casa.nome, casaDesc: c => c.casa.desc + ' · ' + R$(c.casa.preco),
+  renda: () => R$(E.renda), alug: () => R$(E.alug), dep: () => R$(E.dep), fgts: () => R$(E.fgts), ent: () => E.ent + '%',
+  rend: () => String(E.rend).replace('.', ',') + '% a.a.', val: () => String(E.val).replace('.', ',') + '% a.a.', juros: () => E.juros.toFixed(2).replace('.', ',') + '% a.a.', prazo: () => E.prazo + ' anos',
+  resumoCasa: c => `${c.casa.nome.toUpperCase()} · ${R$(c.casa.preco)} HOJE · DEPÓSITO ${R$(E.dep)}/MÊS`,
+  tGuardar: c => anos(c.g.meses), aGuardar: c => isFinite(c.g.meses) ? `Preço na data ≈ ${R$(c.g.alvo)} · aluguel pago no período ≈ ${R$(c.g.meses * E.alug)}` : 'Com esse depósito o preço corre mais rápido que a poupança.',
+  tInvestir: c => anos(c.inv.meses), aInvestir: c => isFinite(c.inv.meses) ? `Preço na data ≈ ${R$(c.inv.alvo)} · aluguel pago ≈ ${R$(c.inv.meses * E.alug)}` : 'Aumente o depósito ou o rendimento.',
+  tFinanciar: c => anos(c.en.meses), aFinanciar: c => `Entrada ${E.ent}% ≈ ${R$(c.en.alvo)} · financia ${R$(c.fin)} · 1ª parcela ${E.sist.toUpperCase()} ${R$((E.sist === 'price' ? c.price : c.sac).parc[0])}`,
+  compr: c => (c.compr * 100).toFixed(0) + '% da renda' + (c.compr > .3 ? ' · acima de 30%' : ''),
+  p1: c => R$(c.price.parc[0]), pN: c => R$(c.price.parc.at(-1)), pT: c => R$(c.price.total), s1: c => R$(c.sac.parc[0]), sN: c => R$(c.sac.parc.at(-1)), sT: c => R$(c.sac.total),
+  dia: () => E.plano ? 'todo dia ' + E.plano.dia : '',
+  planoCasa: () => E.plano ? `${E.plano.casa.toUpperCase()} · ENTRADA ALVO ${R$(E.plano.alvo)}` : '',
+  planoSaldo: () => E.plano ? R$(saldoPlano()) : '', planoFalta: () => E.plano ? `FALTAM ${R$(Math.max(0, E.plano.alvo - saldoPlano()))} · PREVISÃO INICIAL: ${anos(E.plano.meses)}` : '',
+  proxLembrete: () => { if (!E.plano) return ''; const h = new Date(), d = new Date(h.getFullYear(), h.getMonth(), E.plano.dia); if (d <= h) d.setMonth(d.getMonth() + 1); return 'PRÓXIMO LEMBRETE: ' + d.toLocaleDateString('pt-BR'); },
+  resumoEnvio: c => `${c.casa.nome} (${R$(c.casa.preco)}) · entrada ${E.ent}% · ${E.prazo} anos · ${E.sist.toUpperCase()} · 1ª parcela ${R$((E.sist === 'price' ? c.price : c.sac).parc[0])} · ${(c.compr * 100).toFixed(0)}% da renda. Não enviamos seu saldo nem seu FGTS.`,
+};
+const saldoPlano = () => E.plano ? E.plano.inicial + E.plano.deps.reduce((a, d) => a + d.v, 0) : 0;
 
-ligarDados(E, 'casapiloto', renderTudo);
-renderTudo();
-abas(v => { if (v === 'plano') renderPlano(); });
-pwa();
+function atualizar() {
+  const c = calc();
+  $$('[data-bind]').forEach(el => { const v = caminho(E, el.dataset.bind); if (v !== undefined && document.activeElement !== el) el.value = v; });
+  $$('[data-out]').forEach(el => { const f = SAIDAS[el.dataset.out]; if (f) el.textContent = f(c); });
+  $$('[data-sinal]').forEach(el => el.classList.toggle('on', +el.dataset.sinal === (c.compr <= .25 ? 0 : c.compr <= .3 ? 1 : 2)));
+  $$('[data-estilo=planoPct]').forEach(el => el.style.width = E.plano ? Math.min(100, saldoPlano() / E.plano.alvo * 100) + '%' : '0');
+  $$('.casa').forEach(b => b.setAttribute('aria-pressed', b.dataset.casa === E.casa));
+  $('#plano-vazio').hidden = !!E.plano; $('#plano-cheio').hidden = !E.plano;
+  if (E.plano) {
+    $('#deps').innerHTML = '<tr><th>Data</th><th>Valor</th><th></th></tr>' + E.plano.deps.map((d, i) => `<tr><td>${new Date(d.d).toLocaleDateString('pt-BR')}</td><td class="num">${R$(d.v)}</td><td><button class="btn" style="min-height:36px" data-rem-dep="${i}" aria-label="Remover depósito">✕</button></td></tr>`).join('');
+    $('#checklist').innerHTML = DOCS.map((d, i) => `<label class="check"><input type="checkbox" data-doc="${i}" ${E.plano.docs[i] ? 'checked' : ''}> ${esc(d)}</label>`).join('');
+  }
+  $('#envios').innerHTML = E.envios.map(v => `<div class="prancha" data-rotulo="ENVIO ${esc(v.prot)}"><p>${esc(v.nome)} · ${esc(v.tel)} · ${new Date(v.q).toLocaleString('pt-BR')}</p><p class="cota">STATUS (SIMULADO): ${esc(v.status)}</p></div>`).join('');
+  if ($('#t-cenarios').classList.contains('on')) graficos(c);
+  if ($('#t-casa').classList.contains('on')) planta(c.casa);
+}
+
+/* entradas → estado */
+document.addEventListener('input', e => { const p = e.target.dataset.bind; if (!p) return; const v = e.target.type === 'range' ? +e.target.value : e.target.value; definir(E, p, v);
+  if (p === 'linha' && LINHAS[v][1] != null) E.juros = LINHAS[v][1]; if (p === 'juros') E.linha = Object.keys(LINHAS).find(k => LINHAS[k][1] === v) || 'livre'; });
+document.addEventListener('change', e => { if (e.target.dataset.doc != null) E.plano.docs[e.target.dataset.doc] = e.target.checked; });
+
+/* ---------- desenhos ---------- */
+function miniPlanta(c) { return `<svg viewBox="-0.5 -0.5 13 9" aria-hidden="true">${c.com.map(([n, x, y, w, h]) => `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="none" stroke="currentColor" stroke-width=".12"/>`).join('')}</svg>`; }
+let tourI = -1, tourTimer = null;
+function planta(casa) {
+  $('#planta').innerHTML = `<defs><pattern id="hach" width=".4" height=".4" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line y2=".4" stroke="#fb923c" stroke-width=".15"/></pattern></defs>` +
+    casa.com.map(([n, x, y, w, h], i) => `<g><rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${i === tourI ? 'url(#hach)' : 'rgba(232,240,255,.04)'}" stroke="#e8f0ff" stroke-width=".1"/>
+    <text x="${x + w / 2}" y="${y + h / 2}" text-anchor="middle" dominant-baseline="middle" font-size=".5" fill="#e8f0ff" font-family="IBM Plex Mono">${esc(n)}</text>
+    <text x="${x + w / 2}" y="${y + h - .25}" text-anchor="middle" font-size=".32" fill="#7dd3fc" font-family="IBM Plex Mono">${w * h} m²*</text></g>`).join('') +
+    `<text x="0" y="8.9" font-size=".3" fill="#e8f0ff" opacity=".7" font-family="IBM Plex Mono">* ÁREAS ILUSTRATIVAS — NÃO É PROJETO</text>`;
+}
+function passoTour(d) { const casa = CASAS.find(c => c.id === E.casa); tourI = (tourI + d + casa.com.length) % casa.com.length; const [n, , , w, h, t] = casa.com[tourI]; $('#tour-txt').textContent = `${tourI + 1}/${casa.com.length} · ${n} (~${w * h} m²): ${t}`; planta(casa); }
+function pararTour() { clearInterval(tourTimer); tourTimer = null; const b = $('#tour-auto'); if (b) b.textContent = '▶ Tour automático'; }
+
+function prepCanvas(cv) { const r = devicePixelRatio || 1, w = cv.clientWidth, h = cv.clientHeight; cv.width = w * r; cv.height = h * r; const x = cv.getContext('2d'); x.setTransform(r, 0, 0, r, 0, 0); x.clearRect(0, 0, w, h); return [x, w, h]; }
+function eixos(x, w, h, maxY, maxX, rotX) {
+  x.strokeStyle = 'rgba(232,240,255,.25)'; x.fillStyle = 'rgba(232,240,255,.8)'; x.font = '10px IBM Plex Mono'; x.lineWidth = 1;
+  for (let k = 0; k <= 4; k++) { const y = 10 + (h - 34) * (1 - k / 4); x.beginPath(); x.moveTo(44, y); x.lineTo(w - 6, y); x.stroke(); x.fillText((maxY * k / 4 / 1000).toFixed(0) + 'k', 2, y + 3); }
+  for (let k = 0; k <= 4; k++) x.fillText(rotX(maxX * k / 4), 44 + (w - 56) * k / 4 - 6, h - 8);
+}
+function linha(x, w, h, serie, maxY, maxX, cor, trac) {
+  x.strokeStyle = cor; x.lineWidth = 2.2; x.setLineDash(trac ? [6, 5] : []); x.beginPath();
+  serie.forEach((v, i) => { const px = 44 + (w - 56) * i / maxX, py = 10 + (h - 34) * (1 - Math.min(v, maxY) / maxY); i ? x.lineTo(px, py) : x.moveTo(px, py); }); x.stroke(); x.setLineDash([]);
+}
+function graficos(c) {
+  { const [x, w, h] = prepCanvas($('#g-caminho')); const n = Math.min(480, Math.max(24, isFinite(c.inv.meses) ? c.inv.meses : 240, isFinite(c.g.meses) ? Math.min(c.g.meses, 480) : 0));
+    const preco = Array.from({ length: n + 1 }, (_, i) => c.casa.preco * Math.pow(1 + E.val / 100, i / 12));
+    const maxY = Math.max(...preco) * 1.05; eixos(x, w, h, maxY, n, v => Math.round(v / 12) + 'a');
+    linha(x, w, h, preco, maxY, n, '#e8f0ff', true); linha(x, w, h, juntar(c.casa.preco, 1, POUP).serie.slice(0, n + 1), maxY, n, '#7dd3fc');
+    linha(x, w, h, c.inv.serie.slice(0, n + 1), maxY, n, '#4ade80'); linha(x, w, h, preco.map(p => p * E.ent / 100), maxY, n, '#fb923c', true);
+    if (isFinite(c.en.meses)) { const px = 44 + (w - 56) * c.en.meses / n; x.fillStyle = '#fb923c'; x.beginPath(); x.arc(px, 10 + (h - 34) * (1 - c.en.alvo / maxY), 5, 0, 7); x.fill(); x.fillText('chave', px - 14, 22); } }
+  { const [x, w, h] = prepCanvas($('#g-parcelas')); const n = c.price.parc.length; const maxY = Math.max(c.price.parc[0], c.sac.parc[0]) * 1.1 || 1;
+    eixos(x, w, h, maxY, n, v => Math.round(v / 12) + 'a'); linha(x, w, h, c.price.parc, maxY, n, '#fb923c'); linha(x, w, h, c.sac.parc, maxY, n, '#7dd3fc');
+    const lim = E.renda * .3; if (lim < maxY) { x.strokeStyle = '#f87171'; x.setLineDash([3, 3]); const y = 10 + (h - 34) * (1 - lim / maxY); x.beginPath(); x.moveTo(44, y); x.lineTo(w - 6, y); x.stroke(); x.setLineDash([]); x.fillStyle = '#f87171'; x.fillText('30% da renda', w - 90, y - 4); } }
+}
+
+/* ---------- ações ---------- */
+function montarCasas() {
+  $('#lista-casas').innerHTML = CASAS.map(c => `<button class="casa" data-casa="${c.id}" aria-pressed="false">${miniPlanta(c)}<b>${c.nome}</b><span class="cota">${esc(c.desc)}</span><div class="num">${R$(c.preco)}</div></button>`).join('');
+  $('#i-linha').innerHTML = Object.entries(LINHAS).map(([k, v]) => `<option value="${k}">${v[0]}</option>`).join('');
+}
+document.addEventListener('click', e => {
+  const b = e.target.closest('button'); if (!b) return;
+  if (b.dataset.ir) location.hash = b.dataset.ir;
+  else if (b.dataset.casa) { E.casa = b.dataset.casa; tourI = -1; }
+  else if (b.id === 'ver-planta') location.hash = '#/casa/' + E.casa;
+  else if (b.id === 'tour-prox') { pararTour(); passoTour(1); } else if (b.id === 'tour-ant') { pararTour(); passoTour(-1); }
+  else if (b.id === 'tour-auto') { if (tourTimer) return pararTour(); b.textContent = '■ Parar tour'; passoTour(1); tourTimer = setInterval(() => passoTour(1), 2500); }
+  else if (b.id === 'criar-plano') { const c = calc(); E.plano = { casa: c.casa.nome, alvo: Math.round(c.en.alvo), inicial: E.fgts, meses: c.en.meses, dia: 5, deps: [], docs: {}, criado: new Date().toISOString() }; location.hash = '#/plano'; brinde('Plano criado. Registre cada depósito.'); }
+  else if (b.id === 'dep-add') { const v = parseFloat(String($('#dep-valor').value).replace(',', '.')) || E.dep; E.plano.deps.unshift({ v, d: new Date().toISOString() }); $('#dep-valor').value = ''; brinde('Depósito registrado: ' + R$(v)); }
+  else if (b.dataset.remDep != null) E.plano.deps.splice(+b.dataset.remDep, 1);
+  else if (b.id === 'apagar-plano') { if (confirm('Descartar o plano e os depósitos?')) E.plano = null; }
+  else if (b.id === 'baixar-ics') {
+    const h = new Date(), d = new Date(h.getFullYear(), h.getMonth(), E.plano.dia, 9); if (d <= h) d.setMonth(d.getMonth() + 1);
+    const f = x => x.toISOString().replace(/[-:]/g, '').slice(0, 15);
+    const ics = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//CasaPiloto//PT', 'BEGIN:VEVENT', 'UID:' + Date.now() + '@casapiloto', 'DTSTAMP:' + f(h) + 'Z', 'DTSTART:' + f(d), 'RRULE:FREQ=MONTHLY', 'SUMMARY:CasaPiloto — depósito da entrada (' + R$(E.dep) + ')', 'END:VEVENT', 'END:VCALENDAR'].join('\r\n');
+    Object.assign(document.createElement('a'), { href: URL.createObjectURL(new Blob([ics], { type: 'text/calendar' })), download: 'lembrete-casapiloto.ics' }).click(); brinde('Lembrete mensal baixado para a agenda.');
+  }
+  else if (b.id === 'notif') { if (!('Notification' in window)) return brinde('Seu navegador não tem notificações. Use o .ics.');
+    Notification.requestPermission().then(p => { if (p === 'granted') { new Notification('CasaPiloto', { body: 'Avisos ativados. Lembraremos no dia ' + E.plano.dia + '.' }); } else brinde('Permissão negada. Use o .ics.'); }); }
+  else if (b.id === 'enviar') {
+    const nome = $('#c-nome').value.trim(), tel = $('#c-tel').value.trim();
+    if (!$('#c-ok').checked) return brinde('Marque o consentimento para enviar.');
+    if (!nome || tel.replace(/\D/g, '').length < 10) return brinde('Informe nome e WhatsApp com DDD.');
+    E.envios.unshift({ prot: 'CP-' + String(Date.now()).slice(-6), nome, tel, q: new Date().toISOString(), status: 'Recebido pela construtora — retorno em até 1 dia útil' }); brinde('Simulação enviada (simulado).');
+  }
+  else if (b.id === 'exportar') { Object.assign(document.createElement('a'), { href: URL.createObjectURL(new Blob([JSON.stringify({ app: 'casapiloto', dados: bruto })], { type: 'application/json' })), download: 'casapiloto.json' }).click(); brinde('Backup baixado.'); }
+  else if (b.id === 'importar') { const i = Object.assign(document.createElement('input'), { type: 'file', accept: '.json' }); i.onchange = async () => { try { const j = JSON.parse(await i.files[0].text()); if (j.app !== 'casapiloto') throw 0; bruto = j.dados; E = reativo(bruto); agendar(); brinde('Importado.'); } catch (x) { brinde('Arquivo inválido.'); } }; i.click(); }
+  else if (b.id === 'zerar') { if (confirm('Apagar simulação, plano e envios?')) { bruto = semente(); E = reativo(bruto); agendar(); brinde('Dados apagados.'); } }
+});
+
+/* ---------- rotas ---------- */
+window.__rotas = ['#/casas', '#/casa/familia', '#/simular', '#/cenarios', '#/plano', '#/corretor'];
+function rota() {
+  const m = location.hash.match(/^#\/(\w+)(?:\/(\w+))?/) || [, 'casas'];
+  const nome = ['casas', 'casa', 'simular', 'cenarios', 'plano', 'corretor'].includes(m[1]) ? m[1] : 'casas';
+  if (nome === 'casa' && m[2] && CASAS.some(c => c.id === m[2]) && E.casa !== m[2]) { E.casa = m[2]; tourI = -1; }
+  if (nome !== 'casa') pararTour();
+  $$('.tela').forEach(t => t.classList.toggle('on', t.id === 't-' + nome));
+  $$('.etapas a').forEach(a => a.getAttribute('href') === '#/' + (nome === 'casa' ? 'casas' : nome) ? a.setAttribute('aria-current', 'page') : a.removeAttribute('aria-current'));
+  scrollTo(0, 0); atualizar();
+}
+addEventListener('hashchange', rota); addEventListener('resize', () => $('#t-cenarios').classList.contains('on') && graficos(calc()));
+montarCasas(); rota();
+
+if ('serviceWorker' in navigator && location.protocol.startsWith('http')) navigator.serviceWorker.register('sw.js').catch(() => {});
 </script>
 </body>
 </html>

@@ -3,340 +3,374 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="theme-color" content="#4338ca">
-<title>HoraCerta — horas complementares em tempo real</title>
+<meta name="theme-color" content="#312e81">
+<title>HoraCerta — sua caderneta de horas complementares</title>
 <link rel="manifest" href="manifest.json">
 <link rel="icon" type="image/svg+xml" href="../assets/logos/g1.svg">
 <link rel="apple-touch-icon" href="../assets/logos/g1-192.png">
-<link rel="stylesheet" href="../assets/identidade/temas.css">
-<link rel="stylesheet" href="../assets/mvp/mvp.css">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-.anel{width:150px;height:150px;margin:6px auto}
-.anel text{font-family:var(--fonte-titulo);font-weight:700}
-.cat{margin:12px 0}
-.cat .entre{font-size:14px;font-weight:700}
-.legenda{display:flex;gap:14px;font-size:12px;color:#475569;margin-top:6px}
-.legenda i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:4px;vertical-align:-1px}
-.ativ .entre b{font-size:15px}
-.ativ .meta{font-size:12.5px;color:#64748b;margin-top:2px}
-.thumb{width:100%;max-height:220px;object-fit:contain;border-radius:10px;background:#f1f5f9;margin:8px 0}
-.evento{display:flex;gap:12px}
-.evento .data{min-width:54px;text-align:center;background:var(--accent-soft);border-radius:12px;padding:6px 4px;color:var(--accent-dark);font-weight:800;line-height:1.1}
-.evento .data small{display:block;font-size:11px;font-weight:700}
+/* ===== HoraCerta · "caderneta acadêmica": papel, tinta índigo, marca-texto âmbar ===== */
+:root{--papel:#faf7f0;--papel2:#f3eee2;--tinta:#1e1b4b;--indigo:#4338ca;--indigo2:#312e81;--ambar:#f59e0b;--ambar-s:#fef3c7;
+  --linha:#e7dfcc;--verde:#15803d;--verm:#b91c1c;--cinza:#6b6b80;--r:18px}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{font-family:Inter,system-ui,sans-serif;background:var(--papel);color:var(--tinta);min-height:100dvh;font-size:16px;
+  background-image:linear-gradient(var(--papel) 27px,#ede6d6 28px);background-size:100% 28px}
+button,input,select{font:inherit;color:inherit}
+.casco{max-width:560px;margin:0 auto;padding:0 16px calc(28px + env(safe-area-inset-bottom))}
+header.capa{padding:calc(18px + env(safe-area-inset-top)) 0 10px;display:flex;align-items:center;gap:12px}
+header.capa img{width:42px;height:42px;border-radius:12px}
+header.capa h1{font-family:Fraunces,serif;font-size:26px;letter-spacing:-.02em;line-height:1}
+header.capa small{display:block;color:var(--cinza);font-size:12.5px;margin-top:3px}
+header.capa .inst{margin-left:auto;border:1.5px dashed var(--indigo);color:var(--indigo);background:transparent;border-radius:12px;min-height:44px;padding:0 12px;font-weight:700;font-size:13px;cursor:pointer}
+nav.abas{position:sticky;top:0;z-index:10;background:var(--papel);padding:8px 0 10px;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none}
+nav.abas a{flex:0 0 auto;text-decoration:none;color:var(--tinta);font-weight:600;font-size:14px;padding:10px 14px;border-radius:999px;border:1.5px solid var(--linha);background:#fff;min-height:44px;display:flex;align-items:center}
+nav.abas a[aria-current=page]{background:var(--indigo2);border-color:var(--indigo2);color:#fff}
+.tela{display:none}.tela.on{display:block;animation:sobe .2s ease}
+@keyframes sobe{from{opacity:0;transform:translateY(8px)}to{opacity:1}}
+.folha{background:#fff;border:1px solid var(--linha);border-radius:var(--r);padding:16px 16px 16px 26px;margin:12px 0;position:relative;box-shadow:0 1px 0 var(--linha)}
+.folha::before{content:"";position:absolute;left:14px;top:12px;bottom:12px;width:2px;background:#fca5a5;opacity:.6}
+.folha h2{font-family:Fraunces,serif;font-size:20px;margin-bottom:6px}
+.folha h3{font-family:Fraunces,serif;font-size:17px}
+.mudo{color:var(--cinza);font-size:13.5px}
+.marca{background:linear-gradient(transparent 55%,var(--ambar-s) 55%);font-weight:700;padding:0 2px}
+.btn{min-height:46px;border-radius:14px;border:none;background:var(--indigo);color:#fff;font-weight:700;padding:0 16px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:6px}
+.btn:hover{background:var(--indigo2)}
+.btn.lin{background:#fff;color:var(--indigo2);border:1.5px solid var(--indigo)}
+.btn.ok{background:var(--verde)}.btn.no{background:var(--verm)}
+.btn.peq{min-height:40px;font-size:13.5px;padding:0 12px;border-radius:11px}
+.fila{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.fila .btn{flex:1 1 auto}
+.chips{display:flex;gap:6px;overflow-x:auto;padding:4px 0}
+.chips button{flex:0 0 auto;border:1.5px solid var(--linha);background:#fff;border-radius:999px;min-height:40px;padding:0 12px;font-weight:600;font-size:13px;cursor:pointer}
+.chips button[aria-pressed=true]{background:var(--ambar);border-color:var(--ambar);color:#1c1917}
+.grade3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}
+.num{background:var(--papel2);border-radius:14px;padding:10px;text-align:center}
+.num b{display:block;font-family:Fraunces,serif;font-size:26px;color:var(--indigo2)}
+.num span{font-size:12px;color:var(--cinza)}
+label.campo{display:block;font-size:13px;font-weight:700;margin:10px 0 4px}
+.entrada{width:100%;min-height:48px;border:1.5px solid var(--linha);border-radius:12px;padding:10px 12px;background:#fff;font-size:16px}
+.entrada:focus{outline:3px solid var(--ambar-s);border-color:var(--ambar)}
+dialog{border:none;border-radius:22px;padding:18px;width:min(520px,92vw);max-height:90dvh;background:var(--papel);color:var(--tinta)}
+dialog::backdrop{background:rgba(30,27,75,.5)}
+dialog h2{font-family:Fraunces,serif;margin-bottom:8px}
+.aviso{font-size:12.5px;background:var(--ambar-s);border:1px dashed var(--ambar);border-radius:12px;padding:8px 10px;margin:10px 0}
+#brinde{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom));transform:translate(-50%,30px);opacity:0;background:var(--tinta);color:#fff;border-radius:14px;padding:12px 16px;font-size:14px;transition:.25s;z-index:99;max-width:90vw}
+#brinde.on{opacity:1;transform:translate(-50%,0)}
+:focus-visible{outline:3px solid var(--ambar);outline-offset:2px}
 </style>
 </head>
-<body class="tema-g1">
-<div class="app">
-  <header class="topo">
-    <div class="marca">
-      <img src="../assets/logos/g1.svg" alt="">
-      <div><h1>HoraCerta</h1><div class="sub" id="sub-curso">Horas complementares em tempo real</div></div>
-      <div class="acoes">
-        <button class="icone-btn" id="btn-instalar" hidden aria-label="Instalar app"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg></button>
-        <a class="icone-btn" href="index.html" aria-label="Sobre o projeto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/></svg></a>
-      </div>
-    </div>
+<body>
+<div class="casco">
+  <header class="capa">
+    <img src="../assets/logos/g1.svg" alt="">
+    <div><h1>HoraCerta</h1><small id="sub">Caderneta de horas complementares</small></div>
+    <button class="inst" id="btn-instalar" hidden>Instalar</button>
   </header>
+  <nav class="abas" aria-label="Seções">
+    <a href="#/painel">Painel</a><a href="#/atividades">Atividades</a><a href="#/agenda">Agenda</a><a href="#/coordenacao">Coordenação</a><a href="#/ajustes">Ajustes</a>
+  </nav>
 
   <main>
-    <!-- ============ PAINEL ============ -->
-    <section class="view" data-view="painel" aria-label="Painel">
-      <div class="aviso-exemplo">Protótipo (MVP) de pesquisa — dados de <b>exemplo</b>, salvos só neste aparelho. O regulamento de horas é ajustável em <a href="#dados">Dados</a>.</div>
-      <div class="card destaque">
-        <div class="entre"><h2>Seu saldo</h2><span class="chip" id="chip-status">—</span></div>
-        <svg class="anel" viewBox="0 0 120 120" role="img" id="anel"></svg>
-        <div class="grid3">
-          <div class="kpi"><b id="k-valid">0</b><span>validadas</span></div>
-          <div class="kpi"><b id="k-analise">0</b><span>em análise</span></div>
-          <div class="kpi"><b id="k-falta">0</b><span>faltam</span></div>
+    <section class="tela" id="t-painel" aria-label="Painel">
+      <div class="folha">
+        <div style="display:flex;gap:14px;align-items:center">
+          <hc-anel id="anel"></hc-anel>
+          <div><h2>Seu saldo</h2><p class="mudo" id="ritmo"></p><p id="situacao" style="margin-top:6px"></p></div>
         </div>
-        <p class="muted" id="prazo" style="margin-top:10px"></p>
+        <div class="grade3"><div class="num"><b id="n-v">0</b><span>validadas</span></div><div class="num"><b id="n-a">0</b><span>em análise</span></div><div class="num"><b id="n-f">0</b><span>faltam</span></div></div>
       </div>
-      <h3 class="titulo-sec">Por categoria</h3>
-      <div class="card" id="cats"></div>
-      <h3 class="titulo-sec">Próximos passos</h3>
-      <div class="card"><ul class="lista" id="passos"></ul></div>
+      <div class="folha"><h3>Por categoria</h3><div id="cats"></div></div>
+      <div class="folha"><h3>Anotações da caderneta</h3><ul id="dicas" style="list-style:none;margin-top:6px"></ul></div>
+      <p class="aviso">Protótipo acadêmico: regulamento e eventos de <b>exemplo</b>. Dados e comprovantes ficam só neste aparelho.</p>
     </section>
 
-    <!-- ============ ATIVIDADES ============ -->
-    <section class="view" data-view="atividades" aria-label="Atividades">
-      <div class="entre"><h3 class="titulo-sec">Minhas atividades</h3><button class="btn peq" id="btn-nova">+ Nova</button></div>
-      <div class="filtros" id="filtros" role="group" aria-label="Filtrar por situação"></div>
-      <div id="lista-ativ"></div>
+    <section class="tela" id="t-atividades" aria-label="Atividades">
+      <div class="fila"><button class="btn" id="nova">+ Registrar atividade</button></div>
+      <div class="chips" id="filtros" role="group" aria-label="Filtrar"></div>
+      <div id="lista"></div>
     </section>
 
-    <!-- ============ OPORTUNIDADES ============ -->
-    <section class="view" data-view="oportunidades" aria-label="Oportunidades">
-      <h3 class="titulo-sec">Eventos que valem horas</h3>
-      <div class="aviso-exemplo">Agenda de <b>exemplo</b>. Na versão real, a coordenação e os parceiros publicam os eventos.</div>
-      <div id="lista-eventos"></div>
+    <section class="tela" id="t-agenda" aria-label="Agenda de eventos">
+      <p class="aviso">Agenda de <b>exemplo</b> — na versão real, publicada pela coordenação e por parceiros.</p>
+      <div id="eventos"></div>
     </section>
 
-    <!-- ============ COORDENAÇÃO (simulada) ============ -->
-    <section class="view" data-view="coord" aria-label="Coordenação">
-      <h3 class="titulo-sec">Visão da coordenação</h3>
-      <div class="aviso-exemplo"><b>Simulação:</b> aqui você faz o papel da coordenação para testar o fluxo de validação. Na versão real, esta tela fica em um painel separado da instituição.</div>
+    <section class="tela" id="t-coordenacao" aria-label="Coordenação">
+      <p class="aviso"><b>Simulação:</b> você faz o papel da coordenação para testar o fluxo de validação.</p>
       <div id="fila"></div>
     </section>
 
-    <!-- ============ DADOS ============ -->
-    <section class="view" data-view="dados" aria-label="Dados e configuração">
-      <h3 class="titulo-sec">Meu curso</h3>
-      <div class="card">
-        <div class="campo"><label for="c-curso">Curso</label><input id="c-curso"></div>
-        <div class="campo"><label for="c-form">Previsão de formatura</label><input id="c-form" type="month"></div>
-        <p class="muted">Horas exigidas por categoria (regulamento de <b>exemplo</b> — ajuste ao seu PPC):</p>
-        <div id="c-cats"></div>
-        <button class="btn bloco" id="btn-salvar-curso">Salvar curso</button>
+    <section class="tela" id="t-ajustes" aria-label="Ajustes">
+      <div class="folha"><h3>Regulamento do meu curso</h3>
+        <label class="campo" for="aj-curso">Curso</label><input class="entrada" id="aj-curso">
+        <label class="campo" for="aj-form">Previsão de formatura</label><input class="entrada" id="aj-form" type="month">
+        <div id="aj-cats"></div>
+        <div class="fila"><button class="btn" id="aj-salvar">Salvar regulamento</button><button class="btn lin" id="aj-cat">+ Categoria</button></div>
       </div>
-      <h3 class="titulo-sec">Backup</h3>
-      <div class="card">
-        <p class="muted">Os dados ficam só neste navegador. Baixe um backup para trocar de aparelho.</p>
-        <div class="btns">
-          <button class="btn sec" data-acao="exportar">Exportar JSON</button>
-          <button class="btn sec" data-acao="importar">Importar JSON</button>
-          <button class="btn sec" id="btn-csv">Exportar CSV</button>
-        </div>
-        <button class="btn perigo bloco" data-acao="resetar" style="margin-top:10px">Apagar tudo</button>
+      <div class="folha"><h3>Meus dados</h3>
+        <p class="mudo">Exporte para trocar de aparelho. Os comprovantes vão junto no arquivo JSON.</p>
+        <div class="fila"><button class="btn lin" id="exp-json">Exportar JSON</button><button class="btn lin" id="exp-csv">Exportar CSV</button><button class="btn lin" id="imp" data-teste="pular">Importar</button></div>
+        <div class="fila"><button class="btn no" id="zerar">Apagar tudo</button></div>
       </div>
-      <p class="muted" style="text-align:center;margin:18px 0">HoraCerta · Grupo 1 · 8AdmVG · Unifacc — MVP de Customer Discovery</p>
+      <p class="mudo" style="text-align:center;margin:16px 0">HoraCerta · Grupo 1 · 8AdmVG · UNIFACC-MT</p>
     </section>
   </main>
-
-  <nav class="nav-inf" aria-label="Navegação principal"><div class="dentro">
-    <button data-aba="painel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Painel</button>
-    <button data-aba="atividades"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>Atividades</button>
-    <button data-aba="oportunidades"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 11h18"/></svg>Eventos</button>
-    <button data-aba="coord"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z"/></svg>Coordenação</button>
-    <button data-aba="dados"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 00.3 1.8l.1.1a2 2 0 11-2.8 2.8l-.1-.1a1.7 1.7 0 00-1.8-.3 1.7 1.7 0 00-1 1.5V21a2 2 0 11-4 0v-.1a1.7 1.7 0 00-1.1-1.5 1.7 1.7 0 00-1.8.3l-.1.1a2 2 0 11-2.8-2.8l.1-.1a1.7 1.7 0 00.3-1.8 1.7 1.7 0 00-1.5-1H3a2 2 0 110-4h.1a1.7 1.7 0 001.5-1.1 1.7 1.7 0 00-.3-1.8l-.1-.1a2 2 0 112.8-2.8l.1.1a1.7 1.7 0 001.8.3H9a1.7 1.7 0 001-1.5V3a2 2 0 114 0v.1a1.7 1.7 0 001 1.5 1.7 1.7 0 001.8-.3l.1-.1a2 2 0 112.8 2.8l-.1.1a1.7 1.7 0 00-.3 1.8V9a1.7 1.7 0 001.5 1H21a2 2 0 110 4h-.1a1.7 1.7 0 00-1.5 1z"/></svg>Dados</button>
-  </div></nav>
 </div>
 
-<script src="../assets/mvp/mvp.js"></script>
-<script>
-const { $, $$, esc, criarEstado, fmtNum, fmtData, hoje, uid, toast, modal, confirmar, baixar, lerComoDataURL, ligarDados, abas, pwa } = MVP;
+<dialog id="dlg"></dialog>
+<div id="brinde" role="status" aria-live="polite"></div>
 
-const STATUS = {
-  rascunho: { rot: 'Rascunho', cls: 'cinza' },
-  analise:  { rot: 'Em análise', cls: 'atencao' },
-  validada: { rot: 'Validada', cls: 'ok' },
-  recusada: { rot: 'Recusada', cls: 'alerta' },
+<script>
+/* ============================================================================
+   Construção do HoraCerta: Web Components + armazenamento em duas camadas
+   - estado (regulamento, atividades, eventos) → localStorage, via Store (EventTarget)
+   - arquivos de comprovante (Blob)            → IndexedDB, via Arquivos
+   ============================================================================ */
+const $ = (s, r = document) => r.querySelector(s);
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const hoje = () => new Date().toISOString().slice(0, 10);
+const uid = () => Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
+const diaRel = n => { const d = new Date(); d.setDate(d.getDate() + n); return d.toISOString().slice(0, 10); };
+const fmtD = d => new Date(d + 'T12:00').toLocaleDateString('pt-BR');
+let tb; const brinde = m => { const e = $('#brinde'); e.textContent = m; e.classList.add('on'); clearTimeout(tb); tb = setTimeout(() => e.classList.remove('on'), 2500); };
+
+/* ---------- IndexedDB: comprovantes ---------- */
+const Arquivos = {
+  db: null,
+  abrir() {
+    if (this.db) return Promise.resolve(this.db);
+    return new Promise((ok, err) => {
+      const r = indexedDB.open('horacerta', 1);
+      r.onupgradeneeded = () => r.result.createObjectStore('arquivos');
+      r.onsuccess = () => ok(this.db = r.result); r.onerror = () => err(r.error);
+    });
+  },
+  async op(modo, fn) { const db = await this.abrir(); return new Promise((ok, err) => { const tx = db.transaction('arquivos', modo); const req = fn(tx.objectStore('arquivos')); tx.oncomplete = () => ok(req && req.result); tx.onerror = () => err(tx.error); }); },
+  salvar(id, blob) { return this.op('readwrite', s => s.put(blob, id)); },
+  ler(id) { return this.op('readonly', s => s.get(id)); },
+  apagar(id) { return this.op('readwrite', s => s.delete(id)); },
+  limpar() { return this.op('readwrite', s => s.clear()); },
 };
 
-function dataRel(dias) { const d = new Date(); d.setDate(d.getDate() + dias); return d.toISOString().slice(0, 10); }
-
-function semente() {
+/* ---------- Store com eventos ---------- */
+class Store extends EventTarget {
+  constructor(chave, semente) { super(); this.chave = chave; this.semente = semente;
+    try { this.d = JSON.parse(localStorage.getItem(chave)); } catch (e) { this.d = null; }
+    if (!this.d) this.d = semente(); this.salvar(false); }
+  salvar(avisar = true) { localStorage.setItem(this.chave, JSON.stringify(this.d)); if (avisar) this.dispatchEvent(new Event('mudou')); }
+  mudar(fn) { fn(this.d); this.salvar(); }
+}
+const semente = () => {
   const f = new Date(); f.setMonth(f.getMonth() + 14);
   return {
-    curso: { nome: 'Administração', formatura: f.toISOString().slice(0, 7),
-      cats: [ { id: 'ensino', nome: 'Ensino', exigidas: 60 }, { id: 'pesquisa', nome: 'Pesquisa', exigidas: 40 },
-              { id: 'extensao', nome: 'Extensão', exigidas: 60 }, { id: 'cultura', nome: 'Cultura e social', exigidas: 40 } ] },
-    atividades: [
-      { id: uid(), titulo: 'Semana Acadêmica de Administração', cat: 'ensino', horas: 20, data: dataRel(-120), status: 'validada', comprovante: null, obs: '' },
-      { id: uid(), titulo: 'Curso online de Excel para gestão', cat: 'ensino', horas: 16, data: dataRel(-60), status: 'analise', comprovante: null, obs: '' },
-      { id: uid(), titulo: 'Projeto de extensão: educação financeira no bairro', cat: 'extensao', horas: 30, data: dataRel(-40), status: 'validada', comprovante: null, obs: '' },
-      { id: uid(), titulo: 'Voluntariado em campanha do agasalho', cat: 'cultura', horas: 8, data: dataRel(-15), status: 'rascunho', comprovante: null, obs: '' },
-    ],
-    eventos: [
-      { id: 'e1', titulo: 'Palestra: carreira em gestão pública', cat: 'ensino', horas: 3, data: dataRel(5), local: 'Auditório (exemplo)', interesse: false },
-      { id: 'e2', titulo: 'Oficina de Customer Discovery', cat: 'extensao', horas: 4, data: dataRel(9), local: 'Laboratório de inovação (exemplo)', interesse: false },
-      { id: 'e3', titulo: 'Grupo de estudos em finanças corporativas', cat: 'pesquisa', horas: 10, data: dataRel(14), local: 'On-line (exemplo)', interesse: false },
-      { id: 'e4', titulo: 'Mutirão cultural na praça', cat: 'cultura', horas: 6, data: dataRel(20), local: 'Várzea Grande (exemplo)', interesse: false },
-      { id: 'e5', titulo: 'Minicurso: Power BI para iniciantes', cat: 'ensino', horas: 8, data: dataRel(27), local: 'On-line (exemplo)', interesse: false },
-    ],
+    curso: { nome: 'Administração', formatura: f.toISOString().slice(0, 7), cats: [
+      { id: 'ensino', nome: 'Ensino', teto: 60 }, { id: 'pesquisa', nome: 'Pesquisa', teto: 40 },
+      { id: 'extensao', nome: 'Extensão', teto: 60 }, { id: 'social', nome: 'Cultura e social', teto: 40 }] },
+    ativ: [
+      { id: uid(), t: 'Semana Acadêmica de Administração', cat: 'ensino', h: 20, data: diaRel(-120), st: 'validada', comp: false, motivo: '' },
+      { id: uid(), t: 'Curso on-line de Excel para gestão', cat: 'ensino', h: 16, data: diaRel(-60), st: 'analise', comp: false, motivo: '' },
+      { id: uid(), t: 'Projeto de extensão: educação financeira no bairro', cat: 'extensao', h: 30, data: diaRel(-40), st: 'validada', comp: false, motivo: '' },
+      { id: uid(), t: 'Voluntariado na campanha do agasalho', cat: 'social', h: 8, data: diaRel(-15), st: 'rascunho', comp: false, motivo: '' }],
+    ev: [
+      { id: 'e1', t: 'Palestra: carreira em gestão pública', cat: 'ensino', h: 3, data: diaRel(5), onde: 'Auditório (exemplo)', lembrar: false },
+      { id: 'e2', t: 'Oficina de Customer Discovery', cat: 'extensao', h: 4, data: diaRel(9), onde: 'Laboratório de inovação (exemplo)', lembrar: false },
+      { id: 'e3', t: 'Grupo de estudos em finanças', cat: 'pesquisa', h: 10, data: diaRel(14), onde: 'On-line (exemplo)', lembrar: false },
+      { id: 'e4', t: 'Mutirão cultural na praça', cat: 'social', h: 6, data: diaRel(20), onde: 'Várzea Grande (exemplo)', lembrar: false }],
   };
-}
+};
+const S = new Store('horacerta:v2', semente);
+const ST = { rascunho: ['Rascunho', '#6b6b80'], analise: ['Em análise', '#b45309'], validada: ['Validada', '#15803d'], recusada: ['Recusada', '#b91c1c'] };
+const catNome = id => (S.d.curso.cats.find(c => c.id === id) || { nome: id }).nome;
 
-const E = criarEstado('horacerta:v1', semente);
-const catNome = id => (E.d.curso.cats.find(c => c.id === id) || { nome: id }).nome;
-
-/* horas por categoria, com teto do regulamento (o que passa do exigido não conta) */
 function saldo() {
-  const porCat = E.d.curso.cats.map(c => {
-    const soma = st => E.d.atividades.filter(a => a.cat === c.id && a.status === st).reduce((s, a) => s + Number(a.horas || 0), 0);
-    const valid = Math.min(soma('validada'), c.exigidas);
-    const anal = Math.min(soma('analise'), Math.max(0, c.exigidas - valid));
-    return { ...c, valid, anal, falta: Math.max(0, c.exigidas - valid) };
+  const por = S.d.curso.cats.map(c => {
+    const soma = st => S.d.ativ.filter(a => a.cat === c.id && a.st === st).reduce((s, a) => s + +a.h, 0);
+    const v = Math.min(soma('validada'), c.teto), an = Math.min(soma('analise'), Math.max(0, c.teto - v));
+    return { ...c, v, an };
   });
-  const total = porCat.reduce((s, c) => s + c.exigidas, 0);
-  const valid = porCat.reduce((s, c) => s + c.valid, 0);
-  const anal = porCat.reduce((s, c) => s + c.anal, 0);
-  return { porCat, total, valid, anal, falta: Math.max(0, total - valid) };
+  const T = por.reduce((s, c) => s + c.teto, 0), V = por.reduce((s, c) => s + c.v, 0), A = por.reduce((s, c) => s + c.an, 0);
+  return { por, T, V, A, F: Math.max(0, T - V) };
 }
 
-function mesesAteFormatura() {
-  const [a, m] = (E.d.curso.formatura || '').split('-').map(Number);
-  if (!a) return null;
-  const h = new Date();
-  return (a - h.getFullYear()) * 12 + (m - 1 - h.getMonth());
-}
-
-/* ---------------- render ---------------- */
-function renderPainel() {
-  const s = saldo();
-  const pv = s.total ? s.valid / s.total : 0, pa = s.total ? s.anal / s.total : 0;
-  const C = 2 * Math.PI * 50;
-  $('#anel').innerHTML = `
-    <circle cx="60" cy="60" r="50" fill="none" stroke="#e2e8f0" stroke-width="12"/>
-    <circle cx="60" cy="60" r="50" fill="none" stroke="var(--accent2)" stroke-width="12" stroke-dasharray="${C * (pv + pa)} ${C}" transform="rotate(-90 60 60)" stroke-linecap="round"/>
-    <circle cx="60" cy="60" r="50" fill="none" stroke="var(--accent)" stroke-width="12" stroke-dasharray="${C * pv} ${C}" transform="rotate(-90 60 60)" stroke-linecap="round"/>
-    <text x="60" y="58" text-anchor="middle" font-size="24" fill="var(--tinta)">${Math.round(pv * 100)}%</text>
-    <text x="60" y="76" text-anchor="middle" font-size="10" fill="#64748b">${s.valid} de ${s.total} h</text>`;
-  $('#anel').setAttribute('aria-label', `${Math.round(pv * 100)} por cento concluído: ${s.valid} de ${s.total} horas validadas`);
-  $('#k-valid').textContent = s.valid; $('#k-analise').textContent = s.anal; $('#k-falta').textContent = s.falta;
-  $('#sub-curso').textContent = `${E.d.curso.nome} · ${s.valid}/${s.total} h validadas`;
-
-  const meses = mesesAteFormatura();
-  let st = { t: 'Em dia', c: 'ok' };
-  if (s.falta > 0 && meses !== null) {
-    const ritmo = s.falta / Math.max(1, meses);
-    $('#prazo').innerHTML = meses <= 0 ? `<b>Formatura prevista já passou</b> e ainda faltam ${s.falta} h.` :
-      `Faltam <b>${meses} meses</b> para a formatura: ritmo necessário de <b>${fmtNum(ritmo, 1)} h/mês</b>.`;
-    if (meses <= 0 || ritmo > 12) st = { t: 'Atenção', c: 'alerta' }; else if (ritmo > 6) st = { t: 'Acelere', c: 'atencao' };
-  } else if (s.falta === 0) { $('#prazo').textContent = 'Parabéns: todas as horas exigidas estão validadas.'; st = { t: 'Completo', c: 'ok' }; }
-  else $('#prazo').textContent = 'Informe a previsão de formatura em Dados.';
-  $('#chip-status').textContent = st.t; $('#chip-status').className = 'chip ' + st.c;
-
-  $('#cats').innerHTML = s.porCat.map(c => `
-    <div class="cat"><div class="entre"><span>${esc(c.nome)}</span><span>${c.valid}/${c.exigidas} h</span></div>
-    <div class="barra" role="img" aria-label="${esc(c.nome)}: ${c.valid} validadas, ${c.anal} em análise, de ${c.exigidas}">
-      <i style="width:${c.exigidas ? c.valid / c.exigidas * 100 : 0}%"></i><i class="b2" style="width:${c.exigidas ? c.anal / c.exigidas * 100 : 0}%"></i></div></div>`).join('') +
-    `<div class="legenda"><span><i style="background:var(--accent)"></i>Validadas</span><span><i style="background:var(--accent2)"></i>Em análise</span></div>`;
-
-  const passos = [];
-  const rasc = E.d.atividades.filter(a => a.status === 'rascunho');
-  if (rasc.length) passos.push(`<li><b>${rasc.length} atividade(s) em rascunho</b> — envie para a coordenação validar. <a href="#atividades">Ver</a></li>`);
-  const rec = E.d.atividades.filter(a => a.status === 'recusada');
-  if (rec.length) passos.push(`<li><b>${rec.length} recusada(s)</b> — confira o motivo e reenvie na categoria certa. <a href="#atividades">Ver</a></li>`);
-  const pior = s.porCat.filter(c => c.falta > 0).sort((a, b) => b.falta / b.exigidas - a.falta / a.exigidas)[0];
-  if (pior) {
-    const ev = E.d.eventos.find(e => e.cat === pior.id && e.data >= hoje());
-    passos.push(`<li>Categoria mais atrasada: <b>${esc(pior.nome)}</b> (faltam ${pior.falta} h).${ev ? ` Próximo evento: <b>${esc(ev.titulo)}</b> em ${fmtData(ev.data)} (+${ev.horas} h). <a href="#oportunidades">Ver</a>` : ''}</li>`);
+/* ---------- Web Components ---------- */
+class HcAnel extends HTMLElement {
+  static get observedAttributes() { return ['v', 'a', 't']; }
+  attributeChangedCallback() { this.render(); }
+  connectedCallback() { this.render(); }
+  render() {
+    const v = +this.getAttribute('v') || 0, a = +this.getAttribute('a') || 0, t = +this.getAttribute('t') || 1, C = 2 * Math.PI * 44;
+    const p = v / t, q = (v + a) / t;
+    this.innerHTML = `<svg width="116" height="116" viewBox="0 0 110 110" role="img" aria-label="${Math.round(p * 100)}% concluído">
+      <circle cx="55" cy="55" r="44" fill="none" stroke="#efe8d8" stroke-width="12"/>
+      <circle cx="55" cy="55" r="44" fill="none" stroke="#f59e0b" stroke-width="12" stroke-linecap="round" stroke-dasharray="${C * q} ${C}" transform="rotate(-90 55 55)"/>
+      <circle cx="55" cy="55" r="44" fill="none" stroke="#4338ca" stroke-width="12" stroke-linecap="round" stroke-dasharray="${C * p} ${C}" transform="rotate(-90 55 55)"/>
+      <text x="55" y="58" text-anchor="middle" font-family="Fraunces,serif" font-size="24" font-weight="800" fill="#1e1b4b">${Math.round(p * 100)}%</text>
+      <text x="55" y="75" text-anchor="middle" font-size="9.5" fill="#6b6b80">${v}/${t} h</text></svg>`;
   }
-  const semComp = E.d.atividades.filter(a => a.status !== 'validada' && !a.comprovante).length;
-  if (semComp) passos.push(`<li><b>${semComp} atividade(s) sem comprovante</b> anexado — tire uma foto do certificado.</li>`);
-  $('#passos').innerHTML = passos.join('') || '<li>Tudo certo por aqui. 🎓</li>';
 }
+customElements.define('hc-anel', HcAnel);
 
+class HcAtividade extends HTMLElement {
+  connectedCallback() {
+    const a = S.d.ativ.find(x => x.id === this.dataset.id); if (!a) return;
+    const [rot, cor] = ST[a.st];
+    this.innerHTML = `<div class="folha">
+      <div style="display:flex;justify-content:space-between;gap:8px;align-items:flex-start"><h3>${esc(a.t)}</h3>
+      <span style="white-space:nowrap;font-size:12px;font-weight:800;color:${cor};border:1.5px solid ${cor};border-radius:999px;padding:3px 9px">${rot}</span></div>
+      <p class="mudo">${esc(catNome(a.cat))} · <span class="marca">${a.h} h</span> · ${fmtD(a.data)} · ${a.comp ? '📎 comprovante' : 'sem comprovante'}</p>
+      ${a.motivo ? `<p class="mudo" style="color:#b91c1c">Coordenação: ${esc(a.motivo)}</p>` : ''}
+      <div class="fila">${['rascunho', 'recusada'].includes(a.st) ? `<button class="btn peq" data-ac="enviar">Enviar p/ validação</button>` : ''}
+      ${a.comp ? `<button class="btn lin peq" data-ac="ver">Ver comprovante</button>` : ''}
+      <button class="btn lin peq" data-ac="editar">Editar</button><button class="btn lin peq" data-ac="apagar" aria-label="Apagar ${esc(a.t)}">Apagar</button></div></div>`;
+    this.addEventListener('click', e => { const b = e.target.closest('[data-ac]'); if (b) acaoAtividade(b.dataset.ac, a.id); });
+  }
+}
+customElements.define('hc-atividade', HcAtividade);
+
+/* ---------- Telas ---------- */
+function telaPainel() {
+  const s = saldo();
+  const anel = $('#anel'); anel.setAttribute('v', s.V); anel.setAttribute('a', s.A); anel.setAttribute('t', s.T);
+  $('#n-v').textContent = s.V; $('#n-a').textContent = s.A; $('#n-f').textContent = s.F;
+  $('#sub').textContent = `${S.d.curso.nome} · ${s.V}/${s.T} h validadas`;
+  const [ano, mes] = (S.d.curso.formatura || '').split('-').map(Number);
+  const meses = ano ? (ano - new Date().getFullYear()) * 12 + (mes - 1 - new Date().getMonth()) : null;
+  const ritmo = meses > 0 ? s.F / meses : Infinity;
+  $('#ritmo').innerHTML = s.F === 0 ? 'Todas as horas exigidas estão validadas. 🎓' : meses === null ? 'Informe a formatura em Ajustes.' :
+    meses <= 0 ? `A formatura prevista já passou e faltam <b>${s.F} h</b>.` : `Faltam <b>${meses} meses</b>: ritmo de <span class="marca">${(ritmo).toFixed(1).replace('.', ',')} h/mês</span>.`;
+  const sit = s.F === 0 ? ['Completo', '#15803d'] : ritmo > 12 || meses <= 0 ? ['Atenção', '#b91c1c'] : ritmo > 6 ? ['Acelere', '#b45309'] : ['Em dia', '#15803d'];
+  $('#situacao').innerHTML = `<b style="color:${sit[1]}">● ${sit[0]}</b>`;
+  $('#cats').innerHTML = s.por.map(c => `<div style="margin:10px 0"><div style="display:flex;justify-content:space-between;font-weight:600;font-size:14px"><span>${esc(c.nome)}</span><span>${c.v}/${c.teto} h</span></div>
+    <div role="img" aria-label="${esc(c.nome)}: ${c.v} validadas e ${c.an} em análise de ${c.teto}" style="height:12px;background:#efe8d8;border-radius:99px;overflow:hidden;display:flex;margin-top:4px">
+    <i style="width:${c.v / c.teto * 100 || 0}%;background:#4338ca"></i><i style="width:${c.an / c.teto * 100 || 0}%;background:#f59e0b"></i></div></div>`).join('')
+    + '<p class="mudo">■ índigo: validadas · ■ âmbar: em análise · o que passa do teto não conta</p>';
+  const d = [];
+  const rasc = S.d.ativ.filter(a => a.st === 'rascunho').length, rec = S.d.ativ.filter(a => a.st === 'recusada').length, sem = S.d.ativ.filter(a => a.st !== 'validada' && !a.comp).length;
+  if (rasc) d.push(`✏️ ${rasc} atividade(s) em rascunho — envie para validar. <a href="#/atividades">abrir</a>`);
+  if (rec) d.push(`↩️ ${rec} recusada(s) — veja o motivo e reenvie. <a href="#/atividades">abrir</a>`);
+  if (sem) d.push(`📎 ${sem} sem comprovante — fotografe o certificado.`);
+  const pior = s.por.filter(c => c.v < c.teto).sort((a, b) => a.v / a.teto - b.v / b.teto)[0];
+  if (pior) { const ev = S.d.ev.find(e => e.cat === pior.id && e.data >= hoje()); d.push(`📌 Mais atrasada: <b>${esc(pior.nome)}</b>${ev ? ` — próximo evento: ${esc(ev.t)} (${fmtD(ev.data)}). <a href="#/agenda">agenda</a>` : '.'}`); }
+  $('#dicas').innerHTML = (d.length ? d : ['Tudo em ordem por aqui.']).map(x => `<li style="padding:8px 0;border-bottom:1px dashed var(--linha)">${x}</li>`).join('');
+}
 let filtro = 'todas';
-function renderAtividades() {
-  const cont = st => st === 'todas' ? E.d.atividades.length : E.d.atividades.filter(a => a.status === st).length;
-  $('#filtros').innerHTML = ['todas', 'rascunho', 'analise', 'validada', 'recusada'].map(st =>
-    `<button class="${filtro === st ? 'on' : ''}" data-filtro="${st}" aria-pressed="${filtro === st}">${st === 'todas' ? 'Todas' : STATUS[st].rot} (${cont(st)})</button>`).join('');
-  const itens = E.d.atividades.filter(a => filtro === 'todas' || a.status === filtro).sort((a, b) => b.data.localeCompare(a.data));
-  $('#lista-ativ').innerHTML = itens.length ? itens.map(a => `
-    <div class="card ativ">
-      <div class="entre"><b>${esc(a.titulo)}</b><span class="chip ${STATUS[a.status].cls}">${STATUS[a.status].rot}</span></div>
-      <div class="meta">${esc(catNome(a.cat))} · ${a.horas} h · ${fmtData(a.data)} · ${a.comprovante ? '📎 comprovante anexado' : 'sem comprovante'}</div>
-      ${a.obs ? `<div class="meta">Coordenação: ${esc(a.obs)}</div>` : ''}
-      <div class="btns">
-        ${a.status === 'rascunho' || a.status === 'recusada' ? `<button class="btn peq" data-enviar="${a.id}">Enviar p/ validação</button>` : ''}
-        ${a.comprovante ? `<button class="btn sec peq" data-ver="${a.id}">Ver comprovante</button>` : ''}
-        <button class="btn sec peq" data-editar="${a.id}">Editar</button>
-        <button class="btn sec peq" data-excluir="${a.id}" aria-label="Excluir ${esc(a.titulo)}">Excluir</button>
-      </div>
-    </div>`).join('') : '<div class="vazio">Nenhuma atividade aqui. Toque em “+ Nova”.</div>';
+function telaAtividades() {
+  const n = st => st === 'todas' ? S.d.ativ.length : S.d.ativ.filter(a => a.st === st).length;
+  $('#filtros').innerHTML = ['todas', 'rascunho', 'analise', 'validada', 'recusada'].map(st => `<button data-f="${st}" aria-pressed="${filtro === st}">${st === 'todas' ? 'Todas' : ST[st][0]} · ${n(st)}</button>`).join('');
+  const itens = S.d.ativ.filter(a => filtro === 'todas' || a.st === filtro).sort((a, b) => b.data.localeCompare(a.data));
+  $('#lista').innerHTML = itens.length ? itens.map(a => `<hc-atividade data-id="${a.id}"></hc-atividade>`).join('') : '<p class="mudo" style="text-align:center;padding:24px">Nada por aqui.</p>';
 }
-
-function renderEventos() {
-  const futuros = E.d.eventos.filter(e => e.data >= hoje()).sort((a, b) => a.data.localeCompare(b.data));
-  $('#lista-eventos').innerHTML = futuros.length ? futuros.map(e => {
-    const d = new Date(e.data + 'T12:00:00');
-    return `<div class="card evento">
-      <div class="data">${d.getDate()}<small>${d.toLocaleDateString('pt-BR', { month: 'short' }).replace('.', '')}</small></div>
-      <div style="flex:1"><b>${esc(e.titulo)}</b><div class="muted">${esc(catNome(e.cat))} · +${e.horas} h · ${esc(e.local)}</div>
-        <div class="btns"><button class="btn ${e.interesse ? 'ok' : 'sec'} peq" data-interesse="${e.id}" aria-pressed="${e.interesse}">${e.interesse ? '✓ Lembrete ativo' : 'Me lembrar'}</button>
-        <button class="btn sec peq" data-participei="${e.id}">Participei</button></div></div></div>`;
-  }).join('') : '<div class="vazio">Sem eventos futuros.</div>';
+function telaAgenda() {
+  const f = S.d.ev.filter(e => e.data >= hoje()).sort((a, b) => a.data.localeCompare(b.data));
+  $('#eventos').innerHTML = f.map(e => { const d = new Date(e.data + 'T12:00'); return `<div class="folha" style="display:flex;gap:12px">
+    <div style="min-width:58px;text-align:center;background:var(--ambar-s);border-radius:14px;padding:8px 4px"><b style="font-family:Fraunces,serif;font-size:24px;display:block">${d.getDate()}</b><small>${d.toLocaleDateString('pt-BR', { month: 'short' })}</small></div>
+    <div style="flex:1"><h3>${esc(e.t)}</h3><p class="mudo">${esc(catNome(e.cat))} · +${e.h} h · ${esc(e.onde)}</p>
+    <div class="fila"><button class="btn ${e.lembrar ? 'ok' : 'lin'} peq" data-lembrar="${e.id}" aria-pressed="${e.lembrar}">${e.lembrar ? '✓ Lembrete' : 'Lembrar-me'}</button><button class="btn lin peq" data-participei="${e.id}">Participei</button></div></div></div>`; }).join('') || '<p class="mudo">Sem eventos futuros.</p>';
 }
-
-function renderFila() {
-  const fila = E.d.atividades.filter(a => a.status === 'analise');
-  $('#fila').innerHTML = fila.length ? fila.map(a => `
-    <div class="card"><b>${esc(a.titulo)}</b><div class="muted">${esc(catNome(a.cat))} · ${a.horas} h · ${fmtData(a.data)} · ${a.comprovante ? 'com comprovante' : '<b style="color:#b91c1c">sem comprovante</b>'}</div>
-      <div class="btns"><button class="btn ok peq" data-validar="${a.id}">Validar</button><button class="btn perigo peq" data-recusar="${a.id}">Recusar</button>
-      ${a.comprovante ? `<button class="btn sec peq" data-ver="${a.id}">Comprovante</button>` : ''}</div></div>`).join('')
-    : '<div class="vazio">Nenhuma atividade aguardando validação.</div>';
+function telaCoord() {
+  const f = S.d.ativ.filter(a => a.st === 'analise');
+  $('#fila').innerHTML = f.map(a => `<div class="folha"><h3>${esc(a.t)}</h3><p class="mudo">${esc(catNome(a.cat))} · ${a.h} h · ${a.comp ? 'com comprovante' : '<b style="color:#b91c1c">sem comprovante</b>'}</p>
+    <div class="fila"><button class="btn ok peq" data-validar="${a.id}">Validar</button><button class="btn no peq" data-recusar="${a.id}">Recusar</button>${a.comp ? `<button class="btn lin peq" data-ver="${a.id}">Comprovante</button>` : ''}</div></div>`).join('')
+    || '<p class="mudo" style="text-align:center;padding:24px">Nenhuma atividade aguardando validação.</p>';
 }
-
-function renderDados() {
-  $('#c-curso').value = E.d.curso.nome; $('#c-form').value = E.d.curso.formatura || '';
-  $('#c-cats').innerHTML = E.d.curso.cats.map(c => `<div class="campo"><label for="cat-${c.id}">${esc(c.nome)} (horas)</label><input id="cat-${c.id}" type="number" min="0" step="1" value="${c.exigidas}" inputmode="numeric"></div>`).join('');
+function telaAjustes() {
+  $('#aj-curso').value = S.d.curso.nome; $('#aj-form').value = S.d.curso.formatura || '';
+  $('#aj-cats').innerHTML = S.d.curso.cats.map((c, i) => `<div style="display:grid;grid-template-columns:1fr 90px;gap:8px;margin-top:8px">
+    <input class="entrada" data-cn="${i}" value="${esc(c.nome)}" aria-label="Nome da categoria ${i + 1}"><input class="entrada" data-ct="${i}" type="number" min="0" value="${c.teto}" aria-label="Horas exigidas em ${esc(c.nome)}"></div>`).join('');
 }
+function tudo() { telaPainel(); telaAtividades(); telaAgenda(); telaCoord(); telaAjustes(); }
+S.addEventListener('mudou', tudo);
 
-function renderTudo() { renderPainel(); renderAtividades(); renderEventos(); renderFila(); renderDados(); }
+/* ---------- Diálogos ---------- */
+const dlg = $('#dlg');
+function abrir(html, ligar) { dlg.innerHTML = html; dlg.showModal(); ligar && ligar(dlg); }
+dlg.addEventListener('click', e => { if (e.target === dlg || e.target.closest('[data-fechar]')) dlg.close(); });
 
-/* ---------------- formulário de atividade ---------------- */
-function formAtividade(a, preset = {}) {
-  const nova = !a;
-  a = a || { id: uid(), titulo: '', cat: E.d.curso.cats[0].id, horas: '', data: hoje(), status: 'rascunho', comprovante: null, obs: '', ...preset };
-  let comp = a.comprovante;
-  modal(`<h2>${nova ? 'Nova atividade' : 'Editar atividade'}</h2>
-    <div class="campo"><label for="f-tit">Atividade</label><input id="f-tit" value="${esc(a.titulo)}" placeholder="Ex.: Palestra sobre empreendedorismo"></div>
-    <div class="grid2"><div class="campo"><label for="f-cat">Categoria</label><select id="f-cat">${E.d.curso.cats.map(c => `<option value="${c.id}" ${c.id === a.cat ? 'selected' : ''}>${esc(c.nome)}</option>`).join('')}</select></div>
-    <div class="campo"><label for="f-h">Horas</label><input id="f-h" type="number" min="0.5" step="0.5" inputmode="decimal" value="${a.horas}"></div></div>
-    <div class="campo"><label for="f-d">Data</label><input id="f-d" type="date" value="${a.data}"></div>
-    <div class="campo"><label>Comprovante (foto ou PDF)</label><button class="btn sec bloco" id="f-comp" type="button">${comp ? 'Trocar comprovante' : 'Anexar foto/PDF'}</button><div id="f-prev"></div></div>
-    <div class="btns"><button class="btn sec" data-fechar>Cancelar</button><button class="btn" id="f-salvar">Salvar</button></div>`, (m, fechar) => {
-    const prev = () => { $('#f-prev', m).innerHTML = comp ? (comp.startsWith('data:image') ? `<img class="thumb" src="${comp}" alt="Prévia do comprovante">` : '<p class="muted">📎 PDF anexado</p>') : ''; };
-    prev();
-    $('#f-comp', m).addEventListener('click', () => MVP.escolherArquivo('image/*,application/pdf', f =>
-      lerComoDataURL(f).then(d => { comp = d; prev(); toast('Comprovante anexado.'); }).catch(() => toast('PDF grande demais para o protótipo (máx. 900 KB).'))));
-    $('#f-salvar', m).addEventListener('click', () => {
-      const titulo = $('#f-tit', m).value.trim(), horas = Number($('#f-h', m).value);
-      if (!titulo) return toast('Informe o nome da atividade.');
-      if (!(horas > 0)) return toast('Informe as horas (maior que zero).');
-      Object.assign(a, { titulo, horas, cat: $('#f-cat', m).value, data: $('#f-d', m).value || hoje(), comprovante: comp });
-      if (nova) E.d.atividades.push(a);
-      E.salvar(); fechar(); renderTudo(); toast(nova ? 'Atividade criada como rascunho.' : 'Atividade atualizada.');
+function formAtividade(id, preset = {}) {
+  const a = S.d.ativ.find(x => x.id === id) || { id: uid(), t: '', cat: S.d.curso.cats[0].id, h: '', data: hoje(), st: 'rascunho', comp: false, motivo: '', ...preset };
+  let blob = null;
+  abrir(`<h2>${id ? 'Editar' : 'Nova'} atividade</h2>
+    <label class="campo" for="f-t">Atividade</label><input class="entrada" id="f-t" value="${esc(a.t)}" placeholder="Ex.: Palestra de empreendedorismo">
+    <div style="display:grid;grid-template-columns:1fr 100px;gap:8px"><div><label class="campo" for="f-c">Categoria</label><select class="entrada" id="f-c">${S.d.curso.cats.map(c => `<option value="${c.id}" ${c.id === a.cat ? 'selected' : ''}>${esc(c.nome)}</option>`).join('')}</select></div>
+    <div><label class="campo" for="f-h">Horas</label><input class="entrada" id="f-h" type="number" min="0.5" step="0.5" value="${a.h}"></div></div>
+    <label class="campo" for="f-d">Data</label><input class="entrada" id="f-d" type="date" value="${a.data}">
+    <label class="campo" for="f-arq">Comprovante (foto ou PDF)</label><input class="entrada" id="f-arq" type="file" accept="image/*,application/pdf" capture="environment">
+    <p class="mudo" id="f-info">${a.comp ? 'Já existe um comprovante; envie outro para substituir.' : 'A câmera do celular abre direto no certificado.'}</p>
+    <div class="fila"><button class="btn lin" data-fechar>Cancelar</button><button class="btn" id="f-ok">Salvar</button></div>`, d => {
+    $('#f-arq', d).addEventListener('change', e => { blob = e.target.files[0] || null; $('#f-info', d).textContent = blob ? `📎 ${blob.name} (${Math.round(blob.size / 1024)} KB)` : ''; });
+    $('#f-ok', d).addEventListener('click', async () => {
+      const t = $('#f-t', d).value.trim(), h = +$('#f-h', d).value;
+      if (!t) return brinde('Dê um nome à atividade.'); if (!(h > 0)) return brinde('Informe as horas.');
+      if (blob) { await Arquivos.salvar(a.id, blob); a.comp = true; }
+      Object.assign(a, { t, h, cat: $('#f-c', d).value, data: $('#f-d', d).value || hoje() });
+      S.mudar(x => { if (!x.ativ.includes(a)) x.ativ.push(a); }); dlg.close(); brinde('Atividade salva.');
     });
   });
 }
+async function verComp(id) {
+  const b = await Arquivos.ler(id); if (!b) return brinde('Comprovante não encontrado neste aparelho.');
+  const url = URL.createObjectURL(b);
+  abrir(`<h2>Comprovante</h2>${b.type.startsWith('image') ? `<img src="${url}" alt="Comprovante" style="width:100%;border-radius:12px">` : `<a class="btn" href="${url}" download="comprovante.pdf">Baixar PDF</a>`}<div class="fila"><button class="btn lin" data-fechar>Fechar</button></div>`);
+}
+function acaoAtividade(ac, id) {
+  const a = S.d.ativ.find(x => x.id === id);
+  if (ac === 'editar') formAtividade(id);
+  else if (ac === 'ver') verComp(id);
+  else if (ac === 'apagar') { if (confirm('Apagar esta atividade?')) { Arquivos.apagar(id); S.mudar(x => { x.ativ = x.ativ.filter(y => y.id !== id); }); brinde('Apagada.'); } }
+  else if (ac === 'enviar') { if (!a.comp && !confirm('Sem comprovante a chance de recusa é grande. Enviar mesmo assim?')) return; S.mudar(() => { a.st = 'analise'; a.motivo = ''; }); brinde('Enviada para a coordenação.'); }
+}
 
-/* ---------------- eventos de clique ---------------- */
-document.addEventListener('click', ev => {
-  const t = ev.target.closest('button'); if (!t) return;
-  const acha = id => E.d.atividades.find(a => a.id === id);
-  if (t.id === 'btn-nova') formAtividade();
-  else if (t.dataset.filtro) { filtro = t.dataset.filtro; renderAtividades(); }
-  else if (t.dataset.editar) formAtividade(acha(t.dataset.editar));
-  else if (t.dataset.excluir) confirmar('Excluir esta atividade?', () => { E.d.atividades = E.d.atividades.filter(a => a.id !== t.dataset.excluir); E.salvar(); renderTudo(); toast('Excluída.'); }, 'Excluir');
-  else if (t.dataset.enviar) {
-    const a = acha(t.dataset.enviar);
-    const vai = () => { a.status = 'analise'; a.obs = ''; E.salvar(); renderTudo(); toast('Enviada para a coordenação.'); };
-    if (!a.comprovante) confirmar('Esta atividade está sem comprovante e pode ser recusada. Enviar mesmo assim?', vai, 'Enviar'); else vai();
+/* ---------- Eventos globais ---------- */
+document.addEventListener('click', async e => {
+  const b = e.target.closest('button'); if (!b) return;
+  if (b.id === 'nova') formAtividade();
+  else if (b.dataset.f) { filtro = b.dataset.f; telaAtividades(); }
+  else if (b.dataset.lembrar) { const ev = S.d.ev.find(x => x.id === b.dataset.lembrar); S.mudar(() => { ev.lembrar = !ev.lembrar; }); brinde(ev.lembrar ? 'Lembrete simulado: aviso 1 dia antes.' : 'Lembrete removido.'); }
+  else if (b.dataset.participei) { const ev = S.d.ev.find(x => x.id === b.dataset.participei); formAtividade(null, { t: ev.t, cat: ev.cat, h: ev.h, data: ev.data }); }
+  else if (b.dataset.validar) { S.mudar(x => { const a = x.ativ.find(y => y.id === b.dataset.validar); a.st = 'validada'; a.motivo = ''; }); brinde('Validada.'); }
+  else if (b.dataset.ver) verComp(b.dataset.ver);
+  else if (b.dataset.recusar) {
+    abrir(`<h2>Motivo da recusa</h2><select class="entrada" id="r-m"><option>Comprovante ilegível ou ausente</option><option>Categoria incorreta</option><option>Carga horária diferente do certificado</option><option>Atividade fora do regulamento</option></select>
+      <div class="fila"><button class="btn lin" data-fechar>Cancelar</button><button class="btn no" id="r-ok">Recusar</button></div>`, d =>
+      $('#r-ok', d).addEventListener('click', () => { S.mudar(x => { const a = x.ativ.find(y => y.id === b.dataset.recusar); a.st = 'recusada'; a.motivo = $('#r-m', d).value; }); dlg.close(); brinde('Recusada com motivo.'); }));
   }
-  else if (t.dataset.ver) { const a = acha(t.dataset.ver);
-    modal(`<h2>Comprovante</h2>${a.comprovante.startsWith('data:image') ? `<img class="thumb" style="max-height:60dvh" src="${a.comprovante}" alt="Comprovante de ${esc(a.titulo)}">` : `<p><a class="btn bloco" href="${a.comprovante}" download="comprovante.pdf">Baixar PDF</a></p>`}<button class="btn sec bloco" data-fechar>Fechar</button>`); }
-  else if (t.dataset.validar) { const a = acha(t.dataset.validar); a.status = 'validada'; a.obs = 'Validada.'; E.salvar(); renderTudo(); toast('Validada.'); }
-  else if (t.dataset.recusar) {
-    const a = acha(t.dataset.recusar);
-    modal(`<h2>Recusar atividade</h2><div class="campo"><label for="r-mot">Motivo</label><select id="r-mot">
-      <option>Comprovante ilegível ou ausente</option><option>Categoria incorreta</option><option>Carga horária diferente do certificado</option><option>Atividade não prevista no regulamento</option></select></div>
-      <div class="btns"><button class="btn sec" data-fechar>Cancelar</button><button class="btn perigo" id="r-ok">Recusar</button></div>`, (m, fechar) =>
-      $('#r-ok', m).addEventListener('click', () => { a.status = 'recusada'; a.obs = $('#r-mot', m).value; E.salvar(); fechar(); renderTudo(); toast('Recusada com motivo.'); }));
+  else if (b.id === 'aj-salvar') S.mudar(x => { x.curso.nome = $('#aj-curso').value.trim() || 'Meu curso'; x.curso.formatura = $('#aj-form').value;
+    x.curso.cats.forEach((c, i) => { c.nome = $(`[data-cn="${i}"]`).value.trim() || c.nome; c.teto = Math.max(0, +$(`[data-ct="${i}"]`).value || 0); }); }), brinde('Regulamento salvo.');
+  else if (b.id === 'aj-cat') { S.mudar(x => x.curso.cats.push({ id: uid(), nome: 'Nova categoria', teto: 10 })); brinde('Categoria criada — ajuste o nome.'); }
+  else if (b.id === 'exp-json') {
+    const arquivos = {};
+    for (const a of S.d.ativ.filter(a => a.comp)) { const bl = await Arquivos.ler(a.id); if (bl) arquivos[a.id] = await new Promise(ok => { const r = new FileReader(); r.onload = () => ok(r.result); r.readAsDataURL(bl); }); }
+    baixar(`horacerta-${hoje()}.json`, JSON.stringify({ app: 'horacerta', v: 2, dados: S.d, arquivos }), 'application/json'); brinde('Backup baixado.');
   }
-  else if (t.dataset.interesse) { const e = E.d.eventos.find(x => x.id === t.dataset.interesse); e.interesse = !e.interesse; E.salvar(); renderEventos(); toast(e.interesse ? 'Lembrete simulado ativado (aviso 1 dia antes).' : 'Lembrete removido.'); }
-  else if (t.dataset.participei) { const e = E.d.eventos.find(x => x.id === t.dataset.participei);
-    formAtividade(null, { titulo: e.titulo, cat: e.cat, horas: e.horas, data: e.data }); }
-  else if (t.id === 'btn-salvar-curso') {
-    E.d.curso.nome = $('#c-curso').value.trim() || 'Meu curso';
-    E.d.curso.formatura = $('#c-form').value;
-    E.d.curso.cats.forEach(c => { c.exigidas = Math.max(0, Number($('#cat-' + c.id).value) || 0); });
-    E.salvar(); renderTudo(); toast('Curso salvo.');
+  else if (b.id === 'exp-csv') {
+    const L = [['atividade', 'categoria', 'horas', 'data', 'situacao', 'comprovante', 'motivo']].concat(S.d.ativ.map(a => [a.t, catNome(a.cat), a.h, a.data, ST[a.st][0], a.comp ? 'sim' : 'nao', a.motivo]));
+    baixar(`horacerta-${hoje()}.csv`, '﻿' + L.map(l => l.map(v => `"${String(v).replace(/"/g, '""')}"`).join(';')).join('\n'), 'text/csv'); brinde('CSV baixado.');
   }
-  else if (t.id === 'btn-csv') {
-    const linhas = [['atividade', 'categoria', 'horas', 'data', 'situacao', 'tem_comprovante', 'obs_coordenacao']]
-      .concat(E.d.atividades.map(a => [a.titulo, catNome(a.cat), a.horas, a.data, STATUS[a.status].rot, a.comprovante ? 'sim' : 'nao', a.obs]));
-    baixar(`horacerta-${hoje()}.csv`, '﻿' + linhas.map(l => l.map(v => `"${String(v ?? '').replace(/"/g, '""')}"`).join(';')).join('\n'), 'text/csv');
-    toast('CSV baixado.');
-  }
+  else if (b.id === 'imp') { const i = Object.assign(document.createElement('input'), { type: 'file', accept: '.json' }); i.onchange = async () => {
+      try { const j = JSON.parse(await i.files[0].text()); if (j.app !== 'horacerta') throw 0;
+        for (const [id, url] of Object.entries(j.arquivos || {})) await Arquivos.salvar(id, await (await fetch(url)).blob());
+        S.d = j.dados; S.salvar(); brinde('Backup importado.'); } catch (e) { brinde('Arquivo inválido.'); } }; i.click(); }
+  else if (b.id === 'zerar') { if (confirm('Apagar todos os dados e comprovantes deste aparelho?')) { await Arquivos.limpar(); S.d = semente(); S.salvar(); brinde('Dados apagados.'); } }
 });
+function baixar(nome, txt, tipo) { const u = URL.createObjectURL(new Blob([txt], { type: tipo })); Object.assign(document.createElement('a'), { href: u, download: nome }).click(); setTimeout(() => URL.revokeObjectURL(u), 800); }
 
-ligarDados(E, 'horacerta', renderTudo);
-renderTudo();
-abas(v => { if (v === 'painel') renderPainel(); });
-pwa();
+/* ---------- Rotas (#/tela) ---------- */
+window.__rotas = ['#/painel', '#/atividades', '#/agenda', '#/coordenacao', '#/ajustes'];
+function rota() {
+  const r = (location.hash.match(/^#\/(\w+)/) || [, 'painel'])[1];
+  const alvo = $('#t-' + r) ? r : 'painel';
+  document.querySelectorAll('.tela').forEach(t => t.classList.toggle('on', t.id === 't-' + alvo));
+  document.querySelectorAll('nav.abas a').forEach(a => { if (a.getAttribute('href') === '#/' + alvo) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current'); });
+}
+addEventListener('hashchange', rota);
+tudo(); rota();
+
+/* ---------- PWA ---------- */
+if ('serviceWorker' in navigator && location.protocol.startsWith('http')) navigator.serviceWorker.register('sw.js').catch(() => {});
+let pedido; addEventListener('beforeinstallprompt', e => { e.preventDefault(); pedido = e; $('#btn-instalar').hidden = false; });
+$('#btn-instalar').addEventListener('click', () => pedido && pedido.prompt());
 </script>
 </body>
 </html>

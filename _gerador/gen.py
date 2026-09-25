@@ -618,8 +618,8 @@ def gen_manifest(n, g):
 
 
 def gen_sw(n, g):
-    return f"""const CACHE = '{g['slug']}-v1';
-const PRE = ['./', './index.html', './app.html', '../assets/mvp/mvp.css', '../assets/mvp/mvp.js', '../assets/logos/g{n}.svg'];
+    return f"""const CACHE = '{g['slug']}-v2';
+const PRE = ['./', './index.html', './app.html', '../assets/logos/g{n}.svg'];
 
 self.addEventListener('install', e => {{
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(PRE)).then(() => self.skipWaiting()));
@@ -685,7 +685,7 @@ def main():
             "README.md": gen_readme(n, g, info),
             "Pesquisa-Dados.md": gen_pesquisa(n, g, info),
             f"Slides-{g['nome']}.html": gen_slides(n, g, info),
-            "index.html": gen_landing(n, g, info),
+            # index.html (landing) agora é feito à mão, no estilo do app de cada grupo — não sobrescrever
             "manifest.json": gen_manifest(n, g),
             "sw.js": gen_sw(n, g),
         }

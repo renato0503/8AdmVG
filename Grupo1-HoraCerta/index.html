@@ -3,124 +3,98 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HoraCerta — Grupo 1 · Customer Discovery 8AdmVG</title>
-<meta name="description" content="Suas horas complementares em tempo real, num app só">
-<meta name="theme-color" content="#1e1b4b">
+<meta name="theme-color" content="#312e81">
+<title>HoraCerta — Grupo 1 · 8AdmVG</title>
+<meta name="description" content="HoraCerta: suas horas complementares em tempo real, num app só. Projeto do Grupo 1 da turma de Administração 8º semestre (VG) da UNIFACC.">
 <link rel="icon" type="image/svg+xml" href="../assets/logos/g1.svg">
 <link rel="apple-touch-icon" href="../assets/logos/g1-192.png">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/landing.css">
-<style>:root{--acc:#4338ca;--acc2:#f59e0b;--tinta:#1e1b4b}</style>
+<link rel="manifest" href="manifest.json">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Inter:wght@400;500;700&family=Caveat:wght@600&display=swap" rel="stylesheet">
+<style>
+/* Landing do HoraCerta · mesma "caderneta acadêmica" do app: papel pautado, margem vermelha, índigo + âmbar */
+:root{--ind:#4338ca;--ind2:#312e81;--amb:#f59e0b;--papel:#fffdf7;--pauta:#e4e7f5;--margem:#f87171;--txt:#1e1b4b;--mudo:#5b5f86}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Inter,system-ui,sans-serif;color:var(--txt);background:var(--papel) repeating-linear-gradient(transparent 0 31px,var(--pauta) 31px 32px);line-height:1.6}
+a{color:var(--ind)}
+.folha{max-width:1060px;margin:0 auto;padding:0 18px 0 46px;position:relative}
+.folha::before{content:"";position:absolute;left:30px;top:0;bottom:0;width:2px;background:var(--margem);opacity:.6}
+.topo{display:flex;align-items:center;gap:10px;padding:18px 0}
+.topo img{width:36px;height:36px;border-radius:10px}
+.topo a.voltar{margin-left:auto;font-size:14px;text-decoration:none;font-weight:700}
+.heroi{display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:center;padding:24px 0 40px}
+.etq{font-family:Caveat,cursive;font-size:24px;color:var(--amb);transform:rotate(-2deg);display:inline-block}
+h1{font-family:Fraunces,serif;font-weight:800;font-size:clamp(44px,8vw,78px);line-height:1;color:var(--ind2);letter-spacing:-.02em}
+h1 span{background:linear-gradient(transparent 62%,rgba(245,158,11,.45) 62%)}
+.lead{font-size:18.5px;margin:16px 0 22px;max-width:540px}
+.acoes{display:flex;gap:10px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;min-height:48px;white-space:nowrap;padding:0 20px;border-radius:999px;background:var(--ind);color:#fff;text-decoration:none;font-weight:700}
+.btn.sec{background:#fff;color:var(--ind);border:2px solid var(--ind)}
+.fone{justify-self:center;width:300px;height:600px;border-radius:40px;background:#111;padding:12px;box-shadow:0 30px 60px -20px rgba(49,46,129,.45);transform:rotate(2deg)}
+.fone iframe{width:360px;height:720px;border:0;border-radius:30px;transform:scale(.7334);transform-origin:0 0;background:#fff}
+.fone div{width:276px;height:576px;overflow:hidden;border-radius:30px}
+h2{font-family:Fraunces,serif;font-size:32px;color:var(--ind2);margin-bottom:6px}
+.sec{padding:34px 0}
+.aneis{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px;margin-top:18px}
+.anel{background:#fff;border:1.5px solid var(--pauta);border-radius:18px;padding:18px;box-shadow:4px 4px 0 var(--pauta)}
+.anel svg{width:64px;height:64px}
+.anel h3{font-family:Fraunces,serif;font-size:20px;margin:6px 0 4px}
+.anel p{color:var(--mudo);font-size:15px}
+.sumario{list-style:none;margin-top:14px;max-width:720px}
+.sumario li a{display:flex;gap:8px;align-items:baseline;text-decoration:none;color:var(--txt);padding:6px 0;min-height:44px}
+.sumario li a b{white-space:nowrap}
+.sumario li a i{flex:1;border-bottom:2px dotted #b5b9d9;transform:translateY(-4px)}
+.sumario li a small{color:var(--mudo);font-size:13px}
+.sumario li a:hover b{color:var(--ind)}
+.equipe{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+.equipe span{font-family:Caveat,cursive;font-size:26px;background:#fff;border:1.5px solid var(--pauta);padding:2px 16px;border-radius:12px;transform:rotate(var(--r,0deg))}
+.rodape{padding:30px 0 40px;color:var(--mudo);font-size:14px}
+@media(max-width:760px){.heroi{grid-template-columns:1fr}.fone{transform:none}.folha{padding-left:34px}.folha::before{left:20px}.sumario li a small{display:none}}
+</style>
 </head>
 <body>
+<div class="folha">
+  <header class="topo"><img src="../assets/logos/g1.svg" alt=""><b>HoraCerta</b><a class="voltar" href="../index.html">← Todos os projetos</a></header>
 
-<nav class="nav">
-  <div class="wrap">
-    <a href="../index.html" class="nav-back">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
-      Todos os projetos
-    </a>
-    <span class="nav-title">Grupo 1 · HoraCerta</span>
-  </div>
-</nav>
+  <section class="heroi">
+    <div>
+      <span class="etq">Grupo 1 · Customer Discovery</span>
+      <h1>Cada hora <span>no lugar certo.</span></h1>
+      <p class="lead">O HoraCerta junta num app só o que o aluno precisa sobre horas complementares: quanto falta por categoria, o que está em análise, onde estão os certificados e quais eventos ainda valem horas.</p>
+      <div class="acoes"><a class="btn" href="app.html">Abrir o app →</a><a class="btn sec" href="Slides-HoraCerta.html">Slides de defesa</a></div>
+      <p style="margin-top:14px;font-size:14px;color:var(--mudo)">Prof. Renato · código de campo <b>G1-&lt;nnn&gt;</b></p>
+    </div>
+    <div class="fone" aria-label="Prévia do app funcionando"><div><iframe src="app.html" title="HoraCerta em funcionamento" loading="lazy"></iframe></div></div>
+  </section>
 
-<header class="hero">
-  <div class="wrap">
-    <div class="hero-top">
-      <img class="hero-logo" src="../assets/logos/g1.svg" alt="Logo HoraCerta">
-      <div>
-        <div class="hero-group">Grupo 1 · Customer Discovery</div>
-        <h1>HoraCerta</h1>
-      </div>
-    </div>
-    <p class="pitch">Suas horas complementares em tempo real, num app só. O HoraCerta é um app único para o aluno de graduação acompanhar <strong>em tempo real</strong> tudo o que se refere às horas complementares: quantas horas o curso exige por categoria, quantas já foram <strong>validadas</strong>, quantas estão <strong>em análise</strong>, onde estão os <strong>comprovantes</strong> (foto/PDF guardados no celular) e quais <strong>eventos próximos</strong> valem horas.</p>
-    <div class="hero-meta">
-      <div><b>Professor(a)</b>Prof. Renato</div>
-      <div><b>Integrantes</b>José Arlindo, Taynara, Luana, Leticia, Samara</div>
-      <div><b>Código de campo</b>G1-&lt;nnn&gt;</div>
-    </div>
-    <div class="cta-row">
-      <a href="app.html" class="btn-cta">
-        Abrir o app
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-      </a>
-      <a href="Slides-HoraCerta.html" class="btn-secondary">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-        Ver slides de defesa
-      </a>
-    </div>
-  </div>
-</header>
-
-<main>
-  <section class="block">
-    <div class="wrap">
-      <div class="block-head">
-        <h2>O que o app faz</h2>
-        <p>Um app único do aluno para todas as horas — e, para a faculdade, validação organizada e sem papel.</p>
-      </div>
-      <div class="feat-grid">
-        <div class="feat"><b>Saldo em tempo real</b><p>Painel com horas exigidas, validadas, em análise e faltantes — por categoria (ensino, pesquisa, extensão, cultura).</p></div>
-        <div class="feat"><b>Comprovantes no bolso</b><p>Foto ou PDF do certificado vira comprovante na hora, enviado para a coordenação validar sem papel.</p></div>
-        <div class="feat"><b>Oportunidades próximas</b><p>Agenda de eventos e cursos que valem horas, com aviso — para o aluno que tem pouco tempo.</p></div>
-      </div>
+  <section class="sec">
+    <h2>O que o app resolve</h2>
+    <p style="max-width:640px">Hoje as horas ficam espalhadas entre e-mails, papéis e o sistema da faculdade. O aluno só descobre que falta hora perto da formatura.</p>
+    <div class="aneis">
+      <div class="anel"><svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="15" fill="none" stroke="#e4e7f5" stroke-width="5"/><circle cx="18" cy="18" r="15" fill="none" stroke="#4338ca" stroke-width="5" stroke-dasharray="66 100" transform="rotate(-90 18 18)" stroke-linecap="round"/></svg><h3>Saldo por categoria</h3><p>Exigidas, validadas, em análise e faltando — respeitando o teto de cada categoria.</p></div>
+      <div class="anel"><svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="15" fill="none" stroke="#e4e7f5" stroke-width="5"/><circle cx="18" cy="18" r="15" fill="none" stroke="#f59e0b" stroke-width="5" stroke-dasharray="40 100" transform="rotate(-90 18 18)" stroke-linecap="round"/></svg><h3>Ritmo até a formatura</h3><p>Quantas horas por mês faltam para fechar a conta no prazo.</p></div>
+      <div class="anel"><svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="15" fill="none" stroke="#e4e7f5" stroke-width="5"/><circle cx="18" cy="18" r="15" fill="none" stroke="#312e81" stroke-width="5" stroke-dasharray="85 100" transform="rotate(-90 18 18)" stroke-linecap="round"/></svg><h3>Certificado no bolso</h3><p>Foto ou PDF guardado no aparelho, enviado para validação e com motivo quando recusado.</p></div>
+      <div class="anel"><svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="15" fill="none" stroke="#e4e7f5" stroke-width="5"/><circle cx="18" cy="18" r="15" fill="none" stroke="#f87171" stroke-width="5" stroke-dasharray="25 100" transform="rotate(-90 18 18)" stroke-linecap="round"/></svg><h3>Eventos que valem hora</h3><p>Agenda com lembrete e “participei” que já vira atividade.</p></div>
     </div>
   </section>
-  <section class="block">
-    <div class="wrap">
-      <div class="block-head">
-        <h2>Materiais do grupo</h2>
-        <p>Toda a documentação produzida para a defesa e para a pesquisa de campo.</p>
-      </div>
-      <div class="doc-grid">
-        <a href="../assets/md-viewer.html?src=../Grupo1-HoraCerta/README.md&voltar=../Grupo1-HoraCerta/" class="doc-card">
-          <div class="doc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg></div>
-          <b>README do grupo</b>
-          <small>Integrantes, hipótese, roteiro de campo e pitch</small>
-        </a>
-        <a href="../assets/md-viewer.html?src=../Grupo1-HoraCerta/formulario-app.md&voltar=../Grupo1-HoraCerta/" class="doc-card">
-          <div class="doc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></div>
-          <b>Formulário de campo</b>
-          <small>20 perguntas em escala 1–5, código G1-&lt;nnn&gt;</small>
-        </a>
-        <a href="../assets/md-viewer.html?src=../Grupo1-HoraCerta/ContextoApp.md&voltar=../Grupo1-HoraCerta/" class="doc-card">
-          <div class="doc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.4 6.6L21 11l-6.6 2.4L12 20l-2.4-6.6L3 11l6.6-2.4z"/></svg></div>
-          <b>Contexto do produto</b>
-          <small>Personas, jornada, MVP/v1/v2, KPIs, riscos e LGPD</small>
-        </a>
-        <a href="../assets/md-viewer.html?src=../Grupo1-HoraCerta/Pesquisa-Dados.md&voltar=../Grupo1-HoraCerta/" class="doc-card">
-          <div class="doc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></div>
-          <b>Pesquisa e dados</b>
-          <small>Dados oficiais + 14 artigos científicos com DOI</small>
-        </a>
-        <a href="Slides-HoraCerta.pdf" class="doc-card">
-          <div class="doc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
-          <b>Slides de defesa (PDF)</b>
-          <small>Versão para download e impressão</small>
-        </a>
-        <a href="../coleta/" class="doc-card">
-          <div class="doc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M11 18h2"/></svg></div>
-          <b>App de coleta (campo)</b>
-          <small>Formulário offline usado no shopping</small>
-        </a>
-      </div>
-      <div class="team">
-        <span>José Arlindo</span>
-        <span>Taynara</span>
-        <span>Luana</span>
-        <span>Leticia</span>
-        <span>Samara</span>
-      </div>
-    </div>
+
+  <section class="sec">
+    <h2>Sumário do grupo</h2>
+    <ol class="sumario">
+      <li><a href="../assets/md-viewer.html?src=../Grupo1-HoraCerta/README.md&voltar=../Grupo1-HoraCerta/"><b>README do grupo</b><i></i><small>integrantes, hipótese, roteiro e pitch</small></a></li>
+      <li><a href="../assets/md-viewer.html?src=../Grupo1-HoraCerta/formulario-app.md&voltar=../Grupo1-HoraCerta/"><b>Formulário de campo</b><i></i><small>20 perguntas, escala 1–5</small></a></li>
+      <li><a href="../assets/md-viewer.html?src=../Grupo1-HoraCerta/ContextoApp.md&voltar=../Grupo1-HoraCerta/"><b>Contexto do produto</b><i></i><small>personas, jornada, KPIs, LGPD</small></a></li>
+      <li><a href="../assets/md-viewer.html?src=../Grupo1-HoraCerta/Pesquisa-Dados.md&voltar=../Grupo1-HoraCerta/"><b>Pesquisa e dados</b><i></i><small>dados oficiais + 14 artigos com DOI</small></a></li>
+      <li><a href="Slides-HoraCerta.pdf"><b>Slides (PDF)</b><i></i><small>para baixar e imprimir</small></a></li>
+      <li><a href="../coleta/"><b>App de coleta</b><i></i><small>formulário offline de campo</small></a></li>
+    </ol>
   </section>
-</main>
 
-<footer>
-  <div class="wrap">
-    <a href="../index.html">← Voltar ao hub Customer Discovery</a>
-    <p>Grupo 1 · HoraCerta · Cerrado Tech · Unifacc · Administração · 8º Semestre (VG), 2026</p>
-  </div>
-</footer>
+  <section class="sec">
+    <h2>Quem assina</h2>
+    <div class="equipe"><span style="--r:-2deg">José Arlindo</span><span style="--r:1deg">Taynara</span><span style="--r:-1deg">Luana</span><span style="--r:2deg">Leticia</span><span style="--r:-1.5deg">Samara</span></div>
+  </section>
 
+  <footer class="rodape">Grupo 1 · HoraCerta · Cerrado Tech · UNIFACC · Administração 8º semestre (VG), 2026 · <a href="../index.html">voltar ao hub</a></footer>
+</div>
 </body>
 </html>

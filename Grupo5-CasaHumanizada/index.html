@@ -3,122 +3,109 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CasaHumanizada — Grupo 5 · Customer Discovery 8AdmVG</title>
-<meta name="description" content="Todos os programas de moradia num lugar só — com atendimento humano">
-<meta name="theme-color" content="#14301f">
+<meta name="theme-color" content="#9a3412">
+<title>Casa Humanizada — Grupo 5 · 8AdmVG</title>
+<meta name="description" content="Casa Humanizada: programas de moradia num lugar só, com conversa, checklist e prazos. Grupo 5 · UNIFACC.">
 <link rel="icon" type="image/svg+xml" href="../assets/logos/g5.svg">
 <link rel="apple-touch-icon" href="../assets/logos/g5-192.png">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/landing.css">
-<style>:root{--acc:#15803d;--acc2:#e11d48;--tinta:#14301f}</style>
+<link rel="manifest" href="manifest.json">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* Landing da Casa Humanizada · a própria página conta a história como uma conversa, depois vira linha do tempo */
+:root{--barro:#9a3412;--barro2:#c2410c;--folha:#3f6212;--creme:#fdf6ec;--linha:#eadccb;--txt:#2b1d14;--mudo:#7c6a5d;--rosa:#fde4d3}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"DM Sans",system-ui,sans-serif;background:var(--creme);color:var(--txt);line-height:1.55}
+h1,h2,h3{font-family:"Bricolage Grotesque",sans-serif}
+a{color:var(--barro2)}
+.faixa{background:var(--barro);color:#fff;border-radius:0 0 40px 40px;padding:18px 0 60px}
+.w{max-width:980px;margin:0 auto;padding:0 18px}
+.topo{display:flex;align-items:center;gap:10px}
+.topo img{width:38px;height:38px;border-radius:12px;background:#fff}
+.topo a{margin-left:auto;color:#fff;font-weight:700;text-decoration:none;font-size:14px}
+.heroi{display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:end;margin-top:30px}
+.heroi small{font-weight:700;letter-spacing:.08em;opacity:.85}
+h1{font-size:clamp(40px,8vw,74px);font-weight:800;line-height:1;margin:8px 0 14px}
+.lead{font-size:19px;opacity:.95;max-width:520px}
+.acoes{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+.btn{min-height:48px;display:inline-flex;align-items:center;padding:0 20px;border-radius:24px;background:#fff;color:var(--barro);font-weight:700;text-decoration:none}
+.btn.sec{background:transparent;color:#fff;border:2px solid #fff}
+.fone{justify-self:center;width:280px;height:570px;border-radius:40px;background:#2b1d14;padding:10px;margin-bottom:-120px;box-shadow:0 30px 60px -20px rgba(43,29,20,.5)}
+.fone div{width:260px;height:550px;border-radius:30px;overflow:hidden}
+.fone iframe{width:375px;height:793px;border:0;transform:scale(.6934);transform-origin:0 0}
+.conversa{max-width:620px;display:flex;flex-direction:column;gap:10px;margin:40px 0}
+.b{max-width:88%;padding:12px 16px;border-radius:22px;font-size:17px;opacity:0;transform:translateY(12px);transition:.5s}
+.b.vis{opacity:1;transform:none}
+.b.ela{background:#fff;border:1px solid var(--linha);border-bottom-left-radius:6px;align-self:flex-start}
+.b.eu{background:var(--barro2);color:#fff;border-bottom-right-radius:6px;align-self:flex-end}
+.b.dado{background:var(--rosa);align-self:flex-start}
+.b.dado b{font-family:"Bricolage Grotesque";font-size:34px;display:block;line-height:1}
+h2{font-size:32px;margin:40px 0 8px}
+.antes{display:grid;grid-template-columns:1fr 1fr;gap:0;border-radius:22px;overflow:hidden;border:1px solid var(--linha);background:#fff}
+.antes div{padding:12px 16px;border-bottom:1px solid var(--linha)}
+.antes div:nth-child(odd){color:var(--mudo);text-decoration:line-through;text-decoration-color:rgba(194,65,12,.5)}
+.antes div:nth-child(even){font-weight:700;color:var(--folha)}
+.antes .cab{text-decoration:none!important;font-family:"Bricolage Grotesque";font-size:18px;color:var(--txt)!important;background:var(--rosa)}
+.tempo{position:relative;padding-left:34px;margin-top:10px}
+.tempo::before{content:"";position:absolute;left:12px;top:6px;bottom:6px;width:3px;background:var(--linha)}
+.tempo a{display:block;position:relative;padding:8px 0 14px;text-decoration:none;color:var(--txt);min-height:44px}
+.tempo a::before{content:"";position:absolute;left:-29px;top:12px;width:15px;height:15px;border-radius:50%;background:var(--creme);border:3px solid var(--barro2)}
+.tempo a b{display:block;font-size:17px}.tempo a span{color:var(--mudo);font-size:14px}
+.tempo a:hover b{color:var(--barro2)}
+.equipe{display:flex;gap:10px;flex-wrap:wrap}.equipe span{background:#fff;border:1px solid var(--linha);border-radius:999px;padding:8px 16px;font-weight:700}
+footer{padding:30px 0 50px;color:var(--mudo);font-size:14px}
+@media(max-width:760px){.heroi{grid-template-columns:1fr}.fone{margin-bottom:-80px}.antes{grid-template-columns:1fr}.antes div:nth-child(odd){border-bottom:none;padding-bottom:0}}
+</style>
 </head>
 <body>
-
-<nav class="nav">
-  <div class="wrap">
-    <a href="../index.html" class="nav-back">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
-      Todos os projetos
-    </a>
-    <span class="nav-title">Grupo 5 · CasaHumanizada</span>
-  </div>
-</nav>
-
-<header class="hero">
-  <div class="wrap">
-    <div class="hero-top">
-      <img class="hero-logo" src="../assets/logos/g5.svg" alt="Logo CasaHumanizada">
-      <div>
-        <div class="hero-group">Grupo 5 · Customer Discovery</div>
-        <h1>CasaHumanizada</h1>
-      </div>
-    </div>
-    <p class="pitch">Todos os programas de moradia num lugar só — com atendimento humano. O CasaHumanizada é uma plataforma digital que <strong>centraliza as informações sobre programas e oportunidades habitacionais</strong> (municipais, como o Casa Cuiabana; estaduais; e federais, como o Minha Casa, Minha Vida), explica os <strong>requisitos sem jargões</strong>, faz um <strong>teste rápido de elegibilidade</strong> (&quot;tenho direito?&quot;), guia o <strong>checklist de documentos</strong>, mostra o <strong>status do cadastro em tempo real</strong>, com <strong>etapas e prazos</strong>, e envia <strong>notificações</strong> de atualização — tudo em linguagem simples e com opção de <strong>atendimento humano</strong> para quem tem dificuldade com o digital.</p>
-    <div class="hero-meta">
-      <div><b>Professor(a)</b>Prof. Heitor</div>
-      <div><b>Integrantes</b>Bianca, Giovanna, Estefane</div>
-      <div><b>Código de campo</b>G5-&lt;nnn&gt;</div>
-    </div>
-    <div class="cta-row">
-      <a href="app.html" class="btn-cta">
-        Abrir o app
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-      </a>
-      <a href="Slides-CasaHumanizada.html" class="btn-secondary">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-        Ver slides de defesa
-      </a>
-    </div>
-  </div>
-</header>
-
-<main>
-  <section class="block">
-    <div class="wrap">
-      <div class="block-head">
-        <h2>O que o app faz</h2>
-        <p>Digital e humano: reduz o ônus administrativo sem transferir o trabalho para quem tem menos recursos.</p>
-      </div>
-      <div class="feat-grid">
-        <div class="feat"><b>Tudo num lugar só</b><p>Programas habitacionais reunidos, com requisitos em linguagem simples e fonte oficial de cada informação.</p></div>
-        <div class="feat"><b>&quot;Tenho direito?&quot;</b><p>Teste rápido de elegibilidade, que roda no celular sem enviar dados, e checklist de documentos.</p></div>
-        <div class="feat"><b>Status, prazos e avisos</b><p>Linha do tempo do cadastro com etapas, prazos e notificações — e opção de falar com uma pessoa.</p></div>
-      </div>
-    </div>
+<div class="faixa"><div class="w">
+  <header class="topo"><img src="../assets/logos/g5.svg" alt=""><b>Casa Humanizada</b><a href="../index.html">← Todos os projetos</a></header>
+  <section class="heroi">
+    <div><small>GRUPO 5 · CUSTOMER DISCOVERY · INOVAÇÃO E GESTÃO PÚBLICA</small>
+      <h1>Moradia sem labirinto.</h1>
+      <p class="lead">Programas federais, estaduais e municipais num lugar só — com uma conversa que explica, um checklist que organiza e prazos que não passam batido.</p>
+      <div class="acoes"><a class="btn" href="app.html">Conversar com a Ana</a><a class="btn sec" href="Slides-CasaHumanizada.html">Slides de defesa</a></div></div>
+    <div class="fone" aria-label="Prévia do app"><div><iframe src="app.html" title="Casa Humanizada em funcionamento" loading="lazy"></iframe></div></div>
   </section>
-  <section class="block">
-    <div class="wrap">
-      <div class="block-head">
-        <h2>Materiais do grupo</h2>
-        <p>Toda a documentação produzida para a defesa e para a pesquisa de campo.</p>
-      </div>
-      <div class="doc-grid">
-        <a href="../assets/md-viewer.html?src=../Grupo5-CasaHumanizada/README.md&voltar=../Grupo5-CasaHumanizada/" class="doc-card">
-          <div class="doc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg></div>
-          <b>README do grupo</b>
-          <small>Integrantes, hipótese, roteiro de campo e pitch</small>
-        </a>
-        <a href="../assets/md-viewer.html?src=../Grupo5-CasaHumanizada/formulario-app.md&voltar=../Grupo5-CasaHumanizada/" class="doc-card">
-          <div class="doc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></div>
-          <b>Formulário de campo</b>
-          <small>20 perguntas em escala 1–5, código G5-&lt;nnn&gt;</small>
-        </a>
-        <a href="../assets/md-viewer.html?src=../Grupo5-CasaHumanizada/ContextoApp.md&voltar=../Grupo5-CasaHumanizada/" class="doc-card">
-          <div class="doc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.4 6.6L21 11l-6.6 2.4L12 20l-2.4-6.6L3 11l6.6-2.4z"/></svg></div>
-          <b>Contexto do produto</b>
-          <small>Personas, jornada, MVP/v1/v2, KPIs, riscos e LGPD</small>
-        </a>
-        <a href="../assets/md-viewer.html?src=../Grupo5-CasaHumanizada/Pesquisa-Dados.md&voltar=../Grupo5-CasaHumanizada/" class="doc-card">
-          <div class="doc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></div>
-          <b>Pesquisa e dados</b>
-          <small>Dados oficiais + 14 artigos científicos com DOI</small>
-        </a>
-        <a href="Slides-CasaHumanizada.pdf" class="doc-card">
-          <div class="doc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
-          <b>Slides de defesa (PDF)</b>
-          <small>Versão para download e impressão</small>
-        </a>
-        <a href="../coleta/" class="doc-card">
-          <div class="doc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M11 18h2"/></svg></div>
-          <b>App de coleta (campo)</b>
-          <small>Formulário offline usado no shopping</small>
-        </a>
-      </div>
-      <div class="team">
-        <span>Bianca</span>
-        <span>Giovanna</span>
-        <span>Estefane</span>
-      </div>
-    </div>
-  </section>
-</main>
+</div></div>
 
-<footer>
-  <div class="wrap">
-    <a href="../index.html">← Voltar ao hub Customer Discovery</a>
-    <p>Grupo 5 · CasaHumanizada · Cerrado Tech · Unifacc · Administração · 8º Semestre (VG), 2026</p>
+<div class="w">
+  <div class="conversa" id="conversa">
+    <div class="b eu">Vi que abriu inscrição para casa. Onde eu me inscrevo? Eu tenho direito?</div>
+    <div class="b ela">Essa é a dúvida de muita gente. As informações ficam espalhadas entre sites do governo federal, do estado e da prefeitura.</div>
+    <div class="b dado"><b>83.991</b>cadastros no Casa Cuiabana em 2025 — para 1.000 famílias no 1º sorteio (Prefeitura de Cuiabá).</div>
+    <div class="b eu">E como eu não perco prazo nem esqueço documento?</div>
+    <div class="b ela">A Casa Humanizada faz o teste “tenho direito?” no seu celular, monta o checklist, mostra as etapas com prazos e te avisa antes de vencer. E se o digital complicar, agenda atendimento presencial.</div>
+    <div class="b ela">⚠️ E lembra: nenhum programa cobra taxa de inscrição.</div>
   </div>
-</footer>
 
+  <h2>Antes × depois</h2>
+  <div class="antes">
+    <div class="cab">Hoje</div><div class="cab">Com a Casa Humanizada</div>
+    <div>Informação difícil de achar</div><div>Programas centralizados, com link oficial</div>
+    <div>Dúvida sobre documentos</div><div>Checklist guiado por programa</div>
+    <div>Não sei em que etapa estou</div><div>Linha do tempo com status</div>
+    <div>Prazo perdido</div><div>Contagem regressiva e avisos</div>
+    <div>Linguagem burocrática</div><div>Conversa direta, com atendimento humano</div>
+  </div>
+
+  <h2>Materiais do grupo</h2>
+  <nav class="tempo">
+    <a href="../assets/md-viewer.html?src=../Grupo5-CasaHumanizada/README.md&voltar=../Grupo5-CasaHumanizada/"><b>README do grupo</b><span>integrantes, hipótese, roteiro e pitch</span></a>
+    <a href="../assets/md-viewer.html?src=../Grupo5-CasaHumanizada/formulario-app.md&voltar=../Grupo5-CasaHumanizada/"><b>Formulário de campo</b><span>20 perguntas · G5-&lt;nnn&gt;</span></a>
+    <a href="../assets/md-viewer.html?src=../Grupo5-CasaHumanizada/ContextoApp.md&voltar=../Grupo5-CasaHumanizada/"><b>Contexto do produto</b><span>personas, jornada, KPIs, LGPD</span></a>
+    <a href="../assets/md-viewer.html?src=../Grupo5-CasaHumanizada/Pesquisa-Dados.md&voltar=../Grupo5-CasaHumanizada/"><b>Pesquisa e dados</b><span>dados oficiais + 14 artigos com DOI</span></a>
+    <a href="Slides-CasaHumanizada.pdf"><b>Slides (PDF)</b><span>para baixar</span></a>
+    <a href="../coleta/"><b>App de coleta</b><span>formulário offline</span></a>
+  </nav>
+
+  <h2>Equipe</h2>
+  <div class="equipe"><span>Bianca</span><span>Geovanna</span><span>Estefane</span></div>
+  <p style="margin-top:8px;color:var(--mudo)">Orientação: Prof. Heitor</p>
+  <footer>Grupo 5 · Casa Humanizada · Cerrado Tech · UNIFACC · Administração 8º semestre (VG), 2026</footer>
+</div>
+<script>
+const io = 'IntersectionObserver' in window ? new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('vis'); io.unobserve(e.target); } }), { threshold: .3 }) : null;
+document.querySelectorAll('.b').forEach((b, i) => { b.style.transitionDelay = (i % 3) * 120 + 'ms'; io ? io.observe(b) : b.classList.add('vis'); });
+</script>
 </body>
 </html>

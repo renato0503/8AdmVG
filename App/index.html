@@ -1074,7 +1074,7 @@ function renderHome(){
   atualizarPill();
   const grid = $("#grupo-grid");
   grid.innerHTML = "";
-  [1,2,3,4,5,6].forEach(g=>{
+  Object.keys(GRUPOS).map(Number).forEach(g=>{
     const gr = GRUPOS[g];
     const b = document.createElement("button");
     b.className = "grupo-btn" + (grupoAtual===g ? " active" : "");

@@ -1,5 +1,5 @@
-const CACHE = 'horacerta-v1';
-const PRE = ['./', './index.html', './app.html', '../assets/mvp/mvp.css', '../assets/mvp/mvp.js', '../assets/logos/g1.svg'];
+const CACHE = 'horacerta-v2';
+const PRE = ['./', './index.html', './app.html', '../assets/logos/g1.svg'];
 
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(PRE)).then(() => self.skipWaiting()));

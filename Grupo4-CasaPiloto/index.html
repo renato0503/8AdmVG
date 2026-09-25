@@ -3,123 +3,94 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CasaPiloto — Grupo 4 · Customer Discovery 8AdmVG</title>
-<meta name="description" content="Escolha a casa e veja o caminho: guardar, investir ou financiar">
-<meta name="theme-color" content="#1c1917">
+<meta name="theme-color" content="#0b2a5b">
+<title>CasaPiloto — Grupo 4 · 8AdmVG</title>
+<meta name="description" content="CasaPiloto: simulador da construtora — guardar, investir ou financiar, por tipo de casa. Grupo 4 · UNIFACC.">
 <link rel="icon" type="image/svg+xml" href="../assets/logos/g4.svg">
 <link rel="apple-touch-icon" href="../assets/logos/g4-192.png">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/landing.css">
-<style>:root{--acc:#b45309;--acc2:#0d9488;--tinta:#1c1917}</style>
+<link rel="manifest" href="manifest.json">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;900&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* Landing do CasaPiloto · a página é uma prancha técnica: grade azul, carimbo, folhas numeradas e cotas */
+:root{--azul:#0b2a5b;--traco:#e8f0ff;--ciano:#7dd3fc;--laranja:#fb923c;--mono:"IBM Plex Mono",monospace}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Archivo,system-ui,sans-serif;color:var(--traco);line-height:1.55;background:var(--azul) linear-gradient(rgba(125,211,252,.09) 1px,transparent 1px) 0 0/24px 24px,linear-gradient(90deg,rgba(125,211,252,.09) 1px,transparent 1px) 0 0/24px 24px;background-color:var(--azul)}
+a{color:var(--ciano)}
+.w{max-width:1020px;margin:0 auto;padding:18px}
+.moldura{border:2px solid var(--traco);padding:18px;position:relative}
+.moldura::after{content:"";position:absolute;inset:6px;border:1px solid rgba(232,240,255,.35);pointer-events:none}
+.topo{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:13px}
+.topo img{width:34px;height:34px;background:#fff;border-radius:6px}
+.topo a{margin-left:auto}
+.heroi{display:grid;grid-template-columns:1.2fr .8fr;gap:24px;align-items:center;margin:26px 0}
+.cota{font-family:var(--mono);font-size:12.5px;letter-spacing:.06em;opacity:.8}
+h1{font-weight:900;font-size:clamp(38px,5.6vw,62px);line-height:1;margin:10px 0 14px}
+h1 span{color:var(--laranja)}
+.lead{font-size:18.5px;max-width:560px}
+.acoes{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+.btn{min-height:48px;display:inline-flex;align-items:center;padding:0 20px;border:2px solid var(--traco);color:var(--traco);text-decoration:none;font-weight:700;border-radius:4px}
+.btn.cheio{background:var(--laranja);border-color:var(--laranja);color:#111}
+.fone{justify-self:center;width:286px;height:580px;border:2px solid var(--traco);border-radius:36px;padding:10px;background:rgba(0,0,0,.35);position:relative}
+.fone div{width:262px;height:556px;border-radius:26px;overflow:hidden}
+.fone iframe{width:375px;height:796px;border:0;transform:scale(.6987);transform-origin:0 0}
+.fone::after{content:"← 375 mm* →";position:absolute;bottom:-26px;left:0;right:0;text-align:center;font-family:var(--mono);font-size:11px;opacity:.7}
+.folhas{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:14px}
+.folha{border:1.5px solid var(--traco);padding:14px;position:relative;background:rgba(18,58,120,.5)}
+.folha .fl{font-family:var(--mono);font-size:11.5px;color:var(--ciano)}
+.folha h3{font-size:19px;margin:4px 0}
+.exemplo{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:0;border:1.5px solid var(--traco);margin-top:14px}
+.exemplo div{padding:14px;border-right:1px dashed rgba(232,240,255,.4)}
+.exemplo b{display:block;font-family:var(--mono);font-size:26px;color:var(--ciano)}
+h2{font-weight:900;font-size:30px;margin-top:34px}
+.carimbo{display:grid;grid-template-columns:1fr 1fr;border:2px solid var(--traco);margin-top:34px;font-family:var(--mono);font-size:12.5px}
+.carimbo div{padding:8px 10px;border:1px solid rgba(232,240,255,.4)}
+.carimbo div b{display:block;font-family:Archivo;font-size:15px}
+.mats a{display:flex;justify-content:space-between;gap:10px;padding:12px 4px;border-bottom:1px dashed rgba(232,240,255,.4);text-decoration:none;color:var(--traco);min-height:44px;align-items:center}
+.mats a span{font-family:var(--mono);font-size:12px;color:var(--ciano)}
+@media(max-width:760px){.heroi{grid-template-columns:1fr}.carimbo{grid-template-columns:1fr}}
+</style>
 </head>
 <body>
-
-<nav class="nav">
-  <div class="wrap">
-    <a href="../index.html" class="nav-back">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
-      Todos os projetos
-    </a>
-    <span class="nav-title">Grupo 4 · CasaPiloto</span>
-  </div>
-</nav>
-
-<header class="hero">
-  <div class="wrap">
-    <div class="hero-top">
-      <img class="hero-logo" src="../assets/logos/g4.svg" alt="Logo CasaPiloto">
-      <div>
-        <div class="hero-group">Grupo 4 · Customer Discovery</div>
-        <h1>CasaPiloto</h1>
-      </div>
+<div class="w"><div class="moldura">
+  <header class="topo"><img src="../assets/logos/g4.svg" alt=""><b>CASAPILOTO</b><span>· FOLHA 01/04</span><a href="../index.html">← todos os projetos</a></header>
+  <section class="heroi">
+    <div>
+      <span class="cota">GRUPO 4 · CUSTOMER DISCOVERY · PROJETO DE PRODUTO</span>
+      <h1>Da casa piloto <span>à chave</span> — com as contas à vista.</h1>
+      <p class="lead">Quem visita a casa decorada se apaixona, mas raramente enxerga o caminho: quanto tempo para juntar a entrada, quanto de juros, quanto da renda vai embora. O CasaPiloto coloca guardar, investir e financiar lado a lado.</p>
+      <div class="acoes"><a class="btn cheio" href="app.html">Abrir o simulador</a><a class="btn" href="Slides-CasaPiloto.html">Slides de defesa</a></div>
     </div>
-    <p class="pitch">Escolha a casa e veja o caminho: guardar, investir ou financiar. O CasaPiloto é um simulador oferecido por <strong>construtoras</strong> a quem quer comprar a casa: a pessoa escolhe o <strong>tipo de casa</strong> desejado (a &quot;casa piloto&quot; — modelo, tamanho, padrão de acabamento) e o app mostra, lado a lado, <strong>três caminhos</strong>: quanto <strong>guardar</strong> por mês para comprar à vista ou dar a entrada, quanto render <strong>investindo</strong> esse valor e quanto custa <strong>financiar</strong> (parcela, prazo, juros, uso do FGTS).</p>
-    <div class="hero-meta">
-      <div><b>Professor(a)</b>Profa. Polyana</div>
-      <div><b>Integrantes</b>Aliny, André, Michelly, Everson</div>
-      <div><b>Código de campo</b>G4-&lt;nnn&gt;</div>
-    </div>
-    <div class="cta-row">
-      <a href="app.html" class="btn-cta">
-        Abrir o app
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-      </a>
-      <a href="Slides-CasaPiloto.html" class="btn-secondary">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-        Ver slides de defesa
-      </a>
-    </div>
-  </div>
-</header>
-
-<main>
-  <section class="block">
-    <div class="wrap">
-      <div class="block-head">
-        <h2>O que o app faz</h2>
-        <p>O cliente chega ao corretor preparado; a construtora ganha lead qualificado e venda mais rápida.</p>
-      </div>
-      <div class="feat-grid">
-        <div class="feat"><b>Escolha a casa piloto</b><p>Tipos de casa da construtora (tamanho, quartos, acabamento) com planta e preço de referência.</p></div>
-        <div class="feat"><b>Três caminhos lado a lado</b><p>Guardar × investir × financiar: quanto por mês, em quanto tempo e quanto custa no total.</p></div>
-        <div class="feat"><b>Plano até a chave</b><p>Metas de poupança com lembretes, uso do FGTS e checklist de documentos até a compra.</p></div>
-      </div>
-    </div>
+    <div class="fone" aria-label="Prévia do app"><div><iframe src="app.html" title="CasaPiloto em funcionamento" loading="lazy"></iframe></div></div>
   </section>
-  <section class="block">
-    <div class="wrap">
-      <div class="block-head">
-        <h2>Materiais do grupo</h2>
-        <p>Toda a documentação produzida para a defesa e para a pesquisa de campo.</p>
-      </div>
-      <div class="doc-grid">
-        <a href="../assets/md-viewer.html?src=../Grupo4-CasaPiloto/README.md&voltar=../Grupo4-CasaPiloto/" class="doc-card">
-          <div class="doc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg></div>
-          <b>README do grupo</b>
-          <small>Integrantes, hipótese, roteiro de campo e pitch</small>
-        </a>
-        <a href="../assets/md-viewer.html?src=../Grupo4-CasaPiloto/formulario-app.md&voltar=../Grupo4-CasaPiloto/" class="doc-card">
-          <div class="doc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></div>
-          <b>Formulário de campo</b>
-          <small>20 perguntas em escala 1–5, código G4-&lt;nnn&gt;</small>
-        </a>
-        <a href="../assets/md-viewer.html?src=../Grupo4-CasaPiloto/ContextoApp.md&voltar=../Grupo4-CasaPiloto/" class="doc-card">
-          <div class="doc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.4 6.6L21 11l-6.6 2.4L12 20l-2.4-6.6L3 11l6.6-2.4z"/></svg></div>
-          <b>Contexto do produto</b>
-          <small>Personas, jornada, MVP/v1/v2, KPIs, riscos e LGPD</small>
-        </a>
-        <a href="../assets/md-viewer.html?src=../Grupo4-CasaPiloto/Pesquisa-Dados.md&voltar=../Grupo4-CasaPiloto/" class="doc-card">
-          <div class="doc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></div>
-          <b>Pesquisa e dados</b>
-          <small>Dados oficiais + 14 artigos científicos com DOI</small>
-        </a>
-        <a href="Slides-CasaPiloto.pdf" class="doc-card">
-          <div class="doc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
-          <b>Slides de defesa (PDF)</b>
-          <small>Versão para download e impressão</small>
-        </a>
-        <a href="../coleta/" class="doc-card">
-          <div class="doc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M11 18h2"/></svg></div>
-          <b>App de coleta (campo)</b>
-          <small>Formulário offline usado no shopping</small>
-        </a>
-      </div>
-      <div class="team">
-        <span>Aliny</span>
-        <span>André</span>
-        <span>Michelly</span>
-        <span>Everson</span>
-      </div>
-    </div>
-  </section>
-</main>
 
-<footer>
-  <div class="wrap">
-    <a href="../index.html">← Voltar ao hub Customer Discovery</a>
-    <p>Grupo 4 · CasaPiloto · Cerrado Tech · Unifacc · Administração · 8º Semestre (VG), 2026</p>
+  <h2>Folhas do produto</h2>
+  <div class="folhas">
+    <div class="folha"><span class="fl">FL. 01 · CASA</span><h3>4 modelos com planta</h3><p>Planta baixa e tour cômodo a cômodo (ilustrativos).</p></div>
+    <div class="folha"><span class="fl">FL. 02 · DINHEIRO</span><h3>Premissas à mostra</h3><p>Renda, aluguel, depósito, FGTS, rendimento, valorização, juros e linha de crédito (incl. faixas do MCMV).</p></div>
+    <div class="folha"><span class="fl">FL. 03 · CENÁRIOS</span><h3>Três caminhos + gráficos</h3><p>Tempo até a chave, Price × SAC e semáforo de 30% da renda.</p></div>
+    <div class="folha"><span class="fl">FL. 04 · PLANO</span><h3>Plano da entrada</h3><p>Depósitos, lembrete mensal na agenda, checklist do financiamento e envio ao corretor com consentimento.</p></div>
   </div>
-</footer>
 
+  <h2>Exemplo do resumo (ilustrativo)</h2>
+  <p class="cota">IMÓVEL R$ 320 MIL · DEPÓSITO R$ 1.200/MÊS · FGTS R$ 15 MIL · 10% A.A. · VALORIZAÇÃO 4% · JUROS 11,5%</p>
+  <div class="exemplo"><div><b>~3 anos</b>para juntar a entrada de 20%</div><div><b>15+ anos</b>para comprar à vista</div><div><b>~R$ 2.700</b>1ª parcela Price</div><div><b>~41%</b>de uma renda de R$ 6.600</div></div>
+
+  <h2>Materiais</h2>
+  <nav class="mats">
+    <a href="../assets/md-viewer.html?src=../Grupo4-CasaPiloto/README.md&voltar=../Grupo4-CasaPiloto/">README do grupo <span>INTEGRANTES · HIPÓTESE · PITCH</span></a>
+    <a href="../assets/md-viewer.html?src=../Grupo4-CasaPiloto/formulario-app.md&voltar=../Grupo4-CasaPiloto/">Formulário de campo <span>20 ITENS · G4-&lt;NNN&gt;</span></a>
+    <a href="../assets/md-viewer.html?src=../Grupo4-CasaPiloto/ContextoApp.md&voltar=../Grupo4-CasaPiloto/">Contexto do produto <span>PERSONAS · KPIs · LGPD</span></a>
+    <a href="../assets/md-viewer.html?src=../Grupo4-CasaPiloto/Pesquisa-Dados.md&voltar=../Grupo4-CasaPiloto/">Pesquisa e dados <span>14 ARTIGOS COM DOI</span></a>
+    <a href="Slides-CasaPiloto.pdf">Slides (PDF) <span>DOWNLOAD</span></a>
+    <a href="../coleta/">App de coleta <span>OFFLINE</span></a>
+  </nav>
+
+  <div class="carimbo">
+    <div>PROJETO<b>CasaPiloto — simulador da construtora</b></div>
+    <div>EQUIPE<b>Aliny · André · Michelly · Everson</b></div>
+    <div>ORIENTAÇÃO<b>Profa. Polyana</b></div>
+    <div>INSTITUIÇÃO<b>UNIFACC · Adm. 8º sem. (VG) · 2026</b></div>
+  </div>
+</div></div>
 </body>
 </html>
