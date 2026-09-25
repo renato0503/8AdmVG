@@ -103,10 +103,10 @@ Todos: PWA, dados só no aparelho (localStorage), exportar/importar JSON, apagar
 | G4 CasaPiloto | Aliny Suquerê Guimarães, André Henrique Magalhães Duarte, Michelly de Jesus Pereira Silva, Everson Alencar de Souza |
 | G5 Casa Humanizada | Bianca Veronez Dias, Geovanna Shara Soares da Silveira, Estefane Souza da Costa |
 
-- **Sem grupo na chamada:** Valéria Cristina dos Santos — perguntar ao professor em qual grupo entra (G4 e G5 têm vaga).
+- Valéria Cristina dos Santos está na chamada, mas **não entra em nenhum trabalho** (decisão do professor, 25/09/2026).
+- **Orientador de todos os trabalhos do CONFACC:** Renato de Oliveira Rosa (25/09/2026).
 - `grupos.md` e o site ainda usam os primeiros nomes (decidir se trocar pelos completos; se sim, editar `grupos.md` e rodar `py _gerador/gen.py`, e ajustar os `ContextoApp.md` à mão).
 
 ### 8.3 Próximos passos (amanhã)
-1. Resolver o grupo da Valéria e, se for o caso, atualizar `grupos.md` + kit CONFACC.
-2. Sobrenomes das orientadoras/orientadores Sandra, Polyana e Heitor (para o kit CONFACC).
-3. Seguir as pendências da seção 7 (validação das 20 perguntas com os grupos, datas, `[verificar]`, ida ao shopping).
+1. Reabrir o prazo de submissão do CONFACC na plataforma e orientar os grupos a enviar (kit pronto).
+2. Seguir as pendências da seção 7 (validação das 20 perguntas com os grupos, datas, `[verificar]`, ida ao shopping).
