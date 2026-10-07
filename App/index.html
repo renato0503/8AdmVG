@@ -3,13 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<meta name="theme-color" content="#1a1a2e">
+<meta name="theme-color" content="#0b1220">
 <title>Coleta · Customer Discovery 8AdmVG</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b1220'/%3E%3Cpath d='M18 40l12-18 8 11 8-7' fill='none' stroke='%2334d399' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
 <style>
 :root{
-  --dark:#1a1a2e; --dark2:#16213e; --accent:#e94560; --accent-dark:#c73550;
-  --ink:#2d3748; --muted:#718096; --line:#e2e8f0; --bg:#f7fafc; --card:#ffffff;
-  --green:#38a169; --amber:#dd6b20;
+  --dark:#0b1220; --dark2:#0f1830; --accent:#0e9f6e; --accent-dark:#0b7d56;
+  --accent-rgb:14,159,110;
+  --ink:#25303f; --muted:#6b7688; --line:#e4e7ef; --bg:#f6f7fb; --card:#ffffff;
+  --green:#0f9d6b; --amber:#dd6b20;
 }
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{height:100%}
@@ -21,12 +23,12 @@ body{
 .app{max-width:640px;margin:0 auto;min-height:100%;display:flex;flex-direction:column;background:var(--bg)}
 header.top{
   background:linear-gradient(135deg,var(--dark) 0%,var(--dark2) 100%);
-  color:#fff;padding:14px 16px 12px;position:sticky;top:0;z-index:20;
+  color:#fff;padding:calc(14px + env(safe-area-inset-top)) 16px 12px;position:sticky;top:0;z-index:20;
   box-shadow:0 2px 10px rgba(0,0,0,.18);
 }
 header.top .brand{display:flex;align-items:center;justify-content:space-between;gap:10px}
 header.top h1{font-size:15px;font-weight:700;letter-spacing:.02em}
-header.top .sub{font-size:11px;opacity:.75;margin-top:2px}
+header.top .sub{font-size:11px;opacity:.72;margin-top:2px}
 .pill{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);
   color:#fff;font-size:11px;padding:4px 9px;border-radius:20px;white-space:nowrap}
 .bar{height:4px;background:rgba(255,255,255,.15);border-radius:4px;margin-top:10px;overflow:hidden}
@@ -51,7 +53,7 @@ main{flex:1;padding:16px;display:flex;flex-direction:column;gap:14px}
 .btn.ghost{background:#fff;color:var(--ink);border:1px solid var(--line)}
 .btn.dark{background:var(--dark)}
 .btn.green{background:var(--green)}
-.btn.danger{background:#fff;color:var(--accent-dark);border:1px solid #f0c3cc}
+.btn.danger{background:#fff;color:#b42318;border:1px solid #f3c6c2}
 .btn:disabled{opacity:.45;cursor:not-allowed}
 .btn.sm{padding:10px 12px;font-size:14px;border-radius:10px}
 .btn.block{width:100%}
@@ -59,9 +61,19 @@ main{flex:1;padding:16px;display:flex;flex-direction:column;gap:14px}
 .row>*{flex:1}
 
 .grupo-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.aluno-grid{display:grid;grid-template-columns:1fr;gap:8px}
+.aluno-btn{background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:14px 16px;
+  text-align:left;cursor:pointer;display:flex;align-items:center;gap:12px;font-size:15px}
+.aluno-btn:active{opacity:.8}
+.aluno-btn .avatar{width:36px;height:36px;border-radius:50%;background:var(--accent);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;flex-shrink:0}
+.aluno-btn .info{display:flex;flex-direction:column}
+.aluno-btn .nome{font-weight:600;color:var(--ink)}
+.aluno-btn .grupo-tag{font-size:12px;color:var(--muted)}
+.aluno-grid:not(:empty){margin-bottom:4px}
 .grupo-btn{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px 12px;
-  text-align:left;cursor:pointer;display:flex;flex-direction:column;gap:4px}
-.grupo-btn.active{border-color:var(--accent);box-shadow:0 0 0 2px rgba(233,69,96,.18)}
+  text-align:left;cursor:pointer;display:flex;flex-direction:column;gap:4px;position:relative}
+.grupo-btn.active{border-color:var(--accent);box-shadow:0 0 0 2px rgba(var(--accent-rgb),.18)}
 .grupo-btn .g{font-size:11px;font-weight:700;color:var(--accent);letter-spacing:.06em}
 .grupo-btn .n{font-size:14.5px;font-weight:600;color:var(--ink)}
 .grupo-btn .p{font-size:11.5px;color:var(--muted)}
@@ -75,7 +87,7 @@ main{flex:1;padding:16px;display:flex;flex-direction:column;gap:14px}
 .escala .opt .num{width:30px;height:30px;flex:0 0 30px;border-radius:50%;background:var(--bg);
   border:1.5px solid var(--line);display:flex;align-items:center;justify-content:center;
   font-weight:700;font-size:14px;color:var(--muted)}
-.escala .opt.sel{border-color:var(--accent);background:#fdf2f4}
+.escala .opt.sel{border-color:var(--accent);background:rgba(var(--accent-rgb),.08)}
 .escala .opt.sel .num{background:var(--accent);border-color:var(--accent);color:#fff}
 .polos{display:flex;justify-content:space-between;gap:12px;font-size:12px;color:var(--muted);margin-bottom:12px}
 .polos b{color:var(--ink);font-weight:600}
@@ -89,7 +101,7 @@ main{flex:1;padding:16px;display:flex;flex-direction:column;gap:14px}
 .callout{background:#fffbeb;border-left:4px solid var(--amber);border-radius:0 10px 10px 0;
   padding:11px 13px;font-size:13px}
 .callout.info{background:#eff6ff;border-left-color:#3182ce}
-.callout.warn{background:#fdf2f4;border-left-color:var(--accent)}
+.callout.warn{background:#fdf2f4;border-left-color:#e11d48}
 
 .codigo-box{background:var(--dark);color:#fff;border-radius:14px;padding:20px;text-align:center}
 .codigo-box .lbl{font-size:12px;letter-spacing:.14em;text-transform:uppercase;opacity:.65}
@@ -110,14 +122,26 @@ main{flex:1;padding:16px;display:flex;flex-direction:column;gap:14px}
 .stat .s span{font-size:11px;color:var(--muted)}
 .vazio{text-align:center;color:var(--muted);font-size:13.5px;padding:24px 8px}
 
-footer{padding:14px 16px 22px;text-align:center;color:var(--muted);font-size:11.5px}
+footer{padding:14px 16px calc(22px + env(safe-area-inset-bottom));text-align:center;color:var(--muted);font-size:11.5px}
 .hidden{display:none !important}
-.tag-live{display:inline-block;background:#fdf2f4;color:var(--accent-dark);border-radius:8px;
+.tag-live{display:inline-block;background:rgba(var(--accent-rgb),.12);color:var(--accent-dark);border-radius:8px;
   padding:2px 8px;font-size:11px;font-weight:700}
 .toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%) translateY(80px);
   background:var(--dark);color:#fff;padding:11px 18px;border-radius:22px;font-size:13.5px;
-  opacity:0;transition:.25s;z-index:60;pointer-events:none;max-width:90vw}
+  opacity:0;transition:.25s;z-index:60;pointer-events:none;max-width:90vw;text-align:center}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+input[type=email],input[type=text]{font-family:inherit}
+.modal-overlay{position:fixed;inset:0;background:rgba(11,18,32,.72);z-index:200;
+  display:flex;align-items:center;justify-content:center;padding:16px;backdrop-filter:blur(4px)}
+.modal-card{background:#fff;border-radius:18px;padding:28px 24px 22px;max-width:340px;width:100%;
+  box-shadow:0 20px 60px rgba(0,0,0,.3);text-align:center}
+.modal-msg{font-size:15.5px;color:var(--ink);line-height:1.5;margin-bottom:24px}
+.modal-btns{display:flex;gap:10px}
+.btn-modal{flex:1;border:none;border-radius:11px;padding:13px 8px;font-size:15px;font-weight:600;cursor:pointer;transition:opacity .15s}
+.btn-modal.sim{background:var(--accent);color:#fff}
+.btn-modal.sim:active{opacity:.85}
+.btn-modal.nao{background:var(--bg);color:var(--muted);border:1.5px solid var(--line)}
+.btn-modal.nao:active{opacity:.7}
 </style>
 </head>
 <body>
@@ -126,7 +150,7 @@ footer{padding:14px 16px 22px;text-align:center;color:var(--muted);font-size:11.
     <div class="brand">
       <div>
         <h1>Coleta · Customer Discovery</h1>
-        <div class="sub">Administração · 8º Semestre · 8AdmVG / Unifacc</div>
+        <div class="sub">8AdmVG · Administração · FACC/Unifacc</div>
       </div>
       <span class="pill" id="pillGrupo">—</span>
     </div>
@@ -157,6 +181,19 @@ footer{padding:14px 16px 22px;text-align:center;color:var(--muted);font-size:11.
       </div>
       <div id="aviso-storage" class="callout warn hidden">
         Atenção: este navegador não está guardando dados localmente. Exporte as respostas com frequência.
+      </div>
+    </section>
+
+    <!-- ALUNO -->
+    <section class="screen" id="scr-aluno">
+      <div>
+        <span class="tag-live">QUEM ESTÁ COLETANDO</span>
+        <h2 style="font-size:20px;margin-top:8px" id="aluno-titulo">Aluno</h2>
+        <p class="small muted">Toque no seu nome para continuar.</p>
+      </div>
+      <div class="aluno-grid" id="aluno-grid" style="margin-top:12px"></div>
+      <div class="row" style="margin-top:14px">
+        <button class="btn ghost" data-nav="home">Voltar</button>
       </div>
     </section>
 
@@ -282,10 +319,21 @@ footer{padding:14px 16px 22px;text-align:center;color:var(--muted);font-size:11.
 
   <footer>
     Customer Discovery na Prática · Prof. Renato Rosa · Cerrado Tech / Unifacc<br>
-    App offline · v1 (Sprints 0–2)
+    App offline · 8AdmVG · v1
   </footer>
 </div>
 <div class="toast" id="toast"></div>
+
+<!-- Modal de confirmação customizado -->
+<div id="mdl" class="modal-overlay" style="display:none">
+  <div class="modal-card">
+    <p class="modal-msg" id="mdl-msg"></p>
+    <div class="modal-btns">
+      <button class="btn-modal nao" id="mdl-nao">Cancelar</button>
+      <button class="btn-modal sim" id="mdl-sim">Confirmar</button>
+    </div>
+  </div>
+</div>
 
 <script>
 "use strict";
@@ -308,6 +356,16 @@ const GRUPOS = {
  "1": {
   "nome": "HoraCerta",
   "prof": "Prof. Renato",
+  "cor": "#4338ca",
+  "corDark": "#3730a3",
+  "rgb": "67,56,202",
+  "alunos": [
+   "José Arlindo da Cunha Filho",
+   "Taynara Luana de Oliveira",
+   "Luana da Silva Araújo",
+   "Leticia Leydiane de Oliveira",
+   "Samara de Campos Henrique"
+  ],
   "nota": "Se a pessoa <strong>não fez faculdade</strong>, marque a triagem e agradeça — as 20 perguntas são para quem estuda ou estudou.",
   "triagem": {
    "id": "situacao",
@@ -445,6 +503,16 @@ const GRUPOS = {
  "2": {
   "nome": "GuiaMobi",
   "prof": "Prof. Renato",
+  "cor": "#0f766e",
+  "corDark": "#115e59",
+  "rgb": "15,118,110",
+  "alunos": [
+   "Cinthia Ferreira da Silva Oliveira",
+   "Danielly Gomes de Souza Pinto",
+   "Leandro Teodoro de Santana",
+   "Guilherme Henrique Xavier Sampaio",
+   "Esther Rodrigues da Conceição"
+  ],
   "nota": "Serve para <strong>moradores e visitantes</strong> — a triagem permite comparar os dois públicos na análise.",
   "triagem": {
    "id": "relacao",
@@ -582,6 +650,16 @@ const GRUPOS = {
  "3": {
   "nome": "VozGuia",
   "prof": "Profa. Sandra",
+  "cor": "#1e3a8a",
+  "corDark": "#172554",
+  "rgb": "30,58,138",
+  "alunos": [
+   "Karla Moema Henning Pitaluga",
+   "Victor Hugo Gomes de Almeida dos Passos",
+   "Nicolas Alexandre Freitas Moraes",
+   "Fabio Teyllor Tatehira do Couto",
+   "Yasmim Quéren Rodrigues Feitosa"
+  ],
   "nota": "<strong>Tema sensível e de acessibilidade.</strong> Se o(a) entrevistado(a) tiver deficiência visual: apresente-se pelo nome, <strong>leia as opções em voz alta</strong> e confirme a marcação com a pessoa. Nunca toque ou conduza a pessoa sem perguntar antes. Pergunte a triagem com delicadeza (&quot;você convive com alguém que tem deficiência visual?&quot;).",
   "triagem": {
    "id": "relacao_dv",
@@ -719,6 +797,15 @@ const GRUPOS = {
  "4": {
   "nome": "CasaPiloto",
   "prof": "Profa. Polyana",
+  "cor": "#b45309",
+  "corDark": "#92400e",
+  "rgb": "180,83,9",
+  "alunos": [
+   "Aliny Suquerê Guimarães",
+   "André Henrique Magalhães Duarte",
+   "Michelly de Jesus Pereira Silva",
+   "Everson Alencar de Souza"
+  ],
   "nota": "<strong>Nunca pergunte renda, salário ou valor de patrimônio.</strong> Meça só percepções (&quot;a parcela te dá medo?&quot;).",
   "triagem": {
    "id": "moradia",
@@ -856,6 +943,14 @@ const GRUPOS = {
  "5": {
   "nome": "CasaHumanizada",
   "prof": "Prof. Heitor",
+  "cor": "#15803d",
+  "corDark": "#166534",
+  "rgb": "21,128,61",
+  "alunos": [
+   "Bianca Veronez Dias",
+   "Geovanna Shara Soares da Silveira",
+   "Estefane Souza da Costa"
+  ],
   "nota": "Tema <strong>sensível</strong> (renda e moradia): <strong>nunca pergunte renda nem se a pessoa recebe benefício</strong>. Se a pessoa se emocionar ou contar uma situação difícil, acolha e não insista.",
   "triagem": {
    "id": "moradia",
@@ -992,7 +1087,9 @@ const GRUPOS = {
  }
 };
 /* GRUPOS:FIM */
+
 const CODIGO_PREFIXO = { 1:"G1", 2:"G2", 3:"G3", 4:"G4", 5:"G5" };
+const TEMA_PADRAO = { cor:"#0e9f6e", corDark:"#0b7d56", rgb:"14,159,110" };
 
 /* ============================================================
    ARMAZENAMENTO LOCAL
@@ -1003,6 +1100,33 @@ const LS = {
   grupo:"cd8admvg_grupo",
   sheetUrl:"cd8admvg_sheet_url",
 };
+// URL do Apps Script da planilha "Coleta 8AdmVG" (mesma planilha do AdmCBA — mesma estrutura de colunas).
+// (Deixe o campo vazio em Exportar dados → Salvar para desligar em um aparelho.)
+const DEFAULT_SHEET_URL = "https://script.google.com/macros/s/AKfycbyqKWcLJnc7XJKUbmvNDdEmWER5eHwCm-uffi6m5ZNTGeQWgfNlopRpYgLNE3yfJaWNew/exec";
+
+/* ============================================================
+   MODAL DE CONFIRMAÇÃO CUSTOMIZADO
+   ============================================================ */
+function confirmCustom(msg) {
+  return new Promise(resolve => {
+    const overlay = document.getElementById("mdl");
+    const msgEl   = document.getElementById("mdl-msg");
+    const btnSim  = document.getElementById("mdl-sim");
+    const btnNao  = document.getElementById("mdl-nao");
+    msgEl.textContent = msg;
+    overlay.style.display = "flex";
+    const cleanup = () => {
+      overlay.style.display = "none";
+      btnSim.removeEventListener("click", onSim);
+      btnNao.removeEventListener("click", onNao);
+    };
+    const onSim = () => { cleanup(); resolve(true); };
+    const onNao = () => { cleanup(); resolve(false); };
+    btnSim.addEventListener("click", onSim);
+    btnNao.addEventListener("click", onNao);
+  });
+}
+
 let storageOK = true;
 function lsGet(k, def){
   try{ const v = localStorage.getItem(k); return v ? JSON.parse(v) : def; }
@@ -1030,6 +1154,13 @@ const $ = (s) => document.querySelector(s);
 function toast(msg){
   const t = $("#toast"); t.textContent = msg; t.classList.add("show");
   clearTimeout(t._h); t._h = setTimeout(()=>t.classList.remove("show"), 2200);
+}
+function aplicarTema(g){
+  const t = (g && GRUPOS[g]) ? GRUPOS[g] : TEMA_PADRAO;
+  const r = document.documentElement.style;
+  r.setProperty("--accent", t.cor);
+  r.setProperty("--accent-dark", t.corDark);
+  r.setProperty("--accent-rgb", t.rgb);
 }
 function mostrar(id){
   document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));
@@ -1092,8 +1223,9 @@ function renderHome(){
   $("#aviso-storage").classList.toggle("hidden", storageOK);
 }
 function selecionarGrupo(g){
-  if(GRUPOS[g].pendente){ toast("Grupo pendente."); return; }
+  if(GRUPOS[g].pendente){ toast("Este grupo ainda não tem formulário."); return; }
   grupoAtual = g; lsSet(LS.grupo, g);
+  aplicarTema(g);
   renderHome();
 }
 $("#btn-nova").onclick = ()=>{ if(grupoAtual) iniciarColeta(grupoAtual); };
@@ -1111,8 +1243,28 @@ function iniciarColeta(g){
   coleta = { grupo:g, criadoEm:new Date().toISOString(), perfil:{}, respostas:{} };
   flattenGrupo(g);
   idx = 0;
-  renderPerfil();
-  mostrar("#scr-perfil");
+  renderAluno();
+  mostrar("#scr-aluno");
+}
+function renderAluno(){
+  const g = grupoAtual, gr = GRUPOS[g];
+  $("#aluno-titulo").textContent = "Quem está coletando?";
+  const grid = document.getElementById("aluno-grid");
+  grid.innerHTML = "";
+  gr.alunos.forEach((nome, i) => {
+    const btn = document.createElement("button");
+    btn.className = "aluno-btn";
+    const iniciais = nome.split(" ").slice(0,2).map(p=>p[0]).join("").toUpperCase();
+    btn.innerHTML = `<span class="avatar">${iniciais}</span>
+      <span class="info"><span class="nome">${nome}</span>
+      <span class="grupo-tag">${gr.nome} · G${g}</span></span>`;
+    btn.onclick = () => {
+      coleta.aluno = nome;
+      renderPerfil();
+      mostrar("#scr-perfil");
+    };
+    grid.appendChild(btn);
+  });
 }
 function renderPerfil(){
   const g = coleta.grupo, gr = GRUPOS[g];
@@ -1129,25 +1281,58 @@ function renderPerfil(){
     box.appendChild(div);
   });
   if(gr.nota){
+    const nt = document.createElement("div");
+    nt.className = "callout warn"; nt.style.marginTop = "4px";
+    nt.innerHTML = "<b>Nota de campo.</b> " + gr.nota;
+    box.appendChild(nt);
+  }
+  if(gr.aviso){
     const av = document.createElement("div");
-    av.className = "callout warn"; av.style.marginTop = "4px";
-    av.innerHTML = "<b>Nota de campo.</b> " + gr.nota;
+    av.className = "callout " + (gr.sensivel ? "warn" : "info"); av.style.marginTop = "4px";
+    av.innerHTML = "<b>" + (gr.sensivel ? "Tema sensível." : "Atenção.") + "</b> " + gr.aviso;
     box.appendChild(av);
   }
 }
-$("#btn-perfil-ok").onclick = ()=>{
+$("#btn-perfil-ok").onclick = async ()=>{
   const faltou = [];
   document.querySelectorAll("#perfil-campos select").forEach(s=>{
     coleta.perfil[s.dataset.perfil] = s.value || "";
     if(!s.value) faltou.push(s.dataset.perfil);
   });
   if(faltou.length){ toast("Complete o Bloco 0 (perfil) por observação."); return; }
+  if(!await confirmCustom("As respostas do perfil estão corretas?\nO código será gerado após as 20 perguntas.")) return;
   idx = 0; renderPergunta(); mostrar("#scr-pergunta");
 };
 
 /* ============================================================
    COLETA — PERGUNTAS
    ============================================================ */
+function interpolar(n, a, b){
+  const ua = a.toLowerCase(), ub = b.toLowerCase();
+  const freq = /(nunca|raramente|sempre|frequente|vezes|ocasiões)/;
+  const concord = /(discordo|concordo|discordo|concordo|neutro|parcialmente)/;
+  const sei = /(conhecimento|sei|conheç|sei muit|não sei|não tenho)/;
+  const util = /(útil|utilidade|prefiro)/;
+  const magn = /(nada|muito|pouco|grande|importân|confiança|nenhum)/;
+
+  if (freq.test(ua) || freq.test(ub)) {
+    return ["Raramente","Às vezes","Frequentemente"][n-2];
+  }
+  if (sei.test(ua) && sei.test(ub)) {
+    return ["Pouco","Moderadamente","Bastante"][n-2];
+  }
+  if (concord.test(ua) && concord.test(ub)) {
+    return ["Discordo parcialmente","Neutro","Concordo parcialmente"][n-2];
+  }
+  if (util.test(ua) && util.test(ub)) {
+    return ["Indiferente","Tenho preferência moderada","Prefiro"][n-2];
+  }
+  if (magn.test(ua) || magn.test(ub)) {
+    return ["Pouco","Moderadamente","Muito"][n-2];
+  }
+  return ["Um pouco","Mais ou menos","Bastante"][n-2];
+}
+
 function renderPergunta(){
   const p = fila[idx];
   $("#perg-cont").textContent = `Pergunta ${idx+1} de ${totalPerguntas()}`;
@@ -1159,13 +1344,14 @@ function renderPergunta(){
   for(let n=1;n<=5;n++){
     const o = document.createElement("div");
     o.className = "opt" + (coleta.respostas[idx]===n ? " sel" : "");
-    o.innerHTML = `<span class="num">${n}</span><span>${n===1?p.a:(n===5?p.b:"")}</span>`;
+    o.innerHTML = `<span class="num">${n}</span><span>${n===1?p.a:(n===5?p.b:interpolar(n,p.a,p.b))}</span>`;
     o.onclick = ()=> responder(idx, n);
     esc.appendChild(o);
   }
   atualizarBarra();
 }
-function responder(i, n){
+async function responder(i, n){
+  if(!await confirmCustom(`Confirma a resposta ${n}?`)) return;
   coleta.respostas[i] = n;
   const opts = document.querySelectorAll("#escala .opt");
   opts.forEach((o,k)=> o.classList.toggle("sel", (k+1)===n));
@@ -1195,7 +1381,7 @@ function finalizarColeta(emailContato){
   const codigo = proxCodigo(g);
   const reg = {
     id: "r" + Date.now() + "-" + Math.random().toString(36).slice(2,7),
-    grupo: g, codigo, criadoEm: new Date().toISOString(),
+    grupo: g, codigo, aluno: coleta.aluno || "", criadoEm: new Date().toISOString(),
     perfil: coleta.perfil, respostas: coleta.respostas,
     email: emailContato || null,
   };
@@ -1206,7 +1392,7 @@ function finalizarColeta(emailContato){
 
   const preenchidas = Object.keys(reg.respostas).length;
   $("#fim-cod").textContent = codigo;
-  $("#fim-resumo").textContent = `${GRUPOS[g].nome} · ${preenchidas}/${totalPerguntas()} respondidas · ${new Date().toLocaleString("pt-BR")}`;
+  $("#fim-resumo").textContent = `${coleta.aluno || "—"} · ${GRUPOS[g].nome} · ${preenchidas}/${totalPerguntas()} respondidas · ${new Date().toLocaleString("pt-BR")}`;
   const modelo = `Código ${codigo}. Principais pontos: [2–3 ideias]. Frase marcante: “[...]”.`;
   const audio = document.createElement("div");
   audio.innerHTML = `<b>Modelo de áudio (WhatsApp):</b><br>${modelo}`;
@@ -1240,7 +1426,7 @@ function renderRespostas(){
     const el = document.createElement("div"); el.className = "item";
     const d = new Date(r.criadoEm).toLocaleString("pt-BR",{day:"2-digit",month:"2-digit",hour:"2-digit",minute:"2-digit"});
     el.innerHTML = `<span class="cod">${r.codigo}</span>
-      <span class="meta">${GRUPOS[r.grupo].nome}<br>${d} · ${Object.keys(r.respostas).length} respostas</span>
+      <span class="meta">${(GRUPOS[r.grupo]||{}).nome||("Grupo "+r.grupo)}<br>${d} · ${Object.keys(r.respostas).length} respostas</span>
       <button class="x" title="Apagar">✕</button>`;
     el.querySelector(".x").onclick = ()=>{
       if(confirm("Apagar a resposta " + r.codigo + "?")){
@@ -1274,17 +1460,22 @@ function baixar(nome, conteudo, mime){
   setTimeout(()=>{ URL.revokeObjectURL(url); a.remove(); }, 500);
 }
 function csvEscape(v){ const s = String(v==null?"":v); return '"' + s.replace(/"/g,'""') + '"'; }
+function triagemIds(){
+  return [...new Set(Object.values(GRUPOS).filter(g=>g.triagem).map(g=>g.triagem.id))];
+}
 function gerarCSV(){
-  const grupos = [...new Set(respostas.map(r=>r.grupo))].sort();
   const maxPerg = 20;
-  const cab = ["codigo","grupo","grupo_nome","data",
+  const tIds = triagemIds();
+  const cab = ["codigo","aluno","grupo","grupo_nome","data",
     ...PERFIL.map(p=>p.id),
+    ...tIds,
     ...Array.from({length:maxPerg},(_,i)=>"Q"+(i+1)),
     "email_contato"];
   const linhas = [cab.map(csvEscape).join(";")];
   [...respostas].sort((a,b)=>a.codigo.localeCompare(b.codigo)).forEach(r=>{
-    const cols = [r.codigo, r.grupo, GRUPOS[r.grupo].nome, new Date(r.criadoEm).toLocaleString("pt-BR")];
+    const cols = [r.codigo, r.aluno||"", r.grupo, (GRUPOS[r.grupo]||{}).nome||"", new Date(r.criadoEm).toLocaleString("pt-BR")];
     PERFIL.forEach(p=> cols.push(r.perfil[p.id]||""));
+    tIds.forEach(id=> cols.push((r.perfil||{})[id]||""));
     for(let i=0;i<maxPerg;i++) cols.push(r.respostas[i]!=null ? r.respostas[i] : "");
     cols.push(r.email||"");
     linhas.push(cols.map(csvEscape).join(";"));
@@ -1312,7 +1503,7 @@ $("#btn-copiar-dados").onclick = async ()=>{
    Cada resposta tenta ir sozinha para uma planilha Google.
    Sem URL configurada, isso é um no-op silencioso.
    ============================================================ */
-function getSheetUrl(){ return (lsGet(LS.sheetUrl, "") || "").trim(); }
+function getSheetUrl(){ return (lsGet(LS.sheetUrl, DEFAULT_SHEET_URL) || "").trim(); }
 function atualizarSyncStatus(){
   const pendentes = respostas.filter(r=>!r.sincronizado).length;
   const el = $("#sync-status");
@@ -1326,19 +1517,21 @@ async function tentarSincronizar(reg){
   const url = getSheetUrl();
   if(!url) return;
   try{
-    const res = await fetch(url, {
+    // mode:"no-cors": o Google Apps Script não devolve cabeçalhos CORS, então ler a
+    // resposta é bloqueado pelo navegador. Mesmo assim o POST é enviado. Mandamos sem
+    // ler a resposta (fica "opaca") e marcamos como sincronizado — evita reenviar/duplicar.
+    await fetch(url, {
       method:"POST",
-      headers:{"Content-Type":"text/plain;charset=utf-8"}, // evita preflight CORS no Apps Script
+      mode:"no-cors",
+      headers:{"Content-Type":"text/plain;charset=utf-8"}, // tipo "simples": não dispara preflight
       body: JSON.stringify({
-        codigo:reg.codigo, grupo:reg.grupo, grupoNome:(GRUPOS[reg.grupo]||{}).nome||"",
+        codigo:reg.codigo, aluno:reg.aluno||"", grupo:reg.grupo, grupoNome:(GRUPOS[reg.grupo]||{}).nome||"",
         criadoEm:reg.criadoEm, perfil:reg.perfil, respostas:reg.respostas,
         email:reg.email||"",
       }),
     });
-    if(res.ok){
-      reg.sincronizado = true;
-      lsSet(LS.respostas, respostas);
-    }
+    reg.sincronizado = true;
+    lsSet(LS.respostas, respostas);
   }catch(e){ /* offline ou URL errada — fica pendente, tenta de novo depois */ }
   atualizarSyncStatus();
 }
@@ -1433,7 +1626,8 @@ document.querySelectorAll("[data-nav]").forEach(b=>{
 /* ============================================================
    BOOT
    ============================================================ */
-if(!storageOK){ setTimeout(()=>toast("Aviso: armazenamento local indisponível."), 800); }
+aplicarTema(grupoAtual);
+if(!storageOK){ setTimeout(()=>toast("Aviso: armazenamento local não está disponível."), 800); }
 renderHome();
 mostrar("#scr-home");
 </script>

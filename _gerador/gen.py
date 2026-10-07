@@ -654,6 +654,12 @@ def injetar_coleta(infos):
             "triagem": {"id": tid, "label": tlab.replace(" (triagem)", ""), "opcoes": tops},
             "blocos": [{"titulo": t, "perguntas": [{"q": q, "a": a, "b": b} for q, a, b in qs]} for t, _, qs in g["blocos"]],
         }
+    extra = RAIZ / "_gerador/coleta_extra.json"  # alunos e cores por grupo (tela "Quem está coletando?")
+    if extra.exists():
+        for n, e in json.loads(extra.read_text(encoding="utf-8")).items():
+            if int(n) in grupos:
+                grupos[int(n)] = {**{k: grupos[int(n)][k] for k in ("nome", "prof")}, **e,
+                                  **{k: v for k, v in grupos[int(n)].items() if k not in ("nome", "prof")}}
     app = RAIZ / "App/index.html"
     s = app.read_text(encoding="utf-8")
     ini, fim = "/* GRUPOS:INICIO", "/* GRUPOS:FIM */"

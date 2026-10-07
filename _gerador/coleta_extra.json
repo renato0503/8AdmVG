@@ -1,0 +1,59 @@
+{
+ "1": {
+  "cor": "#4338ca",
+  "corDark": "#3730a3",
+  "rgb": "67,56,202",
+  "alunos": [
+   "José Arlindo da Cunha Filho",
+   "Taynara Luana de Oliveira",
+   "Luana da Silva Araújo",
+   "Leticia Leydiane de Oliveira",
+   "Samara de Campos Henrique"
+  ]
+ },
+ "2": {
+  "cor": "#0f766e",
+  "corDark": "#115e59",
+  "rgb": "15,118,110",
+  "alunos": [
+   "Cinthia Ferreira da Silva Oliveira",
+   "Danielly Gomes de Souza Pinto",
+   "Leandro Teodoro de Santana",
+   "Guilherme Henrique Xavier Sampaio",
+   "Esther Rodrigues da Conceição"
+  ]
+ },
+ "3": {
+  "cor": "#1e3a8a",
+  "corDark": "#172554",
+  "rgb": "30,58,138",
+  "alunos": [
+   "Karla Moema Henning Pitaluga",
+   "Victor Hugo Gomes de Almeida dos Passos",
+   "Nicolas Alexandre Freitas Moraes",
+   "Fabio Teyllor Tatehira do Couto",
+   "Yasmim Quéren Rodrigues Feitosa"
+  ]
+ },
+ "4": {
+  "cor": "#b45309",
+  "corDark": "#92400e",
+  "rgb": "180,83,9",
+  "alunos": [
+   "Aliny Suquerê Guimarães",
+   "André Henrique Magalhães Duarte",
+   "Michelly de Jesus Pereira Silva",
+   "Everson Alencar de Souza"
+  ]
+ },
+ "5": {
+  "cor": "#15803d",
+  "corDark": "#166534",
+  "rgb": "21,128,61",
+  "alunos": [
+   "Bianca Veronez Dias",
+   "Geovanna Shara Soares da Silveira",
+   "Estefane Souza da Costa"
+  ]
+ }
+}
