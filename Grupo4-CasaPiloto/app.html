@@ -64,14 +64,34 @@ canvas{width:100%;height:220px;display:block}
 .planta rect{transition:fill .3s}
 :focus-visible{outline:3px solid var(--laranja);outline-offset:2px}
 [hidden]{display:none!important}
-@media(min-width:620px){.cena{grid-template-columns:1fr 1fr 1fr}.casas{grid-template-columns:repeat(4,1fr)}}
+/* visão de negócio: plano, mentoria e ecossistema */
+.subabas{display:flex;gap:6px;margin:12px 0 4px}
+.subabas a{flex:1 1 0;display:flex;align-items:center;justify-content:center;text-align:center;min-height:46px;padding:6px 4px;border:1.5px solid var(--traco);border-radius:4px;color:var(--traco);text-decoration:none;font-family:var(--mono);font-size:11.5px}
+.subabas a[aria-current=page]{background:var(--traco);color:var(--azul);font-weight:600}
+.txt{font-size:14.5px;line-height:1.5}
+.lista{list-style:none}
+.lista li{font-size:14.5px;line-height:1.45;padding:9px 0;border-bottom:1px dashed rgba(232,240,255,.3)}
+.lista li:last-child{border-bottom:0}
+.lista b{display:block}
+.kpis{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.kpis b{display:block;font-family:var(--mono);font-size:21px;font-weight:600;color:var(--ciano);overflow-wrap:anywhere}
+.kpis span{font-size:12.5px;line-height:1.35;display:block}
+.etq{display:inline-block;font-family:var(--mono);font-size:10.5px;border:1px solid var(--laranja);color:#fdba74;padding:1px 6px;border-radius:2px;margin-bottom:6px}
+.item-st{padding:10px 0;border-bottom:1px dashed rgba(232,240,255,.3)}
+.item-st:last-child{border-bottom:0}
+.item-st b{display:block;font-size:15px}
+.item-st p{font-size:13.5px;line-height:1.4;margin:3px 0 8px}
+.rotulo{display:block;font-family:var(--mono);font-size:12px;opacity:.75;letter-spacing:.04em;margin:10px 0 3px}
+.registro{display:flex;gap:8px;align-items:flex-start;justify-content:space-between;padding:8px 0;border-bottom:1px dashed rgba(232,240,255,.3);font-size:14px;line-height:1.4}
+.registro div{min-width:0;overflow-wrap:anywhere}
+@media(min-width:620px){.cena{grid-template-columns:1fr 1fr 1fr}.casas{grid-template-columns:repeat(4,1fr)}.kpis{grid-template-columns:repeat(4,1fr)}}
 </style>
 </head>
 <body>
 <header>
   <div class="cab"><img src="../assets/logos/g4.svg" alt=""><h1>CasaPiloto</h1><span class="carimbo">SIMULAÇÃO · NÃO É OFERTA</span></div>
   <nav class="etapas" aria-label="Etapas">
-    <a href="#/casas">01 CASA</a><a href="#/simular">02 DINHEIRO</a><a href="#/cenarios">03 CENÁRIOS</a><a href="#/plano">04 PLANO</a><a href="#/corretor">05 CORRETOR</a>
+    <a href="#/casas">01 CASA</a><a href="#/simular">02 DINHEIRO</a><a href="#/cenarios">03 CENÁRIOS</a><a href="#/plano">04 PLANO</a><a href="#/corretor">05 CORRETOR</a><a href="#/negocio">06 NEGÓCIO</a>
   </nav>
 </header>
 <main>
@@ -80,6 +100,7 @@ canvas{width:100%;height:220px;display:block}
     <h2>Escolha a casa piloto</h2><p class="cota">4 MODELOS ILUSTRATIVOS · PREÇOS DE EXEMPLO</p>
     <div class="casas" id="lista-casas"></div>
     <div class="fila"><button class="btn" id="ver-planta">Ver planta e tour</button><button class="btn cheio" data-ir="#/simular">Próximo: seu dinheiro →</button></div>
+    <div class="fila"><button class="btn" data-ir="#/negocio">Visão de negócio: plano, mentoria e ecossistema</button></div>
   </section>
   <!-- planta -->
   <section class="tela" id="t-casa">
@@ -158,6 +179,203 @@ canvas{width:100%;height:220px;display:block}
     <div class="prancha" data-rotulo="DADOS"><div class="fila" style="margin-top:0"><button class="btn" id="exportar">Exportar JSON</button><button class="btn" id="importar" data-teste="pular">Importar</button><button class="btn" id="zerar">Apagar tudo</button></div>
       <p class="cota" style="margin-top:10px">CASAPILOTO · GRUPO 4 · 8ADMVG · UNIFACC-MT</p></div>
   </section>
+
+  <!-- 06 · PLANO DE NEGÓCIOS -->
+  <section class="tela" id="t-negocio">
+    <h2>Plano de negócios</h2><p class="cota">O CASAPILOTO COMO EMPRESA · VALORES SÃO HIPÓTESES EDITÁVEIS</p>
+    <nav class="subabas" aria-label="Visão de negócio"><a href="#/negocio">Plano de negócios</a><a href="#/mentoria">Mentoria e networking</a><a href="#/ecossistema">Ecossistema</a></nav>
+
+    <div class="prancha" data-rotulo="1 · ORGANIZAÇÃO E PLANEJAMENTO">
+      <p class="txt"><strong>Missão:</strong> transformar o sonho da casa em um plano mensal que a família entende antes de assinar.</p>
+      <p class="txt" style="margin-top:6px"><strong>Modelo:</strong> SaaS white label vendido a construtoras, gratuito para o comprador. Formato jurídico sugerido: sociedade limitada no Simples, a validar com contador.</p>
+      <span class="rotulo">RESPONSÁVEL POR ÁREA (O GRUPO DEFINE)</span>
+      <div class="item-st"><label for="n-rprod"><b>Produto e dados</b></label><select class="in" id="n-rprod" data-bind="neg.rProd" data-pessoas></select></div>
+      <div class="item-st"><label for="n-rcom"><b>Comercial com construtoras</b></label><select class="in" id="n-rcom" data-bind="neg.rCom" data-pessoas></select></div>
+      <div class="item-st"><label for="n-rfin"><b>Financeiro e regras de crédito</b></label><select class="in" id="n-rfin" data-bind="neg.rFin" data-pessoas></select></div>
+      <div class="item-st"><label for="n-rop"><b>Operação e LGPD</b></label><select class="in" id="n-rop" data-bind="neg.rOp" data-pessoas></select></div>
+      <span class="rotulo">PLANEJAMENTO DE 12 MESES</span>
+      <ul class="lista">
+        <li><b>Trimestre 1 · Validar</b>Carta de intenção com uma construtora de VG ou Cuiabá; taxas e preços reais no simulador.</li>
+        <li><b>Trimestre 2 · Pilotar</b>Piloto em um empreendimento, com tour em fotos 360° e medição de leads.</li>
+        <li><b>Trimestre 3 · Vender</b>Primeiros contratos pagos e integração com o CRM da construtora.</li>
+        <li><b>Trimestre 4 · Escalar</b>Mais empreendimentos na Baixada Cuiabana, até a meta definida abaixo.</li>
+      </ul>
+    </div>
+
+    <div class="prancha" data-rotulo="2 · PÚBLICO-ALVO E MERCADO">
+      <ul class="lista">
+        <li><b>Quem paga: construtoras e incorporadoras de médio porte</b>Querem menos visita perdida e menos reprovação na análise de crédito.</li>
+        <li><b>Quem usa: famílias que pagam aluguel ou moram com parentes</b>Querem saber quanto guardar e se a parcela cabe.</li>
+      </ul>
+      <span class="rotulo">PESQUISA DE CAMPO DO GRUPO · N = 34</span>
+      <div class="kpis">
+        <div><b>59%</b><span>deram 4 ou 5 ao interesse no simulador (média 3,74)</span></div>
+        <div><b>79%</b><span>acham muito útil conhecer a casa virtualmente (4,09)</span></div>
+        <div><b>62%</b><span>entendem pouco de financiamento (notas 1 e 2)</span></div>
+        <div><b>82%</b><span>quase nunca visitam decorados e plantões (notas 1 e 2)</span></div>
+      </div>
+      <p class="aviso">Limite da amostra: 79% dos entrevistados tinham de 18 a 24 anos. É um dado exploratório e não representa quem está prestes a comprar.</p>
+      <span class="rotulo">MERCADO</span>
+      <ul class="lista">
+        <li><b>R$ 134,6 bilhões</b>em financiamento habitacional no 1º semestre de 2025, alta de 25% (Abecip).</li>
+        <li><b>Faixa 4 do Minha Casa, Minha Vida</b>Renda de até R$ 12 mil e imóvel de até R$ 500 mil (Ministério das Cidades, 2025).</li>
+        <li><b>52,2% do déficit habitacional</b>vem do ônus excessivo com aluguel (Fundação João Pinheiro, 2022).</li>
+      </ul>
+      <span class="rotulo">CONCORRÊNCIA</span>
+      <table class="tab"><tr><th>Alternativa</th><th>Limite dela</th></tr><tr><td>Simulador do banco</td><td>Só financia e não conhece a casa</td></tr><tr><td>Corretor no plantão</td><td>Atende quem já foi ao plantão</td></tr><tr><td>Planilha</td><td>Difícil e sem valorização</td></tr><tr><td>Portais imobiliários</td><td>Anúncio, sem plano mensal</td></tr></table>
+      <p class="aviso">A levantar: número de construtoras ativas em VG e Cuiabá, para dimensionar o mercado regional.</p>
+    </div>
+
+    <div class="prancha" data-rotulo="3 · INVESTIMENTOS, CUSTOS E LUCROS">
+      <span class="etq">HIPÓTESE DO GRUPO · AJUSTAR COM PREÇOS REAIS</span>
+      <span class="rotulo">RECEITA</span>
+      <div class="campo"><label for="n-lic">Licença por empreendimento/mês</label><output data-out="nLic"></output><input type="range" id="n-lic" min="300" max="6000" step="100" data-bind="neg.licenca"></div>
+      <div class="campo"><label for="n-leads">Leads por empreendimento/mês</label><output data-out="nLeads"></output><input type="range" id="n-leads" min="0" max="100" step="5" data-bind="neg.leads"></div>
+      <div class="campo"><label for="n-com">Comissão por lead qualificado</label><output data-out="nCom"></output><input type="range" id="n-com" min="0" max="200" step="5" data-bind="neg.comissao"></div>
+      <div class="campo"><label for="n-meta">Empreendimentos no mês 12</label><output data-out="nMeta"></output><input type="range" id="n-meta" min="1" max="30" step="1" data-bind="neg.meta"></div>
+      <span class="rotulo">CUSTOS E INVESTIMENTO</span>
+      <div class="campo"><label for="n-fixo">Custos fixos/mês</label><output data-out="nFixo"></output><input type="range" id="n-fixo" min="3000" max="40000" step="500" data-bind="neg.fixo"></div>
+      <div class="campo"><label for="n-var">Suporte por empreendimento/mês</label><output data-out="nVar"></output><input type="range" id="n-var" min="0" max="1000" step="50" data-bind="neg.variavel"></div>
+      <div class="campo"><label for="n-imp">Impostos sobre a receita</label><output data-out="nImp"></output><input type="range" id="n-imp" min="4" max="20" step="0.5" data-bind="neg.imposto"></div>
+      <div class="campo"><label for="n-inv">Investimento inicial</label><output data-out="nInv"></output><input type="range" id="n-inv" min="10000" max="200000" step="5000" data-bind="neg.invest"></div>
+      <span class="rotulo">RESULTADO</span>
+      <div class="kpis">
+        <div><b data-out="nPE"></b><span>para pagar os custos fixos (ponto de equilíbrio)</span></div>
+        <div><b data-out="nLucro12"></b><span>de lucro no mês 12</span></div>
+        <div><b data-out="nRecAno"></b><span>de receita no ano 1</span></div>
+        <div><b data-out="nPayback"></b><span>para recuperar o investimento</span></div>
+      </div>
+      <canvas id="g-negocio" style="margin-top:12px" aria-label="Gráfico de receita e custos mensais em 24 meses"></canvas>
+      <div class="leg"><span style="--c:#4ade80">receita/mês</span><span style="--c:#fb923c">custos/mês</span></div>
+      <span class="rotulo">ONDE ENTRA O INVESTIMENTO</span><table class="tab" id="n-usos"></table>
+      <span class="rotulo">COMPOSIÇÃO DOS CUSTOS FIXOS</span><table class="tab" id="n-custos"></table>
+    </div>
+
+    <div class="prancha" data-rotulo="4 · VENDAS E CRESCIMENTO">
+      <p class="txt"><strong>O campo mudou a estratégia:</strong> poucos visitam decorados (média 1,74), então o QR Code no decorado não basta. O simulador precisa estar antes, no site e nos anúncios da construtora. A pressão no plantão foi baixa (2,32) e a confiança, mediana (2,76): a mensagem de venda é clareza, não fugir do corretor.</p>
+      <span class="rotulo">FUNIL DE VENDA PARA A CONSTRUTORA</span>
+      <ul class="lista">
+        <li><b>1 · Prospectar</b>Construtoras de médio porte em VG e Cuiabá, com lançamentos ativos.</li>
+        <li><b>2 · Demonstrar</b>O app com os modelos da própria construtora e os dados da pesquisa.</li>
+        <li><b>3 · Pilotar</b>90 dias em um empreendimento, medindo leads e aprovação de crédito.</li>
+        <li><b>4 · Contratar</b>Licença por empreendimento mais comissão por lead.</li>
+        <li><b>5 · Indicar</b>Caso de sucesso usado para abrir a próxima construtora.</li>
+      </ul>
+      <span class="rotulo">CRESCIMENTO</span>
+      <ul class="lista">
+        <li><b>Agora: Baixada Cuiabana</b>Uma construtora parceira e prova de resultado.</li>
+        <li><b>Depois: interior de Mato Grosso</b>Cidades com expansão imobiliária, como Rondonópolis e Sinop.</li>
+        <li><b>Mais adiante: Centro-Oeste e novos produtos</b>Personalização de acabamento com preço e pré-análise de crédito com parceiro.</li>
+      </ul>
+      <span class="rotulo">METAS ACOMPANHADAS</span>
+      <p class="txt">Simulações concluídas · planos criados · leads enviados ao corretor · taxa de aprovação de crédito · tempo entre visita e venda.</p>
+    </div>
+  </section>
+
+  <!-- 07 · MENTORIA E NETWORKING -->
+  <section class="tela" id="t-mentoria">
+    <h2>Mentoria e networking</h2><p class="cota">QUEM PODE ORIENTAR, O QUE PERGUNTAR E O QUE VIROU DECISÃO</p>
+    <nav class="subabas" aria-label="Visão de negócio"><a href="#/negocio">Plano de negócios</a><a href="#/mentoria">Mentoria e networking</a><a href="#/ecossistema">Ecossistema</a></nav>
+
+    <div class="prancha" data-rotulo="1 · ORIENTAÇÃO DE PROFISSIONAIS">
+      <p class="txt"><strong>Orientação acadêmica:</strong> Profa. Polyana (responsável pelo grupo) e Prof. Renato Rosa (Laboratório de Criação e Inovação).</p>
+      <span class="rotulo">MENTORES QUE O PROJETO PRECISA</span>
+      <div class="item-st"><label for="m-cred"><b>Crédito imobiliário · gerente de banco ou correspondente</b></label><p>“Qual erro mais reprova o cliente na análise de crédito?”</p><select class="in" id="m-cred" data-bind="rede.status.credito" data-etapas></select></div>
+      <div class="item-st"><label for="m-cons"><b>Construção e vendas · gerente comercial</b></label><p>“Quanto custa hoje uma visita que não vira venda?”</p><select class="in" id="m-cons" data-bind="rede.status.construcao" data-etapas></select></div>
+      <div class="item-st"><label for="m-fin"><b>Finanças pessoais · planejador financeiro</b></label><p>“Como comparar guardar e investir sem virar recomendação?”</p><select class="in" id="m-fin" data-bind="rede.status.financas" data-etapas></select></div>
+      <div class="item-st"><label for="m-jur"><b>Direito e LGPD · advogado</b></label><p>“O que precisa constar para compartilhar a simulação com a construtora?”</p><select class="in" id="m-jur" data-bind="rede.status.juridico" data-etapas></select></div>
+      <div class="item-st"><label for="m-prod"><b>Startups · empreendedor ou consultor</b></label><p>“Cobrar por empreendimento ou por lead?”</p><select class="in" id="m-prod" data-bind="rede.status.startups" data-etapas></select></div>
+    </div>
+
+    <div class="prancha" data-rotulo="2 · TROCA DE CONHECIMENTOS">
+      <ul class="lista">
+        <li><b>O que o grupo leva</b>Pesquisa de campo com 34 respostas, 14 artigos científicos e um simulador funcionando.</li>
+        <li><b>O que o grupo busca</b>Taxas reais, custo de venda das construtoras e regras de aprovação de crédito.</li>
+        <li><b>Troca dentro da turma</b>O Grupo 5 (CasaHumanizada) trabalha com programas de moradia e pode cruzar aprendizados sobre quem busca a casa própria.</li>
+      </ul>
+      <span class="rotulo">DIÁRIO DE MENTORIA</span>
+      <label class="rotulo" for="s-area">ÁREA</label><select class="in" id="s-area"><option>Crédito imobiliário</option><option>Construção e vendas</option><option>Finanças pessoais</option><option>Direito e LGPD</option><option>Startups</option></select>
+      <label class="rotulo" for="s-aprendi">O QUE APRENDEMOS</label><input class="in" id="s-aprendi" maxlength="200">
+      <label class="rotulo" for="s-decisao">O QUE MUDA NO PROJETO</label><input class="in" id="s-decisao" maxlength="200">
+      <div class="fila"><button class="btn cheio" id="sess-add">Registrar conversa</button></div>
+      <div id="sess-lista"></div>
+    </div>
+
+    <div class="prancha" data-rotulo="3 · CONTATOS PROFISSIONAIS">
+      <ul class="lista">
+        <li><b>Onde encontrar</b>Sinduscon-MT, Sebrae-MT, CRECI-MT, eventos da Unifacc como o CONFACC e LinkedIn.</li>
+      </ul>
+      <span class="rotulo">REDE DO PROJETO</span>
+      <label class="rotulo" for="r-nome">CARGO OU NOME (COM AUTORIZAÇÃO)</label><input class="in" id="r-nome" maxlength="80">
+      <label class="rotulo" for="r-org">ORGANIZAÇÃO</label><input class="in" id="r-org" maxlength="80">
+      <label class="rotulo" for="r-passo">PRÓXIMO PASSO</label><input class="in" id="r-passo" maxlength="120">
+      <div class="fila"><button class="btn cheio" id="rede-add">Adicionar contato</button></div>
+      <div id="rede-lista"></div>
+      <p class="aviso">Fica só neste aparelho. Não registre telefone ou e-mail de terceiros sem autorização (LGPD).</p>
+    </div>
+
+    <div class="prancha" data-rotulo="4 · PARCERIAS E OPORTUNIDADES">
+      <span class="etq">PROPOSTAS · NENHUM ACORDO FIRMADO</span>
+      <ul class="lista">
+        <li><b>Construtora piloto</b>Cede modelos e preços reais e recebe leads preparados.</li>
+        <li><b>Correspondente bancário</b>Confere taxas e regras e recebe clientes com documentos em ordem.</li>
+        <li><b>Imobiliárias e corretores</b>Divulgam o simulador e atendem quem já sabe o que cabe no bolso.</li>
+        <li><b>Fornecedor de fotos 360°</b>Produz o tour, recurso mais valorizado na pesquisa, e ganha um canal de venda.</li>
+        <li><b>CRM da construtora</b>Recebe a simulação autorizada direto no funil de vendas.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 08 · ECOSSISTEMA DE INOVAÇÃO -->
+  <section class="tela" id="t-ecossistema">
+    <h2>Ecossistema de inovação</h2><p class="cota">ATORES MAPEADOS · NENHUM ACORDO FIRMADO</p>
+    <nav class="subabas" aria-label="Visão de negócio"><a href="#/negocio">Plano de negócios</a><a href="#/mentoria">Mentoria e networking</a><a href="#/ecossistema">Ecossistema</a></nav>
+
+    <div class="prancha" data-rotulo="1 · EMPRESAS, UNIVERSIDADES E GOVERNO">
+      <ul class="lista">
+        <li><b>Empresas</b>Construtoras e incorporadoras, Sinduscon-MT, imobiliárias, bancos e correspondentes: oferecem casas, crédito e clientes.</li>
+        <li><b>Universidades</b>Unifacc, onde o projeto nasceu; UFMT e IFMT como possíveis apoios em pesquisa, dados e tecnologia.</li>
+        <li><b>Governo</b>Ministério das Cidades e Caixa (Minha Casa, Minha Vida), Prefeitura de Várzea Grande e FAPEMAT: definem regras e fomentam a inovação.</li>
+      </ul>
+      <p class="aviso">Papel do CasaPiloto: traduzir crédito e programas habitacionais em números que a família entende.</p>
+    </div>
+
+    <div class="prancha" data-rotulo="2 · TECNOLOGIA E NOVAS IDEIAS">
+      <ul class="lista">
+        <li><b>Hoje, no MVP</b>App instalável (PWA), cálculo no próprio aparelho, comparação de 3 caminhos, Price e SAC.</li>
+        <li><b>Próximo: fotos 360° e taxas automáticas</b>O tour teve a maior nota na pesquisa (4,09). Tour virtual reduziu o tempo de venda em 28% a 49% (Yan et al., 2024).</li>
+        <li><b>Depois: realidade virtual e pré-análise de crédito</b>Com parceiro financeiro e consentimento do cliente.</li>
+        <li><b>Ideia nova: renda composta da família</b>Apoio familiar é caminho real de acesso à casa (tema de Allen et al., 2026).</li>
+        <li><b>Ideia nova: juros em linguagem simples</b>Quem tem menos letramento financeiro decide pior (Ilan e Mugerman, 2025).</li>
+      </ul>
+    </div>
+
+    <div class="prancha" data-rotulo="3 · APOIO A PEQUENOS NEGÓCIOS">
+      <div class="item-st"><label for="e-seb"><b>Sebrae-MT</b></label><p>Consultoria em gestão, modelagem e capacitação para o negócio.</p><select class="in" id="e-seb" data-bind="rede.status.sebrae" data-apoio></select></div>
+      <div class="item-st"><label for="e-ino"><b>InovAtiva Brasil</b></label><p>Programa público de aceleração e mentoria para startups.</p><select class="in" id="e-ino" data-bind="rede.status.inovativa" data-apoio></select></div>
+      <div class="item-st"><label for="e-cen"><b>Programa Centelha</b></label><p>Apoio a ideias inovadoras em estágio inicial. Conferir se há edital aberto em Mato Grosso.</p><select class="in" id="e-cen" data-bind="rede.status.centelha" data-apoio></select></div>
+      <ul class="lista">
+        <li><b>Marco Legal das Startups (Lei Complementar 182/2021)</b>Dá segurança a investidores e cria instrumentos para startups.</li>
+        <li><b>Simples Nacional (Lei Complementar 123/2006)</b>Tributação simplificada para pequenas empresas.</li>
+      </ul>
+    </div>
+
+    <div class="prancha" data-rotulo="4 · INVESTIMENTOS E INCENTIVO">
+      <span class="etq">HIPÓTESE DO GRUPO</span>
+      <p class="txt">Como cobrir o investimento inicial de <strong data-out="nInv"></strong>:</p>
+      <div class="campo"><label for="f-prop">Recursos dos sócios</label><output data-out="fProp"></output><input type="range" id="f-prop" min="0" max="200000" step="5000" data-bind="neg.fProprio"></div>
+      <div class="campo"><label for="f-sub">Subvenção ou edital de fomento</label><output data-out="fSub"></output><input type="range" id="f-sub" min="0" max="200000" step="5000" data-bind="neg.fSub"></div>
+      <div class="campo"><label for="f-anjo">Investidor-anjo</label><output data-out="fAnjo"></output><input type="range" id="f-anjo" min="0" max="200000" step="5000" data-bind="neg.fAnjo"></div>
+      <div class="barra" style="margin:8px 0"><i data-estilo="fontePct"></i></div><p class="cota" data-out="fGap"></p>
+      <span class="rotulo">CAMINHO DE CAPTAÇÃO</span>
+      <ul class="lista">
+        <li><b>1 · Recursos próprios</b>Financiam a validação com a primeira construtora.</li>
+        <li><b>2 · Fomento não reembolsável</b>Editais da FAPEMAT e da Finep, sem entrega de participação na empresa.</li>
+        <li><b>3 · Investidor-anjo</b>Entra depois do piloto, com resultado medido.</li>
+        <li><b>Fora do alcance por ora: Lei do Bem</b>O incentivo fiscal à inovação atende empresas no lucro real.</li>
+      </ul>
+    </div>
+  </section>
 </main>
 <div id="brinde" role="status" aria-live="polite"></div>
 
@@ -186,8 +404,11 @@ const DOCS = ['RG e CPF de todos os compradores', 'Certidão de estado civil', '
 
 /* ---------- Proxy profundo ---------- */
 const CH = 'casapiloto:v2';
-const semente = () => ({ casa: 'familia', renda: 6600, alug: 1500, dep: 1200, fgts: 15000, ent: 20, rend: 10, val: 4, linha: 'sbpe', juros: 11.5, prazo: 30, sist: 'price', plano: null, envios: [] });
-let bruto; try { bruto = JSON.parse(localStorage.getItem(CH)); } catch (e) {} if (!bruto) bruto = semente();
+const semente = () => ({ casa: 'familia', renda: 6600, alug: 1500, dep: 1200, fgts: 15000, ent: 20, rend: 10, val: 4, linha: 'sbpe', juros: 11.5, prazo: 30, sist: 'price', plano: null, envios: [],
+  neg: { licenca: 1500, leads: 15, comissao: 40, meta: 10, fixo: 9000, variavel: 200, imposto: 6, invest: 45000, fProprio: 10000, fSub: 25000, fAnjo: 10000, rProd: 'A definir', rCom: 'A definir', rFin: 'A definir', rOp: 'A definir' },
+  rede: { contatos: [], sessoes: [], status: { credito: 'A contatar', construcao: 'A contatar', financas: 'A contatar', juridico: 'A contatar', startups: 'A contatar', sebrae: 'A conhecer', inovativa: 'A conhecer', centelha: 'A conhecer' } } });
+const completar = d => { const s = semente(), r = d.rede || {}; d.neg = { ...s.neg, ...d.neg }; d.rede = { ...s.rede, ...r, status: { ...s.rede.status, ...r.status } }; return d; };
+let bruto; try { bruto = JSON.parse(localStorage.getItem(CH)); } catch (e) {} if (!bruto) bruto = semente(); completar(bruto);
 let agendado = false;
 function reativo(obj) {
   return new Proxy(obj, {
@@ -220,7 +441,16 @@ function calc() {
   const precoNaEntrada = en.alvo / (E.ent / 100), fin = Math.max(0, precoNaEntrada - en.saldo);
   const price = amortizar(fin, 'price'), sac = amortizar(fin, 'sac'), escolhido = E.sist === 'price' ? price : sac;
   const compr = escolhido.parc[0] / E.renda;
-  return { casa, g, inv, en, fin, price, sac, compr, precoNaEntrada };
+  return { casa, g, inv, en, fin, price, sac, compr, precoNaEntrada, neg: negocio() };
+}
+/* modelo do negócio: empreendimentos crescem em linha do mês 1 até a meta no mês 12 e ficam estáveis depois */
+function negocio() {
+  const n = E.neg, porEmp = n.licenca + n.leads * n.comissao, imposto = porEmp * n.imposto / 100, margem = porEmp - imposto - n.variavel;
+  const emp = m => Math.round(1 + (n.meta - 1) * Math.min(m - 1, 11) / 11);
+  const meses = Array.from({ length: 60 }, (_, i) => { const e = emp(i + 1), rec = e * porEmp, cus = n.fixo + e * (imposto + n.variavel); return { rec, cus, lucro: rec - cus }; });
+  let caixa = -n.invest, payback = Infinity;
+  meses.some((m, i) => { caixa += m.lucro; if (caixa >= 0) { payback = i + 1; return true; } });
+  return { meses, payback, pe: margem > 0 ? Math.ceil(n.fixo / margem) : Infinity, recAno: meses.slice(0, 12).reduce((a, m) => a + m.rec, 0) };
 }
 
 /* ---------- saídas declarativas ---------- */
@@ -239,7 +469,16 @@ const SAIDAS = {
   planoSaldo: () => E.plano ? R$(saldoPlano()) : '', planoFalta: () => E.plano ? `FALTAM ${R$(Math.max(0, E.plano.alvo - saldoPlano()))} · PREVISÃO INICIAL: ${anos(E.plano.meses)}` : '',
   proxLembrete: () => { if (!E.plano) return ''; const h = new Date(), d = new Date(h.getFullYear(), h.getMonth(), E.plano.dia); if (d <= h) d.setMonth(d.getMonth() + 1); return 'PRÓXIMO LEMBRETE: ' + d.toLocaleDateString('pt-BR'); },
   resumoEnvio: c => `${c.casa.nome} (${R$(c.casa.preco)}) · entrada ${E.ent}% · ${E.prazo} anos · ${E.sist.toUpperCase()} · 1ª parcela ${R$((E.sist === 'price' ? c.price : c.sac).parc[0])} · ${(c.compr * 100).toFixed(0)}% da renda. Não enviamos seu saldo nem seu FGTS.`,
+  nLic: () => R$(E.neg.licenca), nLeads: () => String(E.neg.leads), nCom: () => R$(E.neg.comissao), nMeta: () => String(E.neg.meta), nFixo: () => R$(E.neg.fixo), nVar: () => R$(E.neg.variavel), nImp: () => String(E.neg.imposto).replace('.', ',') + '%', nInv: () => R$(E.neg.invest),
+  nPE: c => isFinite(c.neg.pe) ? c.neg.pe + (c.neg.pe === 1 ? ' empreend.' : ' empreends.') : 'Sem margem', nLucro12: c => R$(c.neg.meses[11].lucro), nRecAno: c => R$(c.neg.recAno), nPayback: c => isFinite(c.neg.payback) ? c.neg.payback + (c.neg.payback === 1 ? ' mês' : ' meses') : 'Mais de 5 anos',
+  fProp: () => R$(E.neg.fProprio), fSub: () => R$(E.neg.fSub), fAnjo: () => R$(E.neg.fAnjo),
+  fGap: () => { const d = somaFontes() - E.neg.invest; return d < 0 ? `FALTAM ${R$(-d)} PARA COBRIR O INVESTIMENTO` : d > 0 ? `SOBRAM ${R$(d)} ALÉM DO INVESTIMENTO` : 'INVESTIMENTO TOTALMENTE COBERTO'; },
 };
+const somaFontes = () => E.neg.fProprio + E.neg.fSub + E.neg.fAnjo;
+const USOS = [['Desenvolvimento do produto', .55], ['Implantação do piloto', .15], ['Jurídico e LGPD', .1], ['Marketing e vendas', .1], ['Capital de giro', .1]];
+const CUSTOS = [['Pró-labore e equipe', .5], ['Comercial e marketing', .2], ['Hospedagem e suporte', .15], ['Contabilidade e jurídico', .15]];
+const PESSOAS = ['A definir', 'Aliny', 'André', 'Michelly', 'Everson'], ETAPAS = ['A contatar', 'Contatado', 'Conversa feita'], APOIO = ['A conhecer', 'Em análise', 'Inscrito'];
+const tabelaValor = (itens, total) => itens.map(([n, p]) => `<tr><td>${n}</td><td class="num">${R$(total * p)}</td></tr>`).join('');
 const saldoPlano = () => E.plano ? E.plano.inicial + E.plano.deps.reduce((a, d) => a + d.v, 0) : 0;
 
 function atualizar() {
@@ -257,6 +496,11 @@ function atualizar() {
   $('#envios').innerHTML = E.envios.map(v => `<div class="prancha" data-rotulo="ENVIO ${esc(v.prot)}"><p>${esc(v.nome)} · ${esc(v.tel)} · ${new Date(v.q).toLocaleString('pt-BR')}</p><p class="cota">STATUS (SIMULADO): ${esc(v.status)}</p></div>`).join('');
   if ($('#t-cenarios').classList.contains('on')) graficos(c);
   if ($('#t-casa').classList.contains('on')) planta(c.casa);
+  $$('[data-estilo=fontePct]').forEach(el => el.style.width = Math.min(100, somaFontes() / E.neg.invest * 100) + '%');
+  $('#n-usos').innerHTML = tabelaValor(USOS, E.neg.invest); $('#n-custos').innerHTML = tabelaValor(CUSTOS, E.neg.fixo);
+  $('#sess-lista').innerHTML = E.rede.sessoes.map((s, i) => `<div class="registro"><div><strong>${esc(s.area)}</strong> · ${new Date(s.d).toLocaleDateString('pt-BR')}<br>Aprendemos: ${esc(s.aprendi)}<br>Muda no projeto: ${esc(s.decisao) || '—'}</div><button class="btn" style="min-height:36px" data-rem-sessao="${i}" aria-label="Remover conversa">✕</button></div>`).join('');
+  $('#rede-lista').innerHTML = E.rede.contatos.map((r, i) => `<div class="registro"><div><strong>${esc(r.nome) || 'Contato'}</strong> · ${esc(r.org) || 'sem organização'}<br>Próximo passo: ${esc(r.passo) || '—'}</div><button class="btn" style="min-height:36px" data-rem-contato="${i}" aria-label="Remover contato">✕</button></div>`).join('');
+  if ($('#t-negocio').classList.contains('on')) graficoNegocio(c);
 }
 
 /* entradas → estado */
@@ -299,8 +543,15 @@ function graficos(c) {
     const lim = E.renda * .3; if (lim < maxY) { x.strokeStyle = '#f87171'; x.setLineDash([3, 3]); const y = 10 + (h - 34) * (1 - lim / maxY); x.beginPath(); x.moveTo(44, y); x.lineTo(w - 6, y); x.stroke(); x.setLineDash([]); x.fillStyle = '#f87171'; x.fillText('30% da renda', w - 90, y - 4); } }
 }
 
+function graficoNegocio(c) {
+  const [x, w, h] = prepCanvas($('#g-negocio')), m = c.neg.meses.slice(0, 24), rec = m.map(v => v.rec), cus = m.map(v => v.cus), maxY = Math.max(...rec, ...cus) * 1.1 || 1;
+  eixos(x, w, h, maxY, 23, v => Math.round(v) + 1 + 'm'); linha(x, w, h, cus, maxY, 23, '#fb923c'); linha(x, w, h, rec, maxY, 23, '#4ade80');
+}
+
 /* ---------- ações ---------- */
 function montarCasas() {
+  const opcoes = (sel, itens) => $$(sel).forEach(s => s.innerHTML = itens.map(v => `<option>${v}</option>`).join(''));
+  opcoes('[data-pessoas]', PESSOAS); opcoes('[data-etapas]', ETAPAS); opcoes('[data-apoio]', APOIO);
   $('#lista-casas').innerHTML = CASAS.map(c => `<button class="casa" data-casa="${c.id}" aria-pressed="false">${miniPlanta(c)}<b>${c.nome}</b><span class="cota">${esc(c.desc)}</span><div class="num">${R$(c.preco)}</div></button>`).join('');
   $('#i-linha').innerHTML = Object.entries(LINHAS).map(([k, v]) => `<option value="${k}">${v[0]}</option>`).join('');
 }
@@ -329,23 +580,31 @@ document.addEventListener('click', e => {
     if (!nome || tel.replace(/\D/g, '').length < 10) return brinde('Informe nome e WhatsApp com DDD.');
     E.envios.unshift({ prot: 'CP-' + String(Date.now()).slice(-6), nome, tel, q: new Date().toISOString(), status: 'Recebido pela construtora — retorno em até 1 dia útil' }); brinde('Simulação enviada (simulado).');
   }
+  else if (b.id === 'sess-add') { const aprendi = $('#s-aprendi').value.trim(); if (!aprendi) return brinde('Escreva o que o grupo aprendeu.'); E.rede.sessoes.unshift({ area: $('#s-area').value, aprendi, decisao: $('#s-decisao').value.trim(), d: new Date().toISOString() }); $('#s-aprendi').value = $('#s-decisao').value = ''; brinde('Conversa registrada.'); }
+  else if (b.id === 'rede-add') { const nome = $('#r-nome').value.trim(), org = $('#r-org').value.trim(); if (!nome && !org) return brinde('Informe o cargo, o nome ou a organização.'); E.rede.contatos.unshift({ nome, org, passo: $('#r-passo').value.trim() }); $('#r-nome').value = $('#r-org').value = $('#r-passo').value = ''; brinde('Contato adicionado.'); }
+  else if (b.dataset.remSessao != null) E.rede.sessoes.splice(+b.dataset.remSessao, 1);
+  else if (b.dataset.remContato != null) E.rede.contatos.splice(+b.dataset.remContato, 1);
   else if (b.id === 'exportar') { Object.assign(document.createElement('a'), { href: URL.createObjectURL(new Blob([JSON.stringify({ app: 'casapiloto', dados: bruto })], { type: 'application/json' })), download: 'casapiloto.json' }).click(); brinde('Backup baixado.'); }
-  else if (b.id === 'importar') { const i = Object.assign(document.createElement('input'), { type: 'file', accept: '.json' }); i.onchange = async () => { try { const j = JSON.parse(await i.files[0].text()); if (j.app !== 'casapiloto') throw 0; bruto = j.dados; E = reativo(bruto); agendar(); brinde('Importado.'); } catch (x) { brinde('Arquivo inválido.'); } }; i.click(); }
+  else if (b.id === 'importar') { const i = Object.assign(document.createElement('input'), { type: 'file', accept: '.json' }); i.onchange = async () => { try { const j = JSON.parse(await i.files[0].text()); if (j.app !== 'casapiloto') throw 0; bruto = completar(j.dados); E = reativo(bruto); agendar(); brinde('Importado.'); } catch (x) { brinde('Arquivo inválido.'); } }; i.click(); }
   else if (b.id === 'zerar') { if (confirm('Apagar simulação, plano e envios?')) { bruto = semente(); E = reativo(bruto); agendar(); brinde('Dados apagados.'); } }
 });
 
 /* ---------- rotas ---------- */
-window.__rotas = ['#/casas', '#/casa/familia', '#/simular', '#/cenarios', '#/plano', '#/corretor'];
+window.__rotas = ['#/casas', '#/casa/familia', '#/simular', '#/cenarios', '#/plano', '#/corretor', '#/negocio', '#/mentoria', '#/ecossistema'];
+const VISAO_NEGOCIO = ['negocio', 'mentoria', 'ecossistema'];
 function rota() {
   const m = location.hash.match(/^#\/(\w+)(?:\/(\w+))?/) || [, 'casas'];
-  const nome = ['casas', 'casa', 'simular', 'cenarios', 'plano', 'corretor'].includes(m[1]) ? m[1] : 'casas';
+  const nome = ['casas', 'casa', 'simular', 'cenarios', 'plano', 'corretor', ...VISAO_NEGOCIO].includes(m[1]) ? m[1] : 'casas';
   if (nome === 'casa' && m[2] && CASAS.some(c => c.id === m[2]) && E.casa !== m[2]) { E.casa = m[2]; tourI = -1; }
   if (nome !== 'casa') pararTour();
   $$('.tela').forEach(t => t.classList.toggle('on', t.id === 't-' + nome));
-  $$('.etapas a').forEach(a => a.getAttribute('href') === '#/' + (nome === 'casa' ? 'casas' : nome) ? a.setAttribute('aria-current', 'page') : a.removeAttribute('aria-current'));
+  const aba = nome === 'casa' ? 'casas' : VISAO_NEGOCIO.includes(nome) ? 'negocio' : nome;
+  $$('.etapas a').forEach(a => a.getAttribute('href') === '#/' + aba ? a.setAttribute('aria-current', 'page') : a.removeAttribute('aria-current'));
+  $$('.subabas a').forEach(a => a.getAttribute('href') === '#/' + nome ? a.setAttribute('aria-current', 'page') : a.removeAttribute('aria-current'));
+  const et = $('.etapas'), atual = $('.etapas a[aria-current]'); if (atual) et.scrollLeft = atual.offsetLeft - (et.clientWidth - atual.offsetWidth) / 2;
   scrollTo(0, 0); atualizar();
 }
-addEventListener('hashchange', rota); addEventListener('resize', () => $('#t-cenarios').classList.contains('on') && graficos(calc()));
+addEventListener('hashchange', rota); addEventListener('resize', () => { if ($('#t-cenarios').classList.contains('on')) graficos(calc()); if ($('#t-negocio').classList.contains('on')) graficoNegocio(calc()); });
 montarCasas(); rota();
 
 if ('serviceWorker' in navigator && location.protocol.startsWith('http')) navigator.serviceWorker.register('sw.js').catch(() => {});
