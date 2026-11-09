@@ -58,6 +58,38 @@ h2{font-weight:900;font-size:20px;margin-bottom:6px}
 .pin{cursor:pointer}
 :focus-visible{outline:3px solid var(--sol);outline-offset:2px}
 [hidden]{display:none!important}
+/* visão de negócio: plano, mentoria e ecossistema */
+.ntit{font-size:23px;margin-bottom:2px}
+.subabas{display:flex;gap:6px;margin:10px 0}
+.subabas a{flex:1 1 0;display:flex;align-items:center;justify-content:center;text-align:center;min-height:46px;padding:6px 4px;border:1.5px solid #d9e7e4;border-radius:12px;background:#fff;color:#0f2e2c;text-decoration:none;font-weight:700;font-size:12.5px}
+.subabas a[aria-current=page]{background:#042f2e;border-color:#042f2e;color:#fff}
+.bloco{background:#fff;border:1px solid #d9e7e4;border-radius:16px;padding:14px;margin:12px 0}
+.bloco h3{font-size:17px;margin-bottom:6px}
+.txt{font-size:14.5px;line-height:1.5}
+.lista{list-style:none}
+.lista li{font-size:14.5px;line-height:1.45;padding:9px 0;border-bottom:1px dashed #d9e7e4}
+.lista li:last-child{border-bottom:0}
+.lista b{display:block}
+.rotulo{display:block;font-weight:800;font-size:12.5px;color:#5b7875;margin:12px 0 4px}
+.etq{display:inline-block;font-size:11.5px;font-weight:800;border:1px solid #f97316;color:#9a3412;border-radius:999px;padding:1px 9px;margin-bottom:4px}
+.nkpis{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.nkpis div{background:#e6f2f0;border-radius:12px;padding:10px}
+.nkpis b{display:block;font-size:20px;font-weight:800;color:#042f2e;overflow-wrap:anywhere}
+.nkpis span{display:block;font-size:12.5px;line-height:1.35;color:#5b7875}
+.faixa{display:grid;grid-template-columns:1fr auto;gap:2px 10px;align-items:center;margin:10px 0}
+.faixa label{font-weight:700;font-size:14px}
+.faixa output{font-weight:800;color:#042f2e}
+.faixa input{grid-column:1/-1;width:100%;height:28px;accent-color:#f97316}
+.ntab{width:100%;border-collapse:collapse;font-size:13.5px}
+.ntab th,.ntab td{padding:7px 4px;border-bottom:1px dashed #d9e7e4;text-align:right}
+.ntab th:first-child,.ntab td:first-child{text-align:left}
+.item-st{padding:10px 0;border-bottom:1px dashed #d9e7e4}
+.item-st b{display:block;font-size:14.5px;margin-bottom:6px}
+.item-st p{font-size:13.5px;line-height:1.4;color:#5b7875;margin:-3px 0 8px}
+.registro{display:flex;gap:8px;align-items:flex-start;justify-content:space-between;padding:8px 0;border-bottom:1px dashed #d9e7e4;font-size:14px;line-height:1.4}
+.registro div{min-width:0;overflow-wrap:anywhere}
+.nbarra{height:12px;background:#e6f2f0;border-radius:99px;overflow:hidden;margin:8px 0}
+.nbarra i{display:block;height:100%;background:#f97316}
 </style>
 </head>
 <body>
@@ -73,13 +105,14 @@ h2{font-weight:900;font-size:20px;margin-bottom:6px}
 
 <div id="folha" aria-label="Painel de informações">
   <div class="pegador" id="pegador" aria-label="Arraste para expandir o painel"><i></i></div>
-  <nav class="abas" aria-label="Seções"><a href="#/explorar">Explorar</a><a href="#/rota">Rota</a><a href="#/diario">Diário</a><a href="#/ajustes">Ajustes</a></nav>
+  <nav class="abas" aria-label="Seções"><a href="#/explorar">Explorar</a><a href="#/rota">Rota</a><a href="#/diario">Diário</a><a href="#/ajustes">Ajustes</a><a href="#/negocio">Negócio</a></nav>
   <main class="conteudo">
     <section class="tela" id="t-explorar">
       <p class="mudo" id="onde">—</p>
       <div class="chips" id="posicoes" role="group" aria-label="Simular posição"></div>
       <div class="chips" id="interesses" role="group" aria-label="Filtrar por interesse"></div>
       <div id="lista"></div>
+      <div class="fila"><a class="btn lin peq" href="#/negocio">Visão de negócio: plano, mentoria e ecossistema</a></div>
       <p class="aviso">Conteúdo de <b>exemplo</b> com coordenadas aproximadas — validar com Sedec-MT, ICMBio e IPHAN antes de publicar.</p>
     </section>
     <section class="tela" id="t-lugar"></section>
@@ -111,6 +144,27 @@ h2{font-weight:900;font-size:20px;margin-bottom:6px}
       <h2 style="margin-top:12px">Dados</h2>
       <div class="fila"><button class="btn lin" id="exportar">Exportar JSON</button><button class="btn lin" id="importar" data-teste="pular">Importar</button><button class="btn lin" id="zerar">Apagar tudo</button></div>
       <p class="mudo" style="text-align:center;margin-top:10px">GuiaMobi · Grupo 2 · 8AdmVG · UNIFACC-MT</p>
+    </section>
+    <section class="tela" id="t-negocio" aria-label="Plano de negócios">
+      <h2 class="ntit">Plano de negócios</h2><p class="mudo">O GuiaMobi como empresa. Valores financeiros são hipóteses editáveis.</p><nav class="subabas" aria-label="Visão de negócio"><a href="#/negocio">Plano de negócios</a><a href="#/mentoria">Mentoria e networking</a><a href="#/ecossistema">Ecossistema</a></nav>
+      <div class="bloco"><h3>1 · Organização e planejamento</h3><p class="txt"><strong>Missão:</strong> fazer quem visita e quem mora descobrir o que há de bom por perto, com renda para o comércio local.</p><p class="txt" style="margin-top:6px"><strong>Modelo:</strong> gratuito para o usuário, com receita de contratos com turismo público e privado, destaque identificado de negócios locais e roteiros premium. Formato jurídico sugerido: sociedade limitada no Simples, a validar com contador.</p><span class="rotulo">Responsável por área (o grupo define)</span><div class="item-st"><label for="nv-r-produto"><b>Produto e tecnologia</b></label><select class="entrada" id="nv-r-produto" data-r="produto"></select></div><div class="item-st"><label for="nv-r-conteudo"><b>Conteúdo e curadoria</b></label><select class="entrada" id="nv-r-conteudo" data-r="conteudo"></select></div><div class="item-st"><label for="nv-r-comercial"><b>Comercial e parceiros</b></label><select class="entrada" id="nv-r-comercial" data-r="comercial"></select></div><div class="item-st"><label for="nv-r-financeiro"><b>Financeiro e LGPD</b></label><select class="entrada" id="nv-r-financeiro" data-r="financeiro"></select></div><span class="rotulo">Planejamento de 12 meses</span><ul class="lista"><li><b>Trimestre 1 · Validar</b>Conversar com secretaria de turismo e comerciantes; conferir o conteúdo em fontes oficiais.</li><li><b>Trimestre 2 · Pilotar</b>Piloto em Cuiabá e Várzea Grande, com primeiros negócios parceiros.</li><li><b>Trimestre 3 · Vender</b>Primeiros destaques pagos e roteiros premium.</li><li><b>Trimestre 4 · Escalar</b>Chapada dos Guimarães e Pantanal, até a meta definida abaixo.</li></ul></div>
+      <div class="bloco"><h3>2 · Público-alvo e mercado</h3><ul class="lista"><li><b>Quem paga: turismo público e negócios locais</b>Secretarias, restaurantes, pousadas e guias querem ser encontrados.</li><li><b>Quem usa: visitantes e moradores</b>Quem tem pouco tempo e usa o celular para se orientar.</li></ul><span class="rotulo">Pesquisa de campo do grupo · n = 34</span><div class="nkpis"><div><b>76%</b><span>usam o celular para se orientar em passeios (média 4,03)</span></div><div><b>59%</b><span>acham importante apoiar o comércio local (3,85)</span></div><div><b>44%</b><span>deram 4 ou 5 ao interesse no guia de bolso (3,26)</span></div><div><b>50%</b><span>têm pouco conforto em compartilhar a localização (2,59)</span></div></div><p class="aviso">Limite da amostra: a planilha não separa moradores de visitantes, e comerciantes e secretarias, que pagariam pelo serviço, ainda não foram ouvidos.</p><span class="rotulo">Mercado</span><ul class="lista"><li><b>9,29 milhões de turistas estrangeiros no Brasil</b>Recorde em 2025 (Embratur).</li><li><b>Cerca de 1,2 milhão de turistas em Mato Grosso</b>Alta de 18% em 2025 (Sedec-MT).</li><li><b>183 mil visitas à Chapada dos Guimarães</b>Eram 92 mil em 2022 (Sedec-MT).</li></ul><span class="rotulo">Concorrência</span><table class="ntab"><tr><th>Alternativa</th><th>Limite dela</th></tr><tr><td>Google Maps</td><td>Não monta rota por tempo</td></tr><tr><td>Redes sociais</td><td>Conteúdo disperso</td></tr><tr><td>Guia contratado</td><td>Custo e agenda; raro no campo (1,65)</td></tr><tr><td>Folhetos</td><td>Horário restrito</td></tr></table><p class="aviso">A levantar: quantos negócios por destino pagariam por destaque e qual orçamento as secretarias têm para divulgação.</p></div>
+      <div class="bloco"><h3>3 · Investimentos, custos e lucros</h3><span class="etq">Hipótese do grupo: ajustar com preços reais</span><span class="rotulo">Receita</span><div class="faixa"><label for="nv-contrato">Contrato de turismo por destino/mês</label><output data-nv="contrato"></output><input type="range" id="nv-contrato" min="0" max="5000" step="100" data-n="contrato"></div><div class="faixa"><label for="nv-negocios">Negócios em destaque por destino</label><output data-nv="negocios"></output><input type="range" id="nv-negocios" min="0" max="60" step="1" data-n="negocios"></div><div class="faixa"><label for="nv-destaque">Destaque por negócio/mês</label><output data-nv="destaque"></output><input type="range" id="nv-destaque" min="20" max="400" step="10" data-n="destaque"></div><div class="faixa"><label for="nv-premium">Roteiros premium por destino/mês</label><output data-nv="premium"></output><input type="range" id="nv-premium" min="0" max="200" step="5" data-n="premium"></div><div class="faixa"><label for="nv-ticket">Preço do roteiro premium</label><output data-nv="ticket"></output><input type="range" id="nv-ticket" min="0" max="50" step="1" data-n="ticket"></div><div class="faixa"><label for="nv-meta">Destinos no mês 12</label><output data-nv="meta"></output><input type="range" id="nv-meta" min="1" max="20" step="1" data-n="meta"></div><span class="rotulo">Custos e investimento</span><div class="faixa"><label for="nv-fixo">Custos fixos/mês</label><output data-nv="fixo"></output><input type="range" id="nv-fixo" min="3000" max="40000" step="500" data-n="fixo"></div><div class="faixa"><label for="nv-variavel">Curadoria por destino/mês</label><output data-nv="variavel"></output><input type="range" id="nv-variavel" min="0" max="2000" step="50" data-n="variavel"></div><div class="faixa"><label for="nv-imposto">Impostos sobre a receita</label><output data-nv="imposto"></output><input type="range" id="nv-imposto" min="4" max="20" step="0.5" data-n="imposto"></div><div class="faixa"><label for="nv-invest">Investimento inicial</label><output data-nv="invest"></output><input type="range" id="nv-invest" min="10000" max="200000" step="5000" data-n="invest"></div><span class="rotulo">Resultado</span><div class="nkpis"><div><b data-nk="pe"></b><span>para pagar os custos fixos (ponto de equilíbrio)</span></div><div><b data-nk="lucro"></b><span>de lucro no mês 12</span></div><div><b data-nk="rec"></b><span>de receita no ano 1</span></div><div><b data-nk="payback"></b><span>para recuperar o investimento</span></div></div><div id="nv-graf" style="margin-top:12px"></div><p class="mudo" style="font-size:12.5px"><b style="color:#0f766e">━</b> receita por mês · <b style="color:#ea580c">━</b> custos por mês</p><span class="rotulo">Onde entra o investimento</span><table class="ntab" id="nv-usos"></table><span class="rotulo">Composição dos custos fixos</span><table class="ntab" id="nv-custos"></table></div>
+      <div class="bloco"><h3>4 · Vendas e crescimento</h3><p class="txt"><strong>O campo mudou a estratégia:</strong> a narração, ideia central do projeto, dividiu opiniões (média 3,00). A rota por tempo (3,56) e o apoio ao comércio local (3,85) devem liderar a oferta. A localização incomoda (2,59), então o uso sem GPS precisa continuar disponível. A sensação de segurança é baixa (2,12): indicar guia credenciado vira argumento de valor.</p><span class="rotulo">Funil de venda para parceiros</span><ul class="lista"><li><b>1 · Prospectar</b>Secretarias de turismo e negócios próximos aos atrativos.</li><li><b>2 · Demonstrar</b>Rota montada no destino do próprio parceiro.</li><li><b>3 · Pilotar</b>90 dias, medindo cliques e visitas.</li><li><b>4 · Contratar</b>Contrato por destino e destaque identificado como pago.</li><li><b>5 · Divulgar</b>QR Codes em hotéis, aeroporto e restaurantes.</li></ul><span class="rotulo">Crescimento</span><ul class="lista"><li><b>Agora: Cuiabá e Várzea Grande</b>Porta de entrada do estado, pelo aeroporto.</li><li><b>Depois: Chapada e Pantanal</b>Com pacotes offline, pois 47% dizem que a falta de sinal atrapalha.</li><li><b>Mais adiante: outros destinos e idiomas</b>Reservas, cupons e áudios gravados por guias locais.</li></ul><span class="rotulo">Metas acompanhadas</span><p class="txt">Rotas montadas · lugares visitados · uso com GPS permitido · cliques para parceiros locais · sugestões aprovadas.</p></div>
+    </section>
+    <section class="tela" id="t-mentoria" aria-label="Mentoria e networking">
+      <h2 class="ntit">Mentoria e networking</h2><p class="mudo">Quem pode orientar, o que perguntar e o que virou decisão.</p><nav class="subabas" aria-label="Visão de negócio"><a href="#/negocio">Plano de negócios</a><a href="#/mentoria">Mentoria e networking</a><a href="#/ecossistema">Ecossistema</a></nav>
+      <div class="bloco"><h3>1 · Orientação de profissionais</h3><p class="txt"><strong>Orientação acadêmica:</strong> Prof. Renato Rosa (responsável pelo grupo e professor de Laboratório de Criação e Inovação).</p><span class="rotulo">Mentores que o projeto precisa</span><div class="item-st"><label for="nv-st-setor"><b>Turismo · técnico da Sedec-MT ou secretaria</b></label><p>“O que falta de informação para quem chega ao estado?”</p><select class="entrada" id="nv-st-setor" data-st="setor"></select></div><div class="item-st"><label for="nv-st-operacao"><b>Guia de turismo credenciado</b></label><p>“Onde o visitante não deve ir sem guia?”</p><select class="entrada" id="nv-st-operacao" data-st="operacao"></select></div><div class="item-st"><label for="nv-st-credito"><b>Comércio local · restaurante ou pousada</b></label><p>“Quanto pagaria por mês para ser encontrado?”</p><select class="entrada" id="nv-st-credito" data-st="credito"></select></div><div class="item-st"><label for="nv-st-juridico"><b>Direito e LGPD · advogado</b></label><p>“Como tratar a localização do usuário?”</p><select class="entrada" id="nv-st-juridico" data-st="juridico"></select></div><div class="item-st"><label for="nv-st-startups"><b>Startups · empreendedor de turismo</b></label><p>“Vender para o governo ou para o comércio primeiro?”</p><select class="entrada" id="nv-st-startups" data-st="startups"></select></div></div>
+      <div class="bloco"><h3>2 · Troca de conhecimentos</h3><ul class="lista"><li><b>O que o grupo leva</b>Pesquisa de campo com 34 respostas, 14 artigos científicos e um guia funcionando.</li><li><b>O que o grupo busca</b>Conteúdo validado, horários reais e preços que o comércio aceita pagar.</li><li><b>Troca dentro da turma</b>Comparar com os outros grupos os métodos de campo e como abordar quem paga.</li></ul><span class="rotulo">Diário de mentoria</span><label class="rotulo" for="nv-s-area">Área</label><select class="entrada" id="nv-s-area"><option>Turismo</option><option>Guias</option><option>Comércio local</option><option>Direito e LGPD</option><option>Startups</option></select><label class="rotulo" for="nv-s-a">O que aprendemos</label><input class="entrada" id="nv-s-a" maxlength="200"><label class="rotulo" for="nv-s-d">O que muda no projeto</label><input class="entrada" id="nv-s-d" maxlength="200"><div class="fila"><button class="btn" id="nv-sess-add">Registrar conversa</button></div><div id="nv-sess"></div></div>
+      <div class="bloco"><h3>3 · Contatos profissionais</h3><ul class="lista"><li><b>Onde encontrar</b>Sedec-MT, Cadastur, Abrasel-MT, ABIH-MT, Sebrae-MT, eventos como o CONFACC e LinkedIn.</li></ul><span class="rotulo">Rede do projeto</span><label class="rotulo" for="nv-r-nome">Cargo ou nome (com autorização)</label><input class="entrada" id="nv-r-nome" maxlength="80"><label class="rotulo" for="nv-r-org">Organização</label><input class="entrada" id="nv-r-org" maxlength="80"><label class="rotulo" for="nv-r-passo">Próximo passo</label><input class="entrada" id="nv-r-passo" maxlength="120"><div class="fila"><button class="btn" id="nv-rede-add">Adicionar contato</button></div><div id="nv-rede"></div><p class="aviso">Fica só neste aparelho. Não registre telefone ou e-mail de terceiros sem autorização (LGPD).</p></div>
+      <div class="bloco"><h3>4 · Parcerias e oportunidades</h3><span class="etq">Propostas: nenhum acordo firmado</span><ul class="lista"><li><b>Sedec-MT e secretarias municipais</b>Validam conteúdo e recebem dados agregados de visitação.</li><li><b>Guias credenciados</b>Revisam os textos e recebem indicações.</li><li><b>Restaurantes, pousadas e artesãos</b>Aparecem em destaque identificado e recebem visitantes.</li><li><b>Hotéis e aeroporto</b>Divulgam o QR Code e oferecem mais serviço ao hóspede.</li><li><b>ICMBio e IPHAN</b>Fontes oficiais sobre parques e patrimônio.</li></ul></div>
+    </section>
+    <section class="tela" id="t-ecossistema" aria-label="Ecossistema de inovação">
+      <h2 class="ntit">Ecossistema de inovação</h2><p class="mudo">Atores mapeados. Nenhum acordo firmado.</p><nav class="subabas" aria-label="Visão de negócio"><a href="#/negocio">Plano de negócios</a><a href="#/mentoria">Mentoria e networking</a><a href="#/ecossistema">Ecossistema</a></nav>
+      <div class="bloco"><h3>1 · Empresas, universidades e governo</h3><ul class="lista"><li><b>Empresas</b>Hotéis, restaurantes, agências, guias, Abrasel-MT e ABIH-MT.</li><li><b>Universidades</b>Unifacc, onde o projeto nasceu; UFMT e IFMT como possíveis apoios em pesquisa e conteúdo regional.</li><li><b>Governo</b>Ministério do Turismo, Embratur, Sedec-MT, prefeituras, ICMBio e IPHAN; FAPEMAT fomenta inovação.</li></ul><p class="aviso">Papel do GuiaMobi: conectar visitantes a atrativos e negócios locais, distribuindo melhor o fluxo turístico.</p></div>
+      <div class="bloco"><h3>2 · Tecnologia e novas ideias</h3><ul class="lista"><li><b>Hoje, no MVP</b>Localização calculada no aparelho, rota por tempo, narração do navegador e uso offline.</li><li><b>Próximo: horários reais e perfis de parceiros</b>Tecnologias de turismo inteligente melhoram satisfação e intenção de revisita (Zhang et al., 2022).</li><li><b>Depois: recomendação por IA e realidade aumentada</b>Com vários idiomas.</li><li><b>Ideia nova: selo de segurança na rota</b>Indicar trechos que exigem guia credenciado, pois a insegurança foi alta no campo.</li><li><b>Ideia nova: modo sem GPS em destaque</b>Privacidade da localização é barreira de adoção (Afolabi et al., 2021).</li></ul></div>
+      <div class="bloco"><h3>3 · Apoio a pequenos negócios</h3><div class="item-st"><label for="nv-st-sebrae"><b>Sebrae-MT</b></label><p>Consultoria em gestão, modelagem e capacitação para o negócio.</p><select class="entrada" id="nv-st-sebrae" data-st="sebrae"></select></div><div class="item-st"><label for="nv-st-inovativa"><b>InovAtiva Brasil</b></label><p>Programa público de aceleração e mentoria para startups.</p><select class="entrada" id="nv-st-inovativa" data-st="inovativa"></select></div><div class="item-st"><label for="nv-st-centelha"><b>Programa Centelha</b></label><p>Apoio a ideias inovadoras em estágio inicial. Conferir se há edital aberto em Mato Grosso.</p><select class="entrada" id="nv-st-centelha" data-st="centelha"></select></div><ul class="lista"><li><b>Marco Legal das Startups (Lei Complementar 182/2021)</b>Dá segurança a investidores e cria instrumentos para startups.</li><li><b>Simples Nacional (Lei Complementar 123/2006)</b>Tributação simplificada para pequenas empresas.</li></ul></div>
+      <div class="bloco"><h3>4 · Investimentos e incentivo</h3><span class="etq">Hipótese do grupo</span><p class="txt">Como cobrir o investimento inicial de <strong data-nv="invest"></strong>:</p><div class="faixa"><label for="nv-fProprio">Recursos dos sócios</label><output data-nv="fProprio"></output><input type="range" id="nv-fProprio" min="0" max="200000" step="5000" data-n="fProprio"></div><div class="faixa"><label for="nv-fSub">Subvenção ou edital de fomento</label><output data-nv="fSub"></output><input type="range" id="nv-fSub" min="0" max="200000" step="5000" data-n="fSub"></div><div class="faixa"><label for="nv-fAnjo">Investidor-anjo</label><output data-nv="fAnjo"></output><input type="range" id="nv-fAnjo" min="0" max="200000" step="5000" data-n="fAnjo"></div><div class="nbarra"><i id="nv-barra"></i></div><p class="mudo" id="nv-gap"></p><span class="rotulo">Caminho de captação</span><ul class="lista"><li><b>1 · Recursos próprios</b>Financiam a validação com o primeiro cliente.</li><li><b>2 · Fomento não reembolsável</b>Editais da FAPEMAT e da Finep, sem entrega de participação na empresa.</li><li><b>3 · Fungetur</b>Linha de crédito federal para o turismo. Conferir elegibilidade e condições.</li><li><b>3 · Investidor-anjo</b>Entra depois do piloto, com resultado medido.</li><li><b>Fora do alcance por ora: Lei do Bem</b>O incentivo fiscal à inovação atende empresas no lucro real.</li></ul></div>
     </section>
   </main>
 </div>
@@ -148,7 +202,7 @@ const RIO = [[-15.43, -56.0], [-15.52, -56.06], [-15.585, -56.095], [-15.617, -5
 /* ---------- estado ---------- */
 const CH = 'guiamobi:v2';
 const semente = () => ({ pos: { nome: POS.aero[0], lat: POS.aero[1], lng: POS.aero[2], gps: false }, fav: [], vis: [], rotas: [], sug: [], voz: 1, filtro: 'todos', rotaAtual: null });
-let S; try { S = JSON.parse(localStorage.getItem(CH)); } catch (e) {} if (!S) S = semente();
+let S; try { S = JSON.parse(localStorage.getItem(CH)); } catch (e) {} if (!S) S = semente(); comNeg(S);
 const salvar = () => localStorage.setItem(CH, JSON.stringify(S)); salvar();
 const todos = () => LUGARES.concat(S.sug);
 const achar = id => todos().find(l => l.id === id);
@@ -198,10 +252,11 @@ function desenhar() {
 }
 
 /* pan / pinça / roda */
-const ponteiros = new Map(); let ultimo = null, distPinca = 0;
-svg.addEventListener('pointerdown', e => { svg.setPointerCapture(e.pointerId); ponteiros.set(e.pointerId, e); svg.classList.add('arrasta'); ultimo = e; });
+const ponteiros = new Map(); let ultimo = null, inicio = null, distPinca = 0;
+svg.addEventListener('pointerdown', e => { ponteiros.set(e.pointerId, e); svg.classList.add('arrasta'); ultimo = inicio = e; }); // a captura só começa no arrasto, para o toque chegar ao pino
 svg.addEventListener('pointermove', e => {
   if (!ponteiros.has(e.pointerId)) return; ponteiros.set(e.pointerId, e);
+  if (inicio && !svg.hasPointerCapture(e.pointerId) && Math.hypot(e.clientX - inicio.clientX, e.clientY - inicio.clientY) > 4) svg.setPointerCapture(e.pointerId);
   if (ponteiros.size === 2) { const [a, b] = [...ponteiros.values()]; const d = Math.hypot(a.clientX - b.clientX, a.clientY - b.clientY);
     if (distPinca) { cam.esc = Math.min(12, Math.max(.25, cam.esc * d / distPinca)); aplicarCamera(); } distPinca = d; return; }
   if (ultimo) { cam.x -= (e.clientX - ultimo.clientX) / cam.esc; cam.y -= (e.clientY - ultimo.clientY) / cam.esc; ultimo = e; aplicarCamera(); }
@@ -297,8 +352,8 @@ document.addEventListener('click', e => {
     S.sug.push({ id: 's' + Date.now().toString(36), n, c: 'Sugestão sua', lat: S.pos.lat + .002, lng: S.pos.lng + .002, i: $('#s-int').value, min: 30, txt: 'Sugestão enviada por você (aguardando curadoria).' });
     salvar(); desenhar(); $('#s-nome').value = ''; brinde('Sugestão marcada no mapa.'); }
   else if (b.id === 'exportar') { const u = URL.createObjectURL(new Blob([JSON.stringify({ app: 'guiamobi', dados: S })], { type: 'application/json' })); Object.assign(document.createElement('a'), { href: u, download: 'guiamobi.json' }).click(); brinde('Backup baixado.'); }
-  else if (b.id === 'importar') { const i = Object.assign(document.createElement('input'), { type: 'file', accept: '.json' }); i.onchange = async () => { try { const j = JSON.parse(await i.files[0].text()); if (j.app !== 'guiamobi') throw 0; S = j.dados; salvar(); desenhar(); rota(); brinde('Importado.'); } catch (x) { brinde('Arquivo inválido.'); } }; i.click(); }
-  else if (b.id === 'zerar') { if (confirm('Apagar favoritos, visitados, rotas e sugestões?')) { S = semente(); salvar(); desenhar(); rota(); brinde('Dados apagados.'); } }
+  else if (b.id === 'importar') { const i = Object.assign(document.createElement('input'), { type: 'file', accept: '.json' }); i.onchange = async () => { try { const j = JSON.parse(await i.files[0].text()); if (j.app !== 'guiamobi') throw 0; S = comNeg(j.dados); salvar(); desenhar(); rota(); brinde('Importado.'); } catch (x) { brinde('Arquivo inválido.'); } }; i.click(); }
+  else if (b.id === 'zerar') { if (confirm('Apagar favoritos, visitados, rotas e sugestões?')) { S = comNeg(semente()); salvar(); desenhar(); rota(); brinde('Dados apagados.'); } }
 });
 document.addEventListener('keydown', e => { const c = e.target.closest && e.target.closest('[data-lugar],.pin'); if (c && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); c.dispatchEvent(new MouseEvent('click', { bubbles: true })); } });
 $('#voz').addEventListener('change', e => { S.voz = +e.target.value; salvar(); });
@@ -308,14 +363,70 @@ $('#gps').onclick = () => {
     () => brinde('Não foi possível obter a localização.'), { enableHighAccuracy: true, timeout: 10000 });
 };
 
+/* ---------- visão de negócio: plano, mentoria e ecossistema ---------- */
+/* modelo: as unidades crescem em linha do mês 1 até a meta no mês 12 e ficam estáveis depois */
+function negPadrao() { return { contrato: 800, negocios: 12, destaque: 100, premium: 20, ticket: 10, meta: 6, fixo: 7000, variavel: 400, imposto: 6, invest: 35000, fProprio: 10000, fSub: 20000, fAnjo: 5000, resp: { produto: 'A definir', conteudo: 'A definir', comercial: 'A definir', financeiro: 'A definir' }, status: { credito: 'A contatar', setor: 'A contatar', operacao: 'A contatar', juridico: 'A contatar', startups: 'A contatar', sebrae: 'A conhecer', inovativa: 'A conhecer', centelha: 'A conhecer' }, contatos: [], sessoes: [] }; }
+function comNeg(d) { const p = negPadrao(), n = d.neg || {}; d.neg = { ...p, ...n, resp: { ...p.resp, ...n.resp }, status: { ...p.status, ...n.status } }; return d; }
+const VISAO = ['negocio', 'mentoria', 'ecossistema'];
+const moeda = v => isFinite(v) ? v.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL', maximumFractionDigits: 0 }) : '—';
+const NV_FMT = { contrato: moeda, negocios: v => String(v), destaque: moeda, premium: v => String(v), ticket: moeda, meta: v => String(v), fixo: moeda, variavel: moeda, invest: moeda, imposto: v => String(v).replace('.', ',') + '%', fProprio: moeda, fSub: moeda, fAnjo: moeda };
+const NV_USOS = [['Conteúdo, áudios e mapa', .55], ['Implantação do piloto', .15], ['Jurídico e LGPD', .1], ['Marketing e vendas', .1], ['Capital de giro', .1]];
+const NV_CUSTOS = [['Pró-labore e equipe', .5], ['Comercial e marketing', .2], ['Hospedagem e suporte', .15], ['Contabilidade e jurídico', .15]];
+const NV_PESSOAS = ['A definir', 'Cinthia', 'Danielly', 'Leandro', 'Guilherme', 'Esther'], NV_ETAPAS = ['A contatar', 'Contatado', 'Conversa feita'], NV_APOIO = ['A conhecer', 'Em análise', 'Inscrito'];
+const nvTodos = s => [...document.querySelectorAll(s)];
+function negCalc() {
+  const n = S.neg, por = n.contrato + n.negocios * n.destaque + n.premium * n.ticket, imposto = por * n.imposto / 100, margem = por - imposto - n.variavel;
+  const un = m => Math.round(1 + (n.meta - 1) * Math.min(m - 1, 11) / 11);
+  const meses = Array.from({ length: 60 }, (_, i) => { const e = un(i + 1), rec = e * por, cus = n.fixo + e * (imposto + n.variavel); return { rec, cus, lucro: rec - cus }; });
+  let caixa = -n.invest, payback = Infinity;
+  meses.some((m, i) => { caixa += m.lucro; if (caixa >= 0) { payback = i + 1; return true; } });
+  return { meses, payback, pe: margem > 0 ? Math.ceil(n.fixo / margem) : Infinity, recAno: meses.slice(0, 12).reduce((a, m) => a + m.rec, 0) };
+}
+function negGrafico(m) {
+  const W = 320, H = 150, L = 34, B = 18, max = Math.max(...m.flatMap(v => [v.rec, v.cus])) * 1.1 || 1, x = i => L + (W - L - 6) * i / 23, y = v => 6 + (H - B - 6) * (1 - v / max);
+  const lin = (k, cor) => `<polyline fill="none" stroke="${cor}" stroke-width="2.4" points="${m.map((v, i) => x(i).toFixed(1) + ',' + y(v[k]).toFixed(1)).join(' ')}"/>`;
+  const grade = [0, .5, 1].map(f => `<line x1="${L}" x2="${W - 6}" y1="${y(max * f)}" y2="${y(max * f)}" stroke="#d9e7e4"/><text x="2" y="${y(max * f) + 3}" font-size="10" fill="#5b7875">${(max * f / 1000).toFixed(0)}k</text>`).join('');
+  const meses = [[0, '1m'], [11, '12m'], [23, '24m']].map(([i, t]) => `<text x="${x(i) - 8}" y="${H - 4}" font-size="10" fill="#5b7875">${t}</text>`).join('');
+  $('#nv-graf').innerHTML = `<svg viewBox="0 0 ${W} ${H}" width="100%" role="img" aria-label="Receita e custos por mês em 24 meses">${grade}${meses}${lin('cus', '#ea580c')}${lin('rec', '#0f766e')}</svg>`;
+}
+function telaNegocio() {
+  const n = S.neg, c = negCalc(), soma = n.fProprio + n.fSub + n.fAnjo, dif = soma - n.invest, ativo = document.activeElement;
+  nvTodos('[data-n]').forEach(e => { if (e !== ativo) e.value = n[e.dataset.n]; });
+  nvTodos('[data-nv]').forEach(e => { const k = e.dataset.nv; e.textContent = NV_FMT[k](n[k]); });
+  nvTodos('[data-r]').forEach(e => { if (e !== ativo) e.value = n.resp[e.dataset.r]; });
+  nvTodos('[data-st]').forEach(e => { if (e !== ativo) e.value = n.status[e.dataset.st]; });
+  const saida = { pe: isFinite(c.pe) ? c.pe + ' ' + (c.pe === 1 ? 'destino' : 'destinos') : 'Sem margem', lucro: moeda(c.meses[11].lucro), rec: moeda(c.recAno), payback: isFinite(c.payback) ? c.payback + (c.payback === 1 ? ' mês' : ' meses') : 'Mais de 5 anos' };
+  nvTodos('[data-nk]').forEach(e => { e.textContent = saida[e.dataset.nk]; });
+  const linhas = (itens, total) => itens.map(([t, p]) => `<tr><td>${t}</td><td>${moeda(total * p)}</td></tr>`).join('');
+  $('#nv-usos').innerHTML = linhas(NV_USOS, n.invest); $('#nv-custos').innerHTML = linhas(NV_CUSTOS, n.fixo);
+  $('#nv-barra').style.width = Math.min(100, soma / n.invest * 100) + '%';
+  $('#nv-gap').textContent = dif < 0 ? `Faltam ${moeda(-dif)} para cobrir o investimento.` : dif > 0 ? `Sobram ${moeda(dif)} além do investimento.` : 'Investimento totalmente coberto.';
+  $('#nv-sess').innerHTML = n.sessoes.map((s, i) => `<div class="registro"><div><strong>${esc(s.area)}</strong> · ${new Date(s.d).toLocaleDateString('pt-BR')}<br>Aprendemos: ${esc(s.aprendi)}<br>Muda no projeto: ${esc(s.decisao) || '—'}</div><button class="btn lin peq" data-nv-sessao="${i}" aria-label="Remover conversa">✕</button></div>`).join('');
+  $('#nv-rede').innerHTML = n.contatos.map((r, i) => `<div class="registro"><div><strong>${esc(r.nome) || 'Contato'}</strong> · ${esc(r.org) || 'sem organização'}<br>Próximo passo: ${esc(r.passo) || '—'}</div><button class="btn lin peq" data-nv-contato="${i}" aria-label="Remover contato">✕</button></div>`).join('');
+  negGrafico(c.meses.slice(0, 24));
+}
+const negMudou = () => { salvar(); telaNegocio(); };
+const nvOpcoes = (sel, itens) => nvTodos(sel).forEach(s => { s.innerHTML = itens.map(v => `<option>${v}</option>`).join(''); });
+nvOpcoes('[data-r]', NV_PESSOAS); nvOpcoes('[data-st]', NV_ETAPAS); ['sebrae', 'inovativa', 'centelha'].forEach(k => nvOpcoes(`[data-st="${k}"]`, NV_APOIO));
+document.addEventListener('input', e => { const k = e.target.dataset && e.target.dataset.n; if (k) { S.neg[k] = +e.target.value; negMudou(); } });
+document.addEventListener('change', e => { const d = e.target.dataset || {}; if (d.r) { S.neg.resp[d.r] = e.target.value; negMudou(); } else if (d.st) { S.neg.status[d.st] = e.target.value; negMudou(); } });
+document.addEventListener('click', e => {
+  const b = e.target.closest('button'); if (!b) return; const n = S.neg;
+  if (b.id === 'nv-sess-add') { const aprendi = $('#nv-s-a').value.trim(); if (!aprendi) return brinde('Escreva o que o grupo aprendeu.'); n.sessoes.unshift({ area: $('#nv-s-area').value, aprendi, decisao: $('#nv-s-d').value.trim(), d: new Date().toISOString() }); $('#nv-s-a').value = $('#nv-s-d').value = ''; negMudou(); brinde('Conversa registrada.'); }
+  else if (b.id === 'nv-rede-add') { const nome = $('#nv-r-nome').value.trim(), org = $('#nv-r-org').value.trim(); if (!nome && !org) return brinde('Informe o cargo, o nome ou a organização.'); n.contatos.unshift({ nome, org, passo: $('#nv-r-passo').value.trim() }); $('#nv-r-nome').value = $('#nv-r-org').value = $('#nv-r-passo').value = ''; negMudou(); brinde('Contato adicionado.'); }
+  else if (b.dataset.nvSessao != null) { n.sessoes.splice(+b.dataset.nvSessao, 1); negMudou(); }
+  else if (b.dataset.nvContato != null) { n.contatos.splice(+b.dataset.nvContato, 1); negMudou(); }
+});
+
 /* ---------- rotas de URL ---------- */
-window.__rotas = ['#/explorar', '#/lugar/veu', '#/rota', '#/diario', '#/ajustes'];
+window.__rotas = ['#/explorar', '#/lugar/veu', '#/rota', '#/diario', '#/ajustes', '#/negocio', '#/mentoria', '#/ecossistema'];
 function rota() {
   const m = location.hash.match(/^#\/(\w+)(?:\/(\w+))?/) || [, 'explorar'];
-  const nome = ['explorar', 'lugar', 'rota', 'diario', 'ajustes'].includes(m[1]) ? m[1] : 'explorar';
+  const nome = ['explorar', 'lugar', 'rota', 'diario', 'ajustes', ...VISAO].includes(m[1]) ? m[1] : 'explorar';
   document.querySelectorAll('.tela').forEach(t => t.classList.toggle('on', t.id === 't-' + nome));
-  document.querySelectorAll('.abas a').forEach(a => a.getAttribute('href') === '#/' + (nome === 'lugar' ? 'explorar' : nome) ? a.setAttribute('aria-current', 'page') : a.removeAttribute('aria-current'));
-  if (nome === 'explorar') telaExplorar(); else if (nome === 'lugar') { telaLugar(m[2]); altura(1); } else if (nome === 'rota') telaRota(); else if (nome === 'diario') telaDiario(); else telaAjustes();
+  document.querySelectorAll('.abas a').forEach(a => a.getAttribute('href') === '#/' + (nome === 'lugar' ? 'explorar' : VISAO.includes(nome) ? 'negocio' : nome) ? a.setAttribute('aria-current', 'page') : a.removeAttribute('aria-current'));
+  document.querySelectorAll('.subabas a').forEach(a => a.getAttribute('href') === '#/' + nome ? a.setAttribute('aria-current', 'page') : a.removeAttribute('aria-current'));
+  if (nome === 'explorar') telaExplorar(); else if (nome === 'lugar') { telaLugar(m[2]); altura(1); } else if (nome === 'rota') telaRota(); else if (nome === 'diario') telaDiario(); else if (VISAO.includes(nome)) { telaNegocio(); altura(2); } else telaAjustes();
   $('.conteudo').scrollTop = 0;
 }
 addEventListener('hashchange', rota);

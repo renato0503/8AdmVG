@@ -162,3 +162,13 @@ O GuiaMobi é um **guia turístico de bolso**: pela latitude e longitude do celu
 ## 14. Pitch de 30 segundos
 
 "Chegou em Várzea Grande ou Cuiabá e não sabe o que fazer com a tarde livre? O GuiaMobi usa a sua localização para mostrar o que tem de interessante perto de você, conta a história de cada lugar em áudio, como um guia de bolso, e monta uma rota que cabe no seu tempo — da Chapada ao centro histórico, passando pelo comércio local. Menos tempo procurando, mais tempo vivendo o lugar."
+
+---
+
+## 15. Visão de negócio (aba Negócio do app)
+
+O app traz três eixos avaliados na disciplina: **Plano de Negócios** (organização, público e mercado, investimentos, custos e lucros, vendas e crescimento), **Mentoria e Networking** (orientação, troca de conhecimentos, contatos e parcerias) e **Ecossistema de Inovação** (empresas, universidades e governo, tecnologia, apoio a pequenos negócios, investimentos e incentivo).
+
+**O que mudou com o campo (n = 34):** rota por tempo (3,56) e comércio local (3,85) lideram a oferta; a narração dividiu opiniões (3,00), e a localização (2,59) e a segurança (2,12) pedem cuidado.
+
+Os valores financeiros são hipóteses editáveis e nenhuma parceria citada está firmada. Quem paga pelo serviço ainda precisa ser ouvido.

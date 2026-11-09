@@ -4,8 +4,8 @@
   "description": "Suas horas complementares em tempo real, num app só",
   "start_url": "app.html",
   "display": "standalone",
-  "background_color": "#f5f6ff",
-  "theme_color": "#4338ca",
+  "background_color": "#faf7f0",
+  "theme_color": "#312e81",
   "orientation": "portrait",
   "icons": [
     {

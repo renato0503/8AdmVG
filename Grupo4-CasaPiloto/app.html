@@ -114,12 +114,14 @@ canvas{width:100%;height:220px;display:block}
   <section class="tela" id="t-simular">
     <h2>Seu dinheiro hoje</h2><p class="cota">TUDO FICA NO APARELHO · MUDE E VEJA OS CENÁRIOS NA HORA</p>
     <div class="prancha" data-rotulo="RENDA E GASTOS">
-      <div class="campo"><label for="i-renda">Renda familiar/mês</label><output data-out="renda"></output><input type="range" id="i-renda" min="1500" max="25000" step="100" data-bind="renda"></div>
+      <label class="cota" for="i-renda">FAIXA DE RENDA FAMILIAR/MÊS</label><select class="in" id="i-renda" data-bind="renda"></select>
+      <p class="aviso">Pedimos só a faixa. O cálculo usa um valor médio dela, aqui no aparelho.</p>
       <div class="campo"><label for="i-alug">Aluguel atual/mês</label><output data-out="alug"></output><input type="range" id="i-alug" min="0" max="5000" step="50" data-bind="alug"></div>
     </div>
     <div class="prancha" data-rotulo="PARA A ENTRADA">
       <div class="campo"><label for="i-dep">Consigo guardar/mês</label><output data-out="dep"></output><input type="range" id="i-dep" min="100" max="8000" step="50" data-bind="dep"></div>
-      <div class="campo"><label for="i-fgts">FGTS + reserva hoje</label><output data-out="fgts"></output><input type="range" id="i-fgts" min="0" max="200000" step="1000" data-bind="fgts"></div>
+      <div class="campo"><label for="i-fgts">Saldo de FGTS hoje</label><output data-out="fgts"></output><input type="range" id="i-fgts" min="0" max="200000" step="1000" data-bind="fgts"></div>
+      <div class="campo"><label for="i-res">Reserva já guardada</label><output data-out="reserva"></output><input type="range" id="i-res" min="0" max="200000" step="1000" data-bind="reserva"></div>
       <div class="campo"><label for="i-ent">Entrada</label><output data-out="ent"></output><input type="range" id="i-ent" min="10" max="50" step="5" data-bind="ent"></div>
     </div>
     <div class="prancha" data-rotulo="PREMISSAS (EDITÁVEIS)">
@@ -127,7 +129,7 @@ canvas{width:100%;height:220px;display:block}
       <div class="campo"><label for="i-val">Valorização do imóvel/ano</label><output data-out="val"></output><input type="range" id="i-val" min="0" max="10" step="0.5" data-bind="val"></div>
       <label class="cota" for="i-linha">LINHA DE CRÉDITO</label>
       <select class="in" id="i-linha" data-bind="linha"></select>
-      <div class="campo"><label for="i-juros">Juros do financiamento/ano</label><output data-out="juros"></output><input type="range" id="i-juros" min="3" max="16" step="0.05" data-bind="juros"></div>
+      <div class="campo"><label for="i-juros">Juros do financiamento/ano</label><output data-out="juros"></output><input type="range" id="i-juros" min="3" max="16" step="0.01" data-bind="juros"></div>
       <div class="campo"><label for="i-prazo">Prazo</label><output data-out="prazo"></output><input type="range" id="i-prazo" min="10" max="35" step="1" data-bind="prazo"></div>
       <label class="cota" for="i-sist">SISTEMA DE AMORTIZAÇÃO</label>
       <select class="in" id="i-sist" data-bind="sist"><option value="price">Price (parcelas iguais)</option><option value="sac">SAC (parcelas caem)</option></select>
@@ -148,7 +150,7 @@ canvas{width:100%;height:220px;display:block}
       <div class="leg"><span style="--c:#e8f0ff">preço (valorizando)</span><span style="--c:#7dd3fc">A poupança</span><span style="--c:#4ade80">B investir</span><span style="--c:#fb923c">entrada (C)</span></div></div>
     <div class="prancha" data-rotulo="PARCELAS DO FINANCIAMENTO"><canvas id="g-parcelas" aria-label="Gráfico das parcelas ao longo do tempo"></canvas>
       <table class="tab" style="margin-top:8px"><tr><th></th><th>1ª parcela</th><th>Última</th><th>Total pago</th></tr><tr><td>Price</td><td data-out="p1"></td><td data-out="pN"></td><td data-out="pT"></td></tr><tr><td>SAC</td><td data-out="s1"></td><td data-out="sN"></td><td data-out="sT"></td></tr></table></div>
-    <p class="aviso">Premissa de poupança: 6,17% ao ano. Simulação educativa; não considera seguros, taxas nem correção da TR.</p>
+    <p class="aviso">Premissas: poupança a 6,17% ao ano e FGTS a 3% ao ano. Simulação educativa; não considera seguros, taxas nem correção da TR.</p>
     <div class="fila"><button class="btn cheio" id="criar-plano">Transformar em plano →</button></div>
   </section>
   <!-- 04 -->
@@ -214,7 +216,7 @@ canvas{width:100%;height:220px;display:block}
         <div><b>62%</b><span>entendem pouco de financiamento (notas 1 e 2)</span></div>
         <div><b>82%</b><span>quase nunca visitam decorados e plantões (notas 1 e 2)</span></div>
       </div>
-      <p class="aviso">Limite da amostra: 79% dos entrevistados tinham de 18 a 24 anos. É um dado exploratório e não representa quem está prestes a comprar.</p>
+      <p class="aviso">Limite da amostra: 79% dos entrevistados tinham de 18 a 24 anos. É um dado exploratório e não representa quem está prestes a comprar. As construtoras, que pagariam pelo serviço, ainda não foram ouvidas.</p>
       <span class="rotulo">MERCADO</span>
       <ul class="lista">
         <li><b>R$ 134,6 bilhões</b>em financiamento habitacional no 1º semestre de 2025, alta de 25% (Abecip).</li>
@@ -389,7 +391,7 @@ canvas{width:100%;height:220px;display:block}
 const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const R$ = v => isFinite(v) ? v.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL', maximumFractionDigits: 0 }) : '—';
-const anos = m => !isFinite(m) ? 'mais de 40 anos' : m < 12 ? `${m} meses` : `${Math.floor(m / 12)} a ${m % 12 ? m % 12 + ' m' : ''}`.replace(/ a $/, ' anos').replace(/^(\d+) a (\d+ m)$/, '$1 anos e $2').replace(/^1 anos/, '1 ano');
+const anos = m => m == null || !isFinite(m) ? 'mais de 40 anos' : m < 12 ? `${m} meses` : `${Math.floor(m / 12)} a ${m % 12 ? m % 12 + ' m' : ''}`.replace(/ a $/, ' anos').replace(/^(\d+) a (\d+ m)$/, '$1 anos e $2').replace(/^1 anos/, '1 ano');
 let tb; const brinde = m => { const e = $('#brinde'); e.textContent = m; e.classList.add('on'); clearTimeout(tb); tb = setTimeout(() => e.classList.remove('on'), 2400); };
 
 const CASAS = [
@@ -398,16 +400,17 @@ const CASAS = [
   { id: 'sobrado', nome: 'Sobrado', desc: '3 suítes · 110 m² · 2 vagas', preco: 480000, com: [['Estar', 0, 0, 6, 4, 'Pé-direito duplo na entrada.'], ['Cozinha gourmet', 0, 4, 6, 4, 'Churrasqueira integrada.'], ['Suíte master', 6, 0, 6, 3, 'Closet e varanda.'], ['Suíte', 6, 3, 3, 3, 'Suíte com janela para o jardim.'], ['Suíte', 9, 3, 3, 3, 'Suíte com escrivaninha.'], ['Varanda', 6, 6, 6, 2, 'Varanda superior.']] },
   { id: 'premium', nome: 'Premium', desc: '4 suítes · 160 m² · piscina · 3 vagas', preco: 750000, com: [['Living', 0, 0, 7, 4, 'Living integrado com a área gourmet.'], ['Cozinha', 0, 4, 4, 4, 'Cozinha com ilha.'], ['Suíte master', 7, 0, 5, 4, 'Suíte com banheira.'], ['Suíte', 4, 4, 3, 2, 'Suíte de hóspedes.'], ['Suíte', 4, 6, 3, 2, 'Suíte de hóspedes.'], ['Suíte', 7, 4, 3, 4, 'Suíte com varanda.'], ['Piscina', 10, 4, 2, 4, 'Piscina com deck.']] },
 ];
-const LINHAS = { mcmv1: ['MCMV Faixa 1 (ref. ~4,25%)', 4.25], mcmv2: ['MCMV Faixa 2 (ref. ~6%)', 6], mcmv3: ['MCMV Faixa 3 (ref. ~8,16%)', 8.16], mcmv4: ['MCMV Faixa 4 (ref. ~10%)', 10], sbpe: ['Mercado / SBPE (ref. ~11,5%)', 11.5], livre: ['Outra taxa (ajuste abaixo)', null] };
-const POUP = 6.17;
+const LINHAS = { mcmv1: ['MCMV Faixa 1 (ref. ~4,25%)', 4.25], mcmv2: ['MCMV Faixa 2 (ref. ~6%)', 6], mcmv3: ['MCMV Faixa 3 (ref. ~8,16%)', 8.16], mcmv4: ['MCMV Faixa 4 (ref. ~10,5%)', 10.5], sbpe: ['Mercado / SBPE (ref. ~11,5%)', 11.5], livre: ['Outra taxa (ajuste abaixo)', null] };
+const FAIXAS = [['Até R$ 2.850', 2850, 2200], ['R$ 2.851 a R$ 4.700', 4700, 3800], ['R$ 4.701 a R$ 8.600', 8600, 6600], ['R$ 8.601 a R$ 12.000', 12000, 10300], ['Acima de R$ 12.000', Infinity, 15000]];
+const POUP = 6.17, FGTS_AA = 3;
 const DOCS = ['RG e CPF de todos os compradores', 'Certidão de estado civil', 'Comprovante de renda (3 últimos meses)', 'Declaração de Imposto de Renda', 'Extrato do FGTS', 'Comprovante de residência', 'Carteira de trabalho (se usar FGTS)'];
 
 /* ---------- Proxy profundo ---------- */
 const CH = 'casapiloto:v2';
-const semente = () => ({ casa: 'familia', renda: 6600, alug: 1500, dep: 1200, fgts: 15000, ent: 20, rend: 10, val: 4, linha: 'sbpe', juros: 11.5, prazo: 30, sist: 'price', plano: null, envios: [],
+const semente = () => ({ casa: 'familia', renda: 6600, alug: 1500, dep: 1200, fgts: 15000, reserva: 0, ent: 20, rend: 10, val: 4, linha: 'sbpe', juros: 11.5, prazo: 30, sist: 'price', plano: null, envios: [],
   neg: { licenca: 1500, leads: 15, comissao: 40, meta: 10, fixo: 9000, variavel: 200, imposto: 6, invest: 45000, fProprio: 10000, fSub: 25000, fAnjo: 10000, rProd: 'A definir', rCom: 'A definir', rFin: 'A definir', rOp: 'A definir' },
   rede: { contatos: [], sessoes: [], status: { credito: 'A contatar', construcao: 'A contatar', financas: 'A contatar', juridico: 'A contatar', startups: 'A contatar', sebrae: 'A conhecer', inovativa: 'A conhecer', centelha: 'A conhecer' } } });
-const completar = d => { const s = semente(), r = d.rede || {}; d.neg = { ...s.neg, ...d.neg }; d.rede = { ...s.rede, ...r, status: { ...s.rede.status, ...r.status } }; return d; };
+const completar = d => { const s = semente(), r = d.rede || {}; d.reserva = d.reserva ?? 0; d.renda = (FAIXAS.find(f => d.renda <= f[1]) || FAIXAS.at(-1))[2]; if (d.linha === 'mcmv4') d.juros = 10.5; d.neg ={ ...s.neg, ...d.neg }; d.rede = { ...s.rede, ...r, status: { ...s.rede.status, ...r.status } }; return d; };
 let bruto; try { bruto = JSON.parse(localStorage.getItem(CH)); } catch (e) {} if (!bruto) bruto = semente(); completar(bruto);
 let agendado = false;
 function reativo(obj) {
@@ -425,8 +428,9 @@ const definir = (o, p, v) => { const ks = p.split('.'), u = ks.pop(); const alvo
 /* ---------- motor financeiro ---------- */
 const mensal = a => Math.pow(1 + a / 100, 1 / 12) - 1;
 function juntar(precoHoje, fracao, taxa) { // meses até o saldo alcançar a fração do preço (que valoriza)
-  const r = mensal(taxa), v = mensal(E.val); let s = E.fgts, alvo = precoHoje * fracao, m = 0; const serie = [s];
-  while (s < alvo && m < 480) { m++; s = s * (1 + r) + E.dep; alvo *= 1 + v; serie.push(s); }
+  const r = mensal(taxa), v = mensal(E.val), f = mensal(FGTS_AA); // o FGTS não pode ser aplicado: rende só a taxa dele
+  let fgts = E.fgts, res = E.reserva, s = fgts + res, alvo = precoHoje * fracao, m = 0; const serie = [s];
+  while (s < alvo && m < 480) { m++; fgts *= 1 + f; res = res * (1 + r) + E.dep; s = fgts + res; alvo *= 1 + v; serie.push(s); }
   return { meses: s >= alvo ? m : Infinity, alvo, saldo: s, serie };
 }
 function amortizar(pv, sist) {
@@ -456,19 +460,19 @@ function negocio() {
 /* ---------- saídas declarativas ---------- */
 const SAIDAS = {
   casaNome: c => c.casa.nome, casaDesc: c => c.casa.desc + ' · ' + R$(c.casa.preco),
-  renda: () => R$(E.renda), alug: () => R$(E.alug), dep: () => R$(E.dep), fgts: () => R$(E.fgts), ent: () => E.ent + '%',
+  alug: () => R$(E.alug), dep: () => R$(E.dep), fgts: () => R$(E.fgts), reserva: () => R$(E.reserva), ent: () => E.ent + '%',
   rend: () => String(E.rend).replace('.', ',') + '% a.a.', val: () => String(E.val).replace('.', ',') + '% a.a.', juros: () => E.juros.toFixed(2).replace('.', ',') + '% a.a.', prazo: () => E.prazo + ' anos',
   resumoCasa: c => `${c.casa.nome.toUpperCase()} · ${R$(c.casa.preco)} HOJE · DEPÓSITO ${R$(E.dep)}/MÊS`,
   tGuardar: c => anos(c.g.meses), aGuardar: c => isFinite(c.g.meses) ? `Preço na data ≈ ${R$(c.g.alvo)} · aluguel pago no período ≈ ${R$(c.g.meses * E.alug)}` : 'Com esse depósito o preço corre mais rápido que a poupança.',
   tInvestir: c => anos(c.inv.meses), aInvestir: c => isFinite(c.inv.meses) ? `Preço na data ≈ ${R$(c.inv.alvo)} · aluguel pago ≈ ${R$(c.inv.meses * E.alug)}` : 'Aumente o depósito ou o rendimento.',
   tFinanciar: c => anos(c.en.meses), aFinanciar: c => `Entrada ${E.ent}% ≈ ${R$(c.en.alvo)} · financia ${R$(c.fin)} · 1ª parcela ${E.sist.toUpperCase()} ${R$((E.sist === 'price' ? c.price : c.sac).parc[0])}`,
-  compr: c => (c.compr * 100).toFixed(0) + '% da renda' + (c.compr > .3 ? ' · acima de 30%' : ''),
+  compr: c => '≈ ' + (c.compr * 100).toFixed(0) + '% da renda' + (c.compr > .3 ? ' · acima de 30%' : ''),
   p1: c => R$(c.price.parc[0]), pN: c => R$(c.price.parc.at(-1)), pT: c => R$(c.price.total), s1: c => R$(c.sac.parc[0]), sN: c => R$(c.sac.parc.at(-1)), sT: c => R$(c.sac.total),
   dia: () => E.plano ? 'todo dia ' + E.plano.dia : '',
   planoCasa: () => E.plano ? `${E.plano.casa.toUpperCase()} · ENTRADA ALVO ${R$(E.plano.alvo)}` : '',
   planoSaldo: () => E.plano ? R$(saldoPlano()) : '', planoFalta: () => E.plano ? `FALTAM ${R$(Math.max(0, E.plano.alvo - saldoPlano()))} · PREVISÃO INICIAL: ${anos(E.plano.meses)}` : '',
   proxLembrete: () => { if (!E.plano) return ''; const h = new Date(), d = new Date(h.getFullYear(), h.getMonth(), E.plano.dia); if (d <= h) d.setMonth(d.getMonth() + 1); return 'PRÓXIMO LEMBRETE: ' + d.toLocaleDateString('pt-BR'); },
-  resumoEnvio: c => `${c.casa.nome} (${R$(c.casa.preco)}) · entrada ${E.ent}% · ${E.prazo} anos · ${E.sist.toUpperCase()} · 1ª parcela ${R$((E.sist === 'price' ? c.price : c.sac).parc[0])} · ${(c.compr * 100).toFixed(0)}% da renda. Não enviamos seu saldo nem seu FGTS.`,
+  resumoEnvio: c => `${c.casa.nome} (${R$(c.casa.preco)}) · entrada ${E.ent}% · ${E.prazo} anos · ${E.sist.toUpperCase()} · 1ª parcela ${R$((E.sist === 'price' ? c.price : c.sac).parc[0])} · renda na faixa ${FAIXAS.find(f => f[2] === E.renda)[0]}. Não enviamos seu saldo nem seu FGTS.`,
   nLic: () => R$(E.neg.licenca), nLeads: () => String(E.neg.leads), nCom: () => R$(E.neg.comissao), nMeta: () => String(E.neg.meta), nFixo: () => R$(E.neg.fixo), nVar: () => R$(E.neg.variavel), nImp: () => String(E.neg.imposto).replace('.', ',') + '%', nInv: () => R$(E.neg.invest),
   nPE: c => isFinite(c.neg.pe) ? c.neg.pe + (c.neg.pe === 1 ? ' empreend.' : ' empreends.') : 'Sem margem', nLucro12: c => R$(c.neg.meses[11].lucro), nRecAno: c => R$(c.neg.recAno), nPayback: c => isFinite(c.neg.payback) ? c.neg.payback + (c.neg.payback === 1 ? ' mês' : ' meses') : 'Mais de 5 anos',
   fProp: () => R$(E.neg.fProprio), fSub: () => R$(E.neg.fSub), fAnjo: () => R$(E.neg.fAnjo),
@@ -504,7 +508,7 @@ function atualizar() {
 }
 
 /* entradas → estado */
-document.addEventListener('input', e => { const p = e.target.dataset.bind; if (!p) return; const v = e.target.type === 'range' ? +e.target.value : e.target.value; definir(E, p, v);
+document.addEventListener('input', e => { const p = e.target.dataset.bind; if (!p) return; const v = e.target.type === 'range' || p === 'renda' ? +e.target.value : e.target.value; definir(E, p, v);
   if (p === 'linha' && LINHAS[v][1] != null) E.juros = LINHAS[v][1]; if (p === 'juros') E.linha = Object.keys(LINHAS).find(k => LINHAS[k][1] === v) || 'livre'; });
 document.addEventListener('change', e => { if (e.target.dataset.doc != null) E.plano.docs[e.target.dataset.doc] = e.target.checked; });
 
@@ -553,6 +557,7 @@ function montarCasas() {
   const opcoes = (sel, itens) => $$(sel).forEach(s => s.innerHTML = itens.map(v => `<option>${v}</option>`).join(''));
   opcoes('[data-pessoas]', PESSOAS); opcoes('[data-etapas]', ETAPAS); opcoes('[data-apoio]', APOIO);
   $('#lista-casas').innerHTML = CASAS.map(c => `<button class="casa" data-casa="${c.id}" aria-pressed="false">${miniPlanta(c)}<b>${c.nome}</b><span class="cota">${esc(c.desc)}</span><div class="num">${R$(c.preco)}</div></button>`).join('');
+  $('#i-renda').innerHTML = FAIXAS.map(f => `<option value="${f[2]}">${f[0]}</option>`).join('');
   $('#i-linha').innerHTML = Object.entries(LINHAS).map(([k, v]) => `<option value="${k}">${v[0]}</option>`).join('');
 }
 document.addEventListener('click', e => {
@@ -562,7 +567,7 @@ document.addEventListener('click', e => {
   else if (b.id === 'ver-planta') location.hash = '#/casa/' + E.casa;
   else if (b.id === 'tour-prox') { pararTour(); passoTour(1); } else if (b.id === 'tour-ant') { pararTour(); passoTour(-1); }
   else if (b.id === 'tour-auto') { if (tourTimer) return pararTour(); b.textContent = '■ Parar tour'; passoTour(1); tourTimer = setInterval(() => passoTour(1), 2500); }
-  else if (b.id === 'criar-plano') { const c = calc(); E.plano = { casa: c.casa.nome, alvo: Math.round(c.en.alvo), inicial: E.fgts, meses: c.en.meses, dia: 5, deps: [], docs: {}, criado: new Date().toISOString() }; location.hash = '#/plano'; brinde('Plano criado. Registre cada depósito.'); }
+  else if (b.id === 'criar-plano') { const c = calc(); E.plano = { casa: c.casa.nome, alvo: Math.round(c.en.alvo), inicial: E.fgts + E.reserva, meses: c.en.meses, dia: 5, deps: [], docs: {}, criado: new Date().toISOString() }; location.hash = '#/plano'; brinde('Plano criado. Registre cada depósito.'); }
   else if (b.id === 'dep-add') { const v = parseFloat(String($('#dep-valor').value).replace(',', '.')) || E.dep; E.plano.deps.unshift({ v, d: new Date().toISOString() }); $('#dep-valor').value = ''; brinde('Depósito registrado: ' + R$(v)); }
   else if (b.dataset.remDep != null) E.plano.deps.splice(+b.dataset.remDep, 1);
   else if (b.id === 'apagar-plano') { if (confirm('Descartar o plano e os depósitos?')) E.plano = null; }

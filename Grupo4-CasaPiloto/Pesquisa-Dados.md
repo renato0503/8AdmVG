@@ -69,7 +69,7 @@ A literatura mostra três coisas úteis para o CasaPiloto: (1) **letramento fina
 - **O que sustenta:** Artigo sobre letramento financeiro e estresse com a hipoteca (resumo não disponível na API; ler o texto antes de citar detalhes).
 - **Como usar na defesa:** Usar apenas a ideia do título: letramento financeiro se relaciona ao estresse com a hipoteca — sustenta a pergunta Q10 (medo da parcela).
 
-**7. Kathrin Schlafmann (2021).** Housing, Mortgages, and Self-control. *CBS Research Portal (Copenhagen Business School)*. DOI: [10.1093/rfs/hhaa096](https://doi.org/10.1093/rfs/hhaa096). Citações (OpenAlex): 47. Acesso: aberto.
+**7. Kathrin Schlafmann (2021).** Housing, Mortgages, and Self-control. *The Review of Financial Studies*. DOI: [10.1093/rfs/hhaa096](https://doi.org/10.1093/rfs/hhaa096). Citações (OpenAlex): 47. Acesso: aberto.
 - **O que sustenta:** Modelo quantitativo mostra que pessoas com mais problemas de autocontrole têm menor probabilidade de virar proprietárias, embora a casa funcione como compromisso de poupança; analisa efeitos de regras de entrada e refinanciamento.
 - **Como usar na defesa:** Justifica a função de **metas de poupança com lembretes**: ajudar o autocontrole é parte da solução.
 

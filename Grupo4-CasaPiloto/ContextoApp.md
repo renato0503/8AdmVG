@@ -15,7 +15,7 @@ O CasaPiloto é um simulador oferecido por **construtoras**: o cliente escolhe o
 
 - **O sonho não vira número.** O cliente se encanta no decorado, mas não sabe quanto guardar por mês, em quanto tempo junta a entrada ou se a parcela cabe na renda.
 - **Três caminhos, nenhuma comparação.** Guardar e comprar à vista, investir, ou dar entrada e financiar — ninguém mostra os três juntos, com aluguel e valorização no meio.
-- **Desconfiança do plantão.** A simulação feita só pelo corretor, na hora da venda, gera sensação de pressão.
+- **Desconfiança do plantão.** A confiança no que as construtoras mostram ficou em 2,76 de 5 na pesquisa de campo; a pressão para fechar negócio foi baixa (2,32).
 - **Para a construtora:** visitas que não viram venda e clientes reprovados na análise de crédito.
 
 **Pesquisa que sustenta o problema** (detalhes em `Pesquisa-Dados.md`):
@@ -45,7 +45,7 @@ O CasaPiloto é um simulador oferecido por **construtoras**: o cliente escolhe o
 | Bloco | Conteúdo |
 | --- | --- |
 | **Tarefa do usuário** | Comprar a casa certa, no momento certo, sem se afogar em parcela. |
-| **Dores** | Não saber quanto guardar, medo da parcela, juros incompreensíveis, pressão de venda. |
+| **Dores** | Não saber quanto guardar, medo da parcela, juros incompreensíveis, pouca confiança na informação do plantão. |
 | **Ganhos** | Plano mensal, comparação clara, confiança, chegar ao corretor preparado. |
 | **Solução** | Catálogo de casas piloto + simulador guardar × investir × financiar (Price/SAC, FGTS, valorização, aluguel) + plano com depósitos e lembretes. |
 | **Canais** | PWA com a marca da construtora; QR Code no decorado; site e anúncios. |
@@ -84,7 +84,7 @@ O CasaPiloto é um simulador oferecido por **construtoras**: o cliente escolhe o
 | Alternativa | Limitação | Diferencial do CasaPiloto |
 | --- | --- | --- |
 | Simulador do banco | Só financiamento; não conhece a casa | Parte do modelo de casa e compara 3 caminhos |
-| Corretor no plantão | Pressão de venda | O cliente simula sozinho, no tempo dele |
+| Corretor no plantão | Só atende quem vai ao plantão | O cliente simula sozinho, no tempo dele |
 | Planilha | Difícil e sem juros compostos/valorização | Cálculo pronto e visual |
 | Portais imobiliários | Anúncio, não planejamento | Plano mensal até a chave |
 
@@ -160,3 +160,13 @@ O CasaPiloto é um simulador oferecido por **construtoras**: o cliente escolhe o
 ## 14. Pitch de 30 segundos
 
 "Você visitou o decorado, se apaixonou pela casa, mas saiu sem saber se consegue comprar. No CasaPiloto você escolhe o tipo de casa e vê, lado a lado, quanto precisa guardar por mês, quanto renderia investindo e quanto custa financiar. Tudo no seu celular, no seu tempo, antes de falar com o corretor. A casa dos sonhos vira um plano com data para acontecer."
+
+---
+
+## 15. Visão de negócio (aba Negócio do app)
+
+O app traz três eixos avaliados na disciplina: **Plano de Negócios** (organização, público e mercado, investimentos, custos e lucros, vendas e crescimento), **Mentoria e Networking** (orientação, troca de conhecimentos, contatos e parcerias) e **Ecossistema de Inovação** (empresas, universidades e governo, tecnologia, apoio a pequenos negócios, investimentos e incentivo).
+
+**O que mudou com o campo (n = 34):** 82% quase nunca visitam decorados, então o canal digital vem antes do QR Code no decorado; o tour virtual (4,09) sobe de prioridade e a pressão no plantão foi baixa (2,32).
+
+Os valores financeiros são hipóteses editáveis e nenhuma parceria citada está firmada. Quem paga pelo serviço ainda precisa ser ouvido.

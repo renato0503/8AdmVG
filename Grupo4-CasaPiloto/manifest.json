@@ -4,8 +4,8 @@
   "description": "Escolha a casa e veja o caminho: guardar, investir ou financiar",
   "start_url": "app.html",
   "display": "standalone",
-  "background_color": "#fbf8f4",
-  "theme_color": "#b45309",
+  "background_color": "#0b2a5b",
+  "theme_color": "#0b2a5b",
   "orientation": "portrait",
   "icons": [
     {

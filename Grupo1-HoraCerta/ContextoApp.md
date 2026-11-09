@@ -133,7 +133,7 @@ Todo aluno de graduação precisa cumprir **atividades complementares** prevista
 | Regulamentos diferentes por curso/IES | Alto | Regulamento configurável (já no MVP) |
 | Certificados falsos | Médio | Validação humana + evolução para QR/assinatura digital |
 | Baixa adesão da coordenação | Alto | Começar por um curso-piloto na Unifacc |
-| Armazenamento de arquivos | Médio | Compressão de fotos (já no MVP); nuvem na v1 |
+| Armazenamento de arquivos | Médio | Compressão de fotos e nuvem na v1 |
 | Dependência do sistema acadêmico | Médio | Exportação CSV antes de integração |
 
 ---
@@ -167,3 +167,13 @@ Todo aluno de graduação precisa cumprir **atividades complementares** prevista
 ## 14. Pitch de 30 segundos
 
 "Você está no fim do curso e não sabe quantas horas complementares ainda faltam? Perdeu aquele certificado? O HoraCerta mostra em tempo real quantas horas você já tem validadas, quantas faltam em cada categoria e quais eventos perto de você valem horas. Tirou foto do certificado, está enviado para a coordenação. Sem papel, sem fila, sem susto na formatura. Suas horas, certas, na palma da mão."
+
+---
+
+## 15. Visão de negócio (aba Negócio do app)
+
+O app traz três eixos avaliados na disciplina: **Plano de Negócios** (organização, público e mercado, investimentos, custos e lucros, vendas e crescimento), **Mentoria e Networking** (orientação, troca de conhecimentos, contatos e parcerias) e **Ecossistema de Inovação** (empresas, universidades e governo, tecnologia, apoio a pequenos negócios, investimentos e incentivo).
+
+**O que mudou com o campo (n = 32):** o argumento principal passa a ser clareza do saldo e rapidez na validação; perder certificado (2,22) e ter horas recusadas (1,88) são raros.
+
+Os valores financeiros são hipóteses editáveis e nenhuma parceria citada está firmada. Quem paga pelo serviço ainda precisa ser ouvido.

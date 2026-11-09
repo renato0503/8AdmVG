@@ -59,6 +59,38 @@ dialog h2{font-family:Fraunces,serif;margin-bottom:8px}
 #brinde{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom));transform:translate(-50%,30px);opacity:0;background:var(--tinta);color:#fff;border-radius:14px;padding:12px 16px;font-size:14px;transition:.25s;z-index:99;max-width:90vw}
 #brinde.on{opacity:1;transform:translate(-50%,0)}
 :focus-visible{outline:3px solid var(--ambar);outline-offset:2px}
+/* visão de negócio: plano, mentoria e ecossistema */
+.ntit{font-size:23px;margin-bottom:2px}
+.subabas{display:flex;gap:6px;margin:10px 0}
+.subabas a{flex:1 1 0;display:flex;align-items:center;justify-content:center;text-align:center;min-height:46px;padding:6px 4px;border:1.5px solid #e7dfcc;border-radius:12px;background:#fff;color:#1e1b4b;text-decoration:none;font-weight:700;font-size:12.5px}
+.subabas a[aria-current=page]{background:#312e81;border-color:#312e81;color:#fff}
+.bloco{background:#fff;border:1px solid #e7dfcc;border-radius:16px;padding:14px;margin:12px 0}
+.bloco h3{font-size:17px;margin-bottom:6px}
+.txt{font-size:14.5px;line-height:1.5}
+.lista{list-style:none}
+.lista li{font-size:14.5px;line-height:1.45;padding:9px 0;border-bottom:1px dashed #e7dfcc}
+.lista li:last-child{border-bottom:0}
+.lista b{display:block}
+.rotulo{display:block;font-weight:800;font-size:12.5px;color:#6b6b80;margin:12px 0 4px}
+.etq{display:inline-block;font-size:11.5px;font-weight:800;border:1px solid #f59e0b;color:#92400e;border-radius:999px;padding:1px 9px;margin-bottom:4px}
+.nkpis{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.nkpis div{background:#f3eee2;border-radius:12px;padding:10px}
+.nkpis b{display:block;font-size:20px;font-weight:800;color:#312e81;overflow-wrap:anywhere}
+.nkpis span{display:block;font-size:12.5px;line-height:1.35;color:#6b6b80}
+.faixa{display:grid;grid-template-columns:1fr auto;gap:2px 10px;align-items:center;margin:10px 0}
+.faixa label{font-weight:700;font-size:14px}
+.faixa output{font-weight:800;color:#312e81}
+.faixa input{grid-column:1/-1;width:100%;height:28px;accent-color:#f59e0b}
+.ntab{width:100%;border-collapse:collapse;font-size:13.5px}
+.ntab th,.ntab td{padding:7px 4px;border-bottom:1px dashed #e7dfcc;text-align:right}
+.ntab th:first-child,.ntab td:first-child{text-align:left}
+.item-st{padding:10px 0;border-bottom:1px dashed #e7dfcc}
+.item-st b{display:block;font-size:14.5px;margin-bottom:6px}
+.item-st p{font-size:13.5px;line-height:1.4;color:#6b6b80;margin:-3px 0 8px}
+.registro{display:flex;gap:8px;align-items:flex-start;justify-content:space-between;padding:8px 0;border-bottom:1px dashed #e7dfcc;font-size:14px;line-height:1.4}
+.registro div{min-width:0;overflow-wrap:anywhere}
+.nbarra{height:12px;background:#f3eee2;border-radius:99px;overflow:hidden;margin:8px 0}
+.nbarra i{display:block;height:100%;background:#f59e0b}
 </style>
 </head>
 <body>
@@ -69,7 +101,7 @@ dialog h2{font-family:Fraunces,serif;margin-bottom:8px}
     <button class="inst" id="btn-instalar" hidden>Instalar</button>
   </header>
   <nav class="abas" aria-label="Seções">
-    <a href="#/painel">Painel</a><a href="#/atividades">Atividades</a><a href="#/agenda">Agenda</a><a href="#/coordenacao">Coordenação</a><a href="#/ajustes">Ajustes</a>
+    <a href="#/painel">Painel</a><a href="#/atividades">Atividades</a><a href="#/agenda">Agenda</a><a href="#/coordenacao">Coordenação</a><a href="#/ajustes">Ajustes</a><a href="#/negocio">Negócio</a>
   </nav>
 
   <main>
@@ -83,6 +115,7 @@ dialog h2{font-family:Fraunces,serif;margin-bottom:8px}
       </div>
       <div class="folha"><h3>Por categoria</h3><div id="cats"></div></div>
       <div class="folha"><h3>Anotações da caderneta</h3><ul id="dicas" style="list-style:none;margin-top:6px"></ul></div>
+      <div class="fila"><a class="btn lin" href="#/negocio" style="text-decoration:none">Visão de negócio: plano, mentoria e ecossistema</a></div>
       <p class="aviso">Protótipo acadêmico: regulamento e eventos de <b>exemplo</b>. Dados e comprovantes ficam só neste aparelho.</p>
     </section>
 
@@ -116,6 +149,27 @@ dialog h2{font-family:Fraunces,serif;margin-bottom:8px}
       </div>
       <p class="mudo" style="text-align:center;margin:16px 0">HoraCerta · Grupo 1 · 8AdmVG · UNIFACC-MT</p>
     </section>
+    <section class="tela" id="t-negocio" aria-label="Plano de negócios">
+      <h2 class="ntit">Plano de negócios</h2><p class="mudo">O HoraCerta como empresa. Valores financeiros são hipóteses editáveis.</p><nav class="subabas" aria-label="Visão de negócio"><a href="#/negocio">Plano de negócios</a><a href="#/mentoria">Mentoria e networking</a><a href="#/ecossistema">Ecossistema</a></nav>
+      <div class="bloco"><h3>1 · Organização e planejamento</h3><p class="txt"><strong>Missão:</strong> nenhum aluno com a formatura atrasada por falta de controle das horas.</p><p class="txt" style="margin-top:6px"><strong>Modelo:</strong> licença institucional por aluno, paga pela faculdade e gratuita para o estudante. Formato jurídico sugerido: sociedade limitada no Simples, a validar com contador.</p><span class="rotulo">Responsável por área (o grupo define)</span><div class="item-st"><label for="nv-r-produto"><b>Produto e dados</b></label><select class="entrada" id="nv-r-produto" data-r="produto"></select></div><div class="item-st"><label for="nv-r-comercial"><b>Comercial com faculdades</b></label><select class="entrada" id="nv-r-comercial" data-r="comercial"></select></div><div class="item-st"><label for="nv-r-financeiro"><b>Financeiro</b></label><select class="entrada" id="nv-r-financeiro" data-r="financeiro"></select></div><div class="item-st"><label for="nv-r-operacao"><b>Implantação e LGPD</b></label><select class="entrada" id="nv-r-operacao" data-r="operacao"></select></div><span class="rotulo">Planejamento de 12 meses</span><ul class="lista"><li><b>Trimestre 1 · Validar</b>Conversar com coordenadores e secretarias; carta de intenção para um curso-piloto na Unifacc.</li><li><b>Trimestre 2 · Pilotar</b>Curso-piloto com painel real da coordenação, medindo o tempo de validação.</li><li><b>Trimestre 3 · Vender</b>Primeiras licenças pagas, com relatório para a secretaria.</li><li><b>Trimestre 4 · Escalar</b>Outras faculdades privadas de Mato Grosso, até a meta definida abaixo.</li></ul></div>
+      <div class="bloco"><h3>2 · Público-alvo e mercado</h3><ul class="lista"><li><b>Quem paga: faculdades privadas</b>Coordenação e secretaria querem menos retrabalho na conferência de certificados.</li><li><b>Quem usa: alunos de graduação</b>Principalmente quem trabalha e tem pouco tempo para acompanhar as horas.</li></ul><span class="rotulo">Pesquisa de campo do grupo · n = 32</span><div class="nkpis"><div><b>69%</b><span>deram 4 ou 5 ao interesse em um app único (média 3,81)</span></div><div><b>75%</b><span>acham útil guardar comprovantes no celular (3,84)</span></div><div><b>47%</b><span>têm pouca clareza das horas validadas (notas 1 e 2)</span></div><div><b>59%</b><span>dizem que a falta de tempo atrapalha (notas 4 e 5)</span></div></div><p class="aviso">Limite da amostra: pesquisa feita com o público do shopping. Coordenadores e donos de faculdade, que decidiriam a compra, ainda não foram ouvidos.</p><span class="rotulo">Mercado</span><ul class="lista"><li><b>9,9 milhões de matrículas na graduação</b>Em 2023, 79,3% em instituições privadas (INEP).</li><li><b>2.580 instituições de ensino superior</b>87,8% são privadas (INEP, 2023).</li><li><b>Extensão obrigatória</b>Mínimo de 10% da carga horária do curso (Resolução CNE/CES nº 7/2018).</li></ul><span class="rotulo">Concorrência</span><table class="ntab"><tr><th>Alternativa</th><th>Limite dela</th></tr><tr><td>Pasta ou e-mail</td><td>Não soma nem avisa</td></tr><tr><td>Sistema acadêmico</td><td>Mostra só o já validado</td></tr><tr><td>Planilha pessoal</td><td>Trabalhosa e sem comprovante</td></tr><tr><td>Grupos de WhatsApp</td><td>Informação solta</td></tr></table><p class="aviso">A levantar: número de faculdades privadas em Mato Grosso e quanto custa hoje a validação manual.</p></div>
+      <div class="bloco"><h3>3 · Investimentos, custos e lucros</h3><span class="etq">Hipótese do grupo: ajustar com preços reais</span><span class="rotulo">Receita</span><div class="faixa"><label for="nv-preco">Licença por aluno/mês</label><output data-nv="preco"></output><input type="range" id="nv-preco" min="1" max="10" step="0.5" data-n="preco"></div><div class="faixa"><label for="nv-alunos">Alunos por faculdade</label><output data-nv="alunos"></output><input type="range" id="nv-alunos" min="200" max="5000" step="100" data-n="alunos"></div><div class="faixa"><label for="nv-meta">Faculdades no mês 12</label><output data-nv="meta"></output><input type="range" id="nv-meta" min="1" max="40" step="1" data-n="meta"></div><span class="rotulo">Custos e investimento</span><div class="faixa"><label for="nv-fixo">Custos fixos/mês</label><output data-nv="fixo"></output><input type="range" id="nv-fixo" min="3000" max="40000" step="500" data-n="fixo"></div><div class="faixa"><label for="nv-variavel">Suporte por faculdade/mês</label><output data-nv="variavel"></output><input type="range" id="nv-variavel" min="0" max="2000" step="50" data-n="variavel"></div><div class="faixa"><label for="nv-imposto">Impostos sobre a receita</label><output data-nv="imposto"></output><input type="range" id="nv-imposto" min="4" max="20" step="0.5" data-n="imposto"></div><div class="faixa"><label for="nv-invest">Investimento inicial</label><output data-nv="invest"></output><input type="range" id="nv-invest" min="10000" max="200000" step="5000" data-n="invest"></div><span class="rotulo">Resultado</span><div class="nkpis"><div><b data-nk="pe"></b><span>para pagar os custos fixos (ponto de equilíbrio)</span></div><div><b data-nk="lucro"></b><span>de lucro no mês 12</span></div><div><b data-nk="rec"></b><span>de receita no ano 1</span></div><div><b data-nk="payback"></b><span>para recuperar o investimento</span></div></div><div id="nv-graf" style="margin-top:12px"></div><p class="mudo" style="font-size:12.5px"><b style="color:#15803d">━</b> receita por mês · <b style="color:#b45309">━</b> custos por mês</p><span class="rotulo">Onde entra o investimento</span><table class="ntab" id="nv-usos"></table><span class="rotulo">Composição dos custos fixos</span><table class="ntab" id="nv-custos"></table></div>
+      <div class="bloco"><h3>4 · Vendas e crescimento</h3><p class="txt"><strong>O campo mudou a estratégia:</strong> perder certificado (média 2,22) e ter horas recusadas (1,88) são raros, então não são o argumento principal. A dor medida é não saber o saldo (2,69), esperar pela validação (3,28) e não ter tempo (3,44). A venda deve focar em clareza e rapidez.</p><span class="rotulo">Funil de venda para a faculdade</span><ul class="lista"><li><b>1 · Prospectar</b>Coordenadores de cursos com muitas horas a validar.</li><li><b>2 · Demonstrar</b>Fila de validação no app e dados da pesquisa.</li><li><b>3 · Pilotar</b>Um curso por um semestre, medindo tempo de validação.</li><li><b>4 · Contratar</b>Licença por aluno, com implantação do regulamento.</li><li><b>5 · Indicar</b>Resultado do piloto usado para abrir outros cursos e faculdades.</li></ul><span class="rotulo">Crescimento</span><ul class="lista"><li><b>Agora: Unifacc</b>Um curso-piloto e prova de resultado.</li><li><b>Depois: faculdades privadas de Mato Grosso</b>Regulamento configurável por curso já existe no MVP.</li><li><b>Mais adiante: integração e novos produtos</b>Sistema acadêmico, leitura automática de certificados e eventos de parceiros.</li></ul><span class="rotulo">Metas acompanhadas</span><p class="txt">Alunos com saldo configurado · atividades com comprovante · tempo médio de validação · alunos do último ano com horas completas.</p></div>
+    </section>
+    <section class="tela" id="t-mentoria" aria-label="Mentoria e networking">
+      <h2 class="ntit">Mentoria e networking</h2><p class="mudo">Quem pode orientar, o que perguntar e o que virou decisão.</p><nav class="subabas" aria-label="Visão de negócio"><a href="#/negocio">Plano de negócios</a><a href="#/mentoria">Mentoria e networking</a><a href="#/ecossistema">Ecossistema</a></nav>
+      <div class="bloco"><h3>1 · Orientação de profissionais</h3><p class="txt"><strong>Orientação acadêmica:</strong> Prof. Renato Rosa (responsável pelo grupo e professor de Laboratório de Criação e Inovação).</p><span class="rotulo">Mentores que o projeto precisa</span><div class="item-st"><label for="nv-st-setor"><b>Educação · coordenador de curso</b></label><p>“Quanto tempo a coordenação gasta por semestre validando horas?”</p><select class="entrada" id="nv-st-setor" data-st="setor"></select></div><div class="item-st"><label for="nv-st-operacao"><b>Secretaria · registro acadêmico</b></label><p>“Que erro mais atrasa a colação de grau?”</p><select class="entrada" id="nv-st-operacao" data-st="operacao"></select></div><div class="item-st"><label for="nv-st-credito"><b>Gestão · mantenedora de faculdade</b></label><p>“Quem aprova a compra e com que orçamento?”</p><select class="entrada" id="nv-st-credito" data-st="credito"></select></div><div class="item-st"><label for="nv-st-juridico"><b>Direito e LGPD · advogado</b></label><p>“Como tratar certificados e dados de alunos na nuvem?”</p><select class="entrada" id="nv-st-juridico" data-st="juridico"></select></div><div class="item-st"><label for="nv-st-startups"><b>Startups · empreendedor de edtech</b></label><p>“Cobrar por aluno ou por curso?”</p><select class="entrada" id="nv-st-startups" data-st="startups"></select></div></div>
+      <div class="bloco"><h3>2 · Troca de conhecimentos</h3><ul class="lista"><li><b>O que o grupo leva</b>Pesquisa de campo com 32 respostas, 14 artigos científicos e um app funcionando.</li><li><b>O que o grupo busca</b>Regulamentos reais, tempo gasto na validação e processo de compra das faculdades.</li><li><b>Troca dentro da turma</b>Comparar com os outros grupos os métodos de campo e como abordar quem decide a compra.</li></ul><span class="rotulo">Diário de mentoria</span><label class="rotulo" for="nv-s-area">Área</label><select class="entrada" id="nv-s-area"><option>Educação</option><option>Secretaria</option><option>Gestão</option><option>Direito e LGPD</option><option>Startups</option></select><label class="rotulo" for="nv-s-a">O que aprendemos</label><input class="entrada" id="nv-s-a" maxlength="200"><label class="rotulo" for="nv-s-d">O que muda no projeto</label><input class="entrada" id="nv-s-d" maxlength="200"><div class="fila"><button class="btn" id="nv-sess-add">Registrar conversa</button></div><div id="nv-sess"></div></div>
+      <div class="bloco"><h3>3 · Contatos profissionais</h3><ul class="lista"><li><b>Onde encontrar</b>Coordenações da Unifacc, ABMES, Semesp, Sebrae-MT, eventos como o CONFACC e LinkedIn.</li></ul><span class="rotulo">Rede do projeto</span><label class="rotulo" for="nv-r-nome">Cargo ou nome (com autorização)</label><input class="entrada" id="nv-r-nome" maxlength="80"><label class="rotulo" for="nv-r-org">Organização</label><input class="entrada" id="nv-r-org" maxlength="80"><label class="rotulo" for="nv-r-passo">Próximo passo</label><input class="entrada" id="nv-r-passo" maxlength="120"><div class="fila"><button class="btn" id="nv-rede-add">Adicionar contato</button></div><div id="nv-rede"></div><p class="aviso">Fica só neste aparelho. Não registre telefone ou e-mail de terceiros sem autorização (LGPD).</p></div>
+      <div class="bloco"><h3>4 · Parcerias e oportunidades</h3><span class="etq">Propostas: nenhum acordo firmado</span><ul class="lista"><li><b>Faculdade piloto</b>Cede o regulamento real e recebe validação organizada.</li><li><b>Organizadores de eventos e cursos</b>Publicam atividades que valem horas e ganham inscritos.</li><li><b>Fornecedor de sistema acadêmico</b>Integra o saldo e amplia o que oferece às faculdades.</li><li><b>Emissores de certificado digital</b>Reduzem o risco de fraude com QR Code.</li><li><b>Empresas e projetos sociais</b>Oferecem atividades de extensão e encontram estudantes.</li></ul></div>
+    </section>
+    <section class="tela" id="t-ecossistema" aria-label="Ecossistema de inovação">
+      <h2 class="ntit">Ecossistema de inovação</h2><p class="mudo">Atores mapeados. Nenhum acordo firmado.</p><nav class="subabas" aria-label="Visão de negócio"><a href="#/negocio">Plano de negócios</a><a href="#/mentoria">Mentoria e networking</a><a href="#/ecossistema">Ecossistema</a></nav>
+      <div class="bloco"><h3>1 · Empresas, universidades e governo</h3><ul class="lista"><li><b>Empresas</b>Faculdades privadas, associações como ABMES e Semesp, edtechs e fornecedores de sistema acadêmico.</li><li><b>Universidades</b>Unifacc, onde o projeto nasceu e pode ter o piloto; UFMT e IFMT como comparação de regulamentos.</li><li><b>Governo</b>MEC, INEP e CNE definem as regras de extensão e atividades complementares; FAPEMAT fomenta inovação.</li></ul><p class="aviso">Papel do HoraCerta: transformar a regra de horas em acompanhamento simples para aluno e coordenação.</p></div>
+      <div class="bloco"><h3>2 · Tecnologia e novas ideias</h3><ul class="lista"><li><b>Hoje, no MVP</b>App instalável (PWA), comprovantes guardados no aparelho, fila de validação simulada.</li><li><b>Próximo: painel real e avisos</b>Avisos de eventos tiveram média 3,81 na pesquisa. Painéis aumentam o engajamento quando o aluno vê o progresso (Ramaswami et al., 2023).</li><li><b>Depois: leitura automática de certificados</b>Reconhecimento de texto e integração com o sistema acadêmico.</li><li><b>Ideia nova: atividades por tempo livre</b>A falta de tempo é a principal barreira (Le, 2024), então sugerir atividades curtas ajuda quem trabalha.</li><li><b>Ideia nova: certificado com QR Code</b>Reduz fraude e acelera a conferência.</li></ul></div>
+      <div class="bloco"><h3>3 · Apoio a pequenos negócios</h3><div class="item-st"><label for="nv-st-sebrae"><b>Sebrae-MT</b></label><p>Consultoria em gestão, modelagem e capacitação para o negócio.</p><select class="entrada" id="nv-st-sebrae" data-st="sebrae"></select></div><div class="item-st"><label for="nv-st-inovativa"><b>InovAtiva Brasil</b></label><p>Programa público de aceleração e mentoria para startups.</p><select class="entrada" id="nv-st-inovativa" data-st="inovativa"></select></div><div class="item-st"><label for="nv-st-centelha"><b>Programa Centelha</b></label><p>Apoio a ideias inovadoras em estágio inicial. Conferir se há edital aberto em Mato Grosso.</p><select class="entrada" id="nv-st-centelha" data-st="centelha"></select></div><ul class="lista"><li><b>Marco Legal das Startups (Lei Complementar 182/2021)</b>Dá segurança a investidores e cria instrumentos para startups.</li><li><b>Simples Nacional (Lei Complementar 123/2006)</b>Tributação simplificada para pequenas empresas.</li></ul></div>
+      <div class="bloco"><h3>4 · Investimentos e incentivo</h3><span class="etq">Hipótese do grupo</span><p class="txt">Como cobrir o investimento inicial de <strong data-nv="invest"></strong>:</p><div class="faixa"><label for="nv-fProprio">Recursos dos sócios</label><output data-nv="fProprio"></output><input type="range" id="nv-fProprio" min="0" max="200000" step="5000" data-n="fProprio"></div><div class="faixa"><label for="nv-fSub">Subvenção ou edital de fomento</label><output data-nv="fSub"></output><input type="range" id="nv-fSub" min="0" max="200000" step="5000" data-n="fSub"></div><div class="faixa"><label for="nv-fAnjo">Investidor-anjo</label><output data-nv="fAnjo"></output><input type="range" id="nv-fAnjo" min="0" max="200000" step="5000" data-n="fAnjo"></div><div class="nbarra"><i id="nv-barra"></i></div><p class="mudo" id="nv-gap"></p><span class="rotulo">Caminho de captação</span><ul class="lista"><li><b>1 · Recursos próprios</b>Financiam a validação com o primeiro cliente.</li><li><b>2 · Fomento não reembolsável</b>Editais da FAPEMAT e da Finep, sem entrega de participação na empresa.</li><li><b>3 · Investidor-anjo</b>Entra depois do piloto, com resultado medido.</li><li><b>Fora do alcance por ora: Lei do Bem</b>O incentivo fiscal à inovação atende empresas no lucro real.</li></ul></div>
+    </section>
   </main>
 </div>
 
@@ -130,9 +184,10 @@ dialog h2{font-family:Fraunces,serif;margin-bottom:8px}
    ============================================================================ */
 const $ = (s, r = document) => r.querySelector(s);
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
-const hoje = () => new Date().toISOString().slice(0, 10);
+const isoLocal = d => new Date(d.getTime() - d.getTimezoneOffset() * 6e4).toISOString().slice(0, 10); // data do aparelho, não UTC
+const hoje = () => isoLocal(new Date());
 const uid = () => Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
-const diaRel = n => { const d = new Date(); d.setDate(d.getDate() + n); return d.toISOString().slice(0, 10); };
+const diaRel = n => { const d = new Date(); d.setDate(d.getDate() + n); return isoLocal(d); };
 const fmtD = d => new Date(d + 'T12:00').toLocaleDateString('pt-BR');
 let tb; const brinde = m => { const e = $('#brinde'); e.textContent = m; e.classList.add('on'); clearTimeout(tb); tb = setTimeout(() => e.classList.remove('on'), 2500); };
 
@@ -180,7 +235,7 @@ const semente = () => {
       { id: 'e4', t: 'Mutirão cultural na praça', cat: 'social', h: 6, data: diaRel(20), onde: 'Várzea Grande (exemplo)', lembrar: false }],
   };
 };
-const S = new Store('horacerta:v2', semente);
+const S = new Store('horacerta:v2', semente); comNeg(S.d);
 const ST = { rascunho: ['Rascunho', '#6b6b80'], analise: ['Em análise', '#b45309'], validada: ['Validada', '#15803d'], recusada: ['Recusada', '#b91c1c'] };
 const catNome = id => (S.d.curso.cats.find(c => c.id === id) || { nome: id }).nome;
 
@@ -223,7 +278,7 @@ class HcAtividade extends HTMLElement {
       ${a.motivo ? `<p class="mudo" style="color:#b91c1c">Coordenação: ${esc(a.motivo)}</p>` : ''}
       <div class="fila">${['rascunho', 'recusada'].includes(a.st) ? `<button class="btn peq" data-ac="enviar">Enviar p/ validação</button>` : ''}
       ${a.comp ? `<button class="btn lin peq" data-ac="ver">Ver comprovante</button>` : ''}
-      <button class="btn lin peq" data-ac="editar">Editar</button><button class="btn lin peq" data-ac="apagar" aria-label="Apagar ${esc(a.t)}">Apagar</button></div></div>`;
+      ${['rascunho', 'recusada'].includes(a.st) ? `<button class="btn lin peq" data-ac="editar">Editar</button>` : ''}<button class="btn lin peq" data-ac="apagar" aria-label="Apagar ${esc(a.t)}">Apagar</button></div></div>`;
     this.addEventListener('click', e => { const b = e.target.closest('[data-ac]'); if (b) acaoAtividade(b.dataset.ac, a.id); });
   }
 }
@@ -240,7 +295,7 @@ function telaPainel() {
   const ritmo = meses > 0 ? s.F / meses : Infinity;
   $('#ritmo').innerHTML = s.F === 0 ? 'Todas as horas exigidas estão validadas. 🎓' : meses === null ? 'Informe a formatura em Ajustes.' :
     meses <= 0 ? `A formatura prevista já passou e faltam <b>${s.F} h</b>.` : `Faltam <b>${meses} meses</b>: ritmo de <span class="marca">${(ritmo).toFixed(1).replace('.', ',')} h/mês</span>.`;
-  const sit = s.F === 0 ? ['Completo', '#15803d'] : ritmo > 12 || meses <= 0 ? ['Atenção', '#b91c1c'] : ritmo > 6 ? ['Acelere', '#b45309'] : ['Em dia', '#15803d'];
+  const sit = s.F === 0 ? ['Completo', '#15803d'] : meses === null ? ['Sem data', '#6b6b80'] : ritmo > 12 || meses <= 0 ? ['Atenção', '#b91c1c'] : ritmo > 6 ? ['Acelere', '#b45309'] : ['Em dia', '#15803d'];
   $('#situacao').innerHTML = `<b style="color:${sit[1]}">● ${sit[0]}</b>`;
   $('#cats').innerHTML = s.por.map(c => `<div style="margin:10px 0"><div style="display:flex;justify-content:space-between;font-weight:600;font-size:14px"><span>${esc(c.nome)}</span><span>${c.v}/${c.teto} h</span></div>
     <div role="img" aria-label="${esc(c.nome)}: ${c.v} validadas e ${c.an} em análise de ${c.teto}" style="height:12px;background:#efe8d8;border-radius:99px;overflow:hidden;display:flex;margin-top:4px">
@@ -280,7 +335,7 @@ function telaAjustes() {
   $('#aj-cats').innerHTML = S.d.curso.cats.map((c, i) => `<div style="display:grid;grid-template-columns:1fr 90px;gap:8px;margin-top:8px">
     <input class="entrada" data-cn="${i}" value="${esc(c.nome)}" aria-label="Nome da categoria ${i + 1}"><input class="entrada" data-ct="${i}" type="number" min="0" value="${c.teto}" aria-label="Horas exigidas em ${esc(c.nome)}"></div>`).join('');
 }
-function tudo() { telaPainel(); telaAtividades(); telaAgenda(); telaCoord(); telaAjustes(); }
+function tudo() { telaPainel(); telaAtividades(); telaAgenda(); telaCoord(); telaAjustes(); telaNegocio(); }
 S.addEventListener('mudou', tudo);
 
 /* ---------- Diálogos ---------- */
@@ -296,8 +351,8 @@ function formAtividade(id, preset = {}) {
     <div style="display:grid;grid-template-columns:1fr 100px;gap:8px"><div><label class="campo" for="f-c">Categoria</label><select class="entrada" id="f-c">${S.d.curso.cats.map(c => `<option value="${c.id}" ${c.id === a.cat ? 'selected' : ''}>${esc(c.nome)}</option>`).join('')}</select></div>
     <div><label class="campo" for="f-h">Horas</label><input class="entrada" id="f-h" type="number" min="0.5" step="0.5" value="${a.h}"></div></div>
     <label class="campo" for="f-d">Data</label><input class="entrada" id="f-d" type="date" value="${a.data}">
-    <label class="campo" for="f-arq">Comprovante (foto ou PDF)</label><input class="entrada" id="f-arq" type="file" accept="image/*,application/pdf" capture="environment">
-    <p class="mudo" id="f-info">${a.comp ? 'Já existe um comprovante; envie outro para substituir.' : 'A câmera do celular abre direto no certificado.'}</p>
+    <label class="campo" for="f-arq">Comprovante (foto ou PDF)</label><input class="entrada" id="f-arq" type="file" accept="image/*,application/pdf">
+    <p class="mudo" id="f-info">${a.comp ? 'Já existe um comprovante; envie outro para substituir.' : 'Tire uma foto do certificado ou escolha um arquivo.'}</p>
     <div class="fila"><button class="btn lin" data-fechar>Cancelar</button><button class="btn" id="f-ok">Salvar</button></div>`, d => {
     $('#f-arq', d).addEventListener('change', e => { blob = e.target.files[0] || null; $('#f-info', d).textContent = blob ? `📎 ${blob.name} (${Math.round(blob.size / 1024)} KB)` : ''; });
     $('#f-ok', d).addEventListener('click', async () => {
@@ -351,18 +406,77 @@ document.addEventListener('click', async e => {
   else if (b.id === 'imp') { const i = Object.assign(document.createElement('input'), { type: 'file', accept: '.json' }); i.onchange = async () => {
       try { const j = JSON.parse(await i.files[0].text()); if (j.app !== 'horacerta') throw 0;
         for (const [id, url] of Object.entries(j.arquivos || {})) await Arquivos.salvar(id, await (await fetch(url)).blob());
-        S.d = j.dados; S.salvar(); brinde('Backup importado.'); } catch (e) { brinde('Arquivo inválido.'); } }; i.click(); }
-  else if (b.id === 'zerar') { if (confirm('Apagar todos os dados e comprovantes deste aparelho?')) { await Arquivos.limpar(); S.d = semente(); S.salvar(); brinde('Dados apagados.'); } }
+        S.d = comNeg(j.dados); S.salvar(); brinde('Backup importado.'); } catch (e) { brinde('Arquivo inválido.'); } }; i.click(); }
+  else if (b.id === 'zerar') { if (confirm('Apagar todos os dados e comprovantes deste aparelho?')) { await Arquivos.limpar(); S.d = comNeg(semente()); S.salvar(); brinde('Dados apagados.'); } }
 });
 function baixar(nome, txt, tipo) { const u = URL.createObjectURL(new Blob([txt], { type: tipo })); Object.assign(document.createElement('a'), { href: u, download: nome }).click(); setTimeout(() => URL.revokeObjectURL(u), 800); }
 
+/* ---------- visão de negócio: plano, mentoria e ecossistema ---------- */
+/* modelo: as unidades crescem em linha do mês 1 até a meta no mês 12 e ficam estáveis depois */
+function negPadrao() { return { preco: 2.5, alunos: 800, meta: 8, fixo: 9000, variavel: 300, imposto: 6, invest: 40000, fProprio: 10000, fSub: 20000, fAnjo: 10000, resp: { produto: 'A definir', comercial: 'A definir', financeiro: 'A definir', operacao: 'A definir' }, status: { credito: 'A contatar', setor: 'A contatar', operacao: 'A contatar', juridico: 'A contatar', startups: 'A contatar', sebrae: 'A conhecer', inovativa: 'A conhecer', centelha: 'A conhecer' }, contatos: [], sessoes: [] }; }
+function comNeg(d) { const p = negPadrao(), n = d.neg || {}; d.neg = { ...p, ...n, resp: { ...p.resp, ...n.resp }, status: { ...p.status, ...n.status } }; return d; }
+const VISAO = ['negocio', 'mentoria', 'ecossistema'];
+const moeda = v => isFinite(v) ? v.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL', maximumFractionDigits: 0 }) : '—';
+const NV_FMT = { preco: v => v.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }), alunos: v => String(v), meta: v => String(v), fixo: moeda, variavel: moeda, invest: moeda, imposto: v => String(v).replace('.', ',') + '%', fProprio: moeda, fSub: moeda, fAnjo: moeda };
+const NV_USOS = [['Painel da coordenação e nuvem segura', .55], ['Implantação do piloto', .15], ['Jurídico e LGPD', .1], ['Marketing e vendas', .1], ['Capital de giro', .1]];
+const NV_CUSTOS = [['Pró-labore e equipe', .5], ['Comercial e marketing', .2], ['Hospedagem e suporte', .15], ['Contabilidade e jurídico', .15]];
+const NV_PESSOAS = ['A definir', 'José Arlindo', 'Taynara', 'Luana', 'Leticia', 'Samara'], NV_ETAPAS = ['A contatar', 'Contatado', 'Conversa feita'], NV_APOIO = ['A conhecer', 'Em análise', 'Inscrito'];
+const nvTodos = s => [...document.querySelectorAll(s)];
+function negCalc() {
+  const n = S.d.neg, por = n.preco * n.alunos, imposto = por * n.imposto / 100, margem = por - imposto - n.variavel;
+  const un = m => Math.round(1 + (n.meta - 1) * Math.min(m - 1, 11) / 11);
+  const meses = Array.from({ length: 60 }, (_, i) => { const e = un(i + 1), rec = e * por, cus = n.fixo + e * (imposto + n.variavel); return { rec, cus, lucro: rec - cus }; });
+  let caixa = -n.invest, payback = Infinity;
+  meses.some((m, i) => { caixa += m.lucro; if (caixa >= 0) { payback = i + 1; return true; } });
+  return { meses, payback, pe: margem > 0 ? Math.ceil(n.fixo / margem) : Infinity, recAno: meses.slice(0, 12).reduce((a, m) => a + m.rec, 0) };
+}
+function negGrafico(m) {
+  const W = 320, H = 150, L = 34, B = 18, max = Math.max(...m.flatMap(v => [v.rec, v.cus])) * 1.1 || 1, x = i => L + (W - L - 6) * i / 23, y = v => 6 + (H - B - 6) * (1 - v / max);
+  const lin = (k, cor) => `<polyline fill="none" stroke="${cor}" stroke-width="2.4" points="${m.map((v, i) => x(i).toFixed(1) + ',' + y(v[k]).toFixed(1)).join(' ')}"/>`;
+  const grade = [0, .5, 1].map(f => `<line x1="${L}" x2="${W - 6}" y1="${y(max * f)}" y2="${y(max * f)}" stroke="#e7dfcc"/><text x="2" y="${y(max * f) + 3}" font-size="10" fill="#6b6b80">${(max * f / 1000).toFixed(0)}k</text>`).join('');
+  const meses = [[0, '1m'], [11, '12m'], [23, '24m']].map(([i, t]) => `<text x="${x(i) - 8}" y="${H - 4}" font-size="10" fill="#6b6b80">${t}</text>`).join('');
+  $('#nv-graf').innerHTML = `<svg viewBox="0 0 ${W} ${H}" width="100%" role="img" aria-label="Receita e custos por mês em 24 meses">${grade}${meses}${lin('cus', '#b45309')}${lin('rec', '#15803d')}</svg>`;
+}
+function telaNegocio() {
+  const n = S.d.neg, c = negCalc(), soma = n.fProprio + n.fSub + n.fAnjo, dif = soma - n.invest, ativo = document.activeElement;
+  nvTodos('[data-n]').forEach(e => { if (e !== ativo) e.value = n[e.dataset.n]; });
+  nvTodos('[data-nv]').forEach(e => { const k = e.dataset.nv; e.textContent = NV_FMT[k](n[k]); });
+  nvTodos('[data-r]').forEach(e => { if (e !== ativo) e.value = n.resp[e.dataset.r]; });
+  nvTodos('[data-st]').forEach(e => { if (e !== ativo) e.value = n.status[e.dataset.st]; });
+  const saida = { pe: isFinite(c.pe) ? c.pe + ' ' + (c.pe === 1 ? 'faculdade' : 'faculdades') : 'Sem margem', lucro: moeda(c.meses[11].lucro), rec: moeda(c.recAno), payback: isFinite(c.payback) ? c.payback + (c.payback === 1 ? ' mês' : ' meses') : 'Mais de 5 anos' };
+  nvTodos('[data-nk]').forEach(e => { e.textContent = saida[e.dataset.nk]; });
+  const linhas = (itens, total) => itens.map(([t, p]) => `<tr><td>${t}</td><td>${moeda(total * p)}</td></tr>`).join('');
+  $('#nv-usos').innerHTML = linhas(NV_USOS, n.invest); $('#nv-custos').innerHTML = linhas(NV_CUSTOS, n.fixo);
+  $('#nv-barra').style.width = Math.min(100, soma / n.invest * 100) + '%';
+  $('#nv-gap').textContent = dif < 0 ? `Faltam ${moeda(-dif)} para cobrir o investimento.` : dif > 0 ? `Sobram ${moeda(dif)} além do investimento.` : 'Investimento totalmente coberto.';
+  $('#nv-sess').innerHTML = n.sessoes.map((s, i) => `<div class="registro"><div><strong>${esc(s.area)}</strong> · ${new Date(s.d).toLocaleDateString('pt-BR')}<br>Aprendemos: ${esc(s.aprendi)}<br>Muda no projeto: ${esc(s.decisao) || '—'}</div><button class="btn lin peq" data-nv-sessao="${i}" aria-label="Remover conversa">✕</button></div>`).join('');
+  $('#nv-rede').innerHTML = n.contatos.map((r, i) => `<div class="registro"><div><strong>${esc(r.nome) || 'Contato'}</strong> · ${esc(r.org) || 'sem organização'}<br>Próximo passo: ${esc(r.passo) || '—'}</div><button class="btn lin peq" data-nv-contato="${i}" aria-label="Remover contato">✕</button></div>`).join('');
+  negGrafico(c.meses.slice(0, 24));
+}
+const negMudou = () => { S.salvar(false); telaNegocio(); };
+const nvOpcoes = (sel, itens) => nvTodos(sel).forEach(s => { s.innerHTML = itens.map(v => `<option>${v}</option>`).join(''); });
+nvOpcoes('[data-r]', NV_PESSOAS); nvOpcoes('[data-st]', NV_ETAPAS); ['sebrae', 'inovativa', 'centelha'].forEach(k => nvOpcoes(`[data-st="${k}"]`, NV_APOIO));
+document.addEventListener('input', e => { const k = e.target.dataset && e.target.dataset.n; if (k) { S.d.neg[k] = +e.target.value; negMudou(); } });
+document.addEventListener('change', e => { const d = e.target.dataset || {}; if (d.r) { S.d.neg.resp[d.r] = e.target.value; negMudou(); } else if (d.st) { S.d.neg.status[d.st] = e.target.value; negMudou(); } });
+document.addEventListener('click', e => {
+  const b = e.target.closest('button'); if (!b) return; const n = S.d.neg;
+  if (b.id === 'nv-sess-add') { const aprendi = $('#nv-s-a').value.trim(); if (!aprendi) return brinde('Escreva o que o grupo aprendeu.'); n.sessoes.unshift({ area: $('#nv-s-area').value, aprendi, decisao: $('#nv-s-d').value.trim(), d: new Date().toISOString() }); $('#nv-s-a').value = $('#nv-s-d').value = ''; negMudou(); brinde('Conversa registrada.'); }
+  else if (b.id === 'nv-rede-add') { const nome = $('#nv-r-nome').value.trim(), org = $('#nv-r-org').value.trim(); if (!nome && !org) return brinde('Informe o cargo, o nome ou a organização.'); n.contatos.unshift({ nome, org, passo: $('#nv-r-passo').value.trim() }); $('#nv-r-nome').value = $('#nv-r-org').value = $('#nv-r-passo').value = ''; negMudou(); brinde('Contato adicionado.'); }
+  else if (b.dataset.nvSessao != null) { n.sessoes.splice(+b.dataset.nvSessao, 1); negMudou(); }
+  else if (b.dataset.nvContato != null) { n.contatos.splice(+b.dataset.nvContato, 1); negMudou(); }
+});
+
 /* ---------- Rotas (#/tela) ---------- */
-window.__rotas = ['#/painel', '#/atividades', '#/agenda', '#/coordenacao', '#/ajustes'];
+window.__rotas = ['#/painel', '#/atividades', '#/agenda', '#/coordenacao', '#/ajustes', '#/negocio', '#/mentoria', '#/ecossistema'];
 function rota() {
   const r = (location.hash.match(/^#\/(\w+)/) || [, 'painel'])[1];
   const alvo = $('#t-' + r) ? r : 'painel';
   document.querySelectorAll('.tela').forEach(t => t.classList.toggle('on', t.id === 't-' + alvo));
-  document.querySelectorAll('nav.abas a').forEach(a => { if (a.getAttribute('href') === '#/' + alvo) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current'); });
+  const aba = VISAO.includes(alvo) ? 'negocio' : alvo;
+  document.querySelectorAll('nav.abas a').forEach(a => { if (a.getAttribute('href') === '#/' + aba) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current'); });
+  document.querySelectorAll('.subabas a').forEach(a => { if (a.getAttribute('href') === '#/' + alvo) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current'); });
+  const et = $('nav.abas'), atual = $('nav.abas a[aria-current]'); if (atual) et.scrollLeft = atual.offsetLeft - et.offsetLeft - (et.clientWidth - atual.offsetWidth) / 2;
+  if (VISAO.includes(alvo)) scrollTo(0, 0);
 }
 addEventListener('hashchange', rota);
 tudo(); rota();
