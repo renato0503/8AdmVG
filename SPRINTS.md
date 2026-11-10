@@ -67,3 +67,27 @@ Status:      ⏳ / 🔄 / ✅ / ⛔
 
 ### Sprints 3–5
 - **Status:** ⏳ a fazer (campo, análise, refino)
+
+## Registro — Painel de resultados (Track R)
+
+### Sprint R1 — Painel de resultados 100% mobile ✅
+- **Data do registro:** 20/10/2026 (pedido do professor; ainda não iniciada)
+- **Objetivo:** o painel de resultados (`resultados/index.html`, link do GitHub Pages compartilhado com os alunos) deve **caber na tela do celular**, sem rolagem horizontal e com leitura confortável, em qualquer largura de 320 a 430 px (e paisagem).
+- **Escopo previsto:**
+  - Garantir zero rolagem horizontal em 320, 360, 390 e 430 px: tabelas (análise estatística, "Ver como tabela", literatura) viram **cartões empilhados** ou ganham versão compacta, sem estourar a largura.
+  - Reorganizar o topo para telas estreitas: título, botão **Atualizar agora**, tema, abas de turma e seletor de grupo (chips) em linhas que quebram bem, com alvos de toque de pelo menos 44 px.
+  - Substituir o **tooltip de passar o mouse** por toque (abrir/fechar um detalhe da pergunta ao tocar na barra).
+  - Gráfico das 20 perguntas: pergunta acima da barra em largura total, média em destaque, polos A e B legíveis; testar a escala de fonte (16 px mínimo no corpo, sem zoom automático).
+  - Cartões de indicadores (KPIs) e gráfico "Respostas por grupo" (linhas 15, 30 e 35) legíveis em coluna única; rótulos das metas sem sobreposição.
+  - Textos longos (síntese, interpretação, hipótese × resultado × literatura): parágrafos curtos, seções recolhíveis (abrir/fechar) para reduzir a rolagem.
+  - Modo escuro e claro mantidos; botão de atualizar fixo ou de fácil acesso no celular.
+- **Critérios de aceite:** (1) sem rolagem horizontal nas larguras acima; (2) todos os controles tocáveis com o polegar; (3) nenhum texto cortado; (4) carrega em rede móvel em poucos segundos; (5) testado em Chrome Android e Safari iOS (ou emulação) e com teste automatizado de largura (Playwright) em 320/360/390/430 px.
+- **Onde mexer:** `_ferramentas/resultados-coleta/template2.html` (CSS responsivo e JS de renderização); regerar com `build_html.py` e atualizar os dados com `atualizar-resultados.py`; republicar os 3 `resultados/index.html` e `Resultados-Coleta.html`.
+- **Estado atual (ponto de partida):** já há regras responsivas básicas (grade em coluna única abaixo de 700 px, sem rolagem horizontal na página em 390 px), mas as tabelas largas, o tooltip por mouse e os textos longos não foram otimizados para celular.
+- **Entregue em 20/10/2026:**
+  - **Tabelas viram cartões** em telas de até 700 px (análise estatística e "Ver como tabela"): pergunta, polos, contagens 1–5 e média empilhados; sem rolagem horizontal.
+  - **Toque no lugar do tooltip:** tocar numa pergunta abre o detalhe (contagem de cada nota, média, n); teclado (Enter/espaço) também funciona. O tooltip por mouse continua no desktop.
+  - **Seções recolhíveis** (síntese geral, análise estatística, hipótese × resultado × literatura): abertas no desktop; no celular a síntese geral e a literatura começam fechadas. O estado aberto/fechado é mantido ao trocar de grupo.
+  - Topo reorganizado (botão Atualizar agora em largura total), abas/chips/botões com **mínimo de 44 px**, texto base de 16 px, cartões de indicadores em 2 colunas, links DOI com quebra de linha e área de toque.
+- **Verificação (Playwright, toque emulado, 320/360/390/430 px; 360 px em modo escuro):** excesso horizontal de **174 px para 0 px**; alvos de toque menores que 44 px de **17–18 para 0**; sem erro no console; desktop sem regressão. Teste reutilizável: `_ferramentas/resultados-coleta/audit_mobile.py <url>`.
+- **Status:** ✅ concluída (20/10/2026). Pendente apenas teste em aparelho real (Chrome Android e Safari iOS).

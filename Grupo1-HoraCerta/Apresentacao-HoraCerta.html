@@ -1,0 +1,250 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="formato" content="1920x1080">
+<title>HoraCerta — apresentação de defesa</title>
+<link rel="stylesheet" href="../assets/deck/deck.css">
+<style>
+  body[data-tema="h1"]{
+    --bg1:#090d1f; --bg2:#1e1b4b; --accent:#a5b4fc; --accent2:#fbbf24;
+    --soft:#c7cbe4; --muted:#8f95b2; --line:rgba(255,255,255,.15);
+    --card:rgba(255,255,255,.06); --good:#86efac; --warn:#fde047; --bad:#fb923c;
+  }
+  body[data-tema="h1"] .slide::before{
+    background-image:linear-gradient(rgba(165,180,252,.055) 1px,transparent 1px),
+                     linear-gradient(90deg,rgba(165,180,252,.055) 1px,transparent 1px);
+    background-size:58px 58px;mask-image:linear-gradient(180deg,#000,transparent 86%);
+  }
+</style>
+</head>
+<body data-tema="h1" data-deck="HoraCerta · Grupo 1" data-logo="../assets/logos/g1.svg" data-blocos="Problema|Solução|Plano|Impacto">
+<div class="palco" id="palco">
+
+  <!-- 01 · capa -->
+  <section class="slide capa" data-bloco="0" data-alvo="1">
+    <img class="logo" src="../assets/logos/g1.svg" alt="">
+    <p class="kicker">Mostra Synergeia 2026 · Administração · UNIFACC</p>
+    <h1>As horas complementares<br>na palma da <span class="ac">mão.</span></h1>
+    <p class="sub">Saldo por categoria, comprovantes no celular e ritmo até a formatura — sem papel, sem planilha e sem susto no último semestre.</p>
+    <div class="info"><span>Grupo 1</span><span>HoraCerta</span><span>Prof. Renato</span></div>
+    <p class="equipe"><b>José Arlindo da Cunha Filho · Taynara Luana de Oliveira · Luana da Silva Araújo · Leticia Leydiane de Oliveira · Samara de Campos Henrique</b></p>
+    <aside class="notas">Boa tarde. Somos o Grupo 1, HoraCerta. A ideia é simples: o aluno precisa saber hoje quanto falta para colar grau, sem depender de pasta, e-mail ou conferência manual. Quatro blocos: problema, solução, plano e impacto.</aside>
+  </section>
+
+  <!-- 02 · provocação -->
+  <section class="slide" data-bloco="0" data-alvo="2">
+    <p class="kicker">A pergunta que move o projeto</p>
+    <p class="mega" data-b="1">E se o aluno soubesse, hoje, <span class="ac">quanto falta</span> para colar grau?</p>
+    <p class="sub" data-b="2">A informação existe. Só está espalhada entre certificados de papel, e-mails e a conferência da secretaria.</p>
+    <p class="nota" data-b="2">O problema não é falta de atividade. É falta de controle.</p>
+    <aside class="notas">A pergunta é o coração da ideia. A informação existe, mas o aluno não a vê. Ele descobre o tamanho do problema no último semestre, quando já é tarde para se organizar.</aside>
+  </section>
+
+  <!-- 03 · problema -->
+  <section class="slide" data-bloco="0" data-alvo="4">
+    <p class="kicker">O problema não é opinião</p>
+    <h2 class="titulo" data-b="1">A regra é obrigatória. O controle ainda é artesanal.</h2>
+    <div class="g4" data-b="2">
+      <div class="stat"><b>9,9 mi</b><span>de matrículas na graduação; 79,3% em instituições privadas</span><small>INEP, Censo 2023</small></div>
+      <div class="stat"><b>10%</b><span>da carga horária do curso em extensão, no mínimo</span><small>Resolução CNE/CES nº 7/2018</small></div>
+      <div class="stat"><b>47%</b><span>têm pouca ou nenhuma clareza do saldo validado</span><small>Pesquisa do grupo · n = 32</small></div>
+      <div class="stat"><b>59%</b><span>dizem que a falta de tempo atrapalha cumprir as horas</span><small>Pesquisa do grupo · n = 32</small></div>
+    </div>
+    <p class="nota" data-b="2">O gargalo está na gestão: regras que variam por curso, saldo invisível e registro trabalhoso.</p>
+    <aside class="notas">Quatro números. A graduação é grande e majoritariamente privada. A extensão é obrigatória. E quase metade da nossa amostra não sabe seu saldo. O gargalo não é desinteresse: é gestão.</aside>
+  </section>
+
+  <!-- 04 · personas -->
+  <section class="slide" data-bloco="0" data-alvo="5.5">
+    <p class="kicker">Quem sente primeiro</p>
+    <h2 class="titulo" data-b="1">Três pessoas que convivem com a mesma planilha.</h2>
+    <div class="g3" data-b="2">
+      <div class="pessoa"><div class="avatar">A</div><h3>Aluna que trabalha</h3><p class="ctx">Estuda à noite e faz estágio</p><p>Tem pouco tempo para procurar atividade e não sabe quantas horas já foram validadas.</p><p class="dor"><b>Dor:</b> deixa tudo para o último ano.</p></div>
+      <div class="pessoa"><div class="avatar">C</div><h3>Coordenação</h3><p class="ctx">Valida certificados por curso</p><p>Confere comprovante por comprovante, sem um padrão único entre os cursos.</p><p class="dor"><b>Dor:</b> retrabalho e prazo de resposta longo.</p></div>
+      <div class="pessoa"><div class="avatar">S</div><h3>Secretaria</h3><p class="ctx">Registro acadêmico</p><p>Reabre processo porque o documento estava ilegível ou na categoria errada.</p><p class="dor"><b>Dor:</b> o erro só aparece no balcão.</p></div>
+    </div>
+    <aside class="notas">As três personas saíram do contexto e da pesquisa. A aluna que trabalha é quem mais precisa de clareza. A coordenação precisa de padrão e tempo. A secretaria precisa que o erro apareça antes do balcão.</aside>
+  </section>
+
+  <!-- 05 · proposta -->
+  <section class="slide" data-bloco="1" data-alvo="7">
+    <p class="kicker">A proposta em uma tela</p>
+    <h2 class="titulo" data-b="1">De pasta e e-mail para <span class="ac">saldo em tempo real.</span></h2>
+    <div class="comparar" data-b="2">
+      <div class="comp antes"><h3>Hoje</h3><ul>
+        <li><svg class="ico"><use href="#i-doc"/></svg>Certificado em papel ou foto perdida no celular</li>
+        <li><svg class="ico"><use href="#i-search"/></svg>Saldo só aparece depois da conferência da secretaria</li>
+        <li><svg class="ico"><use href="#i-clock"/></svg>Dúvida sobre o que vale e em qual categoria</li>
+        <li><svg class="ico"><use href="#i-alert"/></svg>Descoberta do que falta no último semestre</li>
+      </ul></div>
+      <div class="seta-meio">→</div>
+      <div class="comp depois"><h3>Com o HoraCerta</h3><ul>
+        <li><svg class="ico"><use href="#i-phone"/></svg>Comprovante fotografado e guardado no aparelho</li>
+        <li><svg class="ico"><use href="#i-chart"/></svg>Saldo por categoria e projeção até a formatura</li>
+        <li><svg class="ico"><use href="#i-check"/></svg>Envio para validação e motivo da recusa</li>
+        <li><svg class="ico"><use href="#i-calendar"/></svg>Eventos que valem horas na agenda</li>
+      </ul></div>
+    </div>
+    <aside class="notas">A proposta é trocar a pasta pelo painel. O aluno registra, vê o saldo e acompanha a validação. A coordenação recebe tudo organizado e recusa com motivo. O sistema acadêmico continua sendo a fonte oficial: o app organiza a informação que hoje se perde.</aside>
+  </section>
+
+  <!-- 06 · como funciona -->
+  <section class="slide" data-bloco="1" data-alvo="8.5">
+    <p class="kicker">Como funciona</p>
+    <h2 class="titulo" data-b="1">Três passos no celular — e o comprovante sempre à mão.</h2>
+    <div class="passos" data-b="1">
+      <div class="passo"><span class="n">1</span><div><h3>Registre</h3><p>Foto ou PDF do certificado, com categoria e carga horária.</p></div></div>
+      <div class="passo"><span class="n">2</span><div><h3>Acompanhe</h3><p>Saldo por categoria, ritmo mensal e situação até a formatura.</p></div></div>
+      <div class="passo"><span class="n">3</span><div><h3>Valide</h3><p>A coordenação aprova ou recusa com motivo, e o aluno reenvia.</p></div></div>
+    </div>
+    <div class="telefones" data-b="2">
+      <div class="fone" style="width:225px"><img src="../assets/deck/shots/h1-painel.png" alt="Painel com saldo, categorias e ritmo até a formatura"></div>
+      <div class="fone" style="width:225px"><img src="../assets/deck/shots/h1-atividades.png" alt="Atividades com comprovante e situação de validação"></div>
+      <div class="fone" style="width:225px"><img src="../assets/deck/shots/h1-negocio.png" alt="Visão de negócio do HoraCerta"></div>
+    </div>
+    <aside class="notas">O protótipo está funcionando: painel com saldo e ritmo, atividades com comprovante e fila de validação. Tudo fica no aparelho do aluno; o envio para a nuvem só entra na versão com a coordenação.</aside>
+  </section>
+
+  <!-- 07 · pesquisa -->
+  <section class="slide" data-bloco="1" data-alvo="10">
+    <p class="kicker">O que a pesquisa de campo disse</p>
+    <h2 class="titulo" data-b="1">O interesse existe. O que falta é clareza.</h2>
+    <div class="g4" data-b="2">
+      <div class="stat"><b>75%</b><span>acham muito útil guardar comprovantes no celular (Q17)</span><small>n = 32 · escala 1–5</small></div>
+      <div class="stat"><b>69%</b><span>têm interesse alto em um app único para as horas (Q20)</span><small>n = 32 · escala 1–5</small></div>
+      <div class="stat"><b>47%</b><span>têm pouca ou nenhuma clareza do saldo validado (Q4)</span><small>n = 32 · escala 1–5</small></div>
+      <div class="stat"><b>59%</b><span>dizem que a falta de tempo atrapalha muito (Q13)</span><small>n = 32 · escala 1–5</small></div>
+    </div>
+    <div class="cartao destaque" data-b="2" style="margin-top:22px">
+      <p style="margin-top:0;font-size:23px"><b>Hipótese parcialmente sustentada.</b> O interesse e a utilidade são altos, mas perder certificado e ter horas recusadas são raros. A dor que a pesquisa mediu é <b>não saber o saldo</b>, <b>esperar pela validação</b> e <b>não ter tempo</b> — por isso o foco do produto é clareza e rapidez.</p>
+    </div>
+    <aside class="notas">Amostra de conveniência, 32 respostas. O interesse é alto: 69% querem um app único e 75% veem utilidade em guardar comprovantes. A dor principal é não saber o saldo e esperar pela validação. A estratégia do produto mudou com isso: foco em clareza e rapidez, não em medo de perder papel.</aside>
+  </section>
+
+  <!-- 08 · missão -->
+  <section class="slide" data-bloco="2" data-alvo="11.5">
+    <p class="kicker">Planejamento estratégico</p>
+    <h2 class="titulo" data-b="1">Missão, visão e valores.</h2>
+    <div class="g2" data-b="2">
+      <div class="pilar"><div class="rot">Missão</div><p>Nenhum aluno com a formatura atrasada por falta de controle das horas complementares.</p></div>
+      <div class="pilar"><div class="rot">Visão</div><p>Ser o painel de horas de referência nas faculdades privadas de Mato Grosso até 2028.</p></div>
+    </div>
+    <div class="cartao" data-b="2" style="margin-top:20px">
+      <span class="etiqueta">Valores</span>
+      <div class="valores"><span>Clareza</span><span>Autonomia</span><span>Simplicidade</span><span>Privacidade</span><span>Parceria com a coordenação</span></div>
+      <p style="font-size:20px">O aluno é dono dos próprios dados: comprovantes e saldo ficam no aparelho, e o regulamento de cada curso é respeitado.</p>
+    </div>
+    <aside class="notas">Missão: nenhum aluno com formatura atrasada por falta de controle. Visão: ser referência nas faculdades privadas de MT até 2028. Valores: clareza, autonomia, simplicidade, privacidade e parceria com a coordenação.</aside>
+  </section>
+
+  <!-- 09 · SWOT -->
+  <section class="slide" data-bloco="2" data-alvo="13">
+    <p class="kicker">Análise SWOT</p>
+    <h2 class="titulo" data-b="1">O que está sob nosso controle e o que vem do ambiente.</h2>
+    <div class="matriz" data-b="2">
+      <div class="q f"><h4>Forças</h4><ul><li>Saldo por categoria em tempo real</li><li>Comprovante no celular, sem papel</li><li>Regulamento configurável por curso</li><li>Fluxo de validação com motivo da recusa</li><li>Funciona offline (PWA)</li></ul></div>
+      <div class="q w"><h4>Fraquezas</h4><ul><li>Protótipo, sem integração com o sistema acadêmico</li><li>Validação simulada no MVP</li><li>Amostra de conveniência (n = 32)</li><li>Depende da adesão da coordenação</li></ul></div>
+      <div class="q o"><h4>Oportunidades</h4><ul><li>9,9 milhões de matrículas na graduação</li><li>79,3% em instituições privadas</li><li>2.580 instituições de ensino superior</li><li>Extensão obrigatória em todos os cursos</li><li>Interesse alto medido no campo</li></ul></div>
+      <div class="q t"><h4>Ameaças</h4><ul><li>Regras diferentes por curso e por instituição</li><li>Mudança de coordenação e descontinuidade</li><li>Sistemas acadêmicos já contratados</li><li>Privacidade e LGPD no tratamento de documentos</li></ul></div>
+    </div>
+    <aside class="notas">A força é o painel e o comprovante. A fraqueza é não ter integração real ainda. A oportunidade é o tamanho do ensino superior privado e a extensão obrigatória. A ameaça é a regra mudar por curso e a coordenação não aderir. Estratégia: piloto em um curso e prova de resultado.</aside>
+  </section>
+
+  <!-- 10 · inovação -->
+  <section class="slide" data-bloco="2" data-alvo="14.5">
+    <p class="kicker">Gestão da inovação e tecnologia</p>
+    <h2 class="titulo" data-b="1">Inovar é criar o novo e melhorar o que já existe.</h2>
+    <div class="def" data-b="1">Inovação é criar algo novo ou melhorar o que já existe — e só vira inovação quando chega a alguém e resolve um problema.</div>
+    <div class="duas-listas" data-b="2">
+      <div class="lista"><h3>O que criamos</h3><ul>
+        <li><svg class="ico"><use href="#i-chart"/></svg>O saldo por categoria visível a qualquer momento</li>
+        <li><svg class="ico"><use href="#i-doc"/></svg>O certificado que vira registro com comprovante</li>
+        <li><svg class="ico"><use href="#i-calendar"/></svg>A projeção do ritmo mensal até a formatura</li>
+      </ul></div>
+      <div class="lista"><h3>O que melhoramos</h3><ul>
+        <li><svg class="ico"><use href="#i-doc"/></svg>A pasta de certificados vira painel no celular</li>
+        <li><svg class="ico"><use href="#i-clock"/></svg>A espera pela secretaria vira fila de validação</li>
+        <li><svg class="ico"><use href="#i-users"/></svg>A dúvida no grupo vira regra configurada no app</li>
+      </ul></div>
+    </div>
+    <div class="espectro" data-b="2">
+      <div><b>Incremental</b><small>formulário e linguagem</small></div>
+      <div><b>Adjacente</b><small>integração com o sistema acadêmico</small></div>
+      <div><b>Radical</b><small>horas acompanhadas em tempo real</small></div>
+    </div>
+    <aside class="notas">Criamos o saldo visível, o certificado que vira registro e a projeção até a formatura. Melhoramos a pasta, a espera e a dúvida. O incremental melhora o formulário; o adjacente integra o sistema acadêmico; o radical é o aluno acompanhar as horas em tempo real.</aside>
+  </section>
+
+  <!-- 11 · roadmap -->
+  <section class="slide" data-bloco="2" data-alvo="16">
+    <p class="kicker">Roadmap</p>
+    <h2 class="titulo" data-b="1">Do protótipo ao piloto em um curso.</h2>
+    <div class="roadmap" data-b="2">
+      <div class="fase agora"><div class="quando">Hoje · MVP</div><h3>Provar o fluxo</h3><ul>
+        <li><svg class="ico"><use href="#i-check"/></svg>Saldo, comprovante e fila de validação</li>
+        <li><svg class="ico"><use href="#i-check"/></svg>Regulamento configurável e offline</li>
+        <li><svg class="ico"><use href="#i-check"/></svg>Exportação dos dados em JSON e CSV</li>
+      </ul></div>
+      <div class="fase"><div class="quando">v1 · 6 meses</div><h3>Piloto na Unifacc</h3><ul>
+        <li><svg class="ico"><use href="#i-arrow"/></svg>Um curso com painel real da coordenação</li>
+        <li><svg class="ico"><use href="#i-arrow"/></svg>Medir tempo de validação e alunos com saldo</li>
+        <li><svg class="ico"><use href="#i-arrow"/></svg>Ajustar o regulamento com a secretaria</li>
+      </ul></div>
+      <div class="fase"><div class="quando">v2 · 12–18 meses</div><h3>Integrar e escalar</h3><ul>
+        <li><svg class="ico"><use href="#i-arrow"/></svg>Integração com o sistema acadêmico</li>
+        <li><svg class="ico"><use href="#i-arrow"/></svg>Leitura automática de certificados</li>
+        <li><svg class="ico"><use href="#i-arrow"/></svg>Outras faculdades privadas de Mato Grosso</li>
+      </ul></div>
+    </div>
+    <aside class="notas">O MVP prova o fluxo. A v1 é um piloto em um curso da Unifacc, medindo tempo de validação e alunos com saldo. A v2 integra o sistema acadêmico, lê certificados automaticamente e abre outras faculdades. Sem piloto, não há como provar que o app reduz retrabalho.</aside>
+  </section>
+
+  <!-- 12 · impacto -->
+  <section class="slide" data-bloco="3" data-alvo="17.5">
+    <p class="kicker">Impacto e métricas</p>
+    <h2 class="titulo" data-b="1">Nenhum aluno deve descobrir no último semestre que faltam horas.</h2>
+    <div class="kpis" data-b="2">
+      <div class="kpi"><b>%</b><span>de alunos com saldo configurado no app</span></div>
+      <div class="kpi"><b>dias</b><span>de redução no tempo de validação</span></div>
+      <div class="kpi"><b>%</b><span>de atividades enviadas com comprovante</span></div>
+      <div class="kpi"><b>100%</b><span>dos alunos do último ano com as horas completas</span></div>
+    </div>
+    <div class="cartao destaque" data-b="2" style="margin-top:24px"><p style="margin-top:0;font-size:24px"><b>Indicador central:</b> o aluno sabe, em qualquer mês do curso, quanto falta e qual é o ritmo para fechar as horas.</p></div>
+    <aside class="notas">O impacto não é só digitalizar. É dar previsibilidade ao aluno e reduzir retrabalho na coordenação. O KPI central é o aluno saber o saldo e o ritmo em qualquer mês; os outros medem tempo de validação, comprovantes e conclusão no prazo.</aside>
+  </section>
+
+  <!-- 13 · riscos -->
+  <section class="slide" data-bloco="3" data-alvo="19">
+    <p class="kicker">Riscos e mitigação</p>
+    <h2 class="titulo" data-b="1">O que pode dar errado — e o que fazemos com isso.</h2>
+    <div class="riscos" data-b="2">
+      <div class="risco"><b>Regras diferentes por curso</b><span>regulamento configurável por categoria, teto e prazo; o piloto começa em um curso e replica o modelo.</span></div>
+      <div class="risco"><b>Comprovante perdido ou ilegível</b><span>foto no celular, validação com motivo da recusa e reenvio pelo próprio app.</span></div>
+      <div class="risco"><b>Baixa adesão da coordenação</b><span>piloto com uma coordenação parceira e relatório de tempo poupado.</span></div>
+      <div class="risco"><b>Privacidade dos documentos</b><span>dados e comprovantes no aparelho; LGPD desde o desenho; envio só com consentimento.</span></div>
+    </div>
+    <aside class="notas">Os riscos são reais. A resposta é regra configurável, comprovante com motivo de recusa, piloto com uma coordenação parceira e privacidade desde o desenho. O app não substitui o sistema acadêmico: organiza o que hoje se perde.</aside>
+  </section>
+
+  <!-- 14 · fechamento -->
+  <section class="slide" data-bloco="3" data-alvo="20">
+    <div class="fechar">
+      <div>
+        <p class="kicker">Para levar</p>
+        <p class="mega" data-b="1">O aluno não precisa descobrir no último semestre que faltam horas. <span class="ac">Precisa saber hoje.</span></p>
+        <p class="sub" data-b="2">Abra o app e veja o saldo de exemplo.</p>
+        <div class="equipe" data-b="2"><span>Grupo 1</span><span>José Arlindo</span><span>Taynara</span><span>Luana</span><span>Leticia</span><span>Samara</span><span>Prof. Renato</span></div>
+      </div>
+      <div class="qr" data-b="2"><img src="../assets/deck/qr/g1.png" alt="QR para abrir o HoraCerta"><b>HoraCerta</b><small>aponte a câmera para abrir o app</small></div>
+    </div>
+    <aside class="notas">Fechar com a frase: o aluno não precisa descobrir no último semestre que faltam horas; precisa saber hoje. Convidar a plateia a abrir o app pelo QR. Agradecer e abrir para perguntas.</aside>
+  </section>
+
+</div>
+<script src="../assets/deck/deck.js"></script>
+</body>
+</html>
+
+

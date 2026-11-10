@@ -253,3 +253,18 @@ enato.rosa@unifacc.edu.br mencionados no documento.
 - **Testes:** `validate.py` do kit PPTX → **All validations PASSED** nos banners; fichas em 1 página (PDF); QR apontando para os apps publicados.
 - **Scripts preservados:** `Mostra-Synergeia-2026\_scripts\` (gerar_graficos.py, gerar_qr.py, gerar_banners_v2.py, layout_banners.ps1, gerar_fichas.py, exportar_fichas.ps1). Gráficos e QR em `_graficos\`.
 - **Pendente:** revisão do conteúdo pelos grupos (nomes, curso, semestre) e commit/push. Nada foi commitado nesta sessão.
+
+---
+
+## 15. Sessão 09/11/2026 — Apresentação do HoraCerta (deck) e conferência da visão de negócio
+
+- **Pedido:** montar a apresentação do HoraCerta com o mesmo motor dos decks do AdmCBA (origem `D:\Dev\cerradofinancas\marketing\Palestras`) e garantir no app o bloco das “outras disciplinas”, como no CasaPiloto.
+- **Deck entregue:** `Grupo1-HoraCerta\Apresentacao-HoraCerta.html` + `.pdf` (14 slides, palco 1920×1080). Motor em `assets/deck/` (`deck.css`, `deck.js` e fontes), o mesmo das apresentações do AdmCBA.
+- **Tema:** indigo/âmbar do HoraCerta, definido em `body[data-tema="h1"]` no próprio HTML.
+- **Roteiro (14 slides):** capa; provocação; problema com dados (INEP, CNE/CES, n=32); personas; proposta antes × depois; como funciona com 3 telas do app; pesquisa de campo (75% comprovantes, 69% app único, 47% sem clareza, 59% falta de tempo); missão/visão/valores; SWOT; inovação; roadmap; impacto/KPIs; riscos; fechamento com QR.
+- **Assets do deck:** `assets/deck/shots/h1-painel.png`, `h1-atividades.png`, `h1-negocio.png` (capturados do app a 430×900 via Playwright) e `assets/deck/qr/g1.png` (abre o app).
+- **Recursos:** notas do apresentador em todos os slides, navegação por teclado/toque, barra de progresso e exportação em PDF pelo `@media print`. PDF gerado com 14 páginas.
+- **Landing:** `Grupo1-HoraCerta/index.html` ganhou os links **“Apresentação completa”** (HTML) e **“Apresentação em PDF”**.
+- **App:** a aba **Negócio** (plano de negócios, mentoria e ecossistema) **já existia** desde o commit `3a6f2ed`, no mesmo padrão do CasaPiloto; por isso não houve alteração de código no app. Conferido com `_ferramentas/smoke.py`: 8 rotas, 0 erro de JS, 0 px de overflow e estado mantido.
+- **Testes:** 14 slides, 0 erro de JS, 0 imagem quebrada; o deck abre por `file://` e por HTTP.
+- **Pendente:** revisão do texto pelo grupo e commit/push (nada foi commitado nesta sessão).
