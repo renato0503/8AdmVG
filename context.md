@@ -110,3 +110,146 @@ Todos: PWA, dados só no aparelho (localStorage), exportar/importar JSON, apagar
 ### 8.3 Próximos passos (amanhã)
 1. Reabrir o prazo de submissão do CONFACC na plataforma e orientar os grupos a enviar (kit pronto).
 2. Seguir as pendências da seção 7 (validação das 20 perguntas com os grupos, datas, `[verificar]`, ida ao shopping).
+
+---
+
+## 9. Sessão 25/09/2026 — MVPs reconstruídos e figuras do CONFACC
+
+### 9.1 MVPs reconstruídos (design e arquitetura próprios)
+Os 5 apps (`Grupo<N>/app.html`) foram refeitos com identidade e arquitetura próprias e cada grupo ganhou **landing** (`Grupo<N>/index.html`) no estilo do próprio app, com o app ao vivo num mockup de celular:
+
+| Grupo | App | Arquitetura / destaque |
+|---|---|---|
+| G1 | HoraCerta | Web Components + IndexedDB (caderneta acadêmica) |
+| G2 | GuiaMobi | mapa SVG com pan/zoom, painel deslizante e rotas por URL (o RotaViva virou redirecionamento) |
+| G3 | VozGuia | máquina de estados por gestos, voz e vibração (alto contraste) |
+| G4 | CasaPiloto | reatividade por Proxy + gráficos em canvas (prancha técnica) |
+| G5 | Casa Humanizada | motor de conversa por árvore de diálogo + linha do tempo e prazos |
+
+- `sw.js` **rede-primeiro** nos 5; hub atualizado; publicado no repo `8AdmVG` (Pages ativo).
+
+### 9.2 CONFACC — Figura 1
+- As 5 figuras `Gx-Nome-figura1-mvp.png` foram regeradas pelo `build.py` do kit (`D:\Dev\UnifaccApps\Confacc2026\`), que agora também captura apps por **`window.__rotas`** e protege o `preparo` com `try/except`.
+- `py build.py` → OK (17 trabalhos).
+
+### 9.3 Continua pendente
+- Itens das seções 7 e 8 (validação das 20 perguntas com os grupos, datas, `[verificar]`, ida ao shopping).
+- **CONFACC:** preencher e-mails, subir as imagens (quadro1 + figura1) e revisar os textos antes de enviar.
+
+---
+
+## 10. Sessão 06/10/2026 — Termo de Consentimento (TCLE)
+
+- **Termo_Consentimento_8AdmVG.pdf** criado na raiz da pasta, no mesmo padrão visual do TCLE do AdmCBA (Termo_Consentimento_AdmCBA.pdf), gerado via 
+eportlab.
+- 2 páginas, A4, com: cabeçalho UNIFACC + Curso/Turma, bloco de metadados (Professor, Disciplina, Curso/Turma, Local, Período), 4 blocos laterais (O que é / Como funciona · Riscos e Benefícios / Seus Direitos), contato, Declaração de Ciência e área de assinatura.
+- Cita explicitamente os 5 apps do projeto (HoraCerta, GuiaMobi, VozGuia, CasaPiloto, Casa Humanizada) e a disciplina "Laboratório de Criação e Inovação".
+- LGPD (Lei 13.709/2018) e e-mail 
+enato.rosa@unifacc.edu.br mencionados no documento.
+- Script: C:\Users\Renato\AppData\Local\Temp\opencode\gerar_tcle.py (reaproveitável — gera também o do 3SemVG).
+- Pendente: gerar variantes _imprimir.pdf e _leve.pdf (caso o professor queira, igual ao AdmCBA tem).
+
+
+### 10.1 Ajustes finais no TCLE (06/10/2026)
+- Removida a seção "Declaração de ciência" e a área de assinatura (o termo é só informativo, **somente entregue**, sem coleta de assinatura no shopping).
+- Local corrigido: **Região do Aeroporto de Cuiabá - MT** (sem "shopping center").
+- Período corrigido: **8º Semestre de Administração**.
+- Script: C:\Users\Renato\AppData\Local\Temp\opencode\gerar_tcle.py.
+- Refeito para caber em **1 página A4** com margens/entrelinhas maiores (versão "somente entregue").
+- Texto sem adjetivações, sem travessão e com conectivos após o ponto final (Assim, Dessa forma, Por isso, Além disso, Ainda, Por fim).
+
+
+### 10.2 App de coleta replicado do AdmCBA (06/10/2026)
+- `App/index.html` (e cópia idêntica em `coleta/index.html`) refeito a partir do `AdmCBA/App/index.html`, que é o modelo aprovado. O AdmCBA não foi alterado.
+- Fluxo: grupo → **Quem está coletando? (aluno)** → perfil por observação → 20 perguntas (escala 1–5 com rótulos intermediários e **confirmação em cada resposta**) → e-mail opcional → código `G<n>-<nnn>`.
+- Mantidos da turma: as 20 perguntas, triagem e nota de campo de cada grupo. Acrescentados: `alunos[]` (nomes completos) e cores por grupo; `_gerador/gen.py` passou a mesclar `_gerador/coleta_extra.json` (alunos e cores), então regenerar não apaga a tela do aluno.
+- Lista de grupos da home agora vem de `GRUPOS` (antes era fixa de 1 a 6 no modelo, o que quebrava com 5 grupos).
+- Sincronização: usa a **mesma planilha Google do AdmCBA** (`DEFAULT_SHEET_URL`, mesma estrutura de colunas). Atenção: os códigos `G<n>-<nnn>` se repetem entre turmas; separar pela coluna `grupoNome`.
+- Chaves de `localStorage` próprias: `cd8admvg_*`. READMEs de `App/` e `coleta/` atualizados.
+- Teste automatizado (Playwright): fluxo completo em todos os 5 grupos, sem erro.
+- Publicado em **repositório próprio da turma** (`renato0503/8AdmVG`, commit `3532404`): https://renato0503.github.io/8AdmVG/coleta/ (no ar e conferido).
+
+## 11. Sessão 20/10/2026 — Resultados da coleta, análise por grupo e publicação
+
+### 11.1 Fonte dos dados e regras de tratamento
+- **Planilha de respostas (banco único das 3 turmas):** `1hdR-swgduz5jqhra3OqUNp109xQbrMP42CC_evDXupM`, aba **Respostas** (gid 2144392800), compartilhada como "qualquer pessoa com o link". Colunas: `recebidoEm, codigo, aluno, grupo, grupoNome, criadoEm, faixaEtaria, sexo, classe, raca, orgao, Q1..Q20, email_contato`.
+- **Não há coluna de turma.** A turma se deduz por `grupoNome` (nomes únicos entre turmas; na planilha o G5 do 8AdmVG aparece como "CasaHumanizada"). Os códigos `G<n>-<nnn>` **se repetem** (contador local em cada celular), então a chave de unicidade usada é (grupoNome, codigo, criadoEm); 3 duplicatas exatas foram removidas.
+- **A triagem de cada grupo (ex.: situação acadêmica, quem cuida das contas, convivência no EDA) NÃO chega à planilha**: o Apps Script só tem a coluna `orgao` (usada pelo Fila Cidadã). Está nos celulares/CSV exportado. Correção pendente: coluna genérica de triagem (e coluna `turma`) no Apps Script.
+- **Respostas de arquivo (celular que não sincronizou), somadas ao HTML e fora da planilha:** `coleta-3semvg.json` (8 respostas, G4 SuaCasaSuaVida, atribuídas a Julimary da Silva Amorim) e `cassia_coleta-3semvg.json` (4 respostas de 20 e 21/10, G5 EDA, Cássia Virgínia Aparecida da Silva Nobrega). A G5-001 desse arquivo, de 07/10 (antes da coleta), foi **ignorada** por parecer teste; incluir se for válida (lista `ARQUIVOS` em `_ferramentas/resultados-coleta/build_html.py`). Se o celular sincronizar depois, a deduplicação remove a cópia.
+- **Metas por grupo (linhas no gráfico):** 15 (meta inicial), **30 (mínimo total)** e **35 (margem de segurança)**.
+
+### 11.2 Painel de resultados (HTML) e publicação
+- **Link da turma (GitHub Pages, repositório próprio):** https://renato0503.github.io/8AdmVG/resultados/
+- Arquivos: `resultados/index.html` (só esta turma) e, na raiz de `D:\Dev\UnifaccApps`, `Resultados-Coleta.html` (3 turmas) e `Sintese-Resultados.md` (texto completo das análises).
+- Conteúdo: síntese da turma, respostas por grupo, perfil observado, 20 perguntas em barras divergentes (polo A à esquerda, polo B à direita, 3 ao centro), análise estatística, interpretação e **hipótese × resultado × literatura** por grupo.
+- **Botão "Atualizar agora":** lê a planilha ao vivo e recalcula tudo no navegador. Em `https://` usa `fetch`; aberto como arquivo local (`file://`) usa JSONP do Google (`gviz`). Alternativa: `python atualizar-resultados.py` (raiz) regrava a cópia embutida nos 4 HTMLs.
+- **Privacidade:** o HTML não traz e-mails (coluna `email_contato` removida antes de embutir); traz o nome dos alunos coletores por grupo.
+- **Gerador e fontes:** `_ferramentas/resultados-coleta/` (README com o fluxo para regerar).
+
+### 11.3 Método estatístico
+- Escala 1–5 entre dois polos (1 = polo A, 5 = polo B); **o sentido de cada pergunta varia**, e média baixa pode significar pouco problema (erro corrigido no EDA, ver 3SemVG).
+- Por pergunta: média, DP, %1–2, %4–5, **IC95% por bootstrap** e **teste de permutação (inversão de sinais) contra o ponto neutro 3**, com **correção de Holm** nas 20 perguntas do grupo. "Interesse/utilidade médio" = média por respondente dos itens que começam com Utilidade ou Interesse.
+- Amostra de conveniência com 10 a 33 respostas por grupo: leitura exploratória, sem generalização. Efeito de teto e concordância automática reduzem o valor dos itens de utilidade; pesam mais os itens de comportamento e de dor.
+
+### 11.4 Literatura: verificação dos DOIs
+- Todos os DOIs dos `Pesquisa-Dados.md` (213 únicos) foram conferidos na API da Crossref (existência e título); só os verificados são citados nas análises.
+- **AdmCBA e 8AdmVG:** todas as referências existem e os títulos batem.
+- **3SemVG:** 24 referências **não se confirmam** (DOIs inexistentes, de outros artigos ou com autores genéricos como "Doe; Lee", "Smith; Jones", "fake"): Dinheiro na Mão 2 (Chong et al.; Fonseca e Matray; e Kaiser et al. com autoria errada, DOI real), LifePath 2, Quita.AI 2, SuaCasaSuaVida 2, EDA 2 (um DOI aponta para "Issue Information"), **Vida no Controle 14 (todas)**. Para o Vida no Controle e para a parte de carreira do LifePath usei artigos achados por busca na Crossref. **Pendente: avisar os grupos para corrigir os arquivos `Pesquisa-Dados.md`.**
+- As notas de paralelo só afirmam o que título e resumo sustentam; resumos vêm dos arquivos dos grupos. Gelper et al. (2026) está só como leitura sugerida (sem resumo na API).
+
+### 11.5 Situação dos grupos (leitura de 20/10/2026, 80 respostas válidas)
+| Grupo | Projeto | n | Veredito (hipótese de campo) |
+|---|---|---|---|
+| G1 | HoraCerta | 15 | Parcialmente sustentada |
+| G2 | GuiaMobi | 15 | Parcialmente sustentada |
+| G3 | VozGuia | 17 | Sustentada (resultado mais robusto da coleta) |
+| G4 | CasaPiloto | 19 | Sustentada |
+| G5 | CasaHumanizada | 14 | Parcialmente sustentada; demanda pela solução é alta |
+
+### 11.6 Pendências
+- Os textos (`interp.json`, `analise_grupos.json`, `sintese.json`) citam números de uma data; **reler e atualizar quando o n mudar** (a página avisa).
+- Recrutar mais respostas nos grupos abaixo de 30 (mínimo total) e de 35 (margem de segurança).
+- Corrigir o Apps Script: coluna genérica de triagem e coluna `turma`; reimplantar.
+- Commit/push pendentes (não foram feitos de propósito): `context.md`, `Termo_Consentimento_*.pdf` e a pasta local `Resultados/` (Resultados-*.md e estatisticas-por-pergunta.csv, versão descritiva inicial).
+- **Sprint R1 (painel 100% mobile): ✅ concluída em 20/10/2026** (tabelas em cartões, toque no lugar de tooltip, seções recolhíveis; zero rolagem horizontal em 320–430 px). Pendente só o teste em aparelho real (Chrome Android e Safari iOS). Detalhes em `SPRINTS.md` (Track R).
+
+## 12. Sessão 21/10/2026 — análise regerada com a base atual
+
+- **Snapshot:** 419 respostas válidas nas 3 turmas (3 duplicatas exatas removidas; 12 respostas de arquivo). **8AdmVG: 151** — HoraCerta 28, GuiaMobi 32, VozGuia 31, CasaPiloto 32, CasaHumanizada 28. A planilha segue recebendo respostas.
+- **Regerados:** `Resultados-Coleta.html`, `8AdmVG/resultados/index.html`, `3SemVG/resultados/index.html`, `AdmCBA/resultados/index.html` e `Sintese-Resultados.md` (leitura de 21/10/2026).
+- **Textos reescritos** em `_ferramentas/resultados-coleta/`: `interp.json` e `analise_grupos.json` dos 5 grupos do 8AdmVG e dos dois grupos do 3SemVG cujo n mudou (Dinheiro na Mão 29, Vida no Controle 32); `ninterp.json` e `atual.json` sincronizados; `sintese.json` com n = 419, data 21/10/2026 e sínteses geral/das turmas atualizadas.
+- **Vereditos 8AdmVG:** VozGuia sustentada (17/20 itens após Holm); CasaPiloto sustentada; HoraCerta, GuiaMobi e CasaHumanizada parcialmente sustentadas (CasaHumanizada com demanda alta: interesse 4,25).
+- **Verificação:** as 4 páginas abrem sem erro de JS e sem aviso de "dados mudaram"; o n exibido é igual ao n dos textos nos 17 grupos. `build_html.py` passou a carimbar a data do snapshot dinamicamente.
+- **Pendente:** nova leitura quando a base estabilizar (nenhum grupo chegou a 35; HoraCerta e CasaHumanizada estão em 28) e commit/push do `8AdmVG` — `resultados/index.html` mudou.
+
+---
+
+## 13. Sessão 09/11/2026 — Relato Autoetnográfico (formulário e geração de PDFs)
+
+- **Participam:** G1 HoraCerta e G2 GuiaMobi (10 alunos; o professor responsável é Renato, os demais grupos ficam de fora).
+- **Nos relatos sai:** Faculdade Católica de Mato Grosso, 8º Semestre, Bacharelado em Administração, FACC-MT.
+- **O que é:** cada aluno orientado pelo Prof. Renato responde a um formulário, e as respostas preenchem o modelo oficial do relato autoetnográfico. Um DOCX e um PDF são gerados por aluno.
+- **Formulário:** https://renato0503.github.io/relato-autoetnografico/ (repositório `renato0503/relato-autoetnografico`; só a pasta `formulario/` é publicada).
+- **Respostas:** planilha privada `1GbpdlfNvbRuIYr051hxfl4SceSFN_l4mEo-LwIV_Kws`, abas `Respostas` (1 linha por aluno; reenvio atualiza) e `Historico` (todos os envios).
+- **Geração:** `python gerar.py` em `D:\Dev\UnifaccApps\RelatoAutoetnografico\`; os arquivos saem em `saida/` e o terminal lista quem não respondeu. Fluxo completo no `README.md` de lá.
+- **Testado em 09/11/2026:** envio real pela página publicada, reenvio sem duplicar, leitura pelo gerador e geração de DOCX e PDF pelo Word com dados de teste.
+- **Pendente:** preencher a área do mestrado em `TITULACAO` no `gerar.py` (sem isso não gera) e apagar a linha `TESTE - APAGAR ESTA LINHA` da planilha, se ainda estiver lá (o gerador a ignora).
+
+---
+
+## 14. Sessão 09/11/2026 — Banners e fichas da III Mostra Synergeia (G1, G3 e G4)
+
+- **Pedido:** banners de apresentação de **Michelly** (CasaPiloto/G4), **Samara** (HoraCerta/G1) e **Karla** (VozGuia/G3), no modelo `Modelo-banner III MOSTRA SYNERGEIA 2026.pptx`, mais as fichas de inscrição.
+- **Entregue em** `D:\Dev\UnifaccApps\Mostra-Synergeia-2026\` (com `README.md` próprio):
+  - `G1-HoraCerta\`, `G3-VozGuia\`, `G4-CasaPiloto\` → `Banner-*.pptx`, `Banner-*.pdf`, `Ficha-Inscricao-*.docx`, `Ficha-Inscricao-*.pdf`.
+- **Banner:** 80 × 120 cm, cabeçalho e rodapé do modelo preservados; título; autores completos + orientador (Renato de Oliveira Rosa); Introdução/Referencial teórico (esquerda) e Procedimentos metodológicos/Considerações finais (direita); Referências na faixa inferior.
+- **Texto:** encurtado, justificado, em linguagem direta (problema → solução → dado → próximo passo). Fontes: `Confacc2026/8AdmVG/G<N>-*.md`, `ContextoApp.md`, `Pesquisa-Dados.md` e `Resultados/Resultados-8AdmVG.md` (HoraCerta n = 32; VozGuia n = 34; CasaPiloto n = 34). Só DOIs já verificados.
+- **Faixa visual:** logo do app, **print das 3 telas do MVP** (figura do kit CONFACC), **gráfico** das principais respostas (% de respostas 4–5) com destaque numérico e **QR code** do app.
+- **QR codes (todos HTTP 200 em 09/11/2026):**
+  - HoraCerta: https://renato0503.github.io/8AdmVG/Grupo1-HoraCerta/app.html
+  - VozGuia: https://renato0503.github.io/8AdmVG/Grupo3-VozGuia/app.html
+  - CasaPiloto: https://renato0503.github.io/8AdmVG/Grupo4-CasaPiloto/app.html
+- **Ficha:** Campus **Aeroporto**; modalidade **Apresentação de banner**; todos os autores (campos I–III + linhas extras IV/V quando necessário); orientador; curso **Administração**; disciplina **Laboratório de Criação e Inovação**; **8º Semestre**; figura do MVP na área “COLOQUE A SUA APRESENTAÇÃO A SEGUIR”; espaçamento ajustado para **1 página A4**.
+- **Testes:** `validate.py` do kit PPTX → **All validations PASSED** nos banners; fichas em 1 página (PDF); QR apontando para os apps publicados.
+- **Scripts preservados:** `Mostra-Synergeia-2026\_scripts\` (gerar_graficos.py, gerar_qr.py, gerar_banners_v2.py, layout_banners.ps1, gerar_fichas.py, exportar_fichas.ps1). Gráficos e QR em `_graficos\`.
+- **Pendente:** revisão do conteúdo pelos grupos (nomes, curso, semestre) e commit/push. Nada foi commitado nesta sessão.
